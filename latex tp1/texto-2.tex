@@ -33,6 +33,10 @@
 \usepackage{enumitem}
 \usepackage{amsmath}
 
+% para los cuadritos en links
+%\usepackage[linkbordercolor={0 0 1}, citebordercolor={0 1 0}, urlbordercolor={1 0 0}]{hyperref}
+\usepackage[colorlinks=true, linkcolor=blue, citecolor=green, urlcolor=red]{hyperref} % solo resalta
+
 
 
 
@@ -62,6 +66,8 @@
 \author{Ignacio Ezequiel Cavicchioli\\Padrón 109428\\icavicchioli@fi.uba.ar}
 \date{10/9/2025} % Activate to display a given date or no date (if empty),
          % otherwise the current date is printed 
+
+
 
 \begin{document}
 \maketitle
@@ -128,7 +134,7 @@ Ahora que se tiene cierta noción sobre las redes de Hopfield se puede pasar al 
 
 Por un tema de las dimensiones de las imágenes, los tres primeros incisos se realizaron con dos redes neuronales de tres imágenes cada una, para luego unificar los tamaños en el cuarto. Las figuras \ref{fig:ej1_a} y \ref{fig:ej1_b} muestran, para cada subfigura, la imagen enseñada (izquierda) y la recordada (derecha) de las dos redes neuronales. Ambas redes devolvieron correctamente las imágenes enseñadas. 
 
-La segunda consigna pide evaluar la propiedad de la red de recordar contenido. La idea es iniciar con una imagen alterada, permitir que la red evolucione y verificar a que estado convergió. Idealmente la red va a poder devolver el estado deseado, que sería el inicial sin las alteraciones. Las figuras \ref{fig:ej2_a} \ref{fig:ej2_b} presentan visualmente los resultados de partir de una imagen alterada. Ambas redes neuronales fueron capaces de converger a los estados memorizados correctos, habiendo partido de los estados alterados. Esto se logró en 2 iteraciones, ya que se requieren dos para verificar la convergencia de la red (ausencia de cambios entre iteraciones).
+La segunda consigna pide evaluar la propiedad de la red de recordar contenido. La idea es iniciar con una imagen alterada, permitir que la red evolucione y verificar a que estado convergió. Idealmente la red va a poder devolver el estado deseado, que sería el inicial sin las alteraciones. Las figuras \ref{fig:ej2_a} y \ref{fig:ej2_b} presentan visualmente los resultados de partir de una imagen alterada. Ambas redes neuronales fueron capaces de converger a los estados memorizados correctos, habiendo partido de los estados alterados. Esto se logró en 2 iteraciones, ya que se requieren dos para verificar la convergencia de la red (ausencia de cambios entre iteraciones).
 
 \newpage 
 El tercer ítem de las consignas exige evaluar la existencia de los estados espurios previamente mencionados. Para esto, se eligieron algunos estados espurios representativos que permiten demostrar su presencia. El único tipo de estado que no se pudo evidenciar es el tercer tipo, los verdaderamente espurios. Recordando y profundizando, los estados espurios serían:
@@ -233,13 +239,34 @@ Finalmente, la figura \ref{fig:ej1_3_5} muestra como entrada una combinación li
     \label{fig:ej1_3_5}
 \end{figure}
 \clearpage
-
 \newpage
 
+El cuarto y último inciso del primer ejercicio requiere entrenar a una red con todas las imágenes y verificar si fueron aprendidas. La nueva red fue entrenada sobre las imágenes redimensionadas a un tamaño en común, que inicialmente se fijó en $60 \times 60$ . El resultado se puede ver en la figura \ref{fig:ej1_4}. Solo se pudieron aprender 4 de los 6 estados. 
 
-
-
+Para verificar esto se entrenó otra red con imágenes de $100 \times 100$
 \clearpage
+\newpage
+
+\begin{figure}[p]
+    \centering
+    % --- Primer fila: 2 columnas con 3 imágenes ---
+    \begin{minipage}{0.48\linewidth}
+        \centering
+        \subfloat[]{\includegraphics[width=\linewidth]{C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_4_4.png}}\\
+        \subfloat[]{\includegraphics[width=\linewidth]{C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_4_5.png}}\\
+        \subfloat[]{\includegraphics[width=\linewidth]{C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_4_6.png}}
+    \end{minipage}\hfill
+    \begin{minipage}{0.48\linewidth}
+        \centering
+        \subfloat[]{\includegraphics[width=\linewidth]{C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_4_1.png}}\\
+        \subfloat[]{\includegraphics[width=\linewidth]{C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_4_2.png}}\\
+        \subfloat[]{\includegraphics[width=\linewidth]{C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_4_3.png}}
+    \end{minipage}
+    \caption{Imágenes enseñadas (a izquierda de cada subfigura) y recordadas (a derecha).}
+    \label{fig:ej1_4}
+\end{figure}
+\clearpage
+
 \newpage
 
 \subsection{Análisis}
