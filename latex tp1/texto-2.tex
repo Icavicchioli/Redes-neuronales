@@ -34,6 +34,8 @@
 \usepackage{amsmath}
 
 
+
+
 %%% HEADERS & FOOTERS
 \usepackage{fancyhdr} % This should be set AFTER setting up the page geometry
 \pagestyle{fancy} % options: empty , plain , fancy
@@ -118,12 +120,127 @@ Para este trabajo se usó una actualización sincrónica, pero la actualización
 
 Ahora bien, ¿Cómo se parte de una matriz de pesos y se termina con un sistema que recuerda estados? El libro ``\textit{Introduction To The Theory Of Neural Computation}'' provisto por el Campus de la materia explica que los estados memorizados son atractores en el espacio de todos los estados posibles. Una forma de pensarlo es como que los patrones o estados aprendidos son concavidades en una tela y el estado actual es una canica puesta sobre esta tela. Si se deja que la canica se mueva, va a caer en alguna de estas hendiduras de la tela. Como se va a tratar más adelante, existen otros atractores que no son los patrones aprendidos: los inversos de estos, las combinaciones lineales de un número impar de patrones (estados espurios de mezcla) y otros estados espurios que aparecen como consecuencia de la dinámica de la red.
 
+\begin{center}
+\rule{0.5\linewidth}{0.5pt} % línea de mitad de ancho y 0.5pt de grosor
+\end{center}
 
 Ahora que se tiene cierta noción sobre las redes de Hopfield se puede pasar al desarrollo de las consignas como tales. La primera pide verificar que la red entrenada haya aprendido las imágenes. Recordando, si los patrones fueron memorizados, serían atractores, y la red se mantendría en ellos aunque se itere, lo cual constituye una forma simple de verificar el aprendizaje. 
 
-Por un tema de las dimensiones de las imágenes, los tres primeros incisos se realizaron con dos redes neuronales de tres imágenes cada una, para luego unificar los tamaños en el cuarto. 
+Por un tema de las dimensiones de las imágenes, los tres primeros incisos se realizaron con dos redes neuronales de tres imágenes cada una, para luego unificar los tamaños en el cuarto. Las figuras \ref{fig:ej1_a} y \ref{fig:ej1_b} muestran, para cada subfigura, la imagen enseñada (izquierda) y la recordada (derecha) de las dos redes neuronales. Ambas redes devolvieron correctamente las imágenes enseñadas. 
+
+La segunda consigna pide evaluar la propiedad de la red de recordar contenido. La idea es iniciar con una imagen alterada, permitir que la red evolucione y verificar a que estado convergió. Idealmente la red va a poder devolver el estado deseado, que sería el inicial sin las alteraciones. Las figuras \ref{fig:ej2_a} \ref{fig:ej2_b} presentan visualmente los resultados de partir de una imagen alterada. Ambas redes neuronales fueron capaces de converger a los estados memorizados correctos, habiendo partido de los estados alterados. Esto se logró en 2 iteraciones, ya que se requieren dos para verificar la convergencia de la red (ausencia de cambios entre iteraciones).
+
+\newpage 
+El tercer ítem de las consignas exige evaluar la existencia de los estados espurios previamente mencionados. Para esto, se eligieron algunos estados espurios representativos que permiten demostrar su presencia. El único tipo de estado que no se pudo evidenciar es el tercer tipo, los verdaderamente espurios. Recordando y profundizando, los estados espurios serían:
+
+\begin{itemize}
+\item \textbf{Estados inversos de los memorizados:} si un patrón memorizado es $\mathbf{x}$, entonces $-\mathbf{x}$ también es un atractor de la red, ya que posee la misma energía.
+\item \textbf{Combinaciones lineales de un número impar de patrones:} se generan estados de mezcla a partir de un conjunto de patrones memorizados $\{\mathbf{x}^{(1)}, \mathbf{x}^{(2)}, \dots, \mathbf{x}^{(k)}\}$ con $k$ impar, mediante
+\[
+\mathbf{s} = \mathrm{sign}\left(\sum_{i=1}^{k} \mathbf{x}^{(i)}\right),
+\]
+donde la función signo se aplica componente a componente. Estos estados son atractores espurios porque no corresponden a ningún patrón individual entrenado, pero emergen de la dinámica de la red.
+\item \textbf{Estados verdaderamente espurios:} atractores que no están relacionados directamente con los patrones memorizados; su aparición es más rara y depende de la red y la configuración de los patrones.
+\end{itemize}
+
+La figura \ref{fig:ej1_3_1} muestra, a la izquierda, el estado entregado a la red (el inverso del panda) y, a la derecha, el estado al que convergió en una iteración, indicando que es un punto de estabilidad en la red 1.  
+
+La figura \ref{fig:ej1_3_2} demuestra que el inverso del estado de ``v'' también constituye un atractor estable en la red 1.  
+
+La figura \ref{fig:ej1_3_3} muestra un caso similar, partiendo del inverso del torero editado. La convergencia al estado inverso indica que el torero inverso es un atractor en la red 2.  
+
+La figura \ref{fig:ej1_3_4} presenta como entrada una combinación lineal de los tres patrones usados para entrenar la red 1. La red no cambia de estado al iterar, lo que indica que esta combinación es estable.  
+
+Finalmente, la figura \ref{fig:ej1_3_5} muestra como entrada una combinación lineal de los tres patrones usados para entrenar la red 2, incluyendo la paloma editada. La convergencia al estado de combinación lineal indica que esta combinación también es estable y actúa como atractor.
 
 
+\clearpage
+\begin{figure}[p]
+    \centering
+    \subfloat[Imagen 1]{\includegraphics[width=0.8\linewidth]{C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_1_1.png}}\\
+    \subfloat[Imagen 2]{\includegraphics[width=0.8\linewidth]{C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_1_2.png}}\\
+    \subfloat[Imagen 3]{\includegraphics[width=0.8\linewidth]{C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_1_3.png}}
+    \caption{Imágenes del inciso 1 - Red 1.}
+    \label{fig:ej1_a}
+\end{figure}
+
+
+\begin{figure}[p]
+    \centering
+    \subfloat[Imagen 4]{\includegraphics[width=0.8\linewidth]{C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_1_4.png}}\\
+    \subfloat[Imagen 5]{\includegraphics[width=0.8\linewidth]{C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_1_5.png}}\\
+    \subfloat[Imagen 6]{\includegraphics[width=0.8\linewidth]{C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_1_6.png}}
+    \caption{Imágenes del inciso 1 - Red 2.}
+    \label{fig:ej1_b}
+\end{figure}
+\clearpage
+\newpage
+
+\clearpage
+\begin{figure}[p]
+    \centering
+    \subfloat[Imagen 1]{\includegraphics[width=1\linewidth]{C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_2_1.png}}\\
+    \subfloat[Imagen 2]{\includegraphics[width=1\linewidth]{C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_2_2.png}}\\
+    \subfloat[Imagen 3]{\includegraphics[width=1\linewidth]{C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_2_3.png}}
+    \caption{Imágenes del inciso 2 - Red 1.}
+    \label{fig:ej2_a}
+\end{figure}
+
+
+\begin{figure}[p]
+    \centering
+    \subfloat[Imagen 4]{\includegraphics[width=1\linewidth]{C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_2_4.png}}\\
+    \subfloat[Imagen 5]{\includegraphics[width=1\linewidth]{C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_2_5.png}}\\
+    \subfloat[Imagen 6]{\includegraphics[width=1\linewidth]{C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_2_6.png}}
+    \caption{Imágenes del inciso 2 - Red 2.}
+    \label{fig:ej2_b}
+\end{figure}
+\clearpage
+\newpage
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.8\linewidth]{C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_3_1.png}
+    \caption{Figura 1: El estado inverso del panda es estable.}
+    \label{fig:ej1_3_1}
+\end{figure}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.8\linewidth]{C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_3_2.png}
+    \caption{Figura 2: El estado inverso del torero editado es un atractor.}
+    \label{fig:ej1_3_2}
+\end{figure}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=1\linewidth]{C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_3_3.png}
+    \caption{Figura 3: La combinación lineal de los 3 estados enseñados a la red 1 es estable.}
+    \label{fig:ej1_3_3}
+\end{figure}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.8\linewidth]{C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_3_4.png}
+    \caption{Figura 4: La combinación lineal con un estado alterado es un atractor.}
+    \label{fig:ej1_3_4}
+\end{figure}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=1\linewidth]{C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_3_5.png}
+    \caption{Figura 5: descripción breve de la imagen.}
+    \label{fig:ej1_3_5}
+\end{figure}
+\clearpage
+
+\newpage
+
+
+
+
+\clearpage
+\newpage
 
 \subsection{Análisis}
 
