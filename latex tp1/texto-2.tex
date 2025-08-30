@@ -30,6 +30,9 @@
 \usepackage{verbatim} % adds environment for commenting out blocks of text & for better verbatim
 \usepackage{subfig} % make it possible to include more than one captioned figure/table in a single float
 % These packages are all incorporated in the memoir class to one degree or another...
+\usepackage{enumitem}
+\usepackage{amsmath}
+
 
 %%% HEADERS & FOOTERS
 \usepackage{fancyhdr} % This should be set AFTER setting up the page geometry
@@ -55,17 +58,72 @@
 
 \title{Trabajo práctico 1\\ Redes Neuronales y Aprendizaje Profundo}
 \author{Ignacio Ezequiel Cavicchioli\\Padrón 109428\\icavicchioli@fi.uba.ar}
-\date{} % Activate to display a given date or no date (if empty),
+\date{10/9/2025} % Activate to display a given date or no date (if empty),
          % otherwise the current date is printed 
 
 \begin{document}
 \maketitle
+\section{Introducción}
+
+Este documento presenta el desarrollo de las consignas del trabajo práctico N°1 de la materia de \textbf{Redes Neuronales y Aprendizaje Profundo}.  El código correspondiente fue realizado en  \textit{Jupyter notebooks}, \textit{Python}, adjuntados a la entrega en formato PDF. Toda imagen o implementación requeridas para el análisis se explicitarán en el presente archivo, por lo que la lectura del código en sí queda a discreción del lector. La teoría relevante será presentada y discutida en la sección pertinente.
 
 \section{Ejercicio 1}
 
-\subsection{Introducción}
+\subsection{Consignas}
+Entrene una red de Hopfield ‘82 con las imágenes binarias disponibles en el campus. 
+\begin{enumerate}[label=\alph*]
+\item Verifique si la red aprendió las imágenes enseñadas.
+\item Evalúe la evolución de la red al presentarle versiones alteradas de las imágenes
+aprendidas: agregado de ruido, elementos borrados o agregados.
+\item Evalúe la existencia de estados espurios en la red: patrones inversos y
+combinaciones de un número impar de patrones. (Ver Spurious States, en la sección
+2.2, Hertz, Krogh \& Palmer, pág. 24).
+\item Realice un entrenamiento con las 6 imágenes disponibles. ¿Es capaz la red de
+aprender todas las imágenes? Explique.
+\end{enumerate}
 
-\subsection{Resultados}
+\subsection{Desarrollo}
+
+Una red de Hopfield es, en esencia, una memoria direccionable por contenido (\textit{content-adressable memory})\footnote{Neural Networks and Physical Systems with Emergent Collective Computational Abilities, Campus, J. J. Hopfield }; permite obtener un estado memorizado completo a partir de un estado incompleto suficientemente parecido. Como se va a mostrar en los varios incisos, la red de Hopfield no es una memoria ideal, pero bajo ciertas condiciones, el error en la recuperación de estados está acotado. 
+
+La red de Hopfield a tratar es una colección de neuronas de McCulloch-Pitts. En pocas palabras, cada neurona tiene como ``entrada'' los estados de todas las otras neuronas menos sí misma. Estos se ponderan por un peso $w_{i,j}$ calculado por aprendizaje Hebbiano, se suman, conformando una $h$, que se pasa por una función de activación, determinando la ``salida'', o estado futuro, de la neurona. En los ejercicios se trabajó con una función de activación del tipo signo, que devuelve $-1$ o $1$ según el signo de $h$. Para $h = 0$ se determinó que la salida toma valor $1$. 
+
+La red es entrenada por medio del aprendizaje de todos los $w_{i,j}$ según la regla de aprendizaje \eqref{eq:regla_aprendizaje}, que se puede generalizar matricialmente como se ve en \eqref{eq:generalizacion_matricial}. A cada imágen le corresponde una única iteración ($\Delta w_{i,j}$), por lo que solo se suma una vez a la matriz $\mathbf{W}$. En términos más informales, la red solo ``ve'' las imágenes 1 vez.  El peso $\eta$ se mantuvo unitario para todo entrenamiento. 
+
+\begin{equation}
+\begin{split}
+\Delta w_{i,j} &= \eta x_i x_j \\
+w_{{i,j}_n} &= w_{{i,j} _{n-1}} + \Delta w_{i,j}
+\end{split}
+\label{eq:regla_aprendizaje}
+\end{equation}
+
+\begin{equation}
+\begin{split}
+\Delta\mathbf{W} &= \eta \mathbf{x} \mathbf{x}^T \\
+\mathbf{W}_n &= \mathbf{W}_{n-1} + \Delta\mathbf{W}
+\end{split}
+\label{eq:generalizacion_matricial}
+\end{equation}
+
+El proceso de aprendizaje equivale a aprender la correlación entre todas las imágenes. Imágenes muy parecidas (por algún criterio, ej.: distancia de Hamming) van a quedar ``cerca'' en la función energética subyacente. Esto trae a colación un aspecto importante para toda memoria, que es la capacidad. Como se va a demostrar más adelante, la capacidad es función de la cantidad de neuronas y correlación ente estados memorizados. 
+
+Para'' ejecutar'' la red neuronal alcanza con calcular todos los estados siguientes de las neuronas. Esto se puede hacer de dos formas:
+\begin{itemize}
+\item Actualización sincrónica: se computa el siguiente estado de todas las neuronas a la vez.
+\item Actualización asincrónica: las neuronas son aleatoriamente actualizadas, sin seguir un orden particular. La idea es que todas se actualicen al finalizar el ciclo. 
+\end{itemize}
+
+Para este trabajo se usó una actualización sincrónica, pero la actualización asincrónica tiene beneficios en lo relativo a convergencia de la red. 
+
+Ahora bien, ¿Cómo se parte de una matriz de pesos y se termina con un sistema que recuerda estados? El libro ``\textit{Introduction To The Theory Of Neural Computation}'' provisto por el Campus de la materia explica que los estados memorizados son atractores en el espacio de todos los estados posibles. Una forma de pensarlo es como que los patrones o estados aprendidos son concavidades en una tela y el estado actual es una canica puesta sobre esta tela. Si se deja que la canica se mueva, va a caer en alguna de estas hendiduras de la tela. Como se va a tratar más adelante, existen otros atractores que no son los patrones aprendidos: los inversos de estos, las combinaciones lineales de un número impar de patrones (estados espurios de mezcla) y otros estados espurios que aparecen como consecuencia de la dinámica de la red.
+
+
+Ahora que se tiene cierta noción sobre las redes de Hopfield se puede pasar al desarrollo de las consignas como tales. La primera pide verificar que la red entrenada haya aprendido las imágenes. Recordando, si los patrones fueron memorizados, serían atractores, y la red se mantendría en ellos aunque se itere, lo cual constituye una forma simple de verificar el aprendizaje. 
+
+Por un tema de las dimensiones de las imágenes, los tres primeros incisos se realizaron con dos redes neuronales de tres imágenes cada una, para luego unificar los tamaños en el cuarto. 
+
+
 
 \subsection{Análisis}
 
@@ -125,7 +183,5 @@ Para tu **documento en LaTeX** te convendría estructurarlo así:
 5. Limitaciones y próximos pasos (espurios, generalización).
 
 ¿Querés que te arme un **esqueleto en LaTeX** con estas secciones, listo para que pegues tus resultados?
-
-
 
 \end{document}
