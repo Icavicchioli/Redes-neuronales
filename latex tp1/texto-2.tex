@@ -130,13 +130,15 @@ Ahora bien, ¿Cómo se parte de una matriz de pesos y se termina con un sistema 
 \rule{0.5\linewidth}{0.5pt} % línea de mitad de ancho y 0.5pt de grosor
 \end{center}
 
-Ahora que se tiene cierta noción sobre las redes de Hopfield se puede pasar al desarrollo de las consignas como tales. La primera pide verificar que la red entrenada haya aprendido las imágenes. Recordando, si los patrones fueron memorizados, serían atractores, y la red se mantendría en ellos aunque se itere, lo cual constituye una forma simple de verificar el aprendizaje. 
+Ahora que se tiene cierta noción sobre las redes de Hopfield se puede pasar al desarrollo de las consignas como tales. 
+
+\subsubsection{Consigna 1}
+La primera pide verificar que la red entrenada haya aprendido las imágenes. Recordando, si los patrones fueron memorizados, serían atractores, y la red se mantendría en ellos aunque se itere, lo cual constituye una forma simple de verificar el aprendizaje. 
 
 Por un tema de las dimensiones de las imágenes, los tres primeros incisos se realizaron con dos redes neuronales de tres imágenes cada una, para luego unificar los tamaños en el cuarto. Las figuras \ref{fig:ej1_a} y \ref{fig:ej1_b} muestran, para cada subfigura, la imagen enseñada (izquierda) y la recordada (derecha) de las dos redes neuronales. Ambas redes devolvieron correctamente las imágenes enseñadas. 
-
+\subsubsection{Consigna 2}
 La segunda consigna pide evaluar la propiedad de la red de recordar contenido. La idea es iniciar con una imagen alterada, permitir que la red evolucione y verificar a que estado convergió. Idealmente la red va a poder devolver el estado deseado, que sería el inicial sin las alteraciones. Las figuras \ref{fig:ej2_a} y \ref{fig:ej2_b} presentan visualmente los resultados de partir de una imagen alterada. Ambas redes neuronales fueron capaces de converger a los estados memorizados correctos, habiendo partido de los estados alterados. Esto se logró en 2 iteraciones, ya que se requieren dos para verificar la convergencia de la red (ausencia de cambios entre iteraciones).
-
-\newpage 
+\subsubsection{Consigna 3}
 El tercer ítem de las consignas exige evaluar la existencia de los estados espurios previamente mencionados. Para esto, se eligieron algunos estados espurios representativos que permiten demostrar su presencia. El único tipo de estado que no se pudo evidenciar es el tercer tipo, los verdaderamente espurios. Recordando y profundizando, los estados espurios serían:
 
 \begin{itemize}
@@ -158,6 +160,17 @@ La figura \ref{fig:ej1_3_3} muestra un caso similar, partiendo del inverso del t
 La figura \ref{fig:ej1_3_4} presenta como entrada una combinación lineal de los tres patrones usados para entrenar la red 1. La red no cambia de estado al iterar, lo que indica que esta combinación es estable.  
 
 Finalmente, la figura \ref{fig:ej1_3_5} muestra como entrada una combinación lineal de los tres patrones usados para entrenar la red 2, incluyendo la paloma editada. La convergencia al estado de combinación lineal indica que esta combinación también es estable y actúa como atractor.
+
+\newpage
+
+\subsubsection{Consigna 4}
+El cuarto y último inciso del primer ejercicio requiere entrenar una red con todas las imágenes y verificar si fueron aprendidas. La nueva red se entrenó sobre las imágenes redimensionadas a un tamaño común, inicialmente fijado en $60 \times 60$. El resultado se muestra en la figura \ref{fig:ej1_4}: solo se pudieron aprender 4 de los 6 estados.
+
+Para analizar la dependencia con el tamaño de la red, se repitió el entrenamiento con imágenes de $100 \times 100$. El resultado fue el mismo (figura \ref{fig:ej1_4_2}).
+
+Dado lo anterior, se calcularon la correlación y la distancia de Hamming entre imágenes para investigar el origen de la falla. La correlación no aportó información concluyente, pero la distancia de Hamming entre las imágenes no memorizadas resultó ser la menor entre todos los pares. Como el experimento se repitió con dos tamaños distintos y el desempeño no cambió, se infiere que la causa principal de no poder memorizar las 6 imágenes es la similitud (según el criterio de distancia de Hamming) entre los patrones ``panda'' y ``paloma'', y no el tamaño de la red.
+
+\textit{Nota:} en redes de Hopfield, la capacidad teórica crece con el número de neuronas, por lo que con $N=3600$ o $N=10\,000$ la cantidad de patrones usados está muy por debajo de los umbrales discutidos en clase y propuestos en el ejercicio 2. 
 
 
 \clearpage
@@ -235,19 +248,13 @@ Finalmente, la figura \ref{fig:ej1_3_5} muestra como entrada una combinación li
 \begin{figure}[h!]
     \centering
     \includegraphics[width=1\linewidth]{C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_3_5.png}
-    \caption{Figura 5: descripción breve de la imagen.}
+    \caption{Figura 5: La combinación lineal con un estado alterado es un atractor.}
     \label{fig:ej1_3_5}
 \end{figure}
 \clearpage
 \newpage
 
-El cuarto y último inciso del primer ejercicio requiere entrenar una red con todas las imágenes y verificar si fueron aprendidas. La nueva red se entrenó sobre las imágenes redimensionadas a un tamaño común, inicialmente fijado en $60 \times 60$. El resultado se muestra en la figura \ref{fig:ej1_4}: solo se pudieron aprender 4 de los 6 estados.
 
-Para analizar la dependencia con el tamaño de la red, se repitió el entrenamiento con imágenes de $100 \times 100$. El resultado fue el mismo (figura \ref{fig:ej1_4_2}).
-
-Dado lo anterior, se calcularon la correlación y la distancia de Hamming entre imágenes para investigar el origen de la falla. La correlación no aportó información concluyente, pero la distancia de Hamming entre las imágenes no memorizadas resultó ser la menor entre todos los pares. Como el experimento se repitió con dos tamaños distintos y el desempeño no cambió, se infiere que la causa principal de no poder memorizar las 6 imágenes es la similitud (según el criterio de distancia de Hamming) entre los patrones ``panda'' y ``paloma'', y no el tamaño de la red.
-
-\textit{Nota:} en redes de Hopfield, la capacidad teórica crece con el número de neuronas, por lo que con $N=3600$ o $N=10\,000$ la cantidad de patrones usados está muy por debajo de los umbrales discutidos en clase y propuestos en el ejercicio 2. 
 
 
 \begin{figure}[h!]
@@ -265,7 +272,7 @@ Dado lo anterior, se calcularon la correlación y la distancia de Hamming entre 
         \subfloat[]{\includegraphics[width=\linewidth]{C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_4_2.png}}\\
         \subfloat[]{\includegraphics[width=\linewidth]{C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_4_3.png}}
     \end{minipage}
-    \caption{Imágenes enseñadas (a izquierda de cada subfigura) y recordadas (a derecha).}
+\caption{\centering Imágenes enseñadas (a izquierda de cada subfigura) y recordadas (a derecha) con una red de $60 \times 60$}
     \label{fig:ej1_4}
 \end{figure}
 
@@ -285,7 +292,7 @@ Dado lo anterior, se calcularon la correlación y la distancia de Hamming entre 
         \subfloat[]{\includegraphics[width=\linewidth]{C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_4_11.png}}\\
         \subfloat[]{\includegraphics[width=\linewidth]{C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_4_12.png}}
     \end{minipage}
-    \caption{Imágenes enseñadas (a izquierda de cada subfigura) y recordadas (a derecha).}
+\caption{\centering Imágenes enseñadas (a izquierda de cada subfigura) y recordadas (a derecha) con una red de $100 \times 100$}
     \label{fig:ej1_4_2}
 \end{figure}
 

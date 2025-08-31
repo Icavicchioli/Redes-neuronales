@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.8.28)  31 AUG 2025 13:19
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.8.28)  31 AUG 2025 13:23
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -555,7 +555,7 @@ Package hyperref Info: Link coloring ON on input line 72.
 [2]
 
 [3]
-Overfull \hbox (0.85309pt too wide) in paragraph at lines 144--145
+Overfull \hbox (0.85309pt too wide) in paragraph at lines 146--147
 \OT1/cmr/m/n/10.95 dos de mez-cla a par-tir de un con-junto de pa-trones mem-o-
 riza-dos $\OMS/cmsy/m/n/10.95 f\OT1/cmr/bx/n/10.95 x[]\OML/cmm/m/it/10.95 ; \OT
 1/cmr/bx/n/10.95 x[]\OML/cmm/m/it/10.95 ; [] ; \OT1/cmr/bx/n/10.95 x[]\OMS/cmsy
@@ -565,174 +565,176 @@ riza-dos $\OMS/cmsy/m/n/10.95 f\OT1/cmr/bx/n/10.95 x[]\OML/cmm/m/it/10.95 ; \OT
 
 
 [4]
-<C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_1_1.png, id=10
-5, 392.4261pt x 211.0284pt>
+
+[5]
+<C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_1_1.png, id=13
+0, 392.4261pt x 211.0284pt>
 File: C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_1_1.png G
 raphic file (type png)
 <use C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_1_1.png>
 Package pdftex.def Info: C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1
-/imgs/ej1_1_1.png  used on input line 166.
+/imgs/ej1_1_1.png  used on input line 179.
 (pdftex.def)             Requested size: 334.60422pt x 179.9417pt.
-<C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_1_2.png, id=10
-7, 392.4261pt x 211.0284pt>
+<C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_1_2.png, id=13
+2, 392.4261pt x 211.0284pt>
 File: C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_1_2.png G
 raphic file (type png)
 <use C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_1_2.png>
 Package pdftex.def Info: C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1
-/imgs/ej1_1_2.png  used on input line 167.
+/imgs/ej1_1_2.png  used on input line 180.
 (pdftex.def)             Requested size: 334.60422pt x 179.9417pt.
-<C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_1_3.png, id=10
-8, 392.4261pt x 211.0284pt>
+<C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_1_3.png, id=13
+3, 392.4261pt x 211.0284pt>
 File: C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_1_3.png G
 raphic file (type png)
 <use C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_1_3.png>
 Package pdftex.def Info: C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1
-/imgs/ej1_1_3.png  used on input line 168.
+/imgs/ej1_1_3.png  used on input line 181.
 (pdftex.def)             Requested size: 334.60422pt x 179.9417pt.
 
 
-LaTeX Warning: Float too large for page by 38.89488pt on input line 171.
+LaTeX Warning: Float too large for page by 38.89488pt on input line 184.
 
-<C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_1_4.png, id=10
-9, 392.4261pt x 169.8345pt>
+<C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_1_4.png, id=13
+4, 392.4261pt x 169.8345pt>
 File: C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_1_4.png G
 raphic file (type png)
 <use C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_1_4.png>
 Package pdftex.def Info: C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1
-/imgs/ej1_1_4.png  used on input line 176.
+/imgs/ej1_1_4.png  used on input line 189.
 (pdftex.def)             Requested size: 334.60422pt x 144.81609pt.
-<C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_1_5.png, id=11
-0, 392.4261pt x 169.8345pt>
+<C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_1_5.png, id=13
+5, 392.4261pt x 169.8345pt>
 File: C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_1_5.png G
 raphic file (type png)
 <use C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_1_5.png>
 Package pdftex.def Info: C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1
-/imgs/ej1_1_5.png  used on input line 177.
+/imgs/ej1_1_5.png  used on input line 190.
 (pdftex.def)             Requested size: 334.60422pt x 144.81609pt.
-<C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_1_6.png, id=11
-1, 392.4261pt x 169.8345pt>
+<C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_1_6.png, id=13
+6, 392.4261pt x 169.8345pt>
 File: C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_1_6.png G
 raphic file (type png)
 <use C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_1_6.png>
 Package pdftex.def Info: C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1
-/imgs/ej1_1_6.png  used on input line 178.
+/imgs/ej1_1_6.png  used on input line 191.
 (pdftex.def)             Requested size: 334.60422pt x 144.81609pt.
 
 
-[5 <C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_1_1.png> <C
+[6 <C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_1_1.png> <C
 :/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_1_2.png> <C:/Use
 rs/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_1_3.png>]
 
-[6 <C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_1_4.png> <C
+[7 <C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_1_4.png> <C
 :/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_1_5.png> <C:/Use
 rs/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_1_6.png>]
-<C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_2_1.png, id=13
-2, 577.4373pt x 172.7253pt>
+<C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_2_1.png, id=15
+8, 577.4373pt x 172.7253pt>
 File: C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_2_1.png G
 raphic file (type png)
 <use C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_2_1.png>
 Package pdftex.def Info: C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1
-/imgs/ej1_2_1.png  used on input line 188.
+/imgs/ej1_2_1.png  used on input line 201.
 (pdftex.def)             Requested size: 418.25368pt x 125.11588pt.
-<C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_2_2.png, id=13
-3, 577.4373pt x 172.7253pt>
+<C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_2_2.png, id=15
+9, 577.4373pt x 172.7253pt>
 File: C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_2_2.png G
 raphic file (type png)
 <use C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_2_2.png>
 Package pdftex.def Info: C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1
-/imgs/ej1_2_2.png  used on input line 189.
+/imgs/ej1_2_2.png  used on input line 202.
 (pdftex.def)             Requested size: 418.25368pt x 125.11588pt.
-<C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_2_3.png, id=13
-4, 577.4373pt x 172.7253pt>
+<C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_2_3.png, id=16
+0, 577.4373pt x 172.7253pt>
 File: C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_2_3.png G
 raphic file (type png)
 <use C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_2_3.png>
 Package pdftex.def Info: C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1
-/imgs/ej1_2_3.png  used on input line 190.
+/imgs/ej1_2_3.png  used on input line 203.
 (pdftex.def)             Requested size: 418.25368pt x 125.11588pt.
-<C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_2_4.png, id=13
-5, 642.4803pt x 182.1204pt>
+<C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_2_4.png, id=16
+1, 642.4803pt x 182.1204pt>
 File: C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_2_4.png G
 raphic file (type png)
 <use C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_2_4.png>
 Package pdftex.def Info: C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1
-/imgs/ej1_2_4.png  used on input line 198.
+/imgs/ej1_2_4.png  used on input line 211.
 (pdftex.def)             Requested size: 418.25368pt x 118.56026pt.
-<C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_2_5.png, id=13
-6, 642.4803pt x 182.1204pt>
+<C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_2_5.png, id=16
+2, 642.4803pt x 182.1204pt>
 File: C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_2_5.png G
 raphic file (type png)
 <use C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_2_5.png>
 Package pdftex.def Info: C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1
-/imgs/ej1_2_5.png  used on input line 199.
+/imgs/ej1_2_5.png  used on input line 212.
 (pdftex.def)             Requested size: 418.25368pt x 118.56026pt.
-<C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_2_6.png, id=13
-7, 642.4803pt x 182.1204pt>
+<C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_2_6.png, id=16
+3, 642.4803pt x 182.1204pt>
 File: C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_2_6.png G
 raphic file (type png)
 <use C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_2_6.png>
 Package pdftex.def Info: C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1
-/imgs/ej1_2_6.png  used on input line 200.
+/imgs/ej1_2_6.png  used on input line 213.
 (pdftex.def)             Requested size: 418.25368pt x 118.56026pt.
 
 
-[7 <C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_2_1.png> <C
+[8 <C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_2_1.png> <C
 :/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_2_2.png> <C:/Use
 rs/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_2_3.png>]
 
-[8 <C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_2_4.png> <C
+[9 <C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_2_4.png> <C
 :/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_2_5.png> <C:/Use
 rs/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_2_6.png>]
-<C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_3_1.png, id=15
-9, 361.35pt x 172.7253pt>
+<C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_3_1.png, id=18
+4, 361.35pt x 172.7253pt>
 File: C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_3_1.png G
 raphic file (type png)
 <use C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_3_1.png>
 Package pdftex.def Info: C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1
-/imgs/ej1_3_1.png  used on input line 209.
+/imgs/ej1_3_1.png  used on input line 222.
 (pdftex.def)             Requested size: 334.60422pt x 159.94234pt.
-<C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_3_2.png, id=16
-0, 361.35pt x 172.7253pt>
+<C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_3_2.png, id=18
+5, 361.35pt x 172.7253pt>
 File: C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_3_2.png G
 raphic file (type png)
 <use C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_3_2.png>
 Package pdftex.def Info: C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1
-/imgs/ej1_3_2.png  used on input line 216.
+/imgs/ej1_3_2.png  used on input line 229.
 (pdftex.def)             Requested size: 334.60422pt x 159.94234pt.
-<C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_3_3.png, id=16
-1, 642.4803pt x 182.1204pt>
+<C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_3_3.png, id=18
+6, 642.4803pt x 182.1204pt>
 File: C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_3_3.png G
 raphic file (type png)
 <use C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_3_3.png>
 Package pdftex.def Info: C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1
-/imgs/ej1_3_3.png  used on input line 223.
+/imgs/ej1_3_3.png  used on input line 236.
 (pdftex.def)             Requested size: 418.25368pt x 118.56026pt.
-<C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_3_4.png, id=16
-2, 361.35pt x 172.7253pt>
+<C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_3_4.png, id=18
+7, 361.35pt x 172.7253pt>
 File: C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_3_4.png G
 raphic file (type png)
 <use C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_3_4.png>
 Package pdftex.def Info: C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1
-/imgs/ej1_3_4.png  used on input line 230.
+/imgs/ej1_3_4.png  used on input line 243.
 (pdftex.def)             Requested size: 334.60422pt x 159.94234pt.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_3_5.png, id=16
-3, 642.4803pt x 182.1204pt>
+<C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_3_5.png, id=18
+8, 642.4803pt x 182.1204pt>
 File: C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_3_5.png G
 raphic file (type png)
 <use C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_3_5.png>
 Package pdftex.def Info: C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1
-/imgs/ej1_3_5.png  used on input line 237.
+/imgs/ej1_3_5.png  used on input line 250.
 (pdftex.def)             Requested size: 418.25368pt x 118.56026pt.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
 
-[9
+[10
 
 
 
@@ -741,123 +743,118 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_3_2.png> <C:/Users
 /q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_3_3.png>]
 
-[10 <C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_3_4.png> <
+[11 <C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_3_4.png> <
 C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_3_5.png>]
-<C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_4_4.png, id=17
-9, 392.4261pt x 211.0284pt>
+<C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_4_4.png, id=20
+2, 392.4261pt x 211.0284pt>
 File: C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_4_4.png G
 raphic file (type png)
 <use C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_4_4.png>
 Package pdftex.def Info: C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1
-/imgs/ej1_4_4.png  used on input line 258.
+/imgs/ej1_4_4.png  used on input line 265.
 (pdftex.def)             Requested size: 200.75996pt x 107.95793pt.
-<C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_4_5.png, id=18
-0, 392.4261pt x 211.0284pt>
+<C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_4_5.png, id=20
+3, 392.4261pt x 211.0284pt>
 File: C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_4_5.png G
 raphic file (type png)
 <use C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_4_5.png>
 Package pdftex.def Info: C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1
-/imgs/ej1_4_5.png  used on input line 259.
+/imgs/ej1_4_5.png  used on input line 266.
 (pdftex.def)             Requested size: 200.75996pt x 107.95793pt.
-<C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_4_6.png, id=18
-1, 392.4261pt x 211.0284pt>
+<C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_4_6.png, id=20
+4, 392.4261pt x 211.0284pt>
 File: C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_4_6.png G
 raphic file (type png)
 <use C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_4_6.png>
 Package pdftex.def Info: C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1
-/imgs/ej1_4_6.png  used on input line 260.
+/imgs/ej1_4_6.png  used on input line 267.
 (pdftex.def)             Requested size: 200.75996pt x 107.95793pt.
-<C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_4_1.png, id=18
-2, 392.4261pt x 211.0284pt>
+<C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_4_1.png, id=20
+5, 392.4261pt x 211.0284pt>
 File: C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_4_1.png G
 raphic file (type png)
 <use C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_4_1.png>
 Package pdftex.def Info: C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1
-/imgs/ej1_4_1.png  used on input line 264.
+/imgs/ej1_4_1.png  used on input line 271.
 (pdftex.def)             Requested size: 200.75996pt x 107.95793pt.
-<C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_4_2.png, id=18
-3, 392.4261pt x 211.0284pt>
+<C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_4_2.png, id=20
+6, 392.4261pt x 211.0284pt>
 File: C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_4_2.png G
 raphic file (type png)
 <use C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_4_2.png>
 Package pdftex.def Info: C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1
-/imgs/ej1_4_2.png  used on input line 265.
+/imgs/ej1_4_2.png  used on input line 272.
 (pdftex.def)             Requested size: 200.75996pt x 107.95793pt.
-<C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_4_3.png, id=18
-4, 392.4261pt x 211.0284pt>
+<C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_4_3.png, id=20
+7, 392.4261pt x 211.0284pt>
 File: C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_4_3.png G
 raphic file (type png)
 <use C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_4_3.png>
 Package pdftex.def Info: C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1
-/imgs/ej1_4_3.png  used on input line 266.
+/imgs/ej1_4_3.png  used on input line 273.
 (pdftex.def)             Requested size: 200.75996pt x 107.95793pt.
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-<C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_4_7.png, id=18
-5, 392.4261pt x 211.0284pt>
+<C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_4_7.png, id=20
+8, 392.4261pt x 211.0284pt>
 File: C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_4_7.png G
 raphic file (type png)
 <use C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_4_7.png>
 Package pdftex.def Info: C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1
-/imgs/ej1_4_7.png  used on input line 278.
+/imgs/ej1_4_7.png  used on input line 285.
 (pdftex.def)             Requested size: 200.75996pt x 107.95793pt.
-<C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_4_8.png, id=18
-6, 392.4261pt x 211.0284pt>
+<C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_4_8.png, id=20
+9, 392.4261pt x 211.0284pt>
 File: C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_4_8.png G
 raphic file (type png)
 <use C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_4_8.png>
 Package pdftex.def Info: C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1
-/imgs/ej1_4_8.png  used on input line 279.
+/imgs/ej1_4_8.png  used on input line 286.
 (pdftex.def)             Requested size: 200.75996pt x 107.95793pt.
-<C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_4_9.png, id=18
-7, 392.4261pt x 211.0284pt>
+<C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_4_9.png, id=21
+0, 392.4261pt x 211.0284pt>
 File: C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_4_9.png G
 raphic file (type png)
 <use C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_4_9.png>
 Package pdftex.def Info: C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1
-/imgs/ej1_4_9.png  used on input line 280.
+/imgs/ej1_4_9.png  used on input line 287.
 (pdftex.def)             Requested size: 200.75996pt x 107.95793pt.
-<C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_4_10.png, id=1
-88, 392.4261pt x 211.0284pt>
+<C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_4_10.png, id=2
+11, 392.4261pt x 211.0284pt>
 File: C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_4_10.png 
 Graphic file (type png)
 <use C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_4_10.png>
 Package pdftex.def Info: C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1
-/imgs/ej1_4_10.png  used on input line 284.
+/imgs/ej1_4_10.png  used on input line 291.
 (pdftex.def)             Requested size: 200.75996pt x 107.95793pt.
-<C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_4_11.png, id=1
-89, 392.4261pt x 211.0284pt>
+<C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_4_11.png, id=2
+12, 392.4261pt x 211.0284pt>
 File: C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_4_11.png 
 Graphic file (type png)
 <use C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_4_11.png>
 Package pdftex.def Info: C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1
-/imgs/ej1_4_11.png  used on input line 285.
+/imgs/ej1_4_11.png  used on input line 292.
 (pdftex.def)             Requested size: 200.75996pt x 107.95793pt.
-<C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_4_12.png, id=1
-90, 392.4261pt x 211.0284pt>
+<C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_4_12.png, id=2
+13, 392.4261pt x 211.0284pt>
 File: C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_4_12.png 
 Graphic file (type png)
 <use C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_4_12.png>
 Package pdftex.def Info: C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1
-/imgs/ej1_4_12.png  used on input line 286.
+/imgs/ej1_4_12.png  used on input line 293.
 (pdftex.def)             Requested size: 200.75996pt x 107.95793pt.
+
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
 
-[11
+[12
 
-]
-
-[12 <C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_4_4.png> <
-C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_4_5.png> <C:/Us
-ers/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_4_6.png> <C:/Users/q
-/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_4_1.png> <C:/Users/q/Docu
-ments/GitHub/Redes-neuronales/latex tp1/imgs/ej1_4_2.png> <C:/Users/q/Documents
-/GitHub/Redes-neuronales/latex tp1/imgs/ej1_4_3.png>]
+ <C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_4_4.png> <C:/
+Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_4_5.png> <C:/Users
+/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_4_6.png> <C:/Users/q/Do
+cuments/GitHub/Redes-neuronales/latex tp1/imgs/ej1_4_1.png> <C:/Users/q/Documen
+ts/GitHub/Redes-neuronales/latex tp1/imgs/ej1_4_2.png> <C:/Users/q/Documents/Gi
+tHub/Redes-neuronales/latex tp1/imgs/ej1_4_3.png>]
 
 [13 <C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_4_7.png> <
 C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_4_8.png> <C:/Us
@@ -868,22 +865,30 @@ ts/GitHub/Redes-neuronales/latex tp1/imgs/ej1_4_12.png>]
 
 [14
 
+]
+
+[15
+
 ] (texto-2.aux)
  ***********
 LaTeX2e <2025-06-01> patch level 1
 L3 programming layer <2025-07-20>
  ***********
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
 Package rerunfilecheck Info: File `texto-2.out' has not changed.
-(rerunfilecheck)             Checksum: 1190FD414F630C836DB900AE53DEA393;1048.
+(rerunfilecheck)             Checksum: B15E0CD0DB7AB020B8586B55242EA176;1532.
  ) 
 Here is how much of TeX's memory you used:
- 12982 strings out of 468133
- 221165 string characters out of 5432655
- 630845 words of memory out of 5000000
- 41375 multiletter control sequences out of 15000+600000
- 637730 words of font info for 77 fonts, out of 8000000 for 9000
+ 12994 strings out of 468133
+ 221375 string characters out of 5432655
+ 630915 words of memory out of 5000000
+ 41381 multiletter control sequences out of 15000+600000
+ 638329 words of font info for 79 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,16n,79p,873b,518s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,16n,79p,873b,550s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\q\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1095
 .pk><C:/Users/q/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cm
 bx10.pfb><C:/Users/q/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/
@@ -897,15 +902,17 @@ nts/type1/public/amsfonts/cm/cmr17.pfb><C:/Users/q/AppData/Local/Programs/MiKTe
 X/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Users/q/AppData/Local/Programs/Mi
 KTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/q/AppData/Local/Programs
 /MiKTeX/fonts/type1/public/amsfonts/cm/cmr9.pfb><C:/Users/q/AppData/Local/Progr
-ams/MiKTeX/fonts/type1/public/amsfonts/cm/cmss12.pfb><C:/Users/q/AppData/Local/
-Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/q/AppData/L
-ocal/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy6.pfb><C:/Users/q/AppDa
-ta/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/q/A
-ppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/User
-s/q/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti9.pfb>
-Output written on texto-2.pdf (14 pages, 472291 bytes).
+ams/MiKTeX/fonts/type1/public/amsfonts/cm/cmss10.pfb><C:/Users/q/AppData/Local/
+Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmss12.pfb><C:/Users/q/AppData/L
+ocal/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/q/AppD
+ata/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy6.pfb><C:/Users/q/
+AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/User
+s/q/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:
+/Users/q/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti9.pfb
+>
+Output written on texto-2.pdf (15 pages, 485264 bytes).
 PDF statistics:
- 329 PDF objects out of 1000 (max. 8388607)
- 68 named destinations out of 1000 (max. 500000)
- 226 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 356 PDF objects out of 1000 (max. 8388607)
+ 73 named destinations out of 1000 (max. 500000)
+ 258 words of extra memory for PDF output out of 10000 (max. 10000000)
 
