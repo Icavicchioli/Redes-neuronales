@@ -312,6 +312,31 @@ Por otro lado, las redes no solo contienen los patrones enseñados, sino que tam
 
 \section{Ejercicio 2}
 
+\subsection{Consignas}
+\begin{enumerate}[label=\alph*]
+\item Comprobar estadísticamente la capacidad de la red de Hopfield ‘82 calculando la
+cantidad máxima de patrones pseudo-aleatorios aprendidos en función del tamaño
+de la red. Obtener experimentalmente los resultados de la tabla~ (los
+valores de la tabla corresponden a una iteración con actualización sincrónica).
+\item Proponga una manera de generar patrones con distintos grados de correlación.
+Utilice el método propuesto para analizar cómo varía la capacidad de la red de
+Hopfield en función de la correlación entre patrones.
+\end{enumerate}
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{|l|l|}
+\hline
+$P_{error}$ & $p_{max}/N$ \\ \hline
+$0.001$     & $0.105$     \\ \hline
+$0.0036$    & $0.138$     \\ \hline
+$0.01$      & $0.185$     \\ \hline
+$0.05$      & $0.37$      \\ \hline
+$0.1$       & $0.61$      \\ \hline
+\end{tabular}
+\caption{Resultados experimentales de la capacidad de la red de Hopfield}
+\label{tab:1}
+\end{table}
 
 
 \subsection{Desarrollo}
