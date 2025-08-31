@@ -35,7 +35,7 @@
 
 % para los cuadritos en links
 %\usepackage[linkbordercolor={0 0 1}, citebordercolor={0 1 0}, urlbordercolor={1 0 0}]{hyperref}
-\usepackage[colorlinks=true, linkcolor=blue, citecolor=green, urlcolor=red]{hyperref} % solo resalta
+\usepackage[colorlinks=true, linkcolor=black, citecolor=green, urlcolor=red]{hyperref} % solo resalta
 
 
 
@@ -71,9 +71,16 @@
 
 \begin{document}
 \maketitle
+
+\tableofcontents
+
+
+
 \section{Introducción}
 
 Este documento presenta el desarrollo de las consignas del trabajo práctico N°1 de la materia de \textbf{Redes Neuronales y Aprendizaje Profundo}.  El código correspondiente fue realizado en  \textit{Jupyter notebooks}, \textit{Python}, adjuntados a la entrega en formato PDF. Toda imagen o implementación requeridas para el análisis se explicitarán en el presente archivo, por lo que la lectura del código en sí queda a discreción del lector. La teoría relevante será presentada y discutida en la sección pertinente.
+
+\newpage
 
 \section{Ejercicio 1}
 
@@ -132,13 +139,13 @@ Ahora bien, ¿Cómo se parte de una matriz de pesos y se termina con un sistema 
 
 Ahora que se tiene cierta noción sobre las redes de Hopfield se puede pasar al desarrollo de las consignas como tales. 
 
-\subsubsection{Consigna 1}
+\subsubsection{Consigna a}
 La primera pide verificar que la red entrenada haya aprendido las imágenes. Recordando, si los patrones fueron memorizados, serían atractores, y la red se mantendría en ellos aunque se itere, lo cual constituye una forma simple de verificar el aprendizaje. 
 
 Por un tema de las dimensiones de las imágenes, los tres primeros incisos se realizaron con dos redes neuronales de tres imágenes cada una, para luego unificar los tamaños en el cuarto. Las figuras \ref{fig:ej1_a} y \ref{fig:ej1_b} muestran, para cada subfigura, la imagen enseñada (izquierda) y la recordada (derecha) de las dos redes neuronales. Ambas redes devolvieron correctamente las imágenes enseñadas. 
-\subsubsection{Consigna 2}
+\subsubsection{Consigna b}
 La segunda consigna pide evaluar la propiedad de la red de recordar contenido. La idea es iniciar con una imagen alterada, permitir que la red evolucione y verificar a que estado convergió. Idealmente la red va a poder devolver el estado deseado, que sería el inicial sin las alteraciones. Las figuras \ref{fig:ej2_a} y \ref{fig:ej2_b} presentan visualmente los resultados de partir de una imagen alterada. Ambas redes neuronales fueron capaces de converger a los estados memorizados correctos, habiendo partido de los estados alterados. Esto se logró en 2 iteraciones, ya que se requieren dos para verificar la convergencia de la red (ausencia de cambios entre iteraciones).
-\subsubsection{Consigna 3}
+\subsubsection{Consigna c}
 El tercer ítem de las consignas exige evaluar la existencia de los estados espurios previamente mencionados. Para esto, se eligieron algunos estados espurios representativos que permiten demostrar su presencia. El único tipo de estado que no se pudo evidenciar es el tercer tipo, los verdaderamente espurios. Recordando y profundizando, los estados espurios serían:
 
 \begin{itemize}
@@ -162,7 +169,7 @@ La figura \ref{fig:ej1_3_4} presenta como entrada una combinación lineal de los
 Finalmente, la figura \ref{fig:ej1_3_5} muestra como entrada una combinación lineal de los tres patrones usados para entrenar la red 2, incluyendo la paloma editada. La convergencia al estado de combinación lineal indica que esta combinación también es estable y actúa como atractor.
 
 
-\subsubsection{Consigna 4}
+\subsubsection{Consigna d}
 El cuarto y último inciso del primer ejercicio requiere entrenar una red con todas las imágenes y verificar si fueron aprendidas. La nueva red se entrenó sobre las imágenes redimensionadas a un tamaño común, inicialmente fijado en $60 \times 60$. El resultado se muestra en la figura \ref{fig:ej1_4}: solo se pudieron aprender 4 de los 6 estados.
 
 Para analizar la dependencia con el tamaño de la red, se repitió el entrenamiento con imágenes de $100 \times 100$. El resultado fue el mismo (figura \ref{fig:ej1_4_2}).
@@ -316,7 +323,7 @@ Por otro lado, las redes no solo contienen los patrones enseñados, sino que tam
 \begin{enumerate}[label=\alph*]
 \item Comprobar estadísticamente la capacidad de la red de Hopfield ‘82 calculando la
 cantidad máxima de patrones pseudo-aleatorios aprendidos en función del tamaño
-de la red. Obtener experimentalmente los resultados de la tabla~ (los
+de la red. Obtener experimentalmente los resultados de la tabla~\ref{tab:1} (los
 valores de la tabla corresponden a una iteración con actualización sincrónica).
 \item Proponga una manera de generar patrones con distintos grados de correlación.
 Utilice el método propuesto para analizar cómo varía la capacidad de la red de
@@ -334,14 +341,65 @@ $0.01$      & $0.185$     \\ \hline
 $0.05$      & $0.37$      \\ \hline
 $0.1$       & $0.61$      \\ \hline
 \end{tabular}
-\caption{Resultados experimentales de la capacidad de la red de Hopfield}
+\caption{Resultados teóricos de la capacidad de la red de Hopfield}
 \label{tab:1}
 \end{table}
 
 
 \subsection{Desarrollo}
 
-\subsection{Resultados}
+En este ejercicio se pide evaluar la capacidad de una red neuronal de Hopfield. En este contexto, la capacidad es función de la cantidad de neuronas y la probabilidad de error admisible, como se ve en las ecuaciones \eqref{eq:capacidad} y {eq:capacidad2}. 
+
+\begin{equation}
+\text{Capacidad}(P_{\text{error}} , N_{\text{neuronas}}) = \frac{\max N_{\text{patrones}} \quad \text{tq} \quad E_{tot}<P_{\text{error}}}{N_{\text{neuronas}}}
+\label{eq:capacidad}
+\end{equation}
+
+\begin{equation}
+E_{tot} = \frac{\text{\# neuronas equivocadas}}{N_{\text{neuronas}} \cdot N_{\text{patrones}}}
+\label{eq:capacidad2}
+\end{equation}
+
+Los números provistos en la  tabla~\ref{tab:1} se corresponden a una red de muchas neuronas entrenada con patrones descorrelacionados para varios umbrales de error, así que el primer experimento es entrenar una red de un tamaño adecuado (en este caso de 200 neuronas) y evaluar la capacidad en función de la probabilidad de cometer un error (un \textit{bit-flip}). La segunda parte del experimento consiste en ``barrer'' la correlación entre patrones para observar que sucede a medida que los patrones están más correlacionados. 
+
+Para generar patrones correlacionados se parte de la definición de la correlación de Pearson y dos patrones generados aleatoriamente. Se suponen vectores X e Y generados de tal forma que toman valores discretos $-1$ y $1$ con probabilidad $1/2$. Así, sus medias son cero y las varianzas son unitarias. Se plantea el coeficiente de correlación de Pearson como:
+
+\begin{equation}
+corr_{coef} = \frac{\mathrm{cov}(X,Y)}{\sqrt{\mathrm{Var}(X)\cdot \mathrm{Var}(Y)}} =  E[X \cdot Y] - E[X]E[Y] = E[X \cdot Y]
+\end{equation}
+
+Ahora, $E[X \cdot Y]$ se puede expandir usando la esperanza total:
+
+\begin{align*}
+E[X \cdot Y] &= P(X=1)P(Y=1)\cdot (1\cdot 1) \\
+&\quad + P(X=1)P(Y=-1)\cdot (1\cdot -1) \\
+&\quad + P(X=-1)P(Y=1)\cdot (-1\cdot 1) \\
+&\quad + P(X=-1)P(Y=-1)\cdot (-1\cdot -1)
+\end{align*}
+
+Denotando $p = P(X=Y)$ la probabilidad de que los vectores concuerden en algún bit, se obtiene:
+
+\begin{equation}
+E[X \cdot Y] = p - (1-p) = 2p-1
+\end{equation}
+
+Entonces:
+
+\begin{equation}
+corr_{coef} = 2p-1 \quad \Leftrightarrow \quad p = \frac{corr_{coef} +1}{2}
+\end{equation}
+
+De esta manera, se puede tomar un vector $X$ generado como cualquier vector aleatorio y luego generar un vector $Y$ en base a la probabilidad $p$ de que concuerde con $X$. Si $x=1$, se tira una ``moneda'' con probabilidad $p$ de que $y=x$.
+
+En el código correspondiente a esta actividad se genera un primer vector y se guarda como ``semilla'' para generar el resto. 
+
+\subsubsection{Consigna a}
+
+
+\subsubsection{Consigna b}
+
+\subsection{Imágenes}
+La siguiente sección concentra todas las imágenes relativas al ejercicio 2. No se intercalaron en el documento porque son muchas y de gran dimensión. 
 
 \subsection{Análisis}
 
