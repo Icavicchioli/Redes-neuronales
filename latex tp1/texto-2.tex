@@ -227,35 +227,35 @@ La siguiente sección concentra todas las imágenes relativas al ejercicio 1. No
 \begin{figure}[h!]
     \centering
     \includegraphics[width=0.8\linewidth]{C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_3_1.png}
-    \caption{Figura 1: El estado inverso del panda es estable.}
+    \caption{El estado inverso del panda es estable.}
     \label{fig:ej1_3_1}
 \end{figure}
 
 \begin{figure}[h!]
     \centering
     \includegraphics[width=0.8\linewidth]{C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_3_2.png}
-    \caption{Figura 2: El estado inverso del torero editado es un atractor.}
+    \caption{El estado inverso del torero editado es un atractor.}
     \label{fig:ej1_3_2}
 \end{figure}
 
 \begin{figure}[h!]
     \centering
     \includegraphics[width=1\linewidth]{C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_3_3.png}
-    \caption{Figura 3: La combinación lineal de los 3 estados enseñados a la red 1 es estable.}
+    \caption{La combinación lineal de los 3 estados enseñados a la red 1 es estable.}
     \label{fig:ej1_3_3}
 \end{figure}
 
 \begin{figure}[h!]
     \centering
     \includegraphics[width=0.8\linewidth]{C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_3_4.png}
-    \caption{Figura 4: La combinación lineal con un estado alterado es un atractor.}
+    \caption{La combinación lineal con un estado alterado es un atractor.}
     \label{fig:ej1_3_4}
 \end{figure}
 
 \begin{figure}[h!]
     \centering
     \includegraphics[width=1\linewidth]{C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej1_3_5.png}
-    \caption{Figura 5: La combinación lineal con un estado alterado es un atractor.}
+    \caption{La combinación lineal con un estado alterado es un atractor.}
     \label{fig:ej1_3_5}
 \end{figure}
 \clearpage
@@ -332,7 +332,7 @@ Hopfield en función de la correlación entre patrones.
 
 \begin{table}[h!]
 \centering
-\begin{tabular}{|l|l|}
+\begin{tabular}{|c|c|}
 \hline
 $P_{error}$ & $p_{max}/N$ \\ \hline
 $0.001$     & $0.105$     \\ \hline
@@ -393,13 +393,73 @@ De esta manera, se puede tomar un vector $X$ generado como cualquier vector alea
 
 En el código correspondiente a esta actividad se genera un primer vector y se guarda como ``semilla'' para generar el resto. 
 
+\newpage
 \subsubsection{Consigna a}
+
+La idea general detrás del algoritmo implementado de calculo de capacidad de la red es simple: se crea una red de N neuronas y se itera desde 1 hasta N. En cada iteración se agrega un patrón más a la red (se actualiza la W) y se calcula cuantos errores tiene en la recuperación de todos los patrones contenidos en W. Luego, estos datos pueden usarse para estimar los intervalos de patrones enseñados que aseguren ciertas probabilidades de error. 
+
+La figura \ref{fig:ej2_1_1} muestra la evolución de la capacidad de la red en función de la probabilidad de cometer un error para patrones con correlación de valor $0$ (coeficiente de correlación de Pearson). La tabla~\ref{tab:2} muestra los datos en su forma tabular. La capacidad fue evaluada para los valores en el cuadro teórico. Se observa una coincidencia muy elevada entre los valores teóricos y los experimentales, con una diferencia relativa porcentual máxima de $2.7\%$. 
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=1\linewidth]{C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej2_1_1.png}
+    \caption{Variación de la capacidad de la red neuronal en función de la probabilidad de error}
+    \label{fig:ej2_1_1}
+\end{figure}
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{|c|c|c|}
+\hline
+$P_{error}$ & $p_{max}/N$ &Error relativo $\%$\\ \hline
+$0.001$     & $0.105$ & 0   \\ \hline
+$0.0036$    & $0.14$   &  1.45\\ \hline
+$0.01$      & $0.19$   &  2.70\\ \hline
+$0.05$      & $0.375$ &   1.35  \\ \hline
+$0.1$       & $0.615$    & 0.82 \\ \hline
+\end{tabular}
+\caption{Resultados experimentales de la capacidad de la red de Hopfield}
+\label{tab:2}
+\end{table}
 
 
 \subsubsection{Consigna b}
 
-\subsection{Imágenes}
-La siguiente sección concentra todas las imágenes relativas al ejercicio 2. No se intercalaron en el documento porque son muchas y de gran dimensión. 
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=1\linewidth]{C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej2_2_1.png}
+    \caption{Variación de la capacidad de la red neuronal en función de la probabilidad de error}
+    \label{fig:ej2_2_1}
+\end{figure}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=1\linewidth]{C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej2_2_2.png}
+    \caption{Variación de la capacidad de la red neuronal en función de la probabilidad de error}
+    \label{fig:ej2_2_2}
+\end{figure}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=1\linewidth]{C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej2_2_3.png}
+    \caption{Variación de la capacidad de la red neuronal en función de la probabilidad de error}
+    \label{fig:ej2_2_3}
+\end{figure}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=1\linewidth]{C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej2_2_4.png}
+    \caption{Variación de la capacidad de la red neuronal en función de la probabilidad de error}
+    \label{fig:ej2_2_4}
+\end{figure}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=1\linewidth]{C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej2_2_5.png}
+    \caption{Variación de la capacidad de la red neuronal en función de la probabilidad de error}
+    \label{fig:ej2_2_5}
+\end{figure}
 
 \subsection{Análisis}
 

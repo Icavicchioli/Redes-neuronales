@@ -1,0 +1,17 @@
+\contentsline {section}{\numberline {1}Introducción}{1}{section.1}%
+\contentsline {section}{\numberline {2}Ejercicio 1}{2}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Consignas}{2}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Desarrollo}{2}{subsection.2.2}%
+\contentsline {subsubsection}{\numberline {2.2.1}Consigna a}{3}{subsubsection.2.2.1}%
+\contentsline {subsubsection}{\numberline {2.2.2}Consigna b}{3}{subsubsection.2.2.2}%
+\contentsline {subsubsection}{\numberline {2.2.3}Consigna c}{3}{subsubsection.2.2.3}%
+\contentsline {subsubsection}{\numberline {2.2.4}Consigna d}{4}{subsubsection.2.2.4}%
+\contentsline {subsubsection}{\numberline {2.2.5}Imágenes}{4}{subsubsection.2.2.5}%
+\contentsline {subsection}{\numberline {2.3}Análisis}{13}{subsection.2.3}%
+\contentsline {section}{\numberline {3}Ejercicio 2}{14}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Consignas}{14}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Desarrollo}{14}{subsection.3.2}%
+\contentsline {subsubsection}{\numberline {3.2.1}Consigna a}{16}{subsubsection.3.2.1}%
+\contentsline {subsubsection}{\numberline {3.2.2}Consigna b}{17}{subsubsection.3.2.2}%
+\contentsline {subsection}{\numberline {3.3}Análisis}{17}{subsection.3.3}%
+\contentsline {section}{\numberline {4}Conclusiones}{17}{section.4}%
