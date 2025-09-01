@@ -36,7 +36,7 @@
 % para los cuadritos en links
 %\usepackage[linkbordercolor={0 0 1}, citebordercolor={0 1 0}, urlbordercolor={1 0 0}]{hyperref}
 \usepackage[colorlinks=true, linkcolor=black, citecolor=green, urlcolor=red]{hyperref} % solo resalta
-
+\usepackage[spanish]{babel}
 
 
 
@@ -323,7 +323,7 @@ Por otro lado, las redes no solo contienen los patrones enseñados, sino que tam
 \begin{enumerate}[label=\alph*]
 \item Comprobar estadísticamente la capacidad de la red de Hopfield ‘82 calculando la
 cantidad máxima de patrones pseudo-aleatorios aprendidos en función del tamaño
-de la red. Obtener experimentalmente los resultados de la tabla~\ref{tab:1} (los
+de la red. Obtener experimentalmente los resultados del cuadro~\ref{tab:1} (los
 valores de la tabla corresponden a una iteración con actualización sincrónica).
 \item Proponga una manera de generar patrones con distintos grados de correlación.
 Utilice el método propuesto para analizar cómo varía la capacidad de la red de
@@ -348,7 +348,7 @@ $0.1$       & $0.61$      \\ \hline
 
 \subsection{Desarrollo}
 
-En este ejercicio se pide evaluar la capacidad de una red neuronal de Hopfield. En este contexto, la capacidad es función de la cantidad de neuronas y la probabilidad de error admisible, como se ve en las ecuaciones \eqref{eq:capacidad} y {eq:capacidad2}. 
+En este ejercicio se pide evaluar la capacidad de una red neuronal de Hopfield. En este contexto, la capacidad es función de la cantidad de neuronas y la probabilidad de error admisible, como se ve en las ecuaciones \eqref{eq:capacidad} y \eqref{eq:capacidad2}. 
 
 \begin{equation}
 \text{Capacidad}(P_{\text{error}} , N_{\text{neuronas}}) = \frac{\max N_{\text{patrones}} \quad \text{tq} \quad E_{tot}<P_{\text{error}}}{N_{\text{neuronas}}}
@@ -360,7 +360,7 @@ E_{tot} = \frac{\text{\# neuronas equivocadas}}{N_{\text{neuronas}} \cdot N_{\te
 \label{eq:capacidad2}
 \end{equation}
 
-Los números provistos en la  tabla~\ref{tab:1} se corresponden a una red de muchas neuronas entrenada con patrones descorrelacionados para varios umbrales de error, así que el primer experimento es entrenar una red de un tamaño adecuado (en este caso de 200 neuronas) y evaluar la capacidad en función de la probabilidad de cometer un error (un \textit{bit-flip}). La segunda parte del experimento consiste en ``barrer'' la correlación entre patrones para observar que sucede a medida que los patrones están más correlacionados. 
+Los números provistos en el  cuadro~\ref{tab:1} se corresponden a una red de muchas neuronas entrenada con patrones descorrelacionados para varios umbrales de error, así que el primer experimento es entrenar una red de un tamaño adecuado (en este caso de 200 neuronas) y evaluar la capacidad en función de la probabilidad de cometer un error (un \textit{bit-flip}). La segunda parte del experimento consiste en ``barrer'' la correlación entre patrones para observar que sucede a medida que los patrones están más correlacionados. Como indica la bibliografía indicada en las consignas, esta capacidad usa solo una iteración para el cálculo de error, y existe la posibilidad de que pocos cambios causen una avalancha de cambios de estado, lo que implicaría que la capacidad es menor a la esperada. 
 
 Para generar patrones correlacionados se parte de la definición de la correlación de Pearson y dos patrones generados aleatoriamente. Se suponen vectores X e Y generados de tal forma que toman valores discretos $-1$ y $1$ con probabilidad $1/2$. Así, sus medias son cero y las varianzas son unitarias. Se plantea el coeficiente de correlación de Pearson como:
 
@@ -398,12 +398,12 @@ En el código correspondiente a esta actividad se genera un primer vector y se g
 
 La idea general detrás del algoritmo implementado de calculo de capacidad de la red es simple: se crea una red de N neuronas y se itera desde 1 hasta N. En cada iteración se agrega un patrón más a la red (se actualiza la W) y se calcula cuantos errores tiene en la recuperación de todos los patrones contenidos en W. Luego, estos datos pueden usarse para estimar los intervalos de patrones enseñados que aseguren ciertas probabilidades de error. 
 
-La figura \ref{fig:ej2_1_1} muestra la evolución de la capacidad de la red en función de la probabilidad de cometer un error para patrones con correlación de valor $0$ (coeficiente de correlación de Pearson). La tabla~\ref{tab:2} muestra los datos en su forma tabular. La capacidad fue evaluada para los valores en el cuadro teórico. Se observa una coincidencia muy elevada entre los valores teóricos y los experimentales, con una diferencia relativa porcentual máxima de $2.7\%$. 
+La figura \ref{fig:ej2_1_1} muestra la evolución de la capacidad de la red en función de la probabilidad de cometer un error para patrones con correlación de valor $0$ (coeficiente de correlación de Pearson). El cuadro~\ref{tab:2} muestra los datos en su forma tabular. La capacidad fue evaluada para los valores en el cuadro teórico. Se observa una coincidencia muy elevada entre los valores teóricos y los experimentales, con una diferencia relativa porcentual máxima de $2.7\%$. 
 
 \begin{figure}[h!]
     \centering
     \includegraphics[width=1\linewidth]{C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej2_1_1.png}
-    \caption{Variación de la capacidad de la red neuronal en función de la probabilidad de error}
+    \caption{Capacidad vs $P_{error}$. Correlación $= 0$}
     \label{fig:ej2_1_1}
 \end{figure}
 
@@ -422,46 +422,72 @@ $0.1$       & $0.615$    & 0.82 \\ \hline
 \label{tab:2}
 \end{table}
 
+\newpage
 
 \subsubsection{Consigna b}
 
+El cuadro~\ref{tab:correlaciones} muestra como varía la capacidad en función de la correlación entre patrones y las probabilidades de error. Las figuras 13 a 17 muestran la evolución de la capacidad para cada correlación simulada. 
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{|c|c|c|c|c|c|}
+\hline
+$P_{error}$ & $p_{max}/N$ (0.2) & $p_{max}/N$ (0.4) & $p_{max}/N$ (0.6) & $p_{max}/N$ (0.8) & $p_{max}/N$ (1.0) \\ \hline
+0.001  &   $0.025$    &    $0.015$   &   $0.01$    &    $0.01$   &   $1$    \\ \hline
+0.0036 &    $0.055$   &     $0.015$  &    $0.01$   &  $0.01$     &  $1$     \\ \hline
+0.01   &    $0.08$  &   $0.02$    &   $0.01$    &   $0.01$    &   $1$    \\ \hline
+0.05   &    $0.165$   &  $0.03$     &    $0.015$   &   $0.02$    &  $1$     \\ \hline
+0.1    &   $0.26$   &   $0.045$    &   $0.025$    &   $1$    &  $1$     \\ \hline
+\end{tabular}
+\caption{Resultados experimentales de la capacidad de la red de Hopfield para distintas correlaciones (indicada entre paréntesis)}
+\label{tab:correlaciones}
+\end{table}
 
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=1\linewidth]{C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej2_2_1.png}
-    \caption{Variación de la capacidad de la red neuronal en función de la probabilidad de error}
+    \includegraphics[width=0.8\linewidth]{C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej2_2_1.png}
+    \caption{Capacidad vs $P_{error}$. Correlación $= 0.2$}
     \label{fig:ej2_2_1}
 \end{figure}
 
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=1\linewidth]{C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej2_2_2.png}
-    \caption{Variación de la capacidad de la red neuronal en función de la probabilidad de error}
+    \includegraphics[width=0.8\linewidth]{C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej2_2_2.png}
+    \caption{Capacidad vs $P_{error}$. Correlación $= 0.4$}
     \label{fig:ej2_2_2}
 \end{figure}
 
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=1\linewidth]{C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej2_2_3.png}
-    \caption{Variación de la capacidad de la red neuronal en función de la probabilidad de error}
+    \includegraphics[width=0.8\linewidth]{C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej2_2_3.png}
+    \caption{Capacidad vs $P_{error}$. Correlación $= 0.6$}
     \label{fig:ej2_2_3}
 \end{figure}
 
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=1\linewidth]{C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej2_2_4.png}
-    \caption{Variación de la capacidad de la red neuronal en función de la probabilidad de error}
+    \includegraphics[width=0.8\linewidth]{C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej2_2_4.png}
+    \caption{Capacidad vs $P_{error}$. Correlación $= 0.8$}
     \label{fig:ej2_2_4}
 \end{figure}
 
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=1\linewidth]{C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej2_2_5.png}
-    \caption{Variación de la capacidad de la red neuronal en función de la probabilidad de error}
+    \includegraphics[width=0.8\linewidth]{C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej2_2_5.png}
+    \caption{Capacidad vs $P_{error}$. Correlación $= 1$}
     \label{fig:ej2_2_5}
 \end{figure}
 
 \subsection{Análisis}
+
+La capacidad teórica y la obtenida experimentalmente difieren por un error relativo porcentual máximo de $2.7 \%$, razón por la cual se consideran prácticamente coincidentes. Algunas posibles razones detrás de la diferencia son:
+\begin{itemize}
+\item La capacidad teórica se calculó con la suposición de que la cantidad de neuronas es elevada, y puede que 200 no sea suficiente como para determinar esos decimales faltantes.
+\item Los resultados mostrados se calculan en base a un promediado de los resultados de múltiples redes. Es posible que un aumento en la cantidad de redes promediadas resulte en más cercanía al valor real. 
+
+Ahora bien, respecto a la capacidad en función de la correlación, se observa que capacidad disminuye con la correlación hasta que la correlación es unitaria y entonces la capacidad es ``perfecta''. Sucede que, a medida que la semejanza entre patrones aumenta, también aumenta su cercanía en la función energética (las cuencas se van acercando). Cuando las cuencas se superponen lo suficiente, el estado estable final va a ser uno diferente a los originalmente enseñados. Esto se puede pensar como que la red se confunde los patrones porque son todos similares, y converge a uno que encarna una mezcla de todos ellos. Existe un umbral de probabilidad de error admisible para el cual todos los patrones se parecen lo suficiente al patrón estable, causando que la capacidad aumente. 
+Asimismo, la correlación unitaria implica que todos los patrones son idénticos, por lo que siempre se va a tener memoria perfecta. 
+\end{itemize}
 
 \section{Conclusiones}
 

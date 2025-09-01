@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.8.28)  31 AUG 2025 20:45
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.8.28)  31 AUG 2025 21:50
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -357,7 +357,57 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 84.
 )
 \Hy@SectionHShift=\skip66
+) (C:\Users\q\AppData\Local\Programs\MiKTeX\tex/generic/babel\babel.sty
+Package: babel 2025/08/03 v25.12 The multilingual framework for LuaLaTeX, pdfLa
+TeX and XeLaTeX
+\babel@savecnt=\count325
+LaTeX Encoding Info:    Redeclaring text command \ij (encoding OT1) on input li
+ne 2045.
+LaTeX Encoding Info:    Redeclaring text command \IJ (encoding OT1) on input li
+ne 2047.
+LaTeX Encoding Info:    Redeclaring text command \ij (encoding T1) on input lin
+e 2049.
+LaTeX Encoding Info:    Redeclaring text command \IJ (encoding T1) on input lin
+e 2050.
+LaTeX Encoding Info:    Ignoring declaration for text command \ij (encoding ?) 
+on input line 2051.
+LaTeX Encoding Info:    Ignoring declaration for text command \IJ (encoding ?) 
+on input line 2053.
+LaTeX Encoding Info:    Ignoring declaration for text command \SS (encoding ?) 
+on input line 2078.
+\U@D=\dimen197
+\l@unhyphenated=\language79
+(C:\Users\q\AppData\Local\Programs\MiKTeX\tex/generic/babel\txtbabel.def)
+\bbl@readstream=\read3
+\bbl@dirlevel=\count326
+
+*************************************
+* Local config file bblopts.cfg used
+*
+(C:\Users\q\AppData\Local\Programs\MiKTeX\tex/latex/arabi\bblopts.cfg
+File: bblopts.cfg 2005/09/08 v0.1 add Arabic and Farsi to "declared" options of
+ babel
 )
+(C:\Users\q\AppData\Local\Programs\MiKTeX\tex/latex/babel-spanish\spanish.ldf
+Language: spanish.ldf 2021/05/27 v5.0q Spanish support from the babel system
+
+(C:\Users\q\AppData\Local\Programs\MiKTeX\tex/generic/babel/locale/es\babel-spa
+nish.tex
+Package babel Info: Importing font and identification data for spanish
+(babel)             from babel-es.ini. Reported on input line 12.
+)
+\es@quottoks=\toks31
+\es@quotdepth=\count327
+Package babel Info: Making " an active character on input line 570.
+Package babel Info: Making . an active character on input line 675.
+Package babel Info: Making < an active character on input line 722.
+Package babel Info: Making > an active character on input line 722.
+))
+LaTeX Encoding Info:    Redeclaring text command \guillemotleft (encoding OT1) 
+on input line 40.
+LaTeX Encoding Info:    Redeclaring text command \guillemotright (encoding OT1)
+ on input line 40.
+
 (C:\Users\q\AppData\Local\Programs\MiKTeX\tex/latex/fancyhdr\fancyhdr.sty
 Package: fancyhdr 2025/02/07 v5.2 Extensive control of page headers and footers
 
@@ -375,7 +425,7 @@ Package: fancyhdr 2025/02/07 v5.2 Extensive control of page headers and footers
 \f@nch@widthL=\skip78
 \f@nch@widthC=\skip79
 \f@nch@widthR=\skip80
-\@temptokenb=\toks31
+\@temptokenb=\toks32
 )
 (C:\Users\q\AppData\Local\Programs\MiKTeX\tex/latex/sectsty\sectsty.sty
 Package: sectsty 2002/02/25 v2.0.2 Commands to change all sectional heading sty
@@ -440,11 +490,12 @@ Package tocloft Info: The document has section divisions on input line 51.
 (C:\Users\q\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3backend-pdftex.
 def
 File: l3backend-pdftex.def 2025-06-09 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count325
+\l__color_backend_stack_int=\count328
 ) (texto-2.aux
-
-LaTeX Warning: Label `fig:ej2_1_1' multiply defined.
-
+LaTeX Info: Redefining \. on input line 11.
+LaTeX Info: Redefining \% on input line 11.
+Package babel Info: 'spanish' activates 'spanish' shorthands.
+(babel)             Reported on input line 11.
 )
 \openout1 = `texto-2.aux'.
 
@@ -503,17 +554,17 @@ LaTeX Font Info:    ... okay on input line 72.
 
 (C:\Users\q\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count326
-\scratchdimen=\dimen197
+\scratchcounter=\count329
+\scratchdimen=\dimen198
 \scratchbox=\box58
-\nofMPsegments=\count327
-\nofMParguments=\count328
-\everyMPshowfont=\toks32
-\MPscratchCnt=\count329
-\MPscratchDim=\dimen198
-\MPnumerator=\count330
-\makeMPintoPDFobject=\count331
-\everyMPtoPDFconversion=\toks33
+\nofMPsegments=\count330
+\nofMParguments=\count331
+\everyMPshowfont=\toks33
+\MPscratchCnt=\count332
+\MPscratchDim=\dimen199
+\MPnumerator=\count333
+\makeMPintoPDFobject=\count334
+\everyMPtoPDFconversion=\toks34
 )
 (C:\Users\q\AppData\Local\Programs\MiKTeX\tex/latex/epstopdf-pkg\epstopdf-base.
 sty
@@ -550,7 +601,12 @@ Package hyperref Info: Link coloring ON on input line 72.
 \@outlinefile=\write3
 \openout3 = `texto-2.out'.
 
- (texto-2.toc)
+LaTeX Info: Redefining \. on input line 72.
+LaTeX Info: Redefining \% on input line 72.
+ (texto-2.toc
+LaTeX Info: Redefining \. on input line 1.
+LaTeX Info: Redefining \% on input line 1.
+)
 \tf@toc=\write4
 \openout4 = `texto-2.toc'.
 
@@ -867,66 +923,66 @@ ts/GitHub/Redes-neuronales/latex tp1/imgs/ej1_4_12.png>]
 
 [15]
 <C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej2_1_1.png, id=30
-1, 502.9992pt x 401.8212pt>
+2, 502.9992pt x 401.8212pt>
 File: C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej2_1_1.png G
 raphic file (type png)
 <use C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej2_1_1.png>
 Package pdftex.def Info: C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1
 /imgs/ej2_1_1.png  used on input line 405.
 (pdftex.def)             Requested size: 452.9679pt x 361.86871pt.
-<C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej2_2_1.png, id=30
-2, 508.7808pt x 401.8212pt>
+
+
+[16 <C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej2_1_1.png>]
+<C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej2_2_1.png, id=31
+1, 508.7808pt x 401.8212pt>
 File: C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej2_2_1.png G
 raphic file (type png)
 <use C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej2_2_1.png>
 Package pdftex.def Info: C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1
-/imgs/ej2_2_1.png  used on input line 431.
-(pdftex.def)             Requested size: 452.9679pt x 357.76076pt.
-
-
-[16 <C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej2_1_1.png>]
+/imgs/ej2_2_1.png  used on input line 448.
+(pdftex.def)             Requested size: 362.37569pt x 286.2086pt.
 <C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej2_2_2.png, id=31
-1, 515.2851pt x 401.8212pt>
+2, 515.2851pt x 401.8212pt>
 File: C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej2_2_2.png G
 raphic file (type png)
 <use C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej2_2_2.png>
 Package pdftex.def Info: C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1
-/imgs/ej2_2_2.png  used on input line 438.
-(pdftex.def)             Requested size: 452.9679pt x 353.2236pt.
+/imgs/ej2_2_2.png  used on input line 455.
+(pdftex.def)             Requested size: 362.37569pt x 282.57887pt.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 <C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej2_2_3.png, id=31
-2, 515.2851pt x 401.8212pt>
+3, 515.2851pt x 401.8212pt>
 File: C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej2_2_3.png G
 raphic file (type png)
 <use C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej2_2_3.png>
 Package pdftex.def Info: C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1
-/imgs/ej2_2_3.png  used on input line 445.
-(pdftex.def)             Requested size: 452.9679pt x 353.2236pt.
+/imgs/ej2_2_3.png  used on input line 462.
+(pdftex.def)             Requested size: 362.37569pt x 282.57887pt.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 <C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej2_2_4.png, id=31
-3, 502.9992pt x 401.8212pt>
+4, 502.9992pt x 401.8212pt>
 File: C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej2_2_4.png G
 raphic file (type png)
 <use C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej2_2_4.png>
 Package pdftex.def Info: C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1
-/imgs/ej2_2_4.png  used on input line 452.
-(pdftex.def)             Requested size: 452.9679pt x 361.86871pt.
+/imgs/ej2_2_4.png  used on input line 469.
+(pdftex.def)             Requested size: 362.37569pt x 289.49496pt.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 <C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej2_2_5.png, id=31
-4, 508.7808pt x 401.8212pt>
+5, 508.7808pt x 401.8212pt>
 File: C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej2_2_5.png G
 raphic file (type png)
 <use C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej2_2_5.png>
 Package pdftex.def Info: C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1
-/imgs/ej2_2_5.png  used on input line 459.
-(pdftex.def)             Requested size: 452.9679pt x 357.76076pt.
+/imgs/ej2_2_5.png  used on input line 476.
+(pdftex.def)             Requested size: 362.37569pt x 286.2086pt.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
@@ -934,33 +990,34 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 [17 <C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej2_2_1.png>]
 
-[18 <C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej2_2_2.png>]
+[18 <C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej2_2_2.png> <
+C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej2_2_3.png>]
 
-[19 <C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej2_2_3.png>]
-
-[20 <C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej2_2_4.png>]
-
-[21 <C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej2_2_5.png>]
-(texto-2.aux)
+[19 <C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej2_2_4.png> <
+C:/Users/q/Documents/GitHub/Redes-neuronales/latex tp1/imgs/ej2_2_5.png>]
+(texto-2.aux
+LaTeX Info: Redefining \. on input line 11.
+LaTeX Info: Redefining \% on input line 11.
+)
  ***********
 LaTeX2e <2025-06-01> patch level 1
 L3 programming layer <2025-07-20>
  ***********
 
 
-LaTeX Warning: There were multiply-defined labels.
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
 Package rerunfilecheck Info: File `texto-2.out' has not changed.
 (rerunfilecheck)             Checksum: ABD386454D1656234D66A6AD9ECBA9C1;1867.
  ) 
 Here is how much of TeX's memory you used:
- 13089 strings out of 468133
- 225447 string characters out of 5432655
- 632860 words of memory out of 5000000
- 41448 multiletter control sequences out of 15000+600000
+ 14537 strings out of 468133
+ 250456 string characters out of 5432655
+ 670215 words of memory out of 5000000
+ 42877 multiletter control sequences out of 15000+600000
  638329 words of font info for 79 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,16n,79p,873b,570s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,16n,79p,873b,592s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\q\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1095
 .pk><C:/Users/q/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cm
 bx10.pfb><C:/Users/q/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/
@@ -982,9 +1039,9 @@ AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/User
 s/q/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:
 /Users/q/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti9.pfb
 >
-Output written on texto-2.pdf (21 pages, 689356 bytes).
+Output written on texto-2.pdf (19 pages, 689312 bytes).
 PDF statistics:
- 447 PDF objects out of 1000 (max. 8388607)
- 98 named destinations out of 1000 (max. 500000)
+ 441 PDF objects out of 1000 (max. 8388607)
+ 97 named destinations out of 1000 (max. 500000)
  312 words of extra memory for PDF output out of 10000 (max. 10000000)
 
