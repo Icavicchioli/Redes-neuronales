@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.8.28)  4 SEP 2025 16:09
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.8.28)  4 SEP 2025 23:19
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -621,32 +621,32 @@ LaTeX Info: Redefining \% on input line 1.
 [3]
 
 [4]
-<imgs/ej1_1_1.png, id=156, 392.4261pt x 211.0284pt>
+<imgs/ej1_1_1.png, id=171, 392.4261pt x 211.0284pt>
 File: imgs/ej1_1_1.png Graphic file (type png)
 <use imgs/ej1_1_1.png>
 Package pdftex.def Info: imgs/ej1_1_1.png  used on input line 187.
 (pdftex.def)             Requested size: 362.37569pt x 194.8762pt.
-<imgs/ej1_1_2.png, id=158, 392.4261pt x 211.0284pt>
+<imgs/ej1_1_2.png, id=173, 392.4261pt x 211.0284pt>
 File: imgs/ej1_1_2.png Graphic file (type png)
 <use imgs/ej1_1_2.png>
 Package pdftex.def Info: imgs/ej1_1_2.png  used on input line 188.
 (pdftex.def)             Requested size: 362.37569pt x 194.8762pt.
-<imgs/ej1_1_3.png, id=159, 392.4261pt x 211.0284pt>
+<imgs/ej1_1_3.png, id=174, 392.4261pt x 211.0284pt>
 File: imgs/ej1_1_3.png Graphic file (type png)
 <use imgs/ej1_1_3.png>
 Package pdftex.def Info: imgs/ej1_1_3.png  used on input line 189.
 (pdftex.def)             Requested size: 362.37569pt x 194.8762pt.
-<imgs/ej1_1_4.png, id=160, 392.4261pt x 169.8345pt>
+<imgs/ej1_1_4.png, id=175, 392.4261pt x 169.8345pt>
 File: imgs/ej1_1_4.png Graphic file (type png)
 <use imgs/ej1_1_4.png>
 Package pdftex.def Info: imgs/ej1_1_4.png  used on input line 197.
 (pdftex.def)             Requested size: 362.37569pt x 156.8353pt.
-<imgs/ej1_1_5.png, id=161, 392.4261pt x 169.8345pt>
+<imgs/ej1_1_5.png, id=176, 392.4261pt x 169.8345pt>
 File: imgs/ej1_1_5.png Graphic file (type png)
 <use imgs/ej1_1_5.png>
 Package pdftex.def Info: imgs/ej1_1_5.png  used on input line 198.
 (pdftex.def)             Requested size: 362.37569pt x 156.8353pt.
-<imgs/ej1_1_6.png, id=162, 392.4261pt x 169.8345pt>
+<imgs/ej1_1_6.png, id=177, 392.4261pt x 169.8345pt>
 File: imgs/ej1_1_6.png Graphic file (type png)
 <use imgs/ej1_1_6.png>
 Package pdftex.def Info: imgs/ej1_1_6.png  used on input line 199.
@@ -656,32 +656,32 @@ Package pdftex.def Info: imgs/ej1_1_6.png  used on input line 199.
 [5 <./imgs/ej1_1_1.png> <./imgs/ej1_1_2.png> <./imgs/ej1_1_3.png>]
 
 [6 <./imgs/ej1_1_4.png> <./imgs/ej1_1_5.png> <./imgs/ej1_1_6.png>]
-<imgs/ej1_2_1.png, id=183, 577.4373pt x 172.7253pt>
+<imgs/ej1_2_1.png, id=198, 577.4373pt x 172.7253pt>
 File: imgs/ej1_2_1.png Graphic file (type png)
 <use imgs/ej1_2_1.png>
 Package pdftex.def Info: imgs/ej1_2_1.png  used on input line 209.
 (pdftex.def)             Requested size: 452.9679pt x 135.50003pt.
-<imgs/ej1_2_2.png, id=184, 577.4373pt x 172.7253pt>
+<imgs/ej1_2_2.png, id=199, 577.4373pt x 172.7253pt>
 File: imgs/ej1_2_2.png Graphic file (type png)
 <use imgs/ej1_2_2.png>
 Package pdftex.def Info: imgs/ej1_2_2.png  used on input line 210.
 (pdftex.def)             Requested size: 452.9679pt x 135.50003pt.
-<imgs/ej1_2_3.png, id=185, 577.4373pt x 172.7253pt>
+<imgs/ej1_2_3.png, id=200, 577.4373pt x 172.7253pt>
 File: imgs/ej1_2_3.png Graphic file (type png)
 <use imgs/ej1_2_3.png>
 Package pdftex.def Info: imgs/ej1_2_3.png  used on input line 211.
 (pdftex.def)             Requested size: 452.9679pt x 135.50003pt.
-<imgs/ej1_2_4.png, id=186, 642.4803pt x 182.1204pt>
+<imgs/ej1_2_4.png, id=201, 642.4803pt x 182.1204pt>
 File: imgs/ej1_2_4.png Graphic file (type png)
 <use imgs/ej1_2_4.png>
 Package pdftex.def Info: imgs/ej1_2_4.png  used on input line 219.
 (pdftex.def)             Requested size: 452.9679pt x 128.40045pt.
-<imgs/ej1_2_5.png, id=187, 642.4803pt x 182.1204pt>
+<imgs/ej1_2_5.png, id=202, 642.4803pt x 182.1204pt>
 File: imgs/ej1_2_5.png Graphic file (type png)
 <use imgs/ej1_2_5.png>
 Package pdftex.def Info: imgs/ej1_2_5.png  used on input line 220.
 (pdftex.def)             Requested size: 452.9679pt x 128.40045pt.
-<imgs/ej1_2_6.png, id=188, 642.4803pt x 182.1204pt>
+<imgs/ej1_2_6.png, id=203, 642.4803pt x 182.1204pt>
 File: imgs/ej1_2_6.png Graphic file (type png)
 <use imgs/ej1_2_6.png>
 Package pdftex.def Info: imgs/ej1_2_6.png  used on input line 221.
@@ -691,22 +691,22 @@ Package pdftex.def Info: imgs/ej1_2_6.png  used on input line 221.
 [7 <./imgs/ej1_2_1.png> <./imgs/ej1_2_2.png> <./imgs/ej1_2_3.png>]
 
 [8 <./imgs/ej1_2_4.png> <./imgs/ej1_2_5.png> <./imgs/ej1_2_6.png>]
-<imgs/ej1_3_1.png, id=210, 361.35pt x 172.7253pt>
+<imgs/ej1_3_1.png, id=225, 361.35pt x 172.7253pt>
 File: imgs/ej1_3_1.png Graphic file (type png)
 <use imgs/ej1_3_1.png>
 Package pdftex.def Info: imgs/ej1_3_1.png  used on input line 230.
 (pdftex.def)             Requested size: 362.37569pt x 173.21771pt.
-<imgs/ej1_3_2.png, id=211, 361.35pt x 172.7253pt>
+<imgs/ej1_3_2.png, id=226, 361.35pt x 172.7253pt>
 File: imgs/ej1_3_2.png Graphic file (type png)
 <use imgs/ej1_3_2.png>
 Package pdftex.def Info: imgs/ej1_3_2.png  used on input line 237.
 (pdftex.def)             Requested size: 362.37569pt x 173.21771pt.
-<imgs/ej1_3_3.png, id=212, 642.4803pt x 182.1204pt>
+<imgs/ej1_3_3.png, id=227, 642.4803pt x 182.1204pt>
 File: imgs/ej1_3_3.png Graphic file (type png)
 <use imgs/ej1_3_3.png>
 Package pdftex.def Info: imgs/ej1_3_3.png  used on input line 244.
 (pdftex.def)             Requested size: 452.9679pt x 128.40045pt.
-<imgs/ej1_3_4.png, id=213, 361.35pt x 172.7253pt>
+<imgs/ej1_3_4.png, id=228, 361.35pt x 172.7253pt>
 File: imgs/ej1_3_4.png Graphic file (type png)
 <use imgs/ej1_3_4.png>
 Package pdftex.def Info: imgs/ej1_3_4.png  used on input line 251.
@@ -715,7 +715,7 @@ Package pdftex.def Info: imgs/ej1_3_4.png  used on input line 251.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<imgs/ej1_3_5.png, id=214, 642.4803pt x 182.1204pt>
+<imgs/ej1_3_5.png, id=229, 642.4803pt x 182.1204pt>
 File: imgs/ej1_3_5.png Graphic file (type png)
 <use imgs/ej1_3_5.png>
 Package pdftex.def Info: imgs/ej1_3_5.png  used on input line 258.
@@ -733,62 +733,62 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
  <./imgs/ej1_3_1.png> <./imgs/ej1_3_2.png> <./imgs/ej1_3_3.png>]
 
 [10 <./imgs/ej1_3_4.png> <./imgs/ej1_3_5.png>]
-<imgs/ej1_4_4.png, id=228, 392.4261pt x 211.0284pt>
+<imgs/ej1_4_4.png, id=243, 392.4261pt x 211.0284pt>
 File: imgs/ej1_4_4.png Graphic file (type png)
 <use imgs/ej1_4_4.png>
 Package pdftex.def Info: imgs/ej1_4_4.png  used on input line 273.
 (pdftex.def)             Requested size: 217.42265pt x 116.91928pt.
-<imgs/ej1_4_5.png, id=229, 392.4261pt x 211.0284pt>
+<imgs/ej1_4_5.png, id=244, 392.4261pt x 211.0284pt>
 File: imgs/ej1_4_5.png Graphic file (type png)
 <use imgs/ej1_4_5.png>
 Package pdftex.def Info: imgs/ej1_4_5.png  used on input line 274.
 (pdftex.def)             Requested size: 217.42265pt x 116.91928pt.
-<imgs/ej1_4_6.png, id=230, 392.4261pt x 211.0284pt>
+<imgs/ej1_4_6.png, id=245, 392.4261pt x 211.0284pt>
 File: imgs/ej1_4_6.png Graphic file (type png)
 <use imgs/ej1_4_6.png>
 Package pdftex.def Info: imgs/ej1_4_6.png  used on input line 275.
 (pdftex.def)             Requested size: 217.42265pt x 116.91928pt.
-<imgs/ej1_4_1.png, id=231, 392.4261pt x 211.0284pt>
+<imgs/ej1_4_1.png, id=246, 392.4261pt x 211.0284pt>
 File: imgs/ej1_4_1.png Graphic file (type png)
 <use imgs/ej1_4_1.png>
 Package pdftex.def Info: imgs/ej1_4_1.png  used on input line 279.
 (pdftex.def)             Requested size: 217.42265pt x 116.91928pt.
-<imgs/ej1_4_2.png, id=232, 392.4261pt x 211.0284pt>
+<imgs/ej1_4_2.png, id=247, 392.4261pt x 211.0284pt>
 File: imgs/ej1_4_2.png Graphic file (type png)
 <use imgs/ej1_4_2.png>
 Package pdftex.def Info: imgs/ej1_4_2.png  used on input line 280.
 (pdftex.def)             Requested size: 217.42265pt x 116.91928pt.
-<imgs/ej1_4_3.png, id=233, 392.4261pt x 211.0284pt>
+<imgs/ej1_4_3.png, id=248, 392.4261pt x 211.0284pt>
 File: imgs/ej1_4_3.png Graphic file (type png)
 <use imgs/ej1_4_3.png>
 Package pdftex.def Info: imgs/ej1_4_3.png  used on input line 281.
 (pdftex.def)             Requested size: 217.42265pt x 116.91928pt.
-<imgs/ej1_4_7.png, id=234, 392.4261pt x 211.0284pt>
+<imgs/ej1_4_7.png, id=249, 392.4261pt x 211.0284pt>
 File: imgs/ej1_4_7.png Graphic file (type png)
 <use imgs/ej1_4_7.png>
 Package pdftex.def Info: imgs/ej1_4_7.png  used on input line 293.
 (pdftex.def)             Requested size: 217.42265pt x 116.91928pt.
-<imgs/ej1_4_8.png, id=235, 392.4261pt x 211.0284pt>
+<imgs/ej1_4_8.png, id=250, 392.4261pt x 211.0284pt>
 File: imgs/ej1_4_8.png Graphic file (type png)
 <use imgs/ej1_4_8.png>
 Package pdftex.def Info: imgs/ej1_4_8.png  used on input line 294.
 (pdftex.def)             Requested size: 217.42265pt x 116.91928pt.
-<imgs/ej1_4_9.png, id=236, 392.4261pt x 211.0284pt>
+<imgs/ej1_4_9.png, id=251, 392.4261pt x 211.0284pt>
 File: imgs/ej1_4_9.png Graphic file (type png)
 <use imgs/ej1_4_9.png>
 Package pdftex.def Info: imgs/ej1_4_9.png  used on input line 295.
 (pdftex.def)             Requested size: 217.42265pt x 116.91928pt.
-<imgs/ej1_4_10.png, id=237, 392.4261pt x 211.0284pt>
+<imgs/ej1_4_10.png, id=252, 392.4261pt x 211.0284pt>
 File: imgs/ej1_4_10.png Graphic file (type png)
 <use imgs/ej1_4_10.png>
 Package pdftex.def Info: imgs/ej1_4_10.png  used on input line 299.
 (pdftex.def)             Requested size: 217.42265pt x 116.91928pt.
-<imgs/ej1_4_11.png, id=238, 392.4261pt x 211.0284pt>
+<imgs/ej1_4_11.png, id=253, 392.4261pt x 211.0284pt>
 File: imgs/ej1_4_11.png Graphic file (type png)
 <use imgs/ej1_4_11.png>
 Package pdftex.def Info: imgs/ej1_4_11.png  used on input line 300.
 (pdftex.def)             Requested size: 217.42265pt x 116.91928pt.
-<imgs/ej1_4_12.png, id=239, 392.4261pt x 211.0284pt>
+<imgs/ej1_4_12.png, id=254, 392.4261pt x 211.0284pt>
 File: imgs/ej1_4_12.png Graphic file (type png)
 <use imgs/ej1_4_12.png>
 Package pdftex.def Info: imgs/ej1_4_12.png  used on input line 301.
@@ -816,7 +816,7 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 ]
 
 [15]
-<imgs/ej2_1_1.png, id=302, 502.9992pt x 401.8212pt>
+<imgs/ej2_1_1.png, id=317, 502.9992pt x 401.8212pt>
 File: imgs/ej2_1_1.png Graphic file (type png)
 <use imgs/ej2_1_1.png>
 Package pdftex.def Info: imgs/ej2_1_1.png  used on input line 409.
@@ -824,12 +824,12 @@ Package pdftex.def Info: imgs/ej2_1_1.png  used on input line 409.
 
 
 [16 <./imgs/ej2_1_1.png>]
-<imgs/ej2_2_1.png, id=311, 508.7808pt x 401.8212pt>
+<imgs/ej2_2_1.png, id=326, 508.7808pt x 401.8212pt>
 File: imgs/ej2_2_1.png Graphic file (type png)
 <use imgs/ej2_2_1.png>
 Package pdftex.def Info: imgs/ej2_2_1.png  used on input line 454.
 (pdftex.def)             Requested size: 362.37569pt x 286.2086pt.
-<imgs/ej2_2_2.png, id=312, 515.2851pt x 401.8212pt>
+<imgs/ej2_2_2.png, id=327, 515.2851pt x 401.8212pt>
 File: imgs/ej2_2_2.png Graphic file (type png)
 <use imgs/ej2_2_2.png>
 Package pdftex.def Info: imgs/ej2_2_2.png  used on input line 461.
@@ -838,7 +838,7 @@ Package pdftex.def Info: imgs/ej2_2_2.png  used on input line 461.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<imgs/ej2_2_3.png, id=313, 515.2851pt x 401.8212pt>
+<imgs/ej2_2_3.png, id=328, 515.2851pt x 401.8212pt>
 File: imgs/ej2_2_3.png Graphic file (type png)
 <use imgs/ej2_2_3.png>
 Package pdftex.def Info: imgs/ej2_2_3.png  used on input line 468.
@@ -846,7 +846,7 @@ Package pdftex.def Info: imgs/ej2_2_3.png  used on input line 468.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<imgs/ej2_2_4.png, id=314, 502.9992pt x 401.8212pt>
+<imgs/ej2_2_4.png, id=329, 502.9992pt x 401.8212pt>
 File: imgs/ej2_2_4.png Graphic file (type png)
 <use imgs/ej2_2_4.png>
 Package pdftex.def Info: imgs/ej2_2_4.png  used on input line 475.
@@ -854,7 +854,7 @@ Package pdftex.def Info: imgs/ej2_2_4.png  used on input line 475.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<imgs/corr099.png, id=315, 502.9992pt x 401.8212pt>
+<imgs/corr099.png, id=330, 502.9992pt x 401.8212pt>
 File: imgs/corr099.png Graphic file (type png)
 <use imgs/corr099.png>
 Package pdftex.def Info: imgs/corr099.png  used on input line 482.
@@ -862,7 +862,7 @@ Package pdftex.def Info: imgs/corr099.png  used on input line 482.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<imgs/ej2_2_5.png, id=316, 508.7808pt x 401.8212pt>
+<imgs/ej2_2_5.png, id=331, 508.7808pt x 401.8212pt>
 File: imgs/ej2_2_5.png Graphic file (type png)
 <use imgs/ej2_2_5.png>
 Package pdftex.def Info: imgs/ej2_2_5.png  used on input line 490.
@@ -882,6 +882,51 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 [21
 
+]
+<imgs/ej_complementario_1000_neuronas.png, id=367, 459.6372pt x 328.8285pt>
+File: imgs/ej_complementario_1000_neuronas.png Graphic file (type png)
+<use imgs/ej_complementario_1000_neuronas.png>
+Package pdftex.def Info: imgs/ej_complementario_1000_neuronas.png  used on inpu
+t line 523.
+(pdftex.def)             Requested size: 317.07614pt x 226.84174pt.
+
+
+[22 <./imgs/ej_complementario_1000_neuronas.png>]
+<imgs/ej3_cap.png, id=376, 714.7503pt x 1437.4503pt>
+File: imgs/ej3_cap.png Graphic file (type png)
+<use imgs/ej3_cap.png>
+Package pdftex.def Info: imgs/ej3_cap.png  used on input line 541.
+(pdftex.def)             Requested size: 357.84158pt x 719.68848pt.
+
+
+LaTeX Warning: Float too large for page by 42.7816pt on input line 544.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+
+[23 <./imgs/ej3_cap.png>]
+<imgs/ej3_err.png, id=383, 714.7503pt x 1438.173pt>
+File: imgs/ej3_err.png Graphic file (type png)
+<use imgs/ej3_err.png>
+Package pdftex.def Info: imgs/ej3_err.png  used on input line 550.
+(pdftex.def)             Requested size: 357.84158pt x 720.05031pt.
+
+
+LaTeX Warning: Float too large for page by 43.14343pt on input line 553.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+
+[24 <./imgs/ej3_err.png>]
+
+[25
+
+
+
 ] (texto-2.aux
 LaTeX Info: Redefining \. on input line 11.
 LaTeX Info: Redefining \% on input line 11.
@@ -891,13 +936,13 @@ LaTeX2e <2025-06-01> patch level 1
 L3 programming layer <2025-07-20>
  ***********
 Package rerunfilecheck Info: File `texto-2.out' has not changed.
-(rerunfilecheck)             Checksum: ABD386454D1656234D66A6AD9ECBA9C1;1867.
+(rerunfilecheck)             Checksum: BE4F19231A4F75FBCE97C070BC145B89;2309.
  ) 
 Here is how much of TeX's memory you used:
- 14557 strings out of 468133
- 237305 string characters out of 5432655
- 670295 words of memory out of 5000000
- 42894 multiletter control sequences out of 15000+600000
+ 14599 strings out of 468133
+ 238380 string characters out of 5432655
+ 671542 words of memory out of 5000000
+ 42924 multiletter control sequences out of 15000+600000
  638329 words of font info for 79 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  75i,16n,79p,873b,592s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -922,9 +967,9 @@ AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/User
 s/q/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:
 /Users/q/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti9.pfb
 >
-Output written on texto-2.pdf (21 pages, 722053 bytes).
+Output written on texto-2.pdf (25 pages, 1041941 bytes).
 PDF statistics:
- 453 PDF objects out of 1000 (max. 8388607)
- 100 named destinations out of 1000 (max. 500000)
- 317 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 502 PDF objects out of 1000 (max. 8388607)
+ 112 named destinations out of 1000 (max. 500000)
+ 356 words of extra memory for PDF output out of 10000 (max. 10000000)
 

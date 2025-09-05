@@ -503,10 +503,68 @@ Respecto a la capacidad en función de la correlación, se observa un comportami
 
 Este comportamiento sugiere una posible aplicación: Si se entrenara una red de este tipo con un conjunto de imágenes similares y luego se obtuviera el estado estable, la red podría utilizarse para identificar elementos pertenecientes a la misma categoría que los del set de entrenamiento. El funcionamiento sería análogo al de un clasificador basado en similitud de patrones pero de ``si'' o ``no''. Es decir, se puede entrenar una red para que aprenda el ``arquetipo'' de una clase (ej.: perros). Después del entrenamiento, si se le diera una imagen de un perro, la red convergería a un estado con cierta energía, y lo que no es ``perro'' tal vez convergería a otra región, con otra energía. 
 
+\newpage
+\section{Ejercicio Complementario}
+\subsection{Consignas}
+
+Implemente una red de Hopfield ‘82 que aprenda patrones pseudo-aleatorios y estudie qué sucede con los patrones aprendidos cuando algunas interconexiones son eliminadas al azar.
+\begin{enumerate}
+\item ¿Cómo cambia el error en función del porcentaje de sinapsis eliminadas?
+\item ¿Cómo cambia la capacidad en función del porcentaje de sinapsis eliminadas?
+\end{enumerate}
+
+\subsection{Desarrollo y análisis}
+Para este ejercicio complementario se aprovechó el código del ejercicio 2, agregando un ``bucle'' externo que permitiese pasar por varios porcentajes de interconexiones eliminadas. Internamente usa una máscara de unos y ceros multiplicada elemento a elemento con $\mathbf{W}$. 
+
+La figura \ref{fig:1000_neuronas} una prueba con 1000 neuronas, usada solo para observar la forma que deberían seguir las curvas a medida que se usan más neuronas. El resto de simulaciones se hicieron con menos neuronas por razones de tiempo de computo (este gráfico tardó $14$ minutos). 
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.7\linewidth]{imgs/ej_complementario_1000_neuronas}
+	\caption{Error y capacidad vs sinapsis eliminadas - 1000 neuronas}
+	\label{fig:1000_neuronas}
+\end{figure}
+
+En sí, esta figura indica que la capacidad inicia en un valor similar al determinado por la tabla estudiada en el ejercicio anterior, y debería caer linealmente a medida que se eliminan sinapsis. En cambio,el error se acerca a $1/2$ de forma exponencial. 
+
+Ahora bien, el error converge a ese valor debido a que, a medida que la matriz de pesos contiene más ceros, hasta que para una matriz de todos ceros los estados actualizados (la siguiente iteración) son solo vectores completos de unos. Como los patrones originales son generados pseudo-aleatoriamente con dos estados equiprobables ($1$ y $-1$), estadísticamente el estado ``todos unos'' va a coincidir en la mitad de bits. Así, el error promedio converge a 1/2, que corresponde a la probabilidad de coincidencia entre un patrón aleatorio binario y el vector fijo de unos.
+
+$$
+\text{Error promedio} = \frac{\text{Bits incorrectos}}{\text{Bits totales}} \rightarrow 
+ \frac{\text{Bits}=1}{\text{Bits totales}} \simeq \frac{1}{2}
+$$ 
+
+\newpage
+\clearpage
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.79\linewidth]{imgs/ej3_cap}
+	\caption[Capacidades vs Sinapsis eliminadas - 500 neuronas]{}
+	\label{fig:ej3cap}
+\end{figure}
+\newpage
+\clearpage
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.79\linewidth]{imgs/ej3_err}
+	\caption[Error vs Sinapsis eliminadas - 500 neuronas]{}
+	\label{fig:ej3err}
+\end{figure}
+\newpage
+\clearpage
+
+La figura \ref{fig:ej3cap} muestra la variación de las capacidades en función de las sinapsis eliminadas para los 5 umbrales del ejercicio 2, con 500 neuronas. Lo primero que se observa es que las capacidades inician en valores similares a los tabulados, lo que es un indicador favorable para el experimento. Aparte, las curvas presentan un comportamiento aproximadamente lineal, idéntico al visto con 1000 neuronas. 
+
+La figura \ref{fig:ej3err} muestra lo mismo que la otra imagen pero para el error promedio. Todas las curvas son exponenciales que terminan en $1/2$, que es el resultado esperado.
+
+El comportamiento recién analizado tiene por detrás una propiedad fundamental de este tipo de redes, que es la de robustez. Como se vio en clase, estos sistemas son del tipo XXXX (EL TIPO DE SISTEMA), lo que significa que toleran fallas en sus elementos constitutivos. Cuando se apagó el $20\%$ de las sinapsis la red no dejó de funcionar, solo empeoró en capacidad y error. Ahora, si se hiciera lo mismo con una memoria tradicional probablemente deje de funcionar.
+
+
 \section{Conclusiones}
 
-A lo largo de este documento se implementaron varias redes de Hopfield con la finalidad de analizar varios aspectos de estas, como su memoria, capacidad, existencia de estados espurios y limitaciones. Se pudo denotar que el desempeño de una red neuronal no depende únicamente de la cantidad de neuronas, sino que también de los datos de entrenamiento (siempre teniendo en cuenta la finalidad de la red). Aparte, se demostró experimentalmente que la capacidad de una red neuronal de dicho tipo es la indicada en el cuadro~\ref{tab:1} con un error menor al $3\%$. Por último, se ahondó en la relación entre la capacidad, la correlación y la probabilidad de error, encontrando 2 tendencias marcadas de aumento y decremento de la capacidad. 
-
+A lo largo de este documento se implementaron varias redes de Hopfield con la finalidad de analizar varios aspectos de estas, como su memoria, capacidad, existencia de estados espurios y limitaciones. Se pudo denotar que el desempeño de una red neuronal no depende únicamente de la cantidad de neuronas, sino que también de los datos de entrenamiento. Aparte, se demostró experimentalmente que la capacidad de una red neuronal de dicho tipo es la indicada en el cuadro~\ref{tab:1} con un error menor al $3\%$. Asimismo, se profundizó en la relación entre la capacidad, la correlación y la probabilidad de error, observándose dos tendencias bien definidas de incremento y disminución de la capacidad.
+Finalmente, el ejercicio complementario permitió evidenciar los efectos de eliminar sinapsis en la red, lo que hace visible una de las propiedades fundamentales de estos sistemas: su robustez. Aun con un porcentaje significativo de interconexiones inactivas, la red continuó funcionando, aunque con una degradación progresiva en términos de capacidad y error.
 
 
 \end{document}

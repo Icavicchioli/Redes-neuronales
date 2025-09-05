@@ -15,4 +15,7 @@
 \contentsline {subsubsection}{\numberline {3.2.1}Consigna a}{16}{subsubsection.3.2.1}%
 \contentsline {subsubsection}{\numberline {3.2.2}Consigna b}{17}{subsubsection.3.2.2}%
 \contentsline {subsection}{\numberline {3.3}Análisis}{21}{subsection.3.3}%
-\contentsline {section}{\numberline {4}Conclusiones}{21}{section.4}%
+\contentsline {section}{\numberline {4}Ejercicio Complementario}{22}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Consignas}{22}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Desarrollo y análisis}{22}{subsection.4.2}%
+\contentsline {section}{\numberline {5}Conclusiones}{25}{section.5}%
