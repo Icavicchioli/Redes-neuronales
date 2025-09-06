@@ -124,7 +124,7 @@ w_{{i,j}_n} &= w_{{i,j} _{n-1}} + \Delta w_{i,j}
 
 El proceso de aprendizaje equivale a aprender la correlación entre todas las imágenes. Imágenes muy parecidas (por algún criterio, ej.: distancia de Hamming) van a quedar ``cerca'' en la función energética subyacente. Esto trae a colación un aspecto importante para toda memoria, que es la capacidad. Como se va a demostrar más adelante, la capacidad es función de la cantidad de neuronas y correlación ente estados memorizados. 
 
-Para'' ejecutar'' la red neuronal alcanza con calcular todos los estados siguientes de las neuronas. Esto se puede hacer de dos formas:
+Para ``ejecutar'' la red neuronal alcanza con calcular todos los estados siguientes de las neuronas. Esto se puede hacer de dos formas:
 \begin{itemize}
 \item Actualización sincrónica: se computa el siguiente estado de todas las neuronas a la vez.
 \item Actualización asincrónica: las neuronas son aleatoriamente actualizadas, sin seguir un orden particular. La idea es que todas se actualicen al finalizar el ciclo. 
@@ -145,7 +145,7 @@ La primera pide verificar que la red entrenada haya aprendido las imágenes. Rec
 
 Por un tema de las dimensiones de las imágenes, los tres primeros incisos se realizaron con dos redes neuronales de tres imágenes cada una, para luego unificar los tamaños en el cuarto. Las figuras \ref{fig:ej1_a} y \ref{fig:ej1_b} muestran, para cada subfigura, la imagen enseñada (izquierda) y la recordada (derecha) de las dos redes neuronales. Ambas redes devolvieron correctamente las imágenes enseñadas. 
 \subsubsection{Consigna b}
-La segunda consigna pide evaluar la propiedad de la red de recordar contenido. La idea es iniciar con una imagen alterada, permitir que la red evolucione y verificar a que estado convergió. Idealmente la red va a poder devolver el estado deseado, que sería el inicial sin las alteraciones. Las figuras \ref{fig:ej2_a} y \ref{fig:ej2_b} presentan visualmente los resultados de partir de una imagen alterada. Ambas redes neuronales fueron capaces de converger a los estados memorizados correctos, habiendo partido de los estados alterados. Esto se logró en 2 iteraciones, ya que se requieren dos para verificar la convergencia de la red (ausencia de cambios entre iteraciones).
+La segunda consigna pide evaluar la propiedad de la red de recordar contenido. La idea es iniciar con una imagen alterada, permitir que la red evolucione y verificar a que estado convergió. Idealmente la red va a poder devolver el estado deseado, que sería el inicial sin las alteraciones. Las figuras \ref{fig:ej2_a} y \ref{fig:ej2_b} presentan los resultados de partir de una imagen alterada. Ambas redes neuronales fueron capaces de converger a los estados memorizados correctos, habiendo partido de los estados alterados. Esto se logró en 2 iteraciones, ya que se requieren dos para verificar la convergencia de la red (ausencia de cambios entre iteraciones).
 \subsubsection{Consigna c}
 El tercer ítem de las consignas exige evaluar la existencia de los estados espurios previamente mencionados. Para esto, se eligieron algunos estados espurios representativos que permiten demostrar su presencia. El único tipo de estado que no se pudo evidenciar es el tercer tipo, los verdaderamente espurios. Recordando y profundizando, los estados espurios serían:
 
@@ -172,7 +172,7 @@ Finalmente, la figura \ref{fig:ej1_3_5} muestra como entrada una combinación li
 
 
 \subsubsection{Consigna d}
-El cuarto y último inciso del primer ejercicio requiere entrenar una red con todas las imágenes y verificar si fueron aprendidas. La nueva red se entrenó sobre las imágenes redimensionadas a un tamaño común, inicialmente fijado en $60 \times 60$. El resultado se muestra en la figura \ref{fig:ej1_4}: solo se pudieron aprender 4 de los 6 estados.
+El cuarto y último inciso del primer ejercicio requiere entrenar una red con todas las imágenes y verificar si fueron aprendidas. La nueva red se entrenó sobre las imágenes redimensionadas a un tamaño común, inicialmente fijado en $60 \times 60$. El resultado se muestra en la figura \ref{fig:ej1_4}, solo se pudieron aprender 4 de los 6 estados.
 
 Para analizar la dependencia con el tamaño de la red, se repitió el entrenamiento con imágenes de $100 \times 100$. El resultado fue el mismo (figura \ref{fig:ej1_4_2}).
 
@@ -502,7 +502,7 @@ La capacidad teórica y la obtenida experimentalmente difieren por un error rela
 
 Respecto a la capacidad en función de la correlación, se observa un comportamiento dual. Un incremento en la correlación causa una disminución en la capacidad para umbrales de error bajos debido a que la red termina aprendiendo una combinación de todos los estados enseñados, producto de la similitud entre patrones. Sin embargo, para umbrales de error altos, la similitud de los patrones y su cercanía al estado memorizado por la red causa un incremento en la capacidad. 
 
-Este comportamiento sugiere una posible aplicación: Si se entrenara una red de este tipo con un conjunto de imágenes similares y luego se obtuviera el estado estable, la red podría utilizarse para identificar elementos pertenecientes a la misma categoría que los del set de entrenamiento. El funcionamiento sería análogo al de un clasificador basado en similitud de patrones pero de ``si'' o ``no''. Es decir, se puede entrenar una red para que aprenda el ``arquetipo'' de una clase (ej.: perros). Después del entrenamiento, si se le diera una imagen de un perro, la red convergería a un estado con cierta energía, y lo que no es ``perro'' tal vez convergería a otra región, con otra energía. 
+Este comportamiento sugiere una posible aplicación: Si se entrenara una red de este tipo con un conjunto de imágenes similares y luego se obtuviera el estado estable, la red podría utilizarse para identificar elementos pertenecientes a la misma categoría que los del set de entrenamiento. El funcionamiento sería análogo al de un clasificador basado en similitud de patrones pero de ``si'' o ``no''. Es decir, se puede entrenar una red para que aprenda el ``arquetipo'' de una clase (ej.: perros). Después del entrenamiento, si se le diera una imagen de un perro, la red convergería a un estado con cierta energía, y lo que no es ``perro'' tal vez convergería a otra región, con otra energía. La diferencia se podría medir y usar como parámetro de decisión para clasificar. 
 
 \newpage
 \section{Ejercicio Complementario}
@@ -560,7 +560,7 @@ La figura \ref{fig:ej3cap} muestra la variación de las capacidades en función 
 
 La figura \ref{fig:ej3err} muestra lo mismo que la otra imagen pero para el error promedio. Todas las curvas son exponenciales que terminan en $1/2$, que es el resultado esperado.
 
-El comportamiento recién analizado tiene por detrás una propiedad fundamental de este tipo de redes, que es la de robustez. Como se vio en clase, estos sistemas son \textbf{complejos}, lo que significa que son tolerantes a fallas en sus elementos constitutivos. Cuando se apagó el $20\%$ de las sinapsis la red no dejó de recordar, solo empeoró en capacidad y error. Ahora, si se hiciera lo mismo con una memoria tradicional probablemente deje de funcionar por completo.
+El comportamiento recién analizado tiene por detrás una propiedad fundamental de este tipo de redes, que es la de robustez. Como se vio en clase, estos sistemas son \textbf{complejos}, lo que significa que son tolerantes a fallas en sus elementos constitutivos. Cuando se apagó el $20\%$ de las sinapsis la red no dejó de recordar, solo empeoró en capacidad y error. Ahora, si se hiciera lo mismo con una memoria tradicional probablemente se olvide los registros en esa sección por completo.
 
 
 \section{Conclusiones}
