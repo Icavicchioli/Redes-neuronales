@@ -78,7 +78,8 @@
 
 \section{Introducción}
 
-Este documento presenta el desarrollo de las consignas del trabajo práctico N°1 de la materia de \textbf{Redes Neuronales y Aprendizaje Profundo}.  El código correspondiente fue realizado en  \textit{Jupyter notebooks}, \textit{Python}, adjuntados a la entrega en formato PDF. Toda imagen o implementación requeridas para el análisis se explicitarán en el presente archivo, por lo que la lectura del código en sí queda a discreción del lector. La teoría relevante será presentada y discutida en la sección pertinente.
+Este documento presenta el desarrollo de las consignas del trabajo práctico N°1 de la materia de \textbf{Redes Neuronales y Aprendizaje Profundo}.  El código correspondiente fue realizado en  \textit{Jupyter notebooks}, \textit{Python}, adjuntados a la entrega en formato PDF. Toda imagen o implementación requeridas para el análisis se explicitarán en el presente archivo, por lo que la lectura del código en sí queda a discreción del lector. La teoría relevante será presentada y discutida en la sección pertinente. 
+Cabe mencionar que, debido a limitaciones de memoria y tiempo de computo, los experimentos se realizaron con redes de hasta 1000 neuronas. Los resultados son suficientes como para observar los varios fenómenos pedidos, pero no para converger perfectamente a los valores teóricos. 
 
 \newpage
 
@@ -131,7 +132,7 @@ Para'' ejecutar'' la red neuronal alcanza con calcular todos los estados siguien
 
 Para este trabajo se usó una actualización sincrónica, pero la actualización asincrónica tiene beneficios en lo relativo a convergencia de la red. 
 
-Ahora bien, ¿Cómo se parte de una matriz de pesos y se termina con un sistema que recuerda estados? El libro ``\textit{Introduction To The Theory Of Neural Computation}'' provisto por el Campus de la materia explica que los estados memorizados son atractores en el espacio de todos los estados posibles. Una forma de pensarlo es como que los patrones o estados aprendidos son concavidades en una tela y el estado actual es una canica puesta sobre esta tela. Si se deja que la canica se mueva, va a caer en alguna de estas hendiduras de la tela. Como se va a tratar más adelante, existen otros atractores que no son los patrones aprendidos: los inversos de estos, las combinaciones lineales de un número impar de patrones (estados espurios de mezcla) y otros estados espurios que aparecen como consecuencia de la dinámica de la red.
+Ahora bien, ¿Cómo se parte de una matriz de pesos y se termina con un sistema que recuerda estados? El libro ``\textit{Introduction To The Theory Of Neural Computation}'' provisto por el Campus de la materia explica que los estados memorizados son atractores en el espacio de todos los estados posibles, cuencas energéticas que captan y capturan al estado de la red. Como se va a tratar más adelante, existen otros atractores que no son los patrones aprendidos: los inversos de estos, las combinaciones lineales de un número impar de patrones (estados espurios de mezcla) y otros estados espurios que aparecen como consecuencia de la dinámica de la red.
 
 \begin{center}
 \rule{0.5\linewidth}{0.5pt} % línea de mitad de ancho y 0.5pt de grosor
@@ -514,6 +515,7 @@ Implemente una red de Hopfield ‘82 que aprenda patrones pseudo-aleatorios y es
 \end{enumerate}
 
 \subsection{Desarrollo y análisis}
+
 Para este ejercicio complementario se aprovechó el código del ejercicio 2, agregando un ``bucle'' externo que permitiese pasar por varios porcentajes de interconexiones eliminadas. Internamente usa una máscara de unos y ceros multiplicada elemento a elemento con $\mathbf{W}$. 
 
 La figura \ref{fig:1000_neuronas} una prueba con 1000 neuronas, usada solo para observar la forma que deberían seguir las curvas a medida que se usan más neuronas. El resto de simulaciones se hicieron con menos neuronas por razones de tiempo de computo (este gráfico tardó $14$ minutos). 
@@ -530,8 +532,8 @@ En sí, esta figura indica que la capacidad inicia en un valor similar al determ
 Ahora bien, el error converge a ese valor debido a que, a medida que la matriz de pesos contiene más ceros, hasta que para una matriz de todos ceros los estados actualizados (la siguiente iteración) son solo vectores completos de unos. Como los patrones originales son generados pseudo-aleatoriamente con dos estados equiprobables ($1$ y $-1$), estadísticamente el estado ``todos unos'' va a coincidir en la mitad de bits. Así, el error promedio converge a 1/2, que corresponde a la probabilidad de coincidencia entre un patrón aleatorio binario y el vector fijo de unos.
 
 $$
-\text{Error promedio} = \frac{\text{Bits incorrectos}}{\text{Bits totales}} \rightarrow 
- \frac{\text{Bits}=1}{\text{Bits totales}} \simeq \frac{1}{2}
+\text{Error promedio} = \frac{\text{\# Bits incorrectos}}{\text{\# Bits totales}} \rightarrow 
+ \frac{\# \text{Bits}=0}{\text{\# Bits totales (todos unos)}} \simeq \frac{1}{2}
 $$ 
 
 \newpage
@@ -558,7 +560,7 @@ La figura \ref{fig:ej3cap} muestra la variación de las capacidades en función 
 
 La figura \ref{fig:ej3err} muestra lo mismo que la otra imagen pero para el error promedio. Todas las curvas son exponenciales que terminan en $1/2$, que es el resultado esperado.
 
-El comportamiento recién analizado tiene por detrás una propiedad fundamental de este tipo de redes, que es la de robustez. Como se vio en clase, estos sistemas son ``complejos'', lo que significa que toleran fallas en sus elementos constitutivos. Cuando se apagó el $20\%$ de las sinapsis la red no dejó de funcionar, solo empeoró en capacidad y error. Ahora, si se hiciera lo mismo con una memoria tradicional probablemente deje de funcionar.
+El comportamiento recién analizado tiene por detrás una propiedad fundamental de este tipo de redes, que es la de robustez. Como se vio en clase, estos sistemas son \textbf{complejos}, lo que significa que son tolerantes a fallas en sus elementos constitutivos. Cuando se apagó el $20\%$ de las sinapsis la red no dejó de recordar, solo empeoró en capacidad y error. Ahora, si se hiciera lo mismo con una memoria tradicional probablemente deje de funcionar por completo.
 
 
 \section{Conclusiones}
@@ -566,5 +568,5 @@ El comportamiento recién analizado tiene por detrás una propiedad fundamental 
 A lo largo de este documento se implementaron varias redes de Hopfield con la finalidad de analizar varios aspectos de estas, como su memoria, capacidad, existencia de estados espurios y limitaciones. Se pudo denotar que el desempeño de una red neuronal no depende únicamente de la cantidad de neuronas, sino que también de los datos de entrenamiento. Aparte, se demostró experimentalmente que la capacidad de una red neuronal de dicho tipo es la indicada en el cuadro~\ref{tab:1} con un error menor al $3\%$. Asimismo, se profundizó en la relación entre la capacidad, la correlación y la probabilidad de error, observándose dos tendencias bien definidas de incremento y disminución de la capacidad.
 Finalmente, el ejercicio complementario permitió evidenciar los efectos de eliminar sinapsis en la red, lo que hace visible una de las propiedades fundamentales de estos sistemas: su robustez. Aun con un porcentaje significativo de interconexiones inactivas, la red continuó funcionando, aunque con una degradación progresiva en términos de capacidad y error.
 
-
+En si, los resultados experimentales concordaron con los teóricamente esperados, un aumento en el tamaño de las redes y cantidad de simulaciones podría mejorar la calidad de los datos y la solidez de las tendencias estudiadas en el informe.
 \end{document}
