@@ -91,6 +91,25 @@ Implemente un perceptrón simple que aprenda la función lógica AND y la funci�
 
 \subsection{Desarrollo}
 
+Lo primero que se hizo fue generar el dataset para entrenar los perceptrones, que no es más que la tabla de verdad de la función lógica que se quiere aprender.
+
+Las figuras \ref{fig:and2err}, \ref{fig:and4},\ref{fig:or2err},\ref{fig:or4} muestran el error en función de la iteración (de entrenamiento) para los perceptrones que emulan las funciones AND y OR de 2 y 4 entradas. Como se discutió en la teórica, el perceptrón es capaz de aprender estas funciones lógicas simples, por lo que el error final del entrenamiento es cero.
+
+La figura \ref{fig:orfront} muestra la frontera de decisión del perceptrón que aprendió la función OR, y la \ref{fig:frontAND} muestra la frontera para la compuerta AND. Los puntos del mismo color son de la misma clase (0 o 1), y son adecuadamente segregados por la frontera. Contrario a SVM, el perceptrón simple no tiene la distancia desde la frontera hasta las muestras en su función de costo, por lo que la recta que separa las clases no es única.
+
+Para encontrar la fórmula de la recta que hace de frontera de decisión se puede partir de la expresión de la sumatoria de los $X$ con sus respectivos pesos y el bias, y suponer que $Y=0$, lo que significa que estás parado sobre la frontera, tu muestra no es ni de una clase ni de la otra.
+
+$$
+X1 \cdot w1 + X2 \cdot w2 + b = 0
+$$
+
+Y si suponemos que $X1$ es nuestra abscisa que vamos a barrer y $X2$ es la ordenada, la recta toma la forma de:
+
+$$
+X2 = \frac{w1 \cdot X1 + b}{-w2}
+$$
+
+Y entonces $m=-w1/w2 $ y b = $-b/w2$
 
 \begin{figure}[h!]
 	\centering
@@ -140,6 +159,15 @@ Implemente un perceptrón simple que aprenda la función lógica AND y la funci�
 
 \subsection{Análisis}
 
+Los perceptrones lograron aprender sus funciones lógicas designadas sin error en una cantidad finita de iteraciones del algoritmo.
+
+El ejercicio demuestra la capacidad del perceptrón de aprender, además de familiarizarnos con un algoritmo de gradiente descendiente, por el cual los pesos se actualizan en la dirección que minimiza el error.
+
+Todo esto es fundamental para las consignas siguientes.
+
+
+\clearpage
+
 \section{Ejercicio 2}
 
 \subsection{Consignas}
@@ -149,6 +177,12 @@ Determine numéricamente cómo varía la capacidad del perceptrón simple en fun
 
 \subsection{Desarrollo}
 
+La capacidad de un perceptron está definida en la p.111 del libro ``Introduction to the theory of neural computation''. El experimento se debe hacer para para una cantidad particular de unidades de entrada, que sería la dimensión de nuestro espacio de features. A medida que este número N aumenta ($N \to \inf$), se demuestra que la capacidad de almacenamiento máxima del perceptron converge a $p_{max} = 2N$, con $p$ la cantidad de patrones.
+
+La idea es tomar un perceptron de cierto tamaño y alimentarlo con cada vez más patrones, registrando los resultados.
+En el ejercicio, la capacidad se ensayó de la siguiente forma:
+
+los resultados para $N=30$ se pueden ver en la figura \ref{fig:capacidad}.
 
 \begin{figure}[h!]
 	\centering
@@ -159,6 +193,8 @@ Determine numéricamente cómo varía la capacidad del perceptrón simple en fun
 
 
 \subsection{Análisis}
+
+\clearpage
 
 \section{Ejercicio 3}
 
@@ -192,6 +228,7 @@ Implemente un perceptrón multicapa que aprenda la función lógica XOR de 2 y d
 
 \subsection{Análisis}
 
+\clearpage
 
 \section{Ejercicio 4}
 
@@ -215,7 +252,7 @@ b - Estudie la evolución de los errores durante el entrenamiento de una red con
 
 
 
-
+\clearpage
 
 \section{Ejercicio 5}
 
@@ -226,6 +263,7 @@ Siguiendo el trabajo de Hinton y Salakhutdinov (2006), entrene una máquina rest
 
 \subsection{Análisis}
 
+\clearpage
 
 \section{Ejercicio 6}
 
@@ -239,7 +277,68 @@ Entrene una red convolucional para clasificar las imágenes de la base de datos 
 \subsection{Análisis}
 
 
+\clearpage
 
+\section{Ejercicio 7}
+
+\subsection{Consignas}
+
+Entrene un autoencoder para obtener una representación de baja dimensionalidad de las imágenes de MNIST. Use dichas representaciones para entrenar un perceptrón multicapa como clasificador. ¿Cuál es el tiempo de entrenamiento y la exactitud del clasificador obtenido cuando parte de la representación del autoencoder, en comparación con lo obtenido usando las imágenes originales?
+
+\subsection{Desarrollo}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.7\linewidth]{imgs/ej7_loss}
+	\caption{}
+	\label{fig:ej7loss}
+\end{figure}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.7\linewidth]{imgs/ej7_reconstr_digitos}
+	\caption{}
+	\label{fig:ej7reconstrdigitos}
+\end{figure}
+
+entrenamiento final:
+Epoch 1/30 | Loss=0.6624 | Acc=81.28%
+Epoch 2/30 | Loss=0.3537 | Acc=89.86%
+Epoch 3/30 | Loss=0.3200 | Acc=90.68%
+Epoch 4/30 | Loss=0.3073 | Acc=90.92%
+Epoch 5/30 | Loss=0.2996 | Acc=91.19%
+Epoch 6/30 | Loss=0.2962 | Acc=91.22%
+Epoch 7/30 | Loss=0.2921 | Acc=91.29%
+Epoch 8/30 | Loss=0.2884 | Acc=91.44%
+Epoch 9/30 | Loss=0.2884 | Acc=91.51%
+Epoch 10/30 | Loss=0.2855 | Acc=91.53%
+Epoch 11/30 | Loss=0.2832 | Acc=91.62%
+Epoch 12/30 | Loss=0.2837 | Acc=91.56%
+Epoch 13/30 | Loss=0.2823 | Acc=91.63%
+Epoch 14/30 | Loss=0.2813 | Acc=91.79%
+Epoch 15/30 | Loss=0.2810 | Acc=91.69%
+Epoch 16/30 | Loss=0.2799 | Acc=91.83%
+Epoch 17/30 | Loss=0.2785 | Acc=91.79%
+Epoch 18/30 | Loss=0.2773 | Acc=91.82%
+Epoch 19/30 | Loss=0.2772 | Acc=91.85%
+Epoch 20/30 | Loss=0.2775 | Acc=91.76%
+Epoch 21/30 | Loss=0.2751 | Acc=91.91%
+Epoch 22/30 | Loss=0.2738 | Acc=91.90%
+Epoch 23/30 | Loss=0.2745 | Acc=91.89%
+Epoch 24/30 | Loss=0.2738 | Acc=91.94%
+Epoch 25/30 | Loss=0.2735 | Acc=91.97%
+...
+Epoch 28/30 | Loss=0.2736 | Acc=91.98%
+Epoch 29/30 | Loss=0.2726 | Acc=91.98%
+Epoch 30/30 | Loss=0.2720 | Acc=92.05%
+Test Accuracy: 92.33%
+
+
+
+
+\subsection{Análisis}
+
+\clearpage
 
 
 \section{Conclusiones}
