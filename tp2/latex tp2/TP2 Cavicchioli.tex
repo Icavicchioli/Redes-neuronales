@@ -390,32 +390,31 @@ En la tabla correspondiente se puede ver que varias predicciones todavía difier
 \subsubsection{10 Neuronas en capa oculta}
 
 Al aumentar el número de neuronas en la capa oculta a diez, se observa un cambio significativo en el comportamiento del MLP.
-Para la XOR de dos entradas, la red sigue convergiendo sin problemas y mantiene fronteras de decisión suaves y bien definidas (Figura~\ref{fig:2ecm}).
 
-Para la XOR de cuatro entradas, a diferencia de los casos anteriores con 2 o 4 neuronas, ahora la red logra aprender correctamente todos los patrones, alcanzando un error muy bajo (Figura~\ref{fig:4ecm}).
-Las fronteras de decisión siguen siendo curvas (Figura~\ref{fig:front}), lo que indica que la función sigue siendo no lineal, pero la mayor cantidad de neuronas le proporciona la capacidad suficiente para representar correctamente la XOR de cuatro entradas.
-Esto confirma que las dificultades observadas en los experimentos anteriores estaban relacionadas con la limitada capacidad de la red.
+Para la XOR de dos entradas, la red sigue convergiendo sin problemas y mantiene fronteras de decisión suaves y bien definidas (Figura~\ref{fig:2ecm10} y \ref{fig:front10}). Las fronteras de decisión siguen siendo curvas, lo que indica que la función sigue siendo no lineal, pero la gran cantidad de neuronas le da mucha variabilidad a las soluciones; en cada ejecución la frontera cambia mucho, puede ser más recta o muy curva.
 
+Para la XOR de cuatro entradas, a diferencia de los casos anteriores con 2 o 4 neuronas, ahora la red logra aprender correctamente todos los patrones, alcanzando un error muy bajo (Figura~\ref{fig:4ecm10}). Esto confirma la sospecha de que las dificultades de aprendizaje de la XOR de 4 entradas en los experimentos anteriores estaba relacionada con la capacidad de la red, que se encontraba limitada por la cantidad de neuronas.
+El cuadro \ref{cuadroXOR4_010} muestra la tabla de verdad enseñada y aprendida. Nótese que, contrario a los casos para menos neuronas, la red aprendió bien la lógica, y esto se nota en que las salidas de la sigmoidea son o muy cercanas a 0, o muy cercanas a 1, indicando poca confusión.
 
 \begin{figure}[htbp!]
 	\centering
 	\includegraphics[width=0.7\linewidth]{../imgs/ej3/10neur/2ecm}
 	\caption{Error por época - XOR de 2 entradas - MLP 10 neuronas en capa oculta}
-	\label{fig:2ecm}
+	\label{fig:2ecm10}
 \end{figure}
 
 \begin{figure}[htbp!]
 	\centering
 	\includegraphics[width=0.7\linewidth]{../imgs/ej3/10neur/front}
 	\caption{Frontera de decisión - XOR de 2 entradas - MLP 10 neuronas en capa oculta}
-	\label{fig:front}
+	\label{fig:front10}
 \end{figure}
 
 \begin{figure}[htbp!]
 	\centering
 	\includegraphics[width=0.7\linewidth]{../imgs/ej3/10neur/4ecm}
 	\caption{Error por época - XOR de 4 entradas - MLP 10 neuronas en capa oculta}
-	\label{fig:4ecm}
+	\label{fig:4ecm10}
 \end{figure}
 
 
@@ -462,15 +461,16 @@ Esto confirma que las dificultades observadas en los experimentos anteriores est
 		\hline
 	\end{tabular}
 	\caption{Resultados del perceptrón con cuatro entradas y 10 neuronas ocultas.}
+	\label{cuadroXOR4_010}
 \end{table}
 
 \clearpage
 
 \subsection{Análisis}
 
-El análisis ya se desarrolló casi completamente en cada subsección. Lo que se puede afirmar es que la función XOR de 2 entradas es relativamente simple de aprender para un MLP (3 perceptrones mínimo, 2 en la capa oculta), pero no tanto la XOR de 4 entradas, que requirió de una capa oculta bastante más grande. Esto demuestra que siguen existiendo limitaciones a la cantidad de patrones que puede aprender una cierta red de perceptrones, y que parecería aumentar con la cantidad de neuronas agregadas.
+El análisis ya se desarrolló casi completamente en cada subsección. Lo que se puede afirmar es que la función XOR de 2 entradas es relativamente simple de aprender para un MLP (3 perceptrones mínimo; 2 en la capa oculta), pero no tanto la XOR de 4 entradas, que requirió de una capa oculta bastante más grande (10 neuronas). Esto demuestra que siguen existiendo limitaciones a la cantidad de patrones que puede aprender una cierta red de perceptrones, y que parecería aumentar con la cantidad de neuronas agregadas.
 
-Algo que no se mencionó es que los errores tienen forma de exponenciales decrecientes (aunque a veces deformes), que es normal para estos casos. Algunos entrenamientos presentaron como puntos silla, lo que indicaría que el algoritmo se encontró con una región de gradiente muy pequeño, como la figura \ref{fig:xor2err}, que se quedó varias epochs en 0.25 de ECM.
+Algo que no se mencionó es que los errores tienen forma de exponenciales decrecientes (aunque a veces deformes), que parecería normal para estos casos. Algunos entrenamientos presentaron como puntos silla, lo que indicaría que el algoritmo se encontró con una región de gradiente muy pequeño, como la figura \ref{fig:xor2err}, que se quedó varias epochs en 0.25 de ECM.
 
 
 
