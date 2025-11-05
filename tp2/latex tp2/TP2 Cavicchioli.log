@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.10.24)  5 NOV 2025 16:44
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.10.24)  5 NOV 2025 18:39
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -614,7 +614,7 @@ LaTeX Info: Redefining \% on input line 1.
 \openout4 = `"TP2 Cavicchioli.toc"'.
 
  [2]
-<../imgs/ej1/AND2err.png, id=191, 429.2838pt x 328.8285pt>
+<../imgs/ej1/AND2err.png, id=252, 429.2838pt x 328.8285pt>
 File: ../imgs/ej1/AND2err.png Graphic file (type png)
 <use ../imgs/ej1/AND2err.png>
 Package pdftex.def Info: ../imgs/ej1/AND2err.png  used on input line 116.
@@ -623,7 +623,7 @@ Package pdftex.def Info: ../imgs/ej1/AND2err.png  used on input line 116.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<../imgs/ej1/AND4.png, id=193, 412.6617pt x 328.8285pt>
+<../imgs/ej1/AND4.png, id=254, 412.6617pt x 328.8285pt>
 File: ../imgs/ej1/AND4.png Graphic file (type png)
 <use ../imgs/ej1/AND4.png>
 Package pdftex.def Info: ../imgs/ej1/AND4.png  used on input line 124.
@@ -631,7 +631,7 @@ Package pdftex.def Info: ../imgs/ej1/AND4.png  used on input line 124.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<../imgs/ej1/OR2err.png, id=194, 430.7292pt x 328.8285pt>
+<../imgs/ej1/OR2err.png, id=255, 430.7292pt x 328.8285pt>
 File: ../imgs/ej1/OR2err.png Graphic file (type png)
 <use ../imgs/ej1/OR2err.png>
 Package pdftex.def Info: ../imgs/ej1/OR2err.png  used on input line 132.
@@ -639,7 +639,7 @@ Package pdftex.def Info: ../imgs/ej1/OR2err.png  used on input line 132.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<../imgs/ej1/OR4.png, id=195, 408.3255pt x 328.8285pt>
+<../imgs/ej1/OR4.png, id=256, 408.3255pt x 328.8285pt>
 File: ../imgs/ej1/OR4.png Graphic file (type png)
 <use ../imgs/ej1/OR4.png>
 Package pdftex.def Info: ../imgs/ej1/OR4.png  used on input line 139.
@@ -647,7 +647,7 @@ Package pdftex.def Info: ../imgs/ej1/OR4.png  used on input line 139.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<../imgs/ej1/ANDFRONT.png, id=196, 425.6703pt x 328.8285pt>
+<../imgs/ej1/ANDFRONT.png, id=257, 425.6703pt x 328.8285pt>
 File: ../imgs/ej1/ANDFRONT.png Graphic file (type png)
 <use ../imgs/ej1/ANDFRONT.png>
 Package pdftex.def Info: ../imgs/ej1/ANDFRONT.png  used on input line 146.
@@ -655,7 +655,7 @@ Package pdftex.def Info: ../imgs/ej1/ANDFRONT.png  used on input line 146.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<../imgs/ej1/ORFRONT.png, id=197, 425.6703pt x 328.8285pt>
+<../imgs/ej1/ORFRONT.png, id=258, 425.6703pt x 328.8285pt>
 File: ../imgs/ej1/ORFRONT.png Graphic file (type png)
 <use ../imgs/ej1/ORFRONT.png>
 Package pdftex.def Info: ../imgs/ej1/ORFRONT.png  used on input line 155.
@@ -666,184 +666,12 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 [3] [4 <../imgs/ej1/AND2err.png> <../imgs/ej1/AND4.png>] [5 <../imgs/ej1/OR2err
 .png> <../imgs/ej1/OR4.png>] [6 <../imgs/ej1/ANDFRONT.png> <../imgs/ej1/ORFRONT
 .png>]
-<../imgs/ej2/capacidad.png, id=231, 443.0151pt x 284.7438pt>
+<../imgs/ej2/capacidad.png, id=291, 443.0151pt x 284.7438pt>
 File: ../imgs/ej2/capacidad.png Graphic file (type png)
 <use ../imgs/ej2/capacidad.png>
 Package pdftex.def Info: ../imgs/ej2/capacidad.png  used on input line 194.
 (pdftex.def)             Requested size: 317.07614pt x 203.80316pt.
-<../imgs/ej2/N10.png, id=232, 443.0151pt x 284.7438pt>
+<../imgs/ej2/N10.png, id=292, 443.0151pt x 284.7438pt>
 File: ../imgs/ej2/N10.png Graphic file (type png)
 <use ../imgs/ej2/N10.png>
-Package pdftex.def Info: ../imgs/ej2/N10.png  used on input line 201.
-(pdftex.def)             Requested size: 317.07614pt x 203.80316pt.
- [7
-
- <../imgs/ej2/capacidad.png>] [8 <../imgs/ej2/N10.png>]
-<../imgs/ej3/2 neur int/xor2_err.png, id=257, 416.2752pt x 330.2739pt>
-File: ../imgs/ej3/2 neur int/xor2_err.png Graphic file (type png)
-<use ../imgs/ej3/2 neur int/xor2_err.png>
-Package pdftex.def Info: ../imgs/ej3/2 neur int/xor2_err.png  used on input lin
-e 245.
-(pdftex.def)             Requested size: 317.07614pt x 251.58022pt.
-<../imgs/ej3/2 neur int/xor2_front.png, id=258, 395.3169pt x 314.3745pt>
-File: ../imgs/ej3/2 neur int/xor2_front.png Graphic file (type png)
-<use ../imgs/ej3/2 neur int/xor2_front.png>
-Package pdftex.def Info: ../imgs/ej3/2 neur int/xor2_front.png  used on input l
-ine 252.
-(pdftex.def)             Requested size: 317.07614pt x 252.15231pt.
-<../imgs/ej3/2 neur int/xor4_err.png, id=259, 409.7709pt x 330.2739pt>
-File: ../imgs/ej3/2 neur int/xor4_err.png Graphic file (type png)
-<use ../imgs/ej3/2 neur int/xor4_err.png>
-Package pdftex.def Info: ../imgs/ej3/2 neur int/xor4_err.png  used on input lin
-e 259.
-(pdftex.def)             Requested size: 317.07614pt x 255.57156pt.
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-[9
-
-] [10 <../imgs/ej3/2 neur int/xor2_err.png> <../imgs/ej3/2 neur int/xor2_front.
-png>] [11 <../imgs/ej3/2 neur int/xor4_err.png>]
-<../imgs/ej3/4 neur int/ecm2.png, id=284, 409.7709pt x 330.2739pt>
-File: ../imgs/ej3/4 neur int/ecm2.png Graphic file (type png)
-<use ../imgs/ej3/4 neur int/ecm2.png>
-Package pdftex.def Info: ../imgs/ej3/4 neur int/ecm2.png  used on input line 32
-2.
-(pdftex.def)             Requested size: 317.07614pt x 255.57156pt.
-<../imgs/ej3/4 neur int/front2.png, id=285, 395.3169pt x 314.3745pt>
-File: ../imgs/ej3/4 neur int/front2.png Graphic file (type png)
-<use ../imgs/ej3/4 neur int/front2.png>
-Package pdftex.def Info: ../imgs/ej3/4 neur int/front2.png  used on input line 
-329.
-(pdftex.def)             Requested size: 317.07614pt x 252.15231pt.
-<../imgs/ej3/4 neur int/ecm4.png, id=286, 409.7709pt x 330.2739pt>
-File: ../imgs/ej3/4 neur int/ecm4.png Graphic file (type png)
-<use ../imgs/ej3/4 neur int/ecm4.png>
-Package pdftex.def Info: ../imgs/ej3/4 neur int/ecm4.png  used on input line 33
-6.
-(pdftex.def)             Requested size: 317.07614pt x 255.57156pt.
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-[12
-
- <../imgs/ej3/4 neur int/ecm2.png>] [13 <../imgs/ej3/4 neur int/front2.png> <..
-/imgs/ej3/4 neur int/ecm4.png>] [14]
-<../imgs/ej3/10neur/2ecm.png, id=312, 416.2752pt x 330.2739pt>
-File: ../imgs/ej3/10neur/2ecm.png Graphic file (type png)
-<use ../imgs/ej3/10neur/2ecm.png>
-Package pdftex.def Info: ../imgs/ej3/10neur/2ecm.png  used on input line 401.
-(pdftex.def)             Requested size: 317.07614pt x 251.58022pt.
-<../imgs/ej3/10neur/front.png, id=313, 395.3169pt x 314.3745pt>
-File: ../imgs/ej3/10neur/front.png Graphic file (type png)
-<use ../imgs/ej3/10neur/front.png>
-Package pdftex.def Info: ../imgs/ej3/10neur/front.png  used on input line 408.
-(pdftex.def)             Requested size: 317.07614pt x 252.15231pt.
-<../imgs/ej3/10neur/4ecm.png, id=314, 416.2752pt x 330.2739pt>
-File: ../imgs/ej3/10neur/4ecm.png Graphic file (type png)
-<use ../imgs/ej3/10neur/4ecm.png>
-Package pdftex.def Info: ../imgs/ej3/10neur/4ecm.png  used on input line 415.
-(pdftex.def)             Requested size: 317.07614pt x 251.58022pt.
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-[15
-
- <../imgs/ej3/10neur/2ecm.png>] [16 <../imgs/ej3/10neur/front.png> <../imgs/ej3
-/10neur/4ecm.png>] [17] [18
-
-] [19
-
-] [20
-
-]
-Overfull \hbox (37.13649pt too wide) in paragraph at lines 541--572
-\OT1/cmr/m/n/10.95 | Acc=89.86Epoch 3/30 | Loss=0.3200 | Acc=90.68Epoch 4/30 | 
-Loss=0.3073 | Acc=90.92Epoch
- []
-
-
-Overfull \hbox (1.9748pt too wide) in paragraph at lines 541--572
-\OT1/cmr/m/n/10.95 Loss=0.2921 | Acc=91.29Epoch 8/30 | Loss=0.2884 | Acc=91.44E
-poch 9/30 | Loss=0.2884
- []
-
-
-Overfull \hbox (48.0865pt too wide) in paragraph at lines 541--572
-\OT1/cmr/m/n/10.95 | Acc=91.51Epoch 10/30 | Loss=0.2855 | Acc=91.53Epoch 11/30 
-| Loss=0.2832 | Acc=91.62Epoch
- []
-
-
-Overfull \hbox (12.9248pt too wide) in paragraph at lines 541--572
-\OT1/cmr/m/n/10.95 Loss=0.2813 | Acc=91.79Epoch 15/30 | Loss=0.2810 | Acc=91.69
-Epoch 16/30 | Loss=0.2799
- []
-
-
-Overfull \hbox (48.0865pt too wide) in paragraph at lines 541--572
-\OT1/cmr/m/n/10.95 | Acc=91.83Epoch 17/30 | Loss=0.2785 | Acc=91.79Epoch 18/30 
-| Loss=0.2773 | Acc=91.82Epoch
- []
-
-
-Overfull \hbox (12.9248pt too wide) in paragraph at lines 541--572
-\OT1/cmr/m/n/10.95 Loss=0.2751 | Acc=91.91Epoch 22/30 | Loss=0.2738 | Acc=91.90
-Epoch 23/30 | Loss=0.2745
- []
-
-
-Overfull \hbox (26.94691pt too wide) in paragraph at lines 541--572
-\OT1/cmr/m/n/10.95 | Acc=91.89Epoch 24/30 | Loss=0.2738 | Acc=91.94Epoch 25/30 
-| Loss=0.2735 | Acc=91.97...
- []
-
-[21
-
-] [22
-
-] (TP2 Cavicchioli.aux
-LaTeX Info: Redefining \. on input line 11.
-LaTeX Info: Redefining \% on input line 11.
-)
- ***********
-LaTeX2e <2023-11-01> patch level 1
-L3 programming layer <2024-01-04>
- ***********
-Package rerunfilecheck Info: File `"TP2 Cavicchioli".out' has not changed.
-(rerunfilecheck)             Checksum: 59C5FD1435D7D991C07C1221DE002C9A;3720.
- ) 
-Here is how much of TeX's memory you used:
- 14376 strings out of 474485
- 237973 string characters out of 5743733
- 1944542 words of memory out of 5000000
- 36397 multiletter control sequences out of 15000+600000
- 567990 words of font info for 70 fonts, out of 8000000 for 9000
- 1141 hyphenation exceptions out of 8191
- 75i,11n,79p,748b,753s stack positions out of 10000i,1000n,20000p,200000b,200000s
- <C:\Users\ignac\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm
-1095.pk><C:/Users/ignac/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfon
-ts/cm/cmbx10.pfb><C:/Users/ignac/AppData/Local/Programs/MiKTeX/fonts/type1/publ
-ic/amsfonts/cm/cmmi10.pfb><C:/Users/ignac/AppData/Local/Programs/MiKTeX/fonts/t
-ype1/public/amsfonts/cm/cmmi8.pfb><C:/Users/ignac/AppData/Local/Programs/MiKTeX
-/fonts/type1/public/amsfonts/cm/cmmi9.pfb><C:/Users/ignac/AppData/Local/Program
-s/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/ignac/AppData/Local
-/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/ignac/AppDa
-ta/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Users/ign
-ac/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Us
-ers/ignac/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb
-><C:/Users/ignac/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/c
-mr9.pfb><C:/Users/ignac/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfon
-ts/cm/cmss10.pfb><C:/Users/ignac/AppData/Local/Programs/MiKTeX/fonts/type1/publ
-ic/amsfonts/cm/cmss12.pfb><C:/Users/ignac/AppData/Local/Programs/MiKTeX/fonts/t
-ype1/public/amsfonts/cm/cmsy10.pfb><C:/Users/ignac/AppData/Local/Programs/MiKTe
-X/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on "TP2 Cavicchioli.pdf" (22 pages, 563250 bytes).
-PDF statistics:
- 440 PDF objects out of 1000 (max. 8388607)
- 81 named destinations out of 1000 (max. 500000)
- 350 words of extra memory for PDF output out of 10000 (max. 10000000)
-
+Package pdftex
