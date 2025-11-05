@@ -674,4 +674,359 @@ Package pdftex.def Info: ../imgs/ej2/capacidad.png  used on input line 194.
 <../imgs/ej2/N10.png, id=292, 443.0151pt x 284.7438pt>
 File: ../imgs/ej2/N10.png Graphic file (type png)
 <use ../imgs/ej2/N10.png>
-Package pdftex
+Package pdftex.def Info: ../imgs/ej2/N10.png  used on input line 201.
+(pdftex.def)             Requested size: 317.07614pt x 203.80316pt.
+ [7
+
+ <../imgs/ej2/capacidad.png>] [8 <../imgs/ej2/N10.png>]
+<../imgs/ej3/2 neur int/xor2_err.png, id=317, 416.2752pt x 330.2739pt>
+File: ../imgs/ej3/2 neur int/xor2_err.png Graphic file (type png)
+<use ../imgs/ej3/2 neur int/xor2_err.png>
+Package pdftex.def Info: ../imgs/ej3/2 neur int/xor2_err.png  used on input lin
+e 245.
+(pdftex.def)             Requested size: 317.07614pt x 251.58022pt.
+<../imgs/ej3/2 neur int/xor2_front.png, id=318, 395.3169pt x 314.3745pt>
+File: ../imgs/ej3/2 neur int/xor2_front.png Graphic file (type png)
+<use ../imgs/ej3/2 neur int/xor2_front.png>
+Package pdftex.def Info: ../imgs/ej3/2 neur int/xor2_front.png  used on input l
+ine 252.
+(pdftex.def)             Requested size: 317.07614pt x 252.15231pt.
+<../imgs/ej3/2 neur int/xor4_err.png, id=319, 409.7709pt x 330.2739pt>
+File: ../imgs/ej3/2 neur int/xor4_err.png Graphic file (type png)
+<use ../imgs/ej3/2 neur int/xor4_err.png>
+Package pdftex.def Info: ../imgs/ej3/2 neur int/xor4_err.png  used on input lin
+e 259.
+(pdftex.def)             Requested size: 317.07614pt x 255.57156pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[9
+
+] [10 <../imgs/ej3/2 neur int/xor2_err.png> <../imgs/ej3/2 neur int/xor2_front.
+png>] [11 <../imgs/ej3/2 neur int/xor4_err.png>]
+<../imgs/ej3/4 neur int/ecm2.png, id=344, 409.7709pt x 330.2739pt>
+File: ../imgs/ej3/4 neur int/ecm2.png Graphic file (type png)
+<use ../imgs/ej3/4 neur int/ecm2.png>
+Package pdftex.def Info: ../imgs/ej3/4 neur int/ecm2.png  used on input line 32
+2.
+(pdftex.def)             Requested size: 317.07614pt x 255.57156pt.
+<../imgs/ej3/4 neur int/front2.png, id=345, 395.3169pt x 314.3745pt>
+File: ../imgs/ej3/4 neur int/front2.png Graphic file (type png)
+<use ../imgs/ej3/4 neur int/front2.png>
+Package pdftex.def Info: ../imgs/ej3/4 neur int/front2.png  used on input line 
+329.
+(pdftex.def)             Requested size: 317.07614pt x 252.15231pt.
+<../imgs/ej3/4 neur int/ecm4.png, id=346, 409.7709pt x 330.2739pt>
+File: ../imgs/ej3/4 neur int/ecm4.png Graphic file (type png)
+<use ../imgs/ej3/4 neur int/ecm4.png>
+Package pdftex.def Info: ../imgs/ej3/4 neur int/ecm4.png  used on input line 33
+6.
+(pdftex.def)             Requested size: 317.07614pt x 255.57156pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[12
+
+ <../imgs/ej3/4 neur int/ecm2.png>] [13 <../imgs/ej3/4 neur int/front2.png> <..
+/imgs/ej3/4 neur int/ecm4.png>] [14]
+<../imgs/ej3/10neur/2ecm.png, id=372, 416.2752pt x 330.2739pt>
+File: ../imgs/ej3/10neur/2ecm.png Graphic file (type png)
+<use ../imgs/ej3/10neur/2ecm.png>
+Package pdftex.def Info: ../imgs/ej3/10neur/2ecm.png  used on input line 401.
+(pdftex.def)             Requested size: 317.07614pt x 251.58022pt.
+<../imgs/ej3/10neur/front.png, id=373, 395.3169pt x 314.3745pt>
+File: ../imgs/ej3/10neur/front.png Graphic file (type png)
+<use ../imgs/ej3/10neur/front.png>
+Package pdftex.def Info: ../imgs/ej3/10neur/front.png  used on input line 408.
+(pdftex.def)             Requested size: 317.07614pt x 252.15231pt.
+<../imgs/ej3/10neur/4ecm.png, id=374, 416.2752pt x 330.2739pt>
+File: ../imgs/ej3/10neur/4ecm.png Graphic file (type png)
+<use ../imgs/ej3/10neur/4ecm.png>
+Package pdftex.def Info: ../imgs/ej3/10neur/4ecm.png  used on input line 415.
+(pdftex.def)             Requested size: 317.07614pt x 251.58022pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[15
+
+ <../imgs/ej3/10neur/2ecm.png>] [16 <../imgs/ej3/10neur/front.png> <../imgs/ej3
+/10neur/4ecm.png>] [17] [18
+
+] [19
+
+] [20
+
+]
+Overfull \hbox (37.13649pt too wide) in paragraph at lines 543--574
+\OT1/cmr/m/n/10.95 | Acc=89.86Epoch 3/30 | Loss=0.3200 | Acc=90.68Epoch 4/30 | 
+Loss=0.3073 | Acc=90.92Epoch
+ []
+
+
+Overfull \hbox (1.9748pt too wide) in paragraph at lines 543--574
+\OT1/cmr/m/n/10.95 Loss=0.2921 | Acc=91.29Epoch 8/30 | Loss=0.2884 | Acc=91.44E
+poch 9/30 | Loss=0.2884
+ []
+
+
+Overfull \hbox (48.0865pt too wide) in paragraph at lines 543--574
+\OT1/cmr/m/n/10.95 | Acc=91.51Epoch 10/30 | Loss=0.2855 | Acc=91.53Epoch 11/30 
+| Loss=0.2832 | Acc=91.62Epoch
+ []
+
+
+Overfull \hbox (12.9248pt too wide) in paragraph at lines 543--574
+\OT1/cmr/m/n/10.95 Loss=0.2813 | Acc=91.79Epoch 15/30 | Loss=0.2810 | Acc=91.69
+Epoch 16/30 | Loss=0.2799
+ []
+
+
+Overfull \hbox (48.0865pt too wide) in paragraph at lines 543--574
+\OT1/cmr/m/n/10.95 | Acc=91.83Epoch 17/30 | Loss=0.2785 | Acc=91.79Epoch 18/30 
+| Loss=0.2773 | Acc=91.82Epoch
+ []
+
+
+Overfull \hbox (12.9248pt too wide) in paragraph at lines 543--574
+\OT1/cmr/m/n/10.95 Loss=0.2751 | Acc=91.91Epoch 22/30 | Loss=0.2738 | Acc=91.90
+Epoch 23/30 | Loss=0.2745
+ []
+
+
+Overfull \hbox (26.94691pt too wide) in paragraph at lines 543--574
+\OT1/cmr/m/n/10.95 | Acc=91.89Epoch 24/30 | Loss=0.2738 | Acc=91.94Epoch 25/30 
+| Loss=0.2735 | Acc=91.97...
+ []
+
+[21
+
+]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 606.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\alpha' on input line 606.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 606.
+
+<../imgs/ej8/screenshot001.png, id=413, 344.78813pt x 295.85532pt>
+File: ../imgs/ej8/screenshot001.png Graphic file (type png)
+<use ../imgs/ej8/screenshot001.png>
+Package pdftex.def Info: ../imgs/ej8/screenshot001.png  used on input line 609.
+
+(pdftex.def)             Requested size: 317.07614pt x 272.07732pt.
+<../imgs/ej8/screenshot002.png, id=414, 565.36218pt x 297.36093pt>
+File: ../imgs/ej8/screenshot002.png Graphic file (type png)
+<use ../imgs/ej8/screenshot002.png>
+Package pdftex.def Info: ../imgs/ej8/screenshot002.png  used on input line 616.
+
+(pdftex.def)             Requested size: 317.07614pt x 166.77507pt.
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+LaTeX Warning: Reference `m' on page 22 undefined on input line 621.
+
+[22
+
+ <../imgs/ej8/screenshot001.png>]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 623.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\alpha' on input line 623.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 623.
+
+<../imgs/ej8/screenshot003.png, id=424, 344.78813pt x 295.85532pt>
+File: ../imgs/ej8/screenshot003.png Graphic file (type png)
+<use ../imgs/ej8/screenshot003.png>
+Package pdftex.def Info: ../imgs/ej8/screenshot003.png  used on input line 627.
+
+(pdftex.def)             Requested size: 317.07614pt x 272.07732pt.
+<../imgs/ej8/screenshot004.png, id=425, 558.58687pt x 297.36093pt>
+File: ../imgs/ej8/screenshot004.png Graphic file (type png)
+<use ../imgs/ej8/screenshot004.png>
+Package pdftex.def Info: ../imgs/ej8/screenshot004.png  used on input line 634.
+
+(pdftex.def)             Requested size: 317.07614pt x 168.79874pt.
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 641.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\alpha' on input line 641.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 641.
+
+<../imgs/ej8/screenshot005.png, id=428, 344.78813pt x 295.85532pt>
+File: ../imgs/ej8/screenshot005.png Graphic file (type png)
+<use ../imgs/ej8/screenshot005.png>
+Package pdftex.def Info: ../imgs/ej8/screenshot005.png  used on input line 644.
+
+(pdftex.def)             Requested size: 317.07614pt x 272.07732pt.
+[23 <../imgs/ej8/screenshot002.png> <../imgs/ej8/screenshot003.png>]
+<../imgs/ej8/screenshot006.png, id=438, 558.58687pt x 297.36093pt>
+File: ../imgs/ej8/screenshot006.png Graphic file (type png)
+<use ../imgs/ej8/screenshot006.png>
+Package pdftex.def Info: ../imgs/ej8/screenshot006.png  used on input line 651.
+
+(pdftex.def)             Requested size: 317.07614pt x 168.79874pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 658.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\alpha' on input line 658.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 658.
+
+<../imgs/ej8/screenshot007.png, id=441, 565.36218pt x 297.36093pt>
+File: ../imgs/ej8/screenshot007.png Graphic file (type png)
+<use ../imgs/ej8/screenshot007.png>
+Package pdftex.def Info: ../imgs/ej8/screenshot007.png  used on input line 662.
+
+(pdftex.def)             Requested size: 317.07614pt x 166.77507pt.
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+<../imgs/ej8/screenshot008.png, id=442, 565.36218pt x 297.36093pt>
+File: ../imgs/ej8/screenshot008.png Graphic file (type png)
+<use ../imgs/ej8/screenshot008.png>
+Package pdftex.def Info: ../imgs/ej8/screenshot008.png  used on input line 670.
+
+(pdftex.def)             Requested size: 317.07614pt x 166.77507pt.
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 677.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\alpha' on input line 677.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 677.
+
+<../imgs/ej8/screenshot009.png, id=445, 565.36218pt x 297.36093pt>
+File: ../imgs/ej8/screenshot009.png Graphic file (type png)
+<use ../imgs/ej8/screenshot009.png>
+Package pdftex.def Info: ../imgs/ej8/screenshot009.png  used on input line 681.
+
+(pdftex.def)             Requested size: 317.07614pt x 166.77507pt.
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+<../imgs/ej8/screenshot010.png, id=446, 565.36218pt x 297.36093pt>
+File: ../imgs/ej8/screenshot010.png Graphic file (type png)
+<use ../imgs/ej8/screenshot010.png>
+Package pdftex.def Info: ../imgs/ej8/screenshot010.png  used on input line 688.
+
+(pdftex.def)             Requested size: 317.07614pt x 166.77507pt.
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[24 <../imgs/ej8/screenshot004.png> <../imgs/ej8/screenshot005.png>]
+<../imgs/ej8/screenshot011.png, id=459, 572.1375pt x 297.36093pt>
+File: ../imgs/ej8/screenshot011.png Graphic file (type png)
+<use ../imgs/ej8/screenshot011.png>
+Package pdftex.def Info: ../imgs/ej8/screenshot011.png  used on input line 699.
+
+(pdftex.def)             Requested size: 317.07614pt x 164.79678pt.
+ [25 <../imgs/ej8/screenshot006.png> <../imgs/ej8/screenshot007.png> <../imgs/e
+j8/screenshot008.png>]
+<../imgs/ej8/screenshot012.png, id=470, 558.58687pt x 297.36093pt>
+File: ../imgs/ej8/screenshot012.png Graphic file (type png)
+<use ../imgs/ej8/screenshot012.png>
+Package pdftex.def Info: ../imgs/ej8/screenshot012.png  used on input line 710.
+
+(pdftex.def)             Requested size: 317.07614pt x 168.79874pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[26 <../imgs/ej8/screenshot009.png> <../imgs/ej8/screenshot010.png> <../imgs/ej
+8/screenshot011.png>]
+<../imgs/ej8/screenshot013.png, id=479, 565.36218pt x 297.36093pt>
+File: ../imgs/ej8/screenshot013.png Graphic file (type png)
+<use ../imgs/ej8/screenshot013.png>
+Package pdftex.def Info: ../imgs/ej8/screenshot013.png  used on input line 721.
+
+(pdftex.def)             Requested size: 317.07614pt x 166.77507pt.
+ [27 <../imgs/ej8/screenshot012.png> <../imgs/ej8/screenshot013.png>] [28
+
+] (TP2 Cavicchioli.aux
+LaTeX Info: Redefining \. on input line 11.
+LaTeX Info: Redefining \% on input line 11.
+)
+ ***********
+LaTeX2e <2023-11-01> patch level 1
+L3 programming layer <2024-01-04>
+ ***********
+
+
+LaTeX Warning: There were undefined references.
+
+Package rerunfilecheck Info: File `"TP2 Cavicchioli".out' has not changed.
+(rerunfilecheck)             Checksum: AE3C28B80E9651203BB580DEF094260D;6990.
+ ) 
+Here is how much of TeX's memory you used:
+ 14584 strings out of 474485
+ 243999 string characters out of 5743733
+ 1944542 words of memory out of 5000000
+ 36574 multiletter control sequences out of 15000+600000
+ 567990 words of font info for 70 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 75i,11n,79p,748b,753s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ <C:\Users\ignac\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm
+1095.pk><C:/Users/ignac/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfon
+ts/cm/cmbx10.pfb><C:/Users/ignac/AppData/Local/Programs/MiKTeX/fonts/type1/publ
+ic/amsfonts/cm/cmmi10.pfb><C:/Users/ignac/AppData/Local/Programs/MiKTeX/fonts/t
+ype1/public/amsfonts/cm/cmmi6.pfb><C:/Users/ignac/AppData/Local/Programs/MiKTeX
+/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/ignac/AppData/Local/Program
+s/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi9.pfb><C:/Users/ignac/AppData/Local
+/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/ignac/AppDa
+ta/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/ign
+ac/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/U
+sers/ignac/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr6.pf
+b><C:/Users/ignac/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/
+cmr8.pfb><C:/Users/ignac/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfo
+nts/cm/cmr9.pfb><C:/Users/ignac/AppData/Local/Programs/MiKTeX/fonts/type1/publi
+c/amsfonts/cm/cmss10.pfb><C:/Users/ignac/AppData/Local/Programs/MiKTeX/fonts/ty
+pe1/public/amsfonts/cm/cmss12.pfb><C:/Users/ignac/AppData/Local/Programs/MiKTeX
+/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/ignac/AppData/Local/Progra
+ms/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy6.pfb><C:/Users/ignac/AppData/Loca
+l/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb>
+Output written on "TP2 Cavicchioli.pdf" (28 pages, 981969 bytes).
+PDF statistics:
+ 589 PDF objects out of 1000 (max. 8388607)
+ 112 named destinations out of 1000 (max. 500000)
+ 511 words of extra memory for PDF output out of 10000 (max. 10000000)
+
