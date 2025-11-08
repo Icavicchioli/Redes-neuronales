@@ -555,7 +555,131 @@ b - Estudie la evolución de los errores durante el entrenamiento de una red con
 
 El conjunto de datos se generó sin mayores problemas, fue solo evaluar la función $f(x,y,z)$ en muchos puntos.
 
-Los datasets de entrenamiento y testeo se separaron 70/30 (56000 muestras de entrenamiento) y se entrenó variando el tamaño de minibatch.
+Los datasets de entrenamiento y testeo se separaron 70/30 (56000 muestras de entrenamiento) y se entrenó variando el tamaño de minibatch. El uso de minibatch implica la utilización de un gradiente estocástico, que es más rápido (menos datos, menos cuentas) y ayuda con la convergencia ya que la aleatoriedad introducida por no usar todas las muestras causa que no siempre se caiga en las mismas cuencas de la función de costo.
+
+Los MLPs son de 30 neuronas en una sola capa oculta. Se mantuvieron las mismas condiciones para los 4 experimentos, para no sesgar los resultados. La validación se hizo con todo el set de testeo.
+
+\subsection{{Inciso a}
+
+\subsubsection{Minibatch de 40 muestras}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.7\linewidth]{imgs/batch40ECM}
+	\caption{ECM de entrenamiento y validación - Minibatch de 40 muestras}
+	\label{fig:batch40ecm}
+\end{figure}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.7\linewidth]{imgs/batch40AjusteFuncion}
+	\caption{Predicción del modelo en base a (X,Y,Z) - Minibatch de 40 muestras}
+	\label{fig:batch40ajustefuncion}
+\end{figure}
+
+
+\subsubsection{Minibatch de 1 muestras}
+
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.7\linewidth]{imgs/batch1ECM}
+	\caption{ECM de entrenamiento y validación - Minibatch de 1 muestra}
+	\label{fig:batch1ecm}
+\end{figure}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.7\linewidth]{imgs/batch1AjusteFuncion}
+	\caption{Predicción del modelo en base a (X,Y,Z) - Minibatch de 1 muestra}
+	\label{fig:batch1ajustefuncion}
+\end{figure}
+
+\subsubsection{Minibatch de 100 muestras}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.7\linewidth]{imgs/batch100ECM}
+	\caption{ECM de entrenamiento y validación - Minibatch de 100 muestras}
+	\label{fig:batch100ecm}
+\end{figure}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.7\linewidth]{imgs/batch100AjusteFuncion}
+	\caption{Predicción del modelo en base a (X,Y,Z) - Minibatch de 100 muestras}
+	\label{fig:batch100ajustefuncion}
+\end{figure}
+
+
+\subsubsection{Minibatch de 1000 muestras}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.7\linewidth]{imgs/batch1000ECM1}
+	\caption{ECM de entrenamiento y validación - Minibatch de 1000 muestras}
+	\label{fig:batch1000ecm1}
+\end{figure}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.7\linewidth]{imgs/batch1000AjusteFuncion1}
+	\caption{Predicción del modelo en base a (X,Y,Z) - Minibatch de 1000 muestras}
+	\label{fig:batch1000ajustefuncion1}
+\end{figure}
+
+
+\subsection{Inciso b}
+
+\subsubsection{Minibatch de 40 muestras}
+
+Las figuras \ref{fig:batch40y40muestrasnoconverge} y \ref{fig:batch40y40muestrasnoconverge1} muestran el resultado de entrenar un MLP con Minibatch de 40 muestras en base a solo 40 muestras de entrenamiento. El entrenamiento se ejecutó por la misma cantidad de tiempo que el de Minibatch de 1 muestra, pero este no convergió a una solución adecuada, como se aprecia en la predicción.
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.7\linewidth]{imgs/batch40y40muestras_noConverge}
+	\caption{ECM de entrenamiento y validación - no hubo convergencia}
+	\label{fig:batch40y40muestrasnoconverge}
+\end{figure}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.7\linewidth]{imgs/batch40y40muestras_noConverge1}
+	\caption{Predicción del modelo en base a (X,Y,Z)}
+	\label{fig:batch40y40muestrasnoconverge1}
+\end{figure}
+
+Las figuras \ref{fig:batch40y40muestrasconverge} y \ref{fig:batch40y40muestrasconverge1} son el resultado de tomar el modelo de las imágenes de antes pero darle más iteraciones de aprendizaje. Ahora si se observa convergencia en los EC; y la predicción es más cercana a los valores reales.
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.7\linewidth]{imgs/batch40y40muestras_Converge}
+	\caption{}
+	\label{fig:batch40y40muestrasconverge}
+\end{figure}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.7\linewidth]{imgs/batch40y40muestras_Converge1}
+	\caption{}
+	\label{fig:batch40y40muestrasconverge1}
+\end{figure}
+
+
+\subsubsection{Minibatch de 1 muestras}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.7\linewidth]{imgs/batch1y40muestras_noConverge2}
+	\caption{ECM de entrenamiento y validación - Hubo convergencia}
+	\label{fig:batch1y40muestrasnoconverge2}
+\end{figure}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.7\linewidth]{imgs/batch1y40muestras_noConverge3}
+	\caption{Predicción del modelo en base a (X,Y,Z)}
+	\label{fig:batch1y40muestrasnoconverge3}
+\end{figure}
+
 
 
 \subsection{Análisis}
