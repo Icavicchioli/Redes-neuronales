@@ -524,7 +524,7 @@ El cuadro \ref{cuadroXOR4_010} muestra la tabla de verdad enseñada y aprendida.
 	\label{cuadroXOR4_010}
 \end{table}
 
-\clearpage
+
 
 \subsection{Análisis}
 
@@ -535,6 +535,7 @@ Algo que no se mencionó es que los errores tienen forma de exponenciales decrec
 otro tema interesante para mencionar es que, como el método de gradiente usado no es estocástico, el resultado final del aprendizaje es determinístico. Esto trae como consecuencia que, si el espacio de soluciones de error mínimo es pequeño, sería difícil encontrar justo la condición inicial que caiga en el (más bien, no se encontró para menos de 10 neuronas). Claramente, el uso de más neuronas da más grados de libertad a la red, y más capacidad, y todo esto parecería ser acompañado por un incremento en accesibilidad para las regiones que son solución al problema.
 Volviendo al punto anterior, es posible que haya soluciones en espacios de menor dimensión que el de la red de 10 neuronas en la capa oculta, pero no fueron accedidos por la regla de aprendizaje. Opino que existe la posibilidad de que la función XOR de 4 entradas se pueda aprender con menos neuronas  pero con el uso de alguna regla que meta estocacidad en el sistema, como el uso de un gradiente estocástico. Este punto se retoma en el inciso de \textit{simulated annealing}, donde se comprueba esta hipótesis. También sería interesante saber si un perceptrón simple de 4 entradas con función de activación no monótona podría aprenderlo (intuyo que si).
 
+\newpage
 
 \section{Ejercicio 4}
 
@@ -557,45 +558,40 @@ El conjunto de datos se generó sin mayores problemas, fue solo evaluar la funci
 
 Los datasets de entrenamiento y testeo se separaron 70/30 (56000 muestras de entrenamiento) y se entrenó variando el tamaño de minibatch. El uso de minibatch implica la utilización de un gradiente estocástico, que es más rápido (menos datos, menos cuentas) y ayuda con la convergencia ya que la aleatoriedad introducida por no usar todas las muestras causa que no siempre se caiga en las mismas cuencas de la función de costo.
 
+En esta implementación se separaron los datos en tantos batches como corresponde según el tamaño, y todos se mostraron 10 veces en un orden aleatorio (pero nunca seguidos, todos se ostraban antes de volver a seleccionar uno ya mostrado). Se intentó balancear la cantidad de ``veces'' (en el código, ``veces'' sería la cantida de veces que se muestran todos los minibatches) para que sea justo entre modelos de tamaños de minibatch diferentes.
+
 Los MLPs son de 30 neuronas en una sola capa oculta. Se mantuvieron las mismas condiciones para los 4 experimentos, para no sesgar los resultados. La validación se hizo con todo el set de testeo.
 
-\subsection{{Inciso a}
+\newpage
+
+\subsection{Inciso a}
 
 \subsubsection{Minibatch de 40 muestras}
+
+Las figuras \ref{fig:batch40ecm} y \ref{fig:batch40ajustefuncion} corresponden a un minibatch de 40 muestras. Se nota convergencia en los ECM y una predicción que empeora en los valores más extremos de la variable a predecir.
 
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=0.7\linewidth]{imgs/batch40ECM}
-	\caption{ECM de entrenamiento y validación - Minibatch de 40 muestras}
+	\caption{ECM de entrenamiento y validación - Minibatch de 40 muestras, 10 veces, 1 epoch}
 	\label{fig:batch40ecm}
 \end{figure}
 
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=0.7\linewidth]{imgs/batch40AjusteFuncion}
-	\caption{Predicción del modelo en base a (X,Y,Z) - Minibatch de 40 muestras}
+	\caption{Predicción del modelo en base a (X,Y,Z) - Minibatch de 40 muestras, 10 veces, 1 epoch}
 	\label{fig:batch40ajustefuncion}
 \end{figure}
 
 
-\subsubsection{Minibatch de 1 muestras}
 
+\clearpage
 
-\begin{figure}[h!]
-	\centering
-	\includegraphics[width=0.7\linewidth]{imgs/batch1ECM}
-	\caption{ECM de entrenamiento y validación - Minibatch de 1 muestra}
-	\label{fig:batch1ecm}
-\end{figure}
-
-\begin{figure}[h!]
-	\centering
-	\includegraphics[width=0.7\linewidth]{imgs/batch1AjusteFuncion}
-	\caption{Predicción del modelo en base a (X,Y,Z) - Minibatch de 1 muestra}
-	\label{fig:batch1ajustefuncion}
-\end{figure}
 
 \subsubsection{Minibatch de 100 muestras}
+
+Las figuras \ref{fig:batch100ecm} y \ref{fig:batch100ajustefuncion} corresponden a un minibatch de 100 muestras. Los ECM convergen pero la predicción es peor que las anteriores.
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=0.7\linewidth]{imgs/batch100ECM}
@@ -612,6 +608,9 @@ Los MLPs son de 30 neuronas en una sola capa oculta. Se mantuvieron las mismas c
 
 
 \subsubsection{Minibatch de 1000 muestras}
+
+Las figuras \ref{fig:batch100ecm} y \ref{fig:batch100ajustefuncion} corresponden a un minibatch de 100 muestras. Los ECM parecerían converger, y la predicción es la peor de todas.
+
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=0.7\linewidth]{imgs/batch1000ECM1}
@@ -625,6 +624,10 @@ Los MLPs son de 30 neuronas en una sola capa oculta. Se mantuvieron las mismas c
 	\caption{Predicción del modelo en base a (X,Y,Z) - Minibatch de 1000 muestras}
 	\label{fig:batch1000ajustefuncion1}
 \end{figure}
+
+\subsubsection{Análisis}
+
+Se observa que un valor menor de minibatch se condiciona con mejores predicciones, aunque esto puede deberse a que para una cantidad fija de iteraciones, el modelo
 
 
 \subsection{Inciso b}
@@ -682,7 +685,7 @@ Las figuras \ref{fig:batch40y40muestrasconverge} y \ref{fig:batch40y40muestrasco
 
 
 
-\subsection{Análisis}
+\subsection{Análisis global}
 
 
 
