@@ -31,6 +31,7 @@
 \usepackage{subfig} % make it possible to include more than one captioned figure/table in a single float
 % These packages are all incorporated in the memoir class to one degree or another...
 \usepackage{enumitem}
+\usepackage{amssymb}
 \usepackage{amsmath}
 
 % para los cuadritos en links
@@ -209,7 +210,7 @@ los resultados para $N=30$ se pueden ver en la figura \ref{fig:capacidad}, y par
 
 La figura \ref{fig:capacidad} muestra que la capacidad de memorizar (el eje Y) del perceptrón es perfecta (vale 1) y, a medida que aumenta la cantidad de patrones, decrece hasta hacerse cero. El cruce por el punto $p/N =2$ se da aproximadamente en $p\simeq 0.5$, resultado coincidente con la teoría del libro mencionado.
 
-La transición, o flanco, no es perfectamente vertical, sino que decrece casi como una función sigmoidea. Esto es debido al uso de valores de $N$ relativamente pequeños. A forma comparativa se incluye la imagen \ref{fig:N10}, de $N=10$. En esta se ve que la capacidad tarda más en converge a cero (en $N=30$ se hace cero en $2.5$, y en $N=10$, en $3.5$), y la intersección del límite teórico es más cercana a $0.6$ y no $0.5$.
+La transición, o flanco, no es perfectamente vertical, sino que decrece casi como una función sigmoidea. Esto es debido al uso de valores de $N$ relativamente pequeños y el promediado empleado. A forma comparativa se incluye la imagen \ref{fig:N10}, de $N=10$. En esta se ve que la capacidad tarda más en converge a cero (en $N=30$ se hace cero en $2.5$, y en $N=10$, en $3.5$), y la intersección del límite teórico es más cercana a $0.6$ y no $0.5$.
 
 Resumiendo, aún con las limitaciones en la cantidad de unidades de entrada, se empieza a divisar una tendencia que parece coincidir con la teoría.
 
@@ -227,6 +228,67 @@ Implemente un perceptrón multicapa que aprenda la función lógica XOR de 2 y d
 
 En este inciso se entrenó un MLP para que aprendan la XOR, pero se hizo con 2, 4 y 10 neuronas en la capa oculta. La idea general fue crear las tablas de verdad de las funciones XOR de 2 y 4 entradas y entrenar MLP´s, registrando el error en función de las epochs.
 
+No se usa 1 solo perceptrón porque su funcionamiento es incompatible con la función XOR. El problema fundamental es que no existen pesos que permitan aprender perfectamente el problema. Voy a intentar una pequeña demostración basándome en las fórmulas básicas del perceptrón y suponiendo una toma de decisión por alguna función que categorice 0 y 1.
+
+La explicación de a continuación debería ayudar a entender que la limitación se puede hasta pensar de forma geométrica, no es dependiente del entrenamiento o función de activación\footnote{Excepto en el caso de usar una función de activación no monótona. Se me ocurrió definir, por elegir valores simples, una función que vale 0 para todo valor fuera del intervalo $(\tfrac{1}{10}, \tfrac{3}{8})$ y 1 dentro de él. Con esta nueva función, el perceptrón podría aprender la función XOR, ya que existen, por ejemplo, $\alpha = \tfrac{1}{2}$ que cumplen: para $(0,0)\!\to\!h=0\!\to\!y=0$, para $(1,0)$ y $(0,1)\!\to\!h=\tfrac{1}{4}\!\to\!y=1$, y para $(1,1)\!\to\!h=\tfrac{1}{2}\!\to\!y=0$. Esta función no permite resolver la AND o la OR, fue revisado en un visor de geometría 3D.}.
+
+
+$$
+y = \begin{cases}
+	1 \; \text{si} \; h > 1/2 \\
+	0 \; \text{si} \;h \leq 1/2
+\end{cases}
+$$
+
+donde $h$ es la salida del perceptrón simple:
+
+$$h = \alpha_1 x_1 + \alpha_2 x_2$$
+
+\begin{table}[h!]
+	\centering
+	\begin{tabular}{|c|c|c|c|}
+		\hline
+		x1 & x2 & h &y\\
+		\hline
+		0 & 0 & $\le1/2$&0\\
+		\hline
+		0 & 1 & $ > 1/2$&1\\
+		\hline
+		1 & 0 & $ > 1/2$&1\\
+		\hline
+		1 & 1 & $\le1/2$&0\\
+		\hline
+	\end{tabular}
+\end{table}
+
+
+Resolviendo el sistema de ecuaciones para $(0,0)$:
+
+$$
+0 \cdot \alpha_1 + 0 \cdot \alpha_2 = h \le 1/2
+$$
+Para $(0,1)$:
+$$
+0 \cdot \alpha_1 + 1 \cdot \alpha_2 = h \ge 1/2 \Rightarrow \alpha_2 \ge 1/2
+$$
+Para $(1,0)$:
+$$
+1 \cdot \alpha_1 + 0 \cdot \alpha_2 = h \ge 1/2 \Rightarrow \alpha_1 \ge  1/2
+$$
+Para $(1,1)$:
+$$
+1 \cdot \alpha_1 + 1 \cdot \alpha_2 = h \le 1/2 \Rightarrow \alpha_1 + \alpha_2 \le  1/2
+$$
+
+Sumando las dos desigualdades obtenemos
+$$
+\alpha_1 + \alpha_2 \ge 1,
+$$
+Lo cual contradice \(\alpha_1 + \alpha_2 \le \tfrac12\). Por lo tanto, no existen \(\alpha_1,\alpha_2\) que satisfagan todas las condiciones: el perceptrón simple no puede aprender la función XOR.
+Ahora, cuando se agrega otro perceptrón en paralelo y se le da uno que decide en base a esta capa oculta, la XOR se vuelve ``aprendible''.
+
+
+
 \subsubsection{2 Neuronas en capa oculta}
 
 En este primer caso se utilizó un perceptrón multicapa con una capa oculta de dos neuronas, con el objetivo de que aprenda la función XOR.
@@ -235,7 +297,8 @@ Se trabajó tanto con la XOR de dos entradas como con la de cuatro entradas, man
 Para la XOR de dos entradas, la red logró converger correctamente, alcanzando un error cercano a cero y reproduciendo exactamente la tabla de verdad de la función.
 En las Figuras~\ref{fig:xor2err} y~\ref{fig:xor2front} se muestra la evolución del error por época y la frontera de decisión obtenida, respectivamente, donde puede verse una separación clara entre las clases.
 
-En contraste, al aplicar la misma arquitectura a la XOR de cuatro entradas, la red no consiguió reducir el error a valores cercanos a cero, incluso habiendo hasta triplicado la cantidad de epochs. (Figura~\ref{fig:xor4err}).
+
+En contraste, al aplicar la misma arquitectura a la XOR de cuatro entradas, la red no consiguió reducir el error a cero, incluso habiendo hasta triplicado la cantidad de epochs. (Figura~\ref{fig:xor4err}).
 
 Esto apunta a que dos neuronas ocultas no son suficientes para modelar la complejidad de la XOR de cuatro entradas, y se supone que se debe principalmente al incremento exponencial en cantidad de combinaciones posibles. La red ya no dispone de capacidad suficiente como para memorizar los patrones, siendo esto una manifestación práctica de la capacidad teórica analizada en el ejercicio anterior.
 
@@ -308,13 +371,11 @@ Esto apunta a que dos neuronas ocultas no son suficientes para modelar la comple
 \subsubsection{4 Neuronas en capa oculta}
 
 En este caso se incrementó el número de neuronas en la capa oculta a cuatro, con el objetivo de mejorar la capacidad de representación del MLP.
-Para la XOR de dos entradas, la red continúa convergiendo correctamente, alcanzando un error muy bajo y generando fronteras de decisión suaves y bien definidas (Figuras~\ref{fig:ecm2} y~\ref{fig:front2}).
+Para la XOR de dos entradas, la red continúa convergiendo correctamente, alcanzando un error nulo y generando fronteras de decisión curvas (Figuras~\ref{fig:ecm2} y~\ref{fig:front2}). Esta curvatura parece ser causada por la complejidad de la red; mientras más unidades tiene la capa oculta, más grados de libertad tienen las fronteras.
 Esto se refleja también en la tabla de resultados, donde todas las predicciones coinciden con los valores esperados.
 
-Para la XOR de cuatro entradas, aunque el error global se reduce ligeramente en comparación con la red de dos neuronas, la red aún no logra converger a un error nulo (Figura~\ref{fig:ecm4}).
-La complejidad de la función sigue superando la capacidad de la red, aunque se observa que las fronteras de decisión empiezan a tomar formas curvas que intentan separar mejor las clases.
-Esto evidencia que un aumento en el número de neuronas mejora la capacidad de representación, pero todavía no es suficiente para clasificar correctamente todas las combinaciones de la XOR de cuatro entradas.
-En la tabla correspondiente se puede ver que varias predicciones todavía difieren del target esperado.
+Para la XOR de cuatro entradas, la red aún no logra converger a un error nulo (Figura~\ref{fig:ecm4}).
+En la tabla correspondiente se puede ver que varias predicciones todavía difieren del target esperado. Se sigue confundiendo en la primer entrada.
 
 
 \begin{figure}[htbp!]
@@ -337,8 +398,6 @@ En la tabla correspondiente se puede ver que varias predicciones todavía difier
 	\caption{Error por época - XOR de 4 entradas - MLP 4 neuronas en capa oculta}
 	\label{fig:ecm4}
 \end{figure}
-
-
 
 
 
@@ -391,10 +450,11 @@ En la tabla correspondiente se puede ver que varias predicciones todavía difier
 
 Al aumentar el número de neuronas en la capa oculta a diez, se observa un cambio significativo en el comportamiento del MLP.
 
-Para la XOR de dos entradas, la red sigue convergiendo sin problemas y mantiene fronteras de decisión suaves y bien definidas (Figura~\ref{fig:2ecm10} y \ref{fig:front10}). Las fronteras de decisión siguen siendo curvas, lo que indica que la función sigue siendo no lineal, pero la gran cantidad de neuronas le da mucha variabilidad a las soluciones; en cada ejecución la frontera cambia mucho, puede ser más recta o muy curva.
+Para la XOR de dos entradas, la red sigue convergiendo sin problemas (Figura~\ref{fig:2ecm10} y \ref{fig:front10}). Las fronteras de decisión siguen siendo curvas, cambiando en cada ejecución, pudiendo ser más o menos recta. Acá ya se entiende que la red tiene más que suficiente capacidad para aprender todos los patrones, y su espacio de soluciones posibles es grande y variado (relacionado con la cantidad de grados de libertad que le da la capa oculta de 10 unidades), por eso la gran variedad de fronteras.
 
-Para la XOR de cuatro entradas, a diferencia de los casos anteriores con 2 o 4 neuronas, ahora la red logra aprender correctamente todos los patrones, alcanzando un error muy bajo (Figura~\ref{fig:4ecm10}). Esto confirma la sospecha de que las dificultades de aprendizaje de la XOR de 4 entradas en los experimentos anteriores estaba relacionada con la capacidad de la red, que se encontraba limitada por la cantidad de neuronas.
-El cuadro \ref{cuadroXOR4_010} muestra la tabla de verdad enseñada y aprendida. Nótese que, contrario a los casos para menos neuronas, la red aprendió bien la lógica, y esto se nota en que las salidas de la sigmoidea son o muy cercanas a 0, o muy cercanas a 1, indicando poca confusión.
+Para la XOR de cuatro entradas, a diferencia de los casos anteriores con 2 o 4 neuronas, ahora la red logra aprender correctamente todos los patrones, alcanzando un error nulo (Figura~\ref{fig:4ecm10}). Esto confirma la sospecha de que las dificultades de aprendizaje de la XOR de 4 entradas en los experimentos anteriores estaba relacionada con la capacidad de la red, que se encontraba limitada por la cantidad de neuronas. De alguna manera, el aumento de grados de libertad hace que los subespacios de parámetros que son compatibles con el set de datos se vuelvan cada vez más accesibles, hasta que es lo suficientemente accesible como para que siempre haya error nulo post-aprendizaje.
+
+El cuadro \ref{cuadroXOR4_010} muestra la tabla de verdad enseñada y aprendida. Nótese que, contrario a los casos para menos neuronas, la red aprendió bien la lógica, y esto se nota en que las salidas de la sigmoidea son o muy cercanas a 0, o muy cercanas a 1, indicando poca ``confusión'' (siempre está muy seguro de su decisión).
 
 \begin{figure}[htbp!]
 	\centering
@@ -473,7 +533,7 @@ El análisis ya se desarrolló casi completamente en cada subsección. Lo que se
 Algo que no se mencionó es que los errores tienen forma de exponenciales decrecientes (aunque a veces deformes), que parecería normal para estos casos. Algunos entrenamientos presentaron como puntos silla, lo que indicaría que el algoritmo se encontró con una región de gradiente muy pequeño, como la figura \ref{fig:xor2err}, que se quedó varias epochs en 0.25 de ECM.
 
 otro tema interesante para mencionar es que, como el método de gradiente usado no es estocástico, el resultado final del aprendizaje es determinístico. Esto trae como consecuencia que, si el espacio de soluciones de error mínimo es pequeño, sería difícil encontrar justo la condición inicial que caiga en el (más bien, no se encontró para menos de 10 neuronas). Claramente, el uso de más neuronas da más grados de libertad a la red, y más capacidad, y todo esto parecería ser acompañado por un incremento en accesibilidad para las regiones que son solución al problema.
-Volviendo al punto anterior, es posible que haya soluciones en espacios de menor dimensión que el de la red de 10 neuronas en la capa oculta, pero no fueron accedidos por la regla de aprendizaje. Opino que existe la posibilidad de que la función XOR de 4 entradas se pueda aprender con menos neuronas  pero con el uso de alguna regla que meta estocacidad en el sistema, como el uso de un gradiente estocástico. Este punto se retoma en el inciso de \textit{simulated annealing}, donde se comprueba esta hipótesis.
+Volviendo al punto anterior, es posible que haya soluciones en espacios de menor dimensión que el de la red de 10 neuronas en la capa oculta, pero no fueron accedidos por la regla de aprendizaje. Opino que existe la posibilidad de que la función XOR de 4 entradas se pueda aprender con menos neuronas  pero con el uso de alguna regla que meta estocacidad en el sistema, como el uso de un gradiente estocástico. Este punto se retoma en el inciso de \textit{simulated annealing}, donde se comprueba esta hipótesis. También sería interesante saber si un perceptrón simple de 4 entradas con función de activación no monótona podría aprenderlo (intuyo que si).
 
 
 \section{Ejercicio 4}
@@ -495,7 +555,7 @@ b - Estudie la evolución de los errores durante el entrenamiento de una red con
 
 El conjunto de datos se generó sin mayores problemas, fue solo evaluar la función $f(x,y,z)$ en muchos puntos.
 
-Los datasets de entrnamiento y testeo se separaron 70/30 (56000 muestras de entrenamiento) y se entrenó variando el tamaño de minibatch.
+Los datasets de entrenamiento y testeo se separaron 70/30 (56000 muestras de entrenamiento) y se entrenó variando el tamaño de minibatch.
 
 
 \subsection{Análisis}
@@ -603,7 +663,8 @@ Como detalle final, la temperatura se debe decrecer para que el algoritmo vaya c
 
 En el desarrollo hecho se usó un decaimiento de temperatura del tiempo exponencial y un $\sigma$ constante. A continuación se detallan los varios casos simulados.
 
-\subsubsection{XOR de 2 entradas - 2 neuronas en capa oculta - $\alpha = 0.995$}
+\subsubsection{XOR de 2 entradas - 2 neuronas en capa oculta}
+$\alpha = 0.995$
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=0.7\linewidth]{../imgs/ej8/screenshot001}
@@ -620,8 +681,8 @@ En el desarrollo hecho se usó un decaimiento de temperatura del tiempo exponenc
 
 La XOR de 2 entradas fue aprendida perfectamente por una red de 2 neuronas en la capa oculta, igual que en la consigna 3. La imagen \ref muestra la frontera de decisión{fig:screenshot001}, también recta como en el caso de gradiente descendiente. En el gráfico~\ref{fig:screenshot002} se puede ver el ECM y temperatura. hay cierta estocacidad con el ECM (como es de esperar por la temperatura), pero termina disminuyendo hasta converger en 0.
 
-\subsubsection{XOR de 2 entradas - 4 neuronas en capa oculta - $\alpha = 0.995$}
-
+\subsubsection{XOR de 2 entradas - 4 neuronas en capa oculta}
+$\alpha = 0.995$
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=0.7\linewidth]{../imgs/ej8/screenshot003}
@@ -638,7 +699,8 @@ La XOR de 2 entradas fue aprendida perfectamente por una red de 2 neuronas en la
 
 La figura \ref{fig:screenshot003} muestra la frontera de decisión, y la \ref{fig:screenshot004} contiene el ECM y temperatura. La red aprendió el problema a la perfección. Su ECM es decreciente y la forntera es congruente con lo esperado y ya visto.
 
-\subsubsection{XOR de 2 entradas - 10 neuronas en capa oculta - $\alpha = 0.995$}
+\subsubsection{XOR de 2 entradas - 10 neuronas en capa oculta}
+$\alpha = 0.995$
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=0.7\linewidth]{../imgs/ej8/screenshot005}
@@ -655,8 +717,8 @@ La figura \ref{fig:screenshot003} muestra la frontera de decisión, y la \ref{fi
 
 La figura \ref{fig:screenshot005} muestra la frontera de decisión, y la \ref{fig:screenshot006} contiene el ECM y temperatura. la frontera de decisión es curva como en el caso de 10 neuronas con gradiente descendiente y el ECM disminuye como se esperaba.
 
-\subsubsection{XOR de 2 entradas - 2 neuronas en capa oculta - $\alpha = 0.98$}
-
+\subsubsection{XOR de 2 entradas - 2 neuronas en capa oculta}
+$\alpha = 0.98$
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=0.7\linewidth]{../imgs/ej8/screenshot007}
@@ -674,8 +736,8 @@ La figura \ref{fig:screenshot005} muestra la frontera de decisión, y la \ref{fi
 
 Para este caso (figuras \ref{fig:screenshot007} y \ref{fig:screenshot008}), em uno la red aprendió el problema aún cuando la regla de la actualización de la temperatura era la de una exponencial rápida. En el otro no lo aprendió. Esto claramente es algo estocástico.
 
-\subsubsection{XOR de 2 entradas - 2 neuronas en capa oculta - $\alpha = 0.999$}
-
+\subsubsection{XOR de 2 entradas - 2 neuronas en capa oculta}
+$\alpha = 0.999$
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=0.7\linewidth]{../imgs/ej8/screenshot009}
@@ -723,7 +785,7 @@ aprendió
 	\label{fig:screenshot013}
 \end{figure}
 
-sobre estas últimas, puede ser que le sea más facil encontrar la solución pq el esacio de soluciones es más chico y este algoritmo se lo permite encontrar.
+Sobre estas últimas, puede ser que le sea más fácil encontrar la solución pq el esacio de soluciones es más chico y este algoritmo se lo permite encontrar.
 
 \subsection{Análisis}
 
