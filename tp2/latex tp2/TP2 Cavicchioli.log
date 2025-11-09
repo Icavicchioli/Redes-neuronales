@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.8.28)  9 NOV 2025 15:17
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.8.28)  9 NOV 2025 17:21
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -848,59 +848,53 @@ Package pdftex.def Info: imgs/batch1000AjusteFuncion1.png  used on input line 6
 
 
 [22 <./imgs/batch1000ECM1.png> <./imgs/batch1000AjusteFuncion1.png>]
-<imgs/batch40y40muestras_noConverge.png, id=494, 520.19344pt x 295.85532pt>
+
+[23]
+<imgs/batch40y40muestras_noConverge.png, id=498, 520.19344pt x 295.85532pt>
 File: imgs/batch40y40muestras_noConverge.png Graphic file (type png)
 <use imgs/batch40y40muestras_noConverge.png>
 Package pdftex.def Info: imgs/batch40y40muestras_noConverge.png  used on input 
-line 641.
+line 642.
 (pdftex.def)             Requested size: 362.37569pt x 206.09962pt.
-<imgs/batch40y40muestras_noConverge1.png, id=495, 402.00188pt x 412.54124pt>
+<imgs/batch40y40muestras_noConverge1.png, id=499, 402.00188pt x 412.54124pt>
 File: imgs/batch40y40muestras_noConverge1.png Graphic file (type png)
 <use imgs/batch40y40muestras_noConverge1.png>
 Package pdftex.def Info: imgs/batch40y40muestras_noConverge1.png  used on input
- line 648.
-(pdftex.def)             Requested size: 317.07614pt x 325.38783pt.
+ line 649.
+(pdftex.def)             Requested size: 271.7835pt x 278.90656pt.
 
 
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-<imgs/batch40y40muestras_Converge.png, id=498, 489.9906pt x 284.0211pt>
+[24 <./imgs/batch40y40muestras_noConverge.png> <./imgs/batch40y40muestras_noCon
+verge1.png>]
+<imgs/batch40y40muestras_Converge.png, id=510, 489.9906pt x 284.0211pt>
 File: imgs/batch40y40muestras_Converge.png Graphic file (type png)
 <use imgs/batch40y40muestras_Converge.png>
 Package pdftex.def Info: imgs/batch40y40muestras_Converge.png  used on input li
-ne 657.
-(pdftex.def)             Requested size: 362.37569pt x 210.0553pt.
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-<imgs/batch40y40muestras_Converge1.png, id=499, 385.9218pt x 396.0396pt>
+ne 660.
+(pdftex.def)             Requested size: 317.07614pt x 183.79677pt.
+<imgs/batch40y40muestras_Converge1.png, id=511, 385.9218pt x 396.0396pt>
 File: imgs/batch40y40muestras_Converge1.png Graphic file (type png)
 <use imgs/batch40y40muestras_Converge1.png>
 Package pdftex.def Info: imgs/batch40y40muestras_Converge1.png  used on input l
-ine 664.
+ine 667.
 (pdftex.def)             Requested size: 317.07614pt x 325.40117pt.
 
-LaTeX Warning: `!h' float specifier changed to `!ht'.
 
+[25
 
-
-[23 <./imgs/batch40y40muestras_noConverge.png>]
-
-[24 <./imgs/batch40y40muestras_noConverge1.png> <./imgs/batch40y40muestras_Conv
-erge.png>]
-
-[25 <./imgs/batch40y40muestras_Converge1.png>]
+ <./imgs/batch40y40muestras_Converge.png> <./imgs/batch40y40muestras_Converge1.
+png>]
 <imgs/batch1y40muestras_noConverge2.png, id=523, 516.42938pt x 295.85532pt>
 File: imgs/batch1y40muestras_noConverge2.png Graphic file (type png)
 <use imgs/batch1y40muestras_noConverge2.png>
 Package pdftex.def Info: imgs/batch1y40muestras_noConverge2.png  used on input 
-line 677.
+line 680.
 (pdftex.def)             Requested size: 317.07614pt x 181.65424pt.
 <imgs/batch1y40muestras_noConverge3.png, id=524, 402.00188pt x 412.54124pt>
 File: imgs/batch1y40muestras_noConverge3.png Graphic file (type png)
 <use imgs/batch1y40muestras_noConverge3.png>
 Package pdftex.def Info: imgs/batch1y40muestras_noConverge3.png  used on input 
-line 684.
+line 687.
 (pdftex.def)             Requested size: 317.07614pt x 325.38783pt.
 
 
@@ -914,197 +908,277 @@ e3.png>]
 [28
 
 ]
-<imgs/ej5_ecm.png, id=543, 436.63126pt x 298.11375pt>
-File: imgs/ej5_ecm.png Graphic file (type png)
-<use imgs/ej5_ecm.png>
-Package pdftex.def Info: imgs/ej5_ecm.png  used on input line 797.
-(pdftex.def)             Requested size: 317.07614pt x 216.48856pt.
+<imgs/ej5_ecm400.png, id=544, 440.39531pt x 298.11375pt>
+File: imgs/ej5_ecm400.png Graphic file (type png)
+<use imgs/ej5_ecm400.png>
+Package pdftex.def Info: imgs/ej5_ecm400.png  used on input line 800.
+(pdftex.def)             Requested size: 452.9679pt x 306.63754pt.
+<imgs/ej5_reconst400.png, id=545, 1181.91562pt x 273.27094pt>
+File: imgs/ej5_reconst400.png Graphic file (type png)
+<use imgs/ej5_reconst400.png>
+Package pdftex.def Info: imgs/ej5_reconst400.png  used on input line 808.
+(pdftex.def)             Requested size: 452.9679pt x 104.72801pt.
 
 
-[29 <./imgs/ej5_ecm.png>]
+[29 <./imgs/ej5_ecm400.png> <./imgs/ej5_reconst400.png>]
+<imgs/ej5_ecm200.png, id=556, 440.39531pt x 298.11375pt>
+File: imgs/ej5_ecm200.png Graphic file (type png)
+<use imgs/ej5_ecm200.png>
+Package pdftex.def Info: imgs/ej5_ecm200.png  used on input line 819.
+(pdftex.def)             Requested size: 452.9679pt x 306.63754pt.
+<imgs/ej5_recons200.png, id=557, 1181.91562pt x 273.27094pt>
+File: imgs/ej5_recons200.png Graphic file (type png)
+<use imgs/ej5_recons200.png>
+Package pdftex.def Info: imgs/ej5_recons200.png  used on input line 826.
+(pdftex.def)             Requested size: 452.9679pt x 104.72801pt.
+
 
 [30
 
+ <./imgs/ej5_ecm200.png> <./imgs/ej5_recons200.png>]
+<imgs/ej5_ecm100.png, id=568, 440.39531pt x 298.11375pt>
+File: imgs/ej5_ecm100.png Graphic file (type png)
+<use imgs/ej5_ecm100.png>
+Package pdftex.def Info: imgs/ej5_ecm100.png  used on input line 836.
+(pdftex.def)             Requested size: 452.9679pt x 306.63754pt.
+<imgs/ej5_recons100.png, id=569, 1181.91562pt x 273.27094pt>
+File: imgs/ej5_recons100.png Graphic file (type png)
+<use imgs/ej5_recons100.png>
+Package pdftex.def Info: imgs/ej5_recons100.png  used on input line 843.
+(pdftex.def)             Requested size: 452.9679pt x 104.72801pt.
+
+
+[31
+
+ <./imgs/ej5_ecm100.png> <./imgs/ej5_recons100.png>]
+<imgs/ej5_50.png, id=581, 436.63126pt x 298.11375pt>
+File: imgs/ej5_50.png Graphic file (type png)
+<use imgs/ej5_50.png>
+Package pdftex.def Info: imgs/ej5_50.png  used on input line 853.
+(pdftex.def)             Requested size: 452.9679pt x 309.27133pt.
+<imgs/ej5_51.png, id=582, 1181.91562pt x 273.27094pt>
+File: imgs/ej5_51.png Graphic file (type png)
+<use imgs/ej5_51.png>
+Package pdftex.def Info: imgs/ej5_51.png  used on input line 861.
+(pdftex.def)             Requested size: 452.9679pt x 104.72801pt.
+
+
+[32
+
+ <./imgs/ej5_50.png> <./imgs/ej5_51.png>]
+<imgs/ej5_10.png, id=593, 436.63126pt x 298.11375pt>
+File: imgs/ej5_10.png Graphic file (type png)
+<use imgs/ej5_10.png>
+Package pdftex.def Info: imgs/ej5_10.png  used on input line 870.
+(pdftex.def)             Requested size: 452.9679pt x 309.27133pt.
+<imgs/ej5_11.png, id=594, 1181.91562pt x 273.27094pt>
+File: imgs/ej5_11.png Graphic file (type png)
+<use imgs/ej5_11.png>
+Package pdftex.def Info: imgs/ej5_11.png  used on input line 878.
+(pdftex.def)             Requested size: 452.9679pt x 104.72801pt.
+
+
+[33
+
+ <./imgs/ej5_10.png> <./imgs/ej5_11.png>]
+<imgs/ej5_1.png, id=605, 439.6425pt x 298.11375pt>
+File: imgs/ej5_1.png Graphic file (type png)
+<use imgs/ej5_1.png>
+Package pdftex.def Info: imgs/ej5_1.png  used on input line 887.
+(pdftex.def)             Requested size: 452.9679pt x 307.16066pt.
+<imgs/ej5_2.png, id=606, 1181.91562pt x 273.27094pt>
+File: imgs/ej5_2.png Graphic file (type png)
+<use imgs/ej5_2.png>
+Package pdftex.def Info: imgs/ej5_2.png  used on input line 894.
+(pdftex.def)             Requested size: 452.9679pt x 104.72801pt.
+
+
+[34
+
+ <./imgs/ej5_1.png> <./imgs/ej5_2.png>]
+
+[35
+
 ]
-Overfull \hbox (37.13649pt too wide) in paragraph at lines 830--861
+Overfull \hbox (37.13649pt too wide) in paragraph at lines 940--971
 \OT1/cmr/m/n/10.95 | Acc=89.86Epoch 3/30 | Loss=0.3200 | Acc=90.68Epoch 4/30 | 
 Loss=0.3073 | Acc=90.92Epoch
  []
 
 
-Overfull \hbox (1.9748pt too wide) in paragraph at lines 830--861
+Overfull \hbox (1.9748pt too wide) in paragraph at lines 940--971
 \OT1/cmr/m/n/10.95 Loss=0.2921 | Acc=91.29Epoch 8/30 | Loss=0.2884 | Acc=91.44E
 poch 9/30 | Loss=0.2884
  []
 
 
-Overfull \hbox (48.0865pt too wide) in paragraph at lines 830--861
+Overfull \hbox (48.0865pt too wide) in paragraph at lines 940--971
 \OT1/cmr/m/n/10.95 | Acc=91.51Epoch 10/30 | Loss=0.2855 | Acc=91.53Epoch 11/30 
 | Loss=0.2832 | Acc=91.62Epoch
  []
 
 
-Overfull \hbox (12.9248pt too wide) in paragraph at lines 830--861
+Overfull \hbox (12.9248pt too wide) in paragraph at lines 940--971
 \OT1/cmr/m/n/10.95 Loss=0.2813 | Acc=91.79Epoch 15/30 | Loss=0.2810 | Acc=91.69
 Epoch 16/30 | Loss=0.2799
  []
 
 
-Overfull \hbox (48.0865pt too wide) in paragraph at lines 830--861
+Overfull \hbox (48.0865pt too wide) in paragraph at lines 940--971
 \OT1/cmr/m/n/10.95 | Acc=91.83Epoch 17/30 | Loss=0.2785 | Acc=91.79Epoch 18/30 
 | Loss=0.2773 | Acc=91.82Epoch
  []
 
 
-Overfull \hbox (12.9248pt too wide) in paragraph at lines 830--861
+Overfull \hbox (12.9248pt too wide) in paragraph at lines 940--971
 \OT1/cmr/m/n/10.95 Loss=0.2751 | Acc=91.91Epoch 22/30 | Loss=0.2738 | Acc=91.90
 Epoch 23/30 | Loss=0.2745
  []
 
 
-Overfull \hbox (26.94691pt too wide) in paragraph at lines 830--861
+Overfull \hbox (26.94691pt too wide) in paragraph at lines 940--971
 \OT1/cmr/m/n/10.95 | Acc=91.89Epoch 24/30 | Loss=0.2738 | Acc=91.94Epoch 25/30 
 | Loss=0.2735 | Acc=91.97...
  []
 
 
 
-[31
+[36
 
 ]
-<../imgs/ej8/screenshot001.png, id=559, 344.78813pt x 295.85532pt>
+<../imgs/ej8/screenshot001.png, id=623, 344.78813pt x 295.85532pt>
 File: ../imgs/ej8/screenshot001.png Graphic file (type png)
 <use ../imgs/ej8/screenshot001.png>
-Package pdftex.def Info: ../imgs/ej8/screenshot001.png  used on input line 897.
-
+Package pdftex.def Info: ../imgs/ej8/screenshot001.png  used on input line 1007
+.
 (pdftex.def)             Requested size: 317.07614pt x 272.07732pt.
-<../imgs/ej8/screenshot002.png, id=560, 565.36218pt x 297.36093pt>
+<../imgs/ej8/screenshot002.png, id=624, 565.36218pt x 297.36093pt>
 File: ../imgs/ej8/screenshot002.png Graphic file (type png)
 <use ../imgs/ej8/screenshot002.png>
-Package pdftex.def Info: ../imgs/ej8/screenshot002.png  used on input line 904.
-
-(pdftex.def)             Requested size: 317.07614pt x 166.77507pt.
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-
-LaTeX Warning: Reference `m' on page 32 undefined on input line 909.
-
-
-
-[32
-
- <../imgs/ej8/screenshot001.png>]
-<../imgs/ej8/screenshot003.png, id=570, 344.78813pt x 295.85532pt>
-File: ../imgs/ej8/screenshot003.png Graphic file (type png)
-<use ../imgs/ej8/screenshot003.png>
-Package pdftex.def Info: ../imgs/ej8/screenshot003.png  used on input line 915.
-
-(pdftex.def)             Requested size: 317.07614pt x 272.07732pt.
-<../imgs/ej8/screenshot004.png, id=571, 558.58687pt x 297.36093pt>
-File: ../imgs/ej8/screenshot004.png Graphic file (type png)
-<use ../imgs/ej8/screenshot004.png>
-Package pdftex.def Info: ../imgs/ej8/screenshot004.png  used on input line 922.
-
-(pdftex.def)             Requested size: 317.07614pt x 168.79874pt.
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-<../imgs/ej8/screenshot005.png, id=574, 344.78813pt x 295.85532pt>
-File: ../imgs/ej8/screenshot005.png Graphic file (type png)
-<use ../imgs/ej8/screenshot005.png>
-Package pdftex.def Info: ../imgs/ej8/screenshot005.png  used on input line 933.
-
-(pdftex.def)             Requested size: 317.07614pt x 272.07732pt.
-
-
-[33 <../imgs/ej8/screenshot002.png> <../imgs/ej8/screenshot003.png>]
-<../imgs/ej8/screenshot006.png, id=584, 558.58687pt x 297.36093pt>
-File: ../imgs/ej8/screenshot006.png Graphic file (type png)
-<use ../imgs/ej8/screenshot006.png>
-Package pdftex.def Info: ../imgs/ej8/screenshot006.png  used on input line 940.
-
-(pdftex.def)             Requested size: 317.07614pt x 168.79874pt.
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-<../imgs/ej8/screenshot007.png, id=587, 565.36218pt x 297.36093pt>
-File: ../imgs/ej8/screenshot007.png Graphic file (type png)
-<use ../imgs/ej8/screenshot007.png>
-Package pdftex.def Info: ../imgs/ej8/screenshot007.png  used on input line 951.
-
-(pdftex.def)             Requested size: 317.07614pt x 166.77507pt.
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-<../imgs/ej8/screenshot008.png, id=588, 565.36218pt x 297.36093pt>
-File: ../imgs/ej8/screenshot008.png Graphic file (type png)
-<use ../imgs/ej8/screenshot008.png>
-Package pdftex.def Info: ../imgs/ej8/screenshot008.png  used on input line 959.
-
-(pdftex.def)             Requested size: 317.07614pt x 166.77507pt.
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-<../imgs/ej8/screenshot009.png, id=591, 565.36218pt x 297.36093pt>
-File: ../imgs/ej8/screenshot009.png Graphic file (type png)
-<use ../imgs/ej8/screenshot009.png>
-Package pdftex.def Info: ../imgs/ej8/screenshot009.png  used on input line 970.
-
-(pdftex.def)             Requested size: 317.07614pt x 166.77507pt.
-
-
-[34 <../imgs/ej8/screenshot004.png> <../imgs/ej8/screenshot005.png>]
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-<../imgs/ej8/screenshot010.png, id=602, 565.36218pt x 297.36093pt>
-File: ../imgs/ej8/screenshot010.png Graphic file (type png)
-<use ../imgs/ej8/screenshot010.png>
-Package pdftex.def Info: ../imgs/ej8/screenshot010.png  used on input line 977.
-
-(pdftex.def)             Requested size: 317.07614pt x 166.77507pt.
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-<../imgs/ej8/screenshot011.png, id=605, 572.1375pt x 297.36093pt>
-File: ../imgs/ej8/screenshot011.png Graphic file (type png)
-<use ../imgs/ej8/screenshot011.png>
-Package pdftex.def Info: ../imgs/ej8/screenshot011.png  used on input line 988.
-
-(pdftex.def)             Requested size: 317.07614pt x 164.79678pt.
-
-
-[35 <../imgs/ej8/screenshot006.png> <../imgs/ej8/screenshot007.png> <../imgs/ej
-8/screenshot008.png>]
-<../imgs/ej8/screenshot012.png, id=615, 558.58687pt x 297.36093pt>
-File: ../imgs/ej8/screenshot012.png Graphic file (type png)
-<use ../imgs/ej8/screenshot012.png>
-Package pdftex.def Info: ../imgs/ej8/screenshot012.png  used on input line 999.
-
-(pdftex.def)             Requested size: 317.07614pt x 168.79874pt.
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-
-
-[36 <../imgs/ej8/screenshot009.png> <../imgs/ej8/screenshot010.png> <../imgs/ej
-8/screenshot011.png>]
-<../imgs/ej8/screenshot013.png, id=624, 565.36218pt x 297.36093pt>
-File: ../imgs/ej8/screenshot013.png Graphic file (type png)
-<use ../imgs/ej8/screenshot013.png>
-Package pdftex.def Info: ../imgs/ej8/screenshot013.png  used on input line 1010
+Package pdftex.def Info: ../imgs/ej8/screenshot002.png  used on input line 1014
 .
 (pdftex.def)             Requested size: 317.07614pt x 166.77507pt.
 
 
-[37 <../imgs/ej8/screenshot012.png> <../imgs/ej8/screenshot013.png>]
+LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[38
+
+LaTeX Warning: Reference `m' on page 37 undefined on input line 1019.
+
+
+
+[37
+
+ <../imgs/ej8/screenshot001.png>]
+<../imgs/ej8/screenshot003.png, id=635, 344.78813pt x 295.85532pt>
+File: ../imgs/ej8/screenshot003.png Graphic file (type png)
+<use ../imgs/ej8/screenshot003.png>
+Package pdftex.def Info: ../imgs/ej8/screenshot003.png  used on input line 1025
+.
+(pdftex.def)             Requested size: 317.07614pt x 272.07732pt.
+<../imgs/ej8/screenshot004.png, id=636, 558.58687pt x 297.36093pt>
+File: ../imgs/ej8/screenshot004.png Graphic file (type png)
+<use ../imgs/ej8/screenshot004.png>
+Package pdftex.def Info: ../imgs/ej8/screenshot004.png  used on input line 1032
+.
+(pdftex.def)             Requested size: 317.07614pt x 168.79874pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+<../imgs/ej8/screenshot005.png, id=639, 344.78813pt x 295.85532pt>
+File: ../imgs/ej8/screenshot005.png Graphic file (type png)
+<use ../imgs/ej8/screenshot005.png>
+Package pdftex.def Info: ../imgs/ej8/screenshot005.png  used on input line 1043
+.
+(pdftex.def)             Requested size: 317.07614pt x 272.07732pt.
+
+
+[38 <../imgs/ej8/screenshot002.png> <../imgs/ej8/screenshot003.png>]
+<../imgs/ej8/screenshot006.png, id=649, 558.58687pt x 297.36093pt>
+File: ../imgs/ej8/screenshot006.png Graphic file (type png)
+<use ../imgs/ej8/screenshot006.png>
+Package pdftex.def Info: ../imgs/ej8/screenshot006.png  used on input line 1050
+.
+(pdftex.def)             Requested size: 317.07614pt x 168.79874pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+<../imgs/ej8/screenshot007.png, id=652, 565.36218pt x 297.36093pt>
+File: ../imgs/ej8/screenshot007.png Graphic file (type png)
+<use ../imgs/ej8/screenshot007.png>
+Package pdftex.def Info: ../imgs/ej8/screenshot007.png  used on input line 1061
+.
+(pdftex.def)             Requested size: 317.07614pt x 166.77507pt.
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+<../imgs/ej8/screenshot008.png, id=653, 565.36218pt x 297.36093pt>
+File: ../imgs/ej8/screenshot008.png Graphic file (type png)
+<use ../imgs/ej8/screenshot008.png>
+Package pdftex.def Info: ../imgs/ej8/screenshot008.png  used on input line 1069
+.
+(pdftex.def)             Requested size: 317.07614pt x 166.77507pt.
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+<../imgs/ej8/screenshot009.png, id=656, 565.36218pt x 297.36093pt>
+File: ../imgs/ej8/screenshot009.png Graphic file (type png)
+<use ../imgs/ej8/screenshot009.png>
+Package pdftex.def Info: ../imgs/ej8/screenshot009.png  used on input line 1080
+.
+(pdftex.def)             Requested size: 317.07614pt x 166.77507pt.
+
+
+[39 <../imgs/ej8/screenshot004.png> <../imgs/ej8/screenshot005.png>]
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+<../imgs/ej8/screenshot010.png, id=667, 565.36218pt x 297.36093pt>
+File: ../imgs/ej8/screenshot010.png Graphic file (type png)
+<use ../imgs/ej8/screenshot010.png>
+Package pdftex.def Info: ../imgs/ej8/screenshot010.png  used on input line 1087
+.
+(pdftex.def)             Requested size: 317.07614pt x 166.77507pt.
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+<../imgs/ej8/screenshot011.png, id=670, 572.1375pt x 297.36093pt>
+File: ../imgs/ej8/screenshot011.png Graphic file (type png)
+<use ../imgs/ej8/screenshot011.png>
+Package pdftex.def Info: ../imgs/ej8/screenshot011.png  used on input line 1098
+.
+(pdftex.def)             Requested size: 317.07614pt x 164.79678pt.
+
+
+[40 <../imgs/ej8/screenshot006.png> <../imgs/ej8/screenshot007.png> <../imgs/ej
+8/screenshot008.png>]
+<../imgs/ej8/screenshot012.png, id=680, 558.58687pt x 297.36093pt>
+File: ../imgs/ej8/screenshot012.png Graphic file (type png)
+<use ../imgs/ej8/screenshot012.png>
+Package pdftex.def Info: ../imgs/ej8/screenshot012.png  used on input line 1109
+.
+(pdftex.def)             Requested size: 317.07614pt x 168.79874pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+
+[41 <../imgs/ej8/screenshot009.png> <../imgs/ej8/screenshot010.png> <../imgs/ej
+8/screenshot011.png>]
+<../imgs/ej8/screenshot013.png, id=689, 565.36218pt x 297.36093pt>
+File: ../imgs/ej8/screenshot013.png Graphic file (type png)
+<use ../imgs/ej8/screenshot013.png>
+Package pdftex.def Info: ../imgs/ej8/screenshot013.png  used on input line 1120
+.
+(pdftex.def)             Requested size: 317.07614pt x 166.77507pt.
+
+
+[42 <../imgs/ej8/screenshot012.png> <../imgs/ej8/screenshot013.png>]
+
+[43
 
 ] (TP2 Cavicchioli.aux
 LaTeX Info: Redefining \. on input line 11.
@@ -1122,10 +1196,10 @@ Package rerunfilecheck Info: File `"TP2 Cavicchioli".out' has not changed.
 (rerunfilecheck)             Checksum: E143627E3FBDE57626F65995F46E4E15;8157.
  ) 
 Here is how much of TeX's memory you used:
- 15400 strings out of 468133
- 255875 string characters out of 5432655
- 677315 words of memory out of 5000000
- 43676 multiletter control sequences out of 15000+600000
+ 15552 strings out of 468133
+ 259195 string characters out of 5432655
+ 678507 words of memory out of 5000000
+ 43812 multiletter control sequences out of 15000+600000
  639571 words of font info for 87 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  75i,11n,79p,960b,767s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -1152,9 +1226,9 @@ ers/q/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy6.pfb><C
 b><C:/Users/q/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy
 9.pfb><C:/Users/q/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/
 cmti10.pfb>
-Output written on "TP2 Cavicchioli.pdf" (38 pages, 1559109 bytes).
+Output written on "TP2 Cavicchioli.pdf" (43 pages, 1867278 bytes).
 PDF statistics:
- 760 PDF objects out of 1000 (max. 8388607)
- 146 named destinations out of 1000 (max. 500000)
- 648 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 827 PDF objects out of 1000 (max. 8388607)
+ 162 named destinations out of 1000 (max. 500000)
+ 703 words of extra memory for PDF output out of 10000 (max. 10000000)
 

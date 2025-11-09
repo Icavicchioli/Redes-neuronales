@@ -629,6 +629,7 @@ El ECm de entrenamiento es más ruidoso con el \textit{minibatch} más chico, lo
 
 Los 3 casos mostrados predicen con una forma aproximadamente igual, aunque considero que el mejor predictor es el de \textit{minibatch} de 1000; parece el menos disperso de los 3 a lo largo de toda la recta. Los 3 casos presentan una aparente saturación en los extremos de la recta, que recuerda a una sigmoidea, y es muy probable que sea causado por la misma función de activación.
 
+\newpage
 
 \subsection{Inciso b}
 
@@ -645,16 +646,18 @@ Las figuras \ref{fig:batch40y40muestrasnoconverge} y \ref{fig:batch40y40muestras
 
 \begin{figure}[h!]
 	\centering
-	\includegraphics[width=0.7\linewidth]{imgs/batch40y40muestras_noConverge1}
+	\includegraphics[width=0.6\linewidth]{imgs/batch40y40muestras_noConverge1}
 	\caption{Predicción del modelo en base a (X,Y,Z)}
 	\label{fig:batch40y40muestrasnoconverge1}
 \end{figure}
+
+\clearpage
 
 Las figuras \ref{fig:batch40y40muestrasconverge} y \ref{fig:batch40y40muestrasconverge1} son el resultado de tomar el modelo de las imágenes de antes pero darle más iteraciones de aprendizaje. Ahora si se observa convergencia en los EC; y la predicción parecería menos dispersa.
 
 \begin{figure}[h!]
 	\centering
-	\includegraphics[width=0.8\linewidth]{imgs/batch40y40muestras_Converge}
+	\includegraphics[width=0.7\linewidth]{imgs/batch40y40muestras_Converge}
 	\caption{}
 	\label{fig:batch40y40muestrasconverge}
 \end{figure}
@@ -679,7 +682,7 @@ Las figuras \ref{fig:batch40y40muestrasnoconverge} y \ref{fig:batch40y40muestras
 	\label{fig:batch1y40muestrasnoconverge2}
 \end{figure}
 
-\begin{figure}[h!]s
+\begin{figure}[h!]
 	\centering
 	\includegraphics[width=0.7\linewidth]{imgs/batch1y40muestras_noConverge3}
 	\caption{Predicción del modelo en base a (X,Y,Z)}
@@ -768,8 +771,6 @@ $$
 
 Finalmente se hace:
 
-Al final se hace
-
 $$
 \Delta w_{ij}= \eta ( \left\langle v_i h_j \right\rangle - \left\langle \hat{v_i} \hat{h_j} \right\rangle)
 $$
@@ -790,18 +791,127 @@ A grandes rasgos, la idea es que se tiene un proceso de aprendizaje no supervisa
 
 Una de las finalidades de la MRB es obtener una representación de los datos de menor dimensión que la entrada, de modo que las variables en la capa de menor dimensión capturen las dinámicas de mayor importancia (o varianza, como en PCA). La otra función es obtener un \textit{autoencoder} no lineal (no es PCA), capaz de capturar y modelar relaciones complejas en los datos.
 
-La figura \ref{fig:ej5ecm} muestra el error de reconstrucción de las imágenes por época de entrenamiento. El error decrece de forma exponencial con
+Se hicieron 3 experimentos, con 3 capas intermedias de 400, 200 y 100 neuronas. Todos se entrenaron hasta llegar a la convergencia.
 
-\begin{figure}
+Las figuras \ref{fig:ej5ecm400} y \ref{fig:ej5reconst400} muestran el ECM de reconstrucción y reconstrucciones para 400 neuronas en la capa más chica (también denominada intermedia). A modo de referencia, las imágenes de MNISTS son de 28x28, por lo que la capa de entrada es de 784.
+
+\begin{figure}[h!]
 	\centering
-	\includegraphics[width=0.7\linewidth]{imgs/ej5_ecm}
-	\caption{}
-	\label{fig:ej5ecm}
+	\includegraphics[width=1\linewidth]{imgs/ej5_ecm400}
+	\caption{ECM  de reconstrucción - 400 neuronas en capa intermedia de menor tamaño}
+	\label{fig:ej5ecm400}
 \end{figure}
+
+\begin{figure}[h!]
+	\vspace{-1cm}
+	\centering
+	\includegraphics[width=1\linewidth]{imgs/ej5_reconst400}
+	\caption{Reconstrucciones - 400 neuronas en capa intermedia de menor tamaño}
+	\label{fig:ej5reconst400}
+\end{figure}
+
+\clearpage
+
+Las figuras \ref{fig:ej5ecm200} y \ref{fig:ej5recons200} muestran el ECM de reconstrucción y reconstrucciones para 200 neuronas en la capa más chica.
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=1\linewidth]{imgs/ej5_ecm200}
+	\caption{ECM  de reconstrucción - 200 neuronas en capa intermedia de menor tamaño}
+	\label{fig:ej5ecm200}
+\end{figure}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=1\linewidth]{imgs/ej5_recons200}
+	\caption{Reconstrucciones - 200 neuronas en capa intermedia de menor tamaño}
+	\label{fig:ej5recons200}
+\end{figure}
+\clearpage
+
+Las figuras \ref{fig:ej5ecm100} y \ref{fig:ej5recons100} muestran el ECM de reconstrucción y reconstrucciones para 100 neuronas en la capa más chica.
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=1\linewidth]{imgs/ej5_ecm100}
+	\caption{ECM  de reconstrucción - 100 neuronas en capa intermedia de menor tamaño}
+	\label{fig:ej5ecm100}
+\end{figure}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=1\linewidth]{imgs/ej5_recons100}
+	\caption{Reconstrucciones - 100 neuronas en capa intermedia de menor tamaño}
+	\label{fig:ej5recons100}
+\end{figure}
+\clearpage
+
+Las figuras \ref{fig:ej550} y \ref{fig:ej551} muestran el ECM de reconstrucción y reconstrucciones para 50 neuronas en la capa más chica.
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=1\linewidth]{imgs/ej5_50}
+	\caption{ECM  de reconstrucción - 50 neuronas en capa intermedia de menor tamaño}
+	\label{fig:ej550}
+\end{figure}
+
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=1\linewidth]{imgs/ej5_51}
+	\caption{Reconstrucciones - 50 neuronas en capa intermedia de menor tamaño}
+	\label{fig:ej551}
+\end{figure}
+\clearpage
+Las figuras \ref{fig:ej510} y \ref{fig:ej511} muestran el ECM de reconstrucción y reconstrucciones para 10 neuronas en la capa más chica.
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=1\linewidth]{imgs/ej5_10}
+	\caption{ECM  de reconstrucción - 10 neuronas en capa intermedia de menor tamaño}
+	\label{fig:ej510}
+\end{figure}
+
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=1\linewidth]{imgs/ej5_11}
+	\caption{Reconstrucciones - 10 neuronas en capa intermedia de menor tamaño}
+	\label{fig:ej511}
+\end{figure}
+\clearpage
+Las figuras \ref{fig:ej51} y \ref{fig:ej52} muestran el ECM de reconstrucción y reconstrucciones para 1 neurona en la capa más chica.
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=1\linewidth]{imgs/ej5_1}
+	\caption{ECM  de reconstrucción - 1 neurona en capa intermedia de menor tamaño}
+	\label{fig:ej51}
+\end{figure}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=1\linewidth]{imgs/ej5_2}
+	\caption{Reconstrucciones - 1 neurona en capa intermedia de menor tamaño}
+	\label{fig:ej52}
+\end{figure}
+
+
+\clearpage
 
 \subsection{Análisis}
 
-\clearpage
+
+Se entiende que, a más neuronas en la capa oculta mínima (sería la que buscamos que haga la reducción de dimensionalidad), más información/energía/varianza queda captada por el modelo reducido, a costas de una menor reducción de dimensionalidad. Como consecuencia de ``quedarse'' más dimensiones, las reconstrucciones deberían ser mejores con más neuronas en esta capa.
+
+Todas las imágenes recién presentada muestran 2 tendencias claras:
+\begin{itemize}
+	\item A medida que se achica la capa intermedia , las reconstrucciones se vuelven menos claras y similares al dígito original. En el extremo, la de 1 sola neurona reconstruye siempre la misma imagen.
+	\item El ECM de reconstrucción aumenta a medida que se sacan neuronas de la capa intermedia.
+\end{itemize}
+
+Estos efectos observados tienen sentido, y suceden con PCA, que sería el método de reducción de dimensionalidad lineal. En este, cuando se quitan direcciones principales, se pierde información/energía/varianza de los datos de entrada, y para el caso de mantener solo la dirección de mayor varianza, el sistema siempre va a devolver el patrón más común a todos los datos, perdiéndose todo el detalle quye estaba en las direcciones de menos varianza.
+
 
 \section{Ejercicio 6}
 
