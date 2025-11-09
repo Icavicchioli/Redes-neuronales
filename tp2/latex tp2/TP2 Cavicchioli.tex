@@ -550,15 +550,15 @@ Donde: $x$ e $y$ $\in [0,2 \pi]$ y $z \in [-1,1]$.
 
 Para ello construya un conjunto de datos de entrenamiento y un conjunto de evaluación. Muestre la evolución del error de entrenamiento y de evaluación en función de las épocas de entrenamiento.
 
-b - Estudie la evolución de los errores durante el entrenamiento de una red con una capa oculta de 30 neuronas cuando el conjunto de entrenamiento contiene 40 muestras. ¿Que ocurre si el minibatch tiene tamaño 40? ¿Y si tiene tamaño 1?
+b - Estudie la evolución de los errores durante el entrenamiento de una red con una capa oculta de 30 neuronas cuando el conjunto de entrenamiento contiene 40 muestras. ¿Que ocurre si el \textit{minibatch} tiene tamaño 40? ¿Y si tiene tamaño 1?
 
 \subsection{Desarrollo}
 
 El conjunto de datos se generó sin mayores problemas, fue solo evaluar la función $f(x,y,z)$ en muchos puntos.
 
-Los datasets de entrenamiento y testeo se separaron 70/30 (56000 muestras de entrenamiento) y se entrenó variando el tamaño de minibatch. El uso de minibatch implica la utilización de un gradiente estocástico, que es más rápido (menos datos, menos cuentas) y ayuda con la convergencia ya que la aleatoriedad introducida por no usar todas las muestras causa que no siempre se caiga en las mismas cuencas de la función de costo.
+Los datasets de entrenamiento y testeo se separaron 70/30 (56000 muestras de entrenamiento) y se entrenó variando el tamaño de \textit{minibatch}. El uso de \textit{minibatches} implica la utilización de un gradiente estocástico, que es más rápido (menos datos, menos cuentas) y ayuda con la convergencia ya que la aleatoriedad introducida por no usar todas las muestras causa que no siempre se caiga en las mismas cuencas de la función de costo.
 
-En esta implementación se separaron los datos en tantos batches como corresponde según el tamaño, y todos se mostraron 10 veces en un orden aleatorio (pero nunca seguidos, todos se ostraban antes de volver a seleccionar uno ya mostrado). Se intentó balancear la cantidad de ``veces'' (en el código, ``veces'' sería la cantida de veces que se muestran todos los minibatches) para que sea justo entre modelos de tamaños de minibatch diferentes.
+En esta implementación se separaron los datos en tantos batches como corresponde según el tamaño, y todos se mostraron 10 veces en un orden aleatorio (pero nunca seguidos, todos se ostraban antes de volver a seleccionar uno ya mostrado). Se intentó balancear la cantidad de ``veces'' (en el código, ``veces'' sería la cantida de veces que se muestran todos los \textit{minibatches}) para que sea justo entre modelos de tamaños de \textit{minibatch} diferentes.
 
 Los MLPs son de 30 neuronas en una sola capa oculta. Se mantuvieron las mismas condiciones para los 4 experimentos, para no sesgar los resultados. La validación se hizo con todo el set de testeo.
 
@@ -566,79 +566,79 @@ Los MLPs son de 30 neuronas en una sola capa oculta. Se mantuvieron las mismas c
 
 \subsection{Inciso a}
 
-\subsubsection{Minibatch de 40 muestras}
-
-Las figuras \ref{fig:batch40ecm} y \ref{fig:batch40ajustefuncion} corresponden a un minibatch de 40 muestras. Se nota convergencia en los ECM y una predicción que empeora en los valores más extremos de la variable a predecir.
-
+\subsubsection{\textit{minibatch} de 40 muestras}
+Las figuras \ref{fig:batch40ecm} y \ref{fig:batch40ajustefuncion} corresponden a un \textit{minibatch} de 40 muestras.
 \begin{figure}[h!]
 	\centering
-	\includegraphics[width=0.7\linewidth]{imgs/batch40ECM}
-	\caption{ECM de entrenamiento y validación - Minibatch de 40 muestras, 10 veces, 1 epoch}
+	\includegraphics[width=0.8\linewidth]{imgs/batch40ECM}
+	\caption{ECM de entrenamiento y validación - \textit{minibatch} de 40 muestras, 10 veces, 1 epoch}
 	\label{fig:batch40ecm}
 \end{figure}
 
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=0.7\linewidth]{imgs/batch40AjusteFuncion}
-	\caption{Predicción del modelo en base a (X,Y,Z) - Minibatch de 40 muestras, 10 veces, 1 epoch}
+	\caption{Predicción del modelo en base a (X,Y,Z) - \textit{minibatch} de 40 muestras, 10 veces, 1 epoch}
 	\label{fig:batch40ajustefuncion}
 \end{figure}
 
+\newpage
 
 
-\clearpage
+\subsubsection{\textit{minibatch} de 100 muestras}
 
-
-\subsubsection{Minibatch de 100 muestras}
-
-Las figuras \ref{fig:batch100ecm} y \ref{fig:batch100ajustefuncion} corresponden a un minibatch de 100 muestras. Los ECM convergen pero la predicción es peor que las anteriores.
+Las figuras \ref{fig:batch100ecm} y \ref{fig:batch100ajustefuncion} corresponden a un \textit{minibatch} de 100 muestras. L
 \begin{figure}[h!]
 	\centering
-	\includegraphics[width=0.7\linewidth]{imgs/batch100ECM}
-	\caption{ECM de entrenamiento y validación - Minibatch de 100 muestras}
+	\includegraphics[width=0.8\linewidth]{imgs/batch100ECM}
+	\caption{ECM de entrenamiento y validación - \textit{minibatch} de 100 muestras}
 	\label{fig:batch100ecm}
 \end{figure}
 
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=0.7\linewidth]{imgs/batch100AjusteFuncion}
-	\caption{Predicción del modelo en base a (X,Y,Z) - Minibatch de 100 muestras}
+	\caption{Predicción del modelo en base a (X,Y,Z) - \textit{minibatch} de 100 muestras}
 	\label{fig:batch100ajustefuncion}
 \end{figure}
 
+\newpage
+\subsubsection{\textit{minibatch} de 1000 muestras}
 
-\subsubsection{Minibatch de 1000 muestras}
-
-Las figuras \ref{fig:batch100ecm} y \ref{fig:batch100ajustefuncion} corresponden a un minibatch de 100 muestras. Los ECM parecerían converger, y la predicción es la peor de todas.
+Las figuras \ref{fig:batch1000ecm1} y \ref{fig:batch1000ajustefuncion1} corresponden a un \textit{minibatch} de 1000 muestras.
 
 \begin{figure}[h!]
 	\centering
-	\includegraphics[width=0.7\linewidth]{imgs/batch1000ECM1}
-	\caption{ECM de entrenamiento y validación - Minibatch de 1000 muestras}
+	\includegraphics[width=0.8\linewidth]{imgs/batch1000ECM1}
+	\caption{ECM de entrenamiento y validación - \textit{minibatch} de 1000 muestras}
 	\label{fig:batch1000ecm1}
 \end{figure}
 
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=0.7\linewidth]{imgs/batch1000AjusteFuncion1}
-	\caption{Predicción del modelo en base a (X,Y,Z) - Minibatch de 1000 muestras}
+	\caption{Predicción del modelo en base a (X,Y,Z) - \textit{minibatch} de 1000 muestras}
 	\label{fig:batch1000ajustefuncion1}
 \end{figure}
-
+\newpage
 \subsubsection{Análisis}
 
-Se observa que un valor menor de minibatch se condiciona con mejores predicciones, aunque esto puede deberse a que para una cantidad fija de iteraciones, el modelo
+El incremento del tamaño de \textit{minibatch} manteniendo la cantidad de iteraciones constante hizo que se tardara mucho más en entrenar para los \textit{minibatches} de 1000 que para el de 100 y el de 40. Claramente se entrenó con más iteraciones que las necesarias, evidente en el hecho de que el ECM converge para la iteración 4000 en los 3 casos.
+
+El ECm de entrenamiento es más ruidoso con el \textit{minibatch} más chico, lo que tiene sentido porque es el que tiene el gradiente más estocástico, de menos muestras.
+
+Los 3 casos mostrados predicen con una forma aproximadamente igual, aunque considero que el mejor predictor es el de \textit{minibatch} de 1000; parece el menos disperso de los 3 a lo largo de toda la recta. Los 3 casos presentan una aparente saturación en los extremos de la recta, que recuerda a una sigmoidea, y es muy probable que sea causado por la misma función de activación.
 
 
 \subsection{Inciso b}
 
-\subsubsection{Minibatch de 40 muestras}
+\subsubsection{\textit{minibatch} de 40 muestras}
 
-Las figuras \ref{fig:batch40y40muestrasnoconverge} y \ref{fig:batch40y40muestrasnoconverge1} muestran el resultado de entrenar un MLP con Minibatch de 40 muestras en base a solo 40 muestras de entrenamiento. El entrenamiento se ejecutó por la misma cantidad de tiempo que el de Minibatch de 1 muestra, pero este no convergió a una solución adecuada, como se aprecia en la predicción.
+Las figuras \ref{fig:batch40y40muestrasnoconverge} y \ref{fig:batch40y40muestrasnoconverge1} muestran el resultado de entrenar un MLP con \textit{minibatch} de 40 muestras en base a solo 40 muestras de entrenamiento. El entrenamiento se ejecutó por la misma cantidad de tiempo que el de \textit{minibatch} de 1 muestra, pero este no convergió a una solución adecuada, como se aprecia en la predicción.
 
 \begin{figure}[h!]
 	\centering
-	\includegraphics[width=0.7\linewidth]{imgs/batch40y40muestras_noConverge}
+	\includegraphics[width=0.8\linewidth]{imgs/batch40y40muestras_noConverge}
 	\caption{ECM de entrenamiento y validación - no hubo convergencia}
 	\label{fig:batch40y40muestrasnoconverge}
 \end{figure}
@@ -650,11 +650,11 @@ Las figuras \ref{fig:batch40y40muestrasnoconverge} y \ref{fig:batch40y40muestras
 	\label{fig:batch40y40muestrasnoconverge1}
 \end{figure}
 
-Las figuras \ref{fig:batch40y40muestrasconverge} y \ref{fig:batch40y40muestrasconverge1} son el resultado de tomar el modelo de las imágenes de antes pero darle más iteraciones de aprendizaje. Ahora si se observa convergencia en los EC; y la predicción es más cercana a los valores reales.
+Las figuras \ref{fig:batch40y40muestrasconverge} y \ref{fig:batch40y40muestrasconverge1} son el resultado de tomar el modelo de las imágenes de antes pero darle más iteraciones de aprendizaje. Ahora si se observa convergencia en los EC; y la predicción parecería menos dispersa.
 
 \begin{figure}[h!]
 	\centering
-	\includegraphics[width=0.7\linewidth]{imgs/batch40y40muestras_Converge}
+	\includegraphics[width=0.8\linewidth]{imgs/batch40y40muestras_Converge}
 	\caption{}
 	\label{fig:batch40y40muestrasconverge}
 \end{figure}
@@ -666,8 +666,11 @@ Las figuras \ref{fig:batch40y40muestrasconverge} y \ref{fig:batch40y40muestrasco
 	\label{fig:batch40y40muestrasconverge1}
 \end{figure}
 
+\clearpage
 
-\subsubsection{Minibatch de 1 muestras}
+\subsubsection{\textit{minibatch} de 1 muestras}
+
+Las figuras \ref{fig:batch40y40muestrasnoconverge} y \ref{fig:batch40y40muestrasnoconverge1} muestran el resultado de entrenar un MLP con \textit{minibatch} de 1 muestra en base a solo 40 muestras de entrenamiento.
 
 \begin{figure}[h!]
 	\centering
@@ -676,18 +679,20 @@ Las figuras \ref{fig:batch40y40muestrasconverge} y \ref{fig:batch40y40muestrasco
 	\label{fig:batch1y40muestrasnoconverge2}
 \end{figure}
 
-\begin{figure}[h!]
+\begin{figure}[h!]s
 	\centering
 	\includegraphics[width=0.7\linewidth]{imgs/batch1y40muestras_noConverge3}
 	\caption{Predicción del modelo en base a (X,Y,Z)}
 	\label{fig:batch1y40muestrasnoconverge3}
 \end{figure}
 
+\subsubsection{Análisis}
 
+Claramente limitar a 40 mjestras hace que le cueste mucho generalizar, en especial si las muestras no son representativas del dataset. Basicamente con tan poco hace lo que quiere.
 
 \subsection{Análisis global}
 
-
+Dentro de los puntos importantes de esta consigna se destaca que el \textit{minibatch} (indirectamente el gradiente estocástico) aumenta la velocidad del proceso de aprendizaje, y se llegan a resultados igual de adecuados que si se usaran tamaños de lotes mayores. Esto es indispensable para la optimización en datasets grandes. Otro beneficio del uso de \textit{\textit{minibatch}}es es que cada ejecución es única (por el orden de las muestras), por lo que el camino que recorre en la minimización varía con la ejecución, lo que permite evitar mínimos locales que posiblemente trabarían un aprendizaje por gradiente determinístico.
 
 
 \clearpage

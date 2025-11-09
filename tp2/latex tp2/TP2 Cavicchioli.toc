@@ -19,36 +19,37 @@
 \contentsline {subsection}{\numberline {5.1}Consignas}{19}{subsection.5.1}%
 \contentsline {subsection}{\numberline {5.2}Desarrollo}{19}{subsection.5.2}%
 \contentsline {subsection}{\numberline {5.3}Inciso a}{20}{subsection.5.3}%
-\contentsline {subsubsection}{\numberline {5.3.1}Minibatch de 40 muestras}{20}{subsubsection.5.3.1}%
-\contentsline {subsubsection}{\numberline {5.3.2}Minibatch de 100 muestras}{21}{subsubsection.5.3.2}%
-\contentsline {subsubsection}{\numberline {5.3.3}Minibatch de 1000 muestras}{22}{subsubsection.5.3.3}%
-\contentsline {subsubsection}{\numberline {5.3.4}Análisis}{22}{subsubsection.5.3.4}%
+\contentsline {subsubsection}{\numberline {5.3.1}\textit {minibatch} de 40 muestras}{20}{subsubsection.5.3.1}%
+\contentsline {subsubsection}{\numberline {5.3.2}\textit {minibatch} de 100 muestras}{21}{subsubsection.5.3.2}%
+\contentsline {subsubsection}{\numberline {5.3.3}\textit {minibatch} de 1000 muestras}{22}{subsubsection.5.3.3}%
+\contentsline {subsubsection}{\numberline {5.3.4}Análisis}{23}{subsubsection.5.3.4}%
 \contentsline {subsection}{\numberline {5.4}Inciso b}{23}{subsection.5.4}%
-\contentsline {subsubsection}{\numberline {5.4.1}Minibatch de 40 muestras}{23}{subsubsection.5.4.1}%
-\contentsline {subsubsection}{\numberline {5.4.2}Minibatch de 1 muestras}{24}{subsubsection.5.4.2}%
-\contentsline {subsection}{\numberline {5.5}Análisis global}{24}{subsection.5.5}%
-\contentsline {section}{\numberline {6}Ejercicio 5}{26}{section.6}%
-\contentsline {subsection}{\numberline {6.1}Consignas}{26}{subsection.6.1}%
-\contentsline {subsection}{\numberline {6.2}Desarrollo}{26}{subsection.6.2}%
-\contentsline {subsection}{\numberline {6.3}Análisis}{26}{subsection.6.3}%
-\contentsline {section}{\numberline {7}Ejercicio 6}{27}{section.7}%
-\contentsline {subsection}{\numberline {7.1}Consignas}{27}{subsection.7.1}%
-\contentsline {subsection}{\numberline {7.2}Desarrollo}{27}{subsection.7.2}%
-\contentsline {subsection}{\numberline {7.3}Análisis}{27}{subsection.7.3}%
-\contentsline {section}{\numberline {8}Ejercicio 7}{28}{section.8}%
-\contentsline {subsection}{\numberline {8.1}Consignas}{28}{subsection.8.1}%
-\contentsline {subsection}{\numberline {8.2}Desarrollo}{28}{subsection.8.2}%
-\contentsline {subsection}{\numberline {8.3}Análisis}{28}{subsection.8.3}%
-\contentsline {section}{\numberline {9}Ejercicio 8}{29}{section.9}%
-\contentsline {subsection}{\numberline {9.1}Consignas}{29}{subsection.9.1}%
-\contentsline {subsection}{\numberline {9.2}Desarrollo}{29}{subsection.9.2}%
-\contentsline {subsubsection}{\numberline {9.2.1}XOR de 2 entradas - 2 neuronas en capa oculta}{29}{subsubsection.9.2.1}%
-\contentsline {subsubsection}{\numberline {9.2.2}XOR de 2 entradas - 4 neuronas en capa oculta}{30}{subsubsection.9.2.2}%
-\contentsline {subsubsection}{\numberline {9.2.3}XOR de 2 entradas - 10 neuronas en capa oculta}{31}{subsubsection.9.2.3}%
-\contentsline {subsubsection}{\numberline {9.2.4}XOR de 2 entradas - 2 neuronas en capa oculta}{31}{subsubsection.9.2.4}%
-\contentsline {subsubsection}{\numberline {9.2.5}XOR de 2 entradas - 2 neuronas en capa oculta}{32}{subsubsection.9.2.5}%
-\contentsline {subsubsection}{\numberline {9.2.6}XOR de 4 entradas - 4 neuronas en capa oculta}{33}{subsubsection.9.2.6}%
-\contentsline {subsubsection}{\numberline {9.2.7}XOR de 4 entradas - 5 neuronas en capa oculta}{34}{subsubsection.9.2.7}%
-\contentsline {subsubsection}{\numberline {9.2.8}XOR de 4 entradas - 6 neuronas en capa oculta}{34}{subsubsection.9.2.8}%
-\contentsline {subsection}{\numberline {9.3}Análisis}{34}{subsection.9.3}%
-\contentsline {section}{\numberline {10}Conclusiones}{35}{section.10}%
+\contentsline {subsubsection}{\numberline {5.4.1}\textit {minibatch} de 40 muestras}{23}{subsubsection.5.4.1}%
+\contentsline {subsubsection}{\numberline {5.4.2}\textit {minibatch} de 1 muestras}{26}{subsubsection.5.4.2}%
+\contentsline {subsubsection}{\numberline {5.4.3}Análisis}{27}{subsubsection.5.4.3}%
+\contentsline {subsection}{\numberline {5.5}Análisis global}{27}{subsection.5.5}%
+\contentsline {section}{\numberline {6}Ejercicio 5}{28}{section.6}%
+\contentsline {subsection}{\numberline {6.1}Consignas}{28}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}Desarrollo}{28}{subsection.6.2}%
+\contentsline {subsection}{\numberline {6.3}Análisis}{28}{subsection.6.3}%
+\contentsline {section}{\numberline {7}Ejercicio 6}{29}{section.7}%
+\contentsline {subsection}{\numberline {7.1}Consignas}{29}{subsection.7.1}%
+\contentsline {subsection}{\numberline {7.2}Desarrollo}{29}{subsection.7.2}%
+\contentsline {subsection}{\numberline {7.3}Análisis}{29}{subsection.7.3}%
+\contentsline {section}{\numberline {8}Ejercicio 7}{30}{section.8}%
+\contentsline {subsection}{\numberline {8.1}Consignas}{30}{subsection.8.1}%
+\contentsline {subsection}{\numberline {8.2}Desarrollo}{30}{subsection.8.2}%
+\contentsline {subsection}{\numberline {8.3}Análisis}{30}{subsection.8.3}%
+\contentsline {section}{\numberline {9}Ejercicio 8}{31}{section.9}%
+\contentsline {subsection}{\numberline {9.1}Consignas}{31}{subsection.9.1}%
+\contentsline {subsection}{\numberline {9.2}Desarrollo}{31}{subsection.9.2}%
+\contentsline {subsubsection}{\numberline {9.2.1}XOR de 2 entradas - 2 neuronas en capa oculta}{31}{subsubsection.9.2.1}%
+\contentsline {subsubsection}{\numberline {9.2.2}XOR de 2 entradas - 4 neuronas en capa oculta}{32}{subsubsection.9.2.2}%
+\contentsline {subsubsection}{\numberline {9.2.3}XOR de 2 entradas - 10 neuronas en capa oculta}{33}{subsubsection.9.2.3}%
+\contentsline {subsubsection}{\numberline {9.2.4}XOR de 2 entradas - 2 neuronas en capa oculta}{33}{subsubsection.9.2.4}%
+\contentsline {subsubsection}{\numberline {9.2.5}XOR de 2 entradas - 2 neuronas en capa oculta}{34}{subsubsection.9.2.5}%
+\contentsline {subsubsection}{\numberline {9.2.6}XOR de 4 entradas - 4 neuronas en capa oculta}{35}{subsubsection.9.2.6}%
+\contentsline {subsubsection}{\numberline {9.2.7}XOR de 4 entradas - 5 neuronas en capa oculta}{36}{subsubsection.9.2.7}%
+\contentsline {subsubsection}{\numberline {9.2.8}XOR de 4 entradas - 6 neuronas en capa oculta}{36}{subsubsection.9.2.8}%
+\contentsline {subsection}{\numberline {9.3}Análisis}{36}{subsection.9.3}%
+\contentsline {section}{\numberline {10}Conclusiones}{37}{section.10}%
