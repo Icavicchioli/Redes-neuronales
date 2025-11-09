@@ -688,11 +688,16 @@ Las figuras \ref{fig:batch40y40muestrasnoconverge} y \ref{fig:batch40y40muestras
 
 \subsubsection{Análisis}
 
-Claramente limitar a 40 mjestras hace que le cueste mucho generalizar, en especial si las muestras no son representativas del dataset. Basicamente con tan poco hace lo que quiere.
+Los resultados presentan dos puntos interesantes de destacar. Por un lado, limitar el set de entrenamiento a 40 muestras hace que no sea representativo de la dinámica que se quiere aprender/modelar/predecir y, por ende, el modelo va a tener mucha dificultad prediciendo con exactitud. Los 3 modelos parecen generalizar, es decir, para las varias ternas de entrada parece dar una salida diferentes, pero no es cercana a la deseada. Por otro lado, el modelo entrenado con \textit{minibatch} de 1 tiene mejor predicción que los otros, lo que puede deberse a que las muestras fueron más representativas (porque son tomadas aleatoriamente) y/o un \textit{minibatch} de 40 con 40 muestras ya no es estocástico (usa las mismas 40 siempre) y entonces no se goza de los beneficios de un gradiente estocástico. Estos son varios pero el principal es que ayuda a la convergencia a mejores mínimos de la función de error.
+
 
 \subsection{Análisis global}
 
-Dentro de los puntos importantes de esta consigna se destaca que el \textit{minibatch} (indirectamente el gradiente estocástico) aumenta la velocidad del proceso de aprendizaje, y se llegan a resultados igual de adecuados que si se usaran tamaños de lotes mayores. Esto es indispensable para la optimización en datasets grandes. Otro beneficio del uso de \textit{\textit{minibatch}}es es que cada ejecución es única (por el orden de las muestras), por lo que el camino que recorre en la minimización varía con la ejecución, lo que permite evitar mínimos locales que posiblemente trabarían un aprendizaje por gradiente determinístico.
+Como resumen de los 2 análisis previos, se desea resaltar que el \textit{minibatch} (indirectamente el gradiente estocástico) parecería aumentar la velocidad del proceso de aprendizaje, y produce resultados similarmente a los obtenidos con tamaños de lotes mayores. Esto es indispensable para la optimización en datasets grandes. Otro beneficio del uso de \textit{minibatches} es que cada ejecución es única (por el orden de las muestras), por lo que el camino que recorre en la minimización varía con la ejecución, permitiendo evitar mínimos locales que posiblemente trabarían un aprendizaje por gradiente determinístico.
+
+Otro punto es que, aunque la cantidad de muestras es importante, y condiciona la capacidad de predicción del modelo, también es imperativo elegir el método de aprendizaje correcto. Se pueden tener resultados muy diferentes según el tamaño de \textit{minibatch}, como se notó en el segundo inciso del ejercicio.
+
+En líneas generales, la consigna permitió entender que el resultado y proceso de entrenamiento no depende puramente de los datos (aunque si importan), sino que además de como se separan y usan dentro del proceso.
 
 
 \clearpage

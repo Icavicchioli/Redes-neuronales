@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.8.28)  8 NOV 2025 21:18
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.8.28)  9 NOV 2025 14:48
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -918,43 +918,43 @@ e3.png>]
 [29
 
 ]
-Overfull \hbox (37.13649pt too wide) in paragraph at lines 735--766
+Overfull \hbox (37.13649pt too wide) in paragraph at lines 740--771
 \OT1/cmr/m/n/10.95 | Acc=89.86Epoch 3/30 | Loss=0.3200 | Acc=90.68Epoch 4/30 | 
 Loss=0.3073 | Acc=90.92Epoch
  []
 
 
-Overfull \hbox (1.9748pt too wide) in paragraph at lines 735--766
+Overfull \hbox (1.9748pt too wide) in paragraph at lines 740--771
 \OT1/cmr/m/n/10.95 Loss=0.2921 | Acc=91.29Epoch 8/30 | Loss=0.2884 | Acc=91.44E
 poch 9/30 | Loss=0.2884
  []
 
 
-Overfull \hbox (48.0865pt too wide) in paragraph at lines 735--766
+Overfull \hbox (48.0865pt too wide) in paragraph at lines 740--771
 \OT1/cmr/m/n/10.95 | Acc=91.51Epoch 10/30 | Loss=0.2855 | Acc=91.53Epoch 11/30 
 | Loss=0.2832 | Acc=91.62Epoch
  []
 
 
-Overfull \hbox (12.9248pt too wide) in paragraph at lines 735--766
+Overfull \hbox (12.9248pt too wide) in paragraph at lines 740--771
 \OT1/cmr/m/n/10.95 Loss=0.2813 | Acc=91.79Epoch 15/30 | Loss=0.2810 | Acc=91.69
 Epoch 16/30 | Loss=0.2799
  []
 
 
-Overfull \hbox (48.0865pt too wide) in paragraph at lines 735--766
+Overfull \hbox (48.0865pt too wide) in paragraph at lines 740--771
 \OT1/cmr/m/n/10.95 | Acc=91.83Epoch 17/30 | Loss=0.2785 | Acc=91.79Epoch 18/30 
 | Loss=0.2773 | Acc=91.82Epoch
  []
 
 
-Overfull \hbox (12.9248pt too wide) in paragraph at lines 735--766
+Overfull \hbox (12.9248pt too wide) in paragraph at lines 740--771
 \OT1/cmr/m/n/10.95 Loss=0.2751 | Acc=91.91Epoch 22/30 | Loss=0.2738 | Acc=91.90
 Epoch 23/30 | Loss=0.2745
  []
 
 
-Overfull \hbox (26.94691pt too wide) in paragraph at lines 735--766
+Overfull \hbox (26.94691pt too wide) in paragraph at lines 740--771
 \OT1/cmr/m/n/10.95 | Acc=91.89Epoch 24/30 | Loss=0.2738 | Acc=91.94Epoch 25/30 
 | Loss=0.2735 | Acc=91.97...
  []
@@ -967,13 +967,13 @@ Overfull \hbox (26.94691pt too wide) in paragraph at lines 735--766
 <../imgs/ej8/screenshot001.png, id=549, 344.78813pt x 295.85532pt>
 File: ../imgs/ej8/screenshot001.png Graphic file (type png)
 <use ../imgs/ej8/screenshot001.png>
-Package pdftex.def Info: ../imgs/ej8/screenshot001.png  used on input line 802.
+Package pdftex.def Info: ../imgs/ej8/screenshot001.png  used on input line 807.
 
 (pdftex.def)             Requested size: 317.07614pt x 272.07732pt.
 <../imgs/ej8/screenshot002.png, id=550, 565.36218pt x 297.36093pt>
 File: ../imgs/ej8/screenshot002.png Graphic file (type png)
 <use ../imgs/ej8/screenshot002.png>
-Package pdftex.def Info: ../imgs/ej8/screenshot002.png  used on input line 809.
+Package pdftex.def Info: ../imgs/ej8/screenshot002.png  used on input line 814.
 
 (pdftex.def)             Requested size: 317.07614pt x 166.77507pt.
 
@@ -981,7 +981,7 @@ Package pdftex.def Info: ../imgs/ej8/screenshot002.png  used on input line 809.
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
-LaTeX Warning: Reference `m' on page 31 undefined on input line 814.
+LaTeX Warning: Reference `m' on page 31 undefined on input line 819.
 
 
 
@@ -991,13 +991,13 @@ LaTeX Warning: Reference `m' on page 31 undefined on input line 814.
 <../imgs/ej8/screenshot003.png, id=561, 344.78813pt x 295.85532pt>
 File: ../imgs/ej8/screenshot003.png Graphic file (type png)
 <use ../imgs/ej8/screenshot003.png>
-Package pdftex.def Info: ../imgs/ej8/screenshot003.png  used on input line 820.
+Package pdftex.def Info: ../imgs/ej8/screenshot003.png  used on input line 825.
 
 (pdftex.def)             Requested size: 317.07614pt x 272.07732pt.
 <../imgs/ej8/screenshot004.png, id=562, 558.58687pt x 297.36093pt>
 File: ../imgs/ej8/screenshot004.png Graphic file (type png)
 <use ../imgs/ej8/screenshot004.png>
-Package pdftex.def Info: ../imgs/ej8/screenshot004.png  used on input line 827.
+Package pdftex.def Info: ../imgs/ej8/screenshot004.png  used on input line 832.
 
 (pdftex.def)             Requested size: 317.07614pt x 168.79874pt.
 
@@ -1007,7 +1007,7 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 <../imgs/ej8/screenshot005.png, id=565, 344.78813pt x 295.85532pt>
 File: ../imgs/ej8/screenshot005.png Graphic file (type png)
 <use ../imgs/ej8/screenshot005.png>
-Package pdftex.def Info: ../imgs/ej8/screenshot005.png  used on input line 838.
+Package pdftex.def Info: ../imgs/ej8/screenshot005.png  used on input line 843.
 
 (pdftex.def)             Requested size: 317.07614pt x 272.07732pt.
 
@@ -1016,7 +1016,7 @@ Package pdftex.def Info: ../imgs/ej8/screenshot005.png  used on input line 838.
 <../imgs/ej8/screenshot006.png, id=575, 558.58687pt x 297.36093pt>
 File: ../imgs/ej8/screenshot006.png Graphic file (type png)
 <use ../imgs/ej8/screenshot006.png>
-Package pdftex.def Info: ../imgs/ej8/screenshot006.png  used on input line 845.
+Package pdftex.def Info: ../imgs/ej8/screenshot006.png  used on input line 850.
 
 (pdftex.def)             Requested size: 317.07614pt x 168.79874pt.
 
@@ -1026,7 +1026,7 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 <../imgs/ej8/screenshot007.png, id=578, 565.36218pt x 297.36093pt>
 File: ../imgs/ej8/screenshot007.png Graphic file (type png)
 <use ../imgs/ej8/screenshot007.png>
-Package pdftex.def Info: ../imgs/ej8/screenshot007.png  used on input line 856.
+Package pdftex.def Info: ../imgs/ej8/screenshot007.png  used on input line 861.
 
 (pdftex.def)             Requested size: 317.07614pt x 166.77507pt.
 
@@ -1035,7 +1035,7 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 <../imgs/ej8/screenshot008.png, id=579, 565.36218pt x 297.36093pt>
 File: ../imgs/ej8/screenshot008.png Graphic file (type png)
 <use ../imgs/ej8/screenshot008.png>
-Package pdftex.def Info: ../imgs/ej8/screenshot008.png  used on input line 864.
+Package pdftex.def Info: ../imgs/ej8/screenshot008.png  used on input line 869.
 
 (pdftex.def)             Requested size: 317.07614pt x 166.77507pt.
 
@@ -1044,7 +1044,7 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 <../imgs/ej8/screenshot009.png, id=582, 565.36218pt x 297.36093pt>
 File: ../imgs/ej8/screenshot009.png Graphic file (type png)
 <use ../imgs/ej8/screenshot009.png>
-Package pdftex.def Info: ../imgs/ej8/screenshot009.png  used on input line 875.
+Package pdftex.def Info: ../imgs/ej8/screenshot009.png  used on input line 880.
 
 (pdftex.def)             Requested size: 317.07614pt x 166.77507pt.
 
@@ -1056,7 +1056,7 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 <../imgs/ej8/screenshot010.png, id=593, 565.36218pt x 297.36093pt>
 File: ../imgs/ej8/screenshot010.png Graphic file (type png)
 <use ../imgs/ej8/screenshot010.png>
-Package pdftex.def Info: ../imgs/ej8/screenshot010.png  used on input line 882.
+Package pdftex.def Info: ../imgs/ej8/screenshot010.png  used on input line 887.
 
 (pdftex.def)             Requested size: 317.07614pt x 166.77507pt.
 
@@ -1065,7 +1065,7 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 <../imgs/ej8/screenshot011.png, id=596, 572.1375pt x 297.36093pt>
 File: ../imgs/ej8/screenshot011.png Graphic file (type png)
 <use ../imgs/ej8/screenshot011.png>
-Package pdftex.def Info: ../imgs/ej8/screenshot011.png  used on input line 893.
+Package pdftex.def Info: ../imgs/ej8/screenshot011.png  used on input line 898.
 
 (pdftex.def)             Requested size: 317.07614pt x 164.79678pt.
 
@@ -1075,7 +1075,7 @@ Package pdftex.def Info: ../imgs/ej8/screenshot011.png  used on input line 893.
 <../imgs/ej8/screenshot012.png, id=606, 558.58687pt x 297.36093pt>
 File: ../imgs/ej8/screenshot012.png Graphic file (type png)
 <use ../imgs/ej8/screenshot012.png>
-Package pdftex.def Info: ../imgs/ej8/screenshot012.png  used on input line 904.
+Package pdftex.def Info: ../imgs/ej8/screenshot012.png  used on input line 909.
 
 (pdftex.def)             Requested size: 317.07614pt x 168.79874pt.
 
@@ -1089,7 +1089,7 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 <../imgs/ej8/screenshot013.png, id=615, 565.36218pt x 297.36093pt>
 File: ../imgs/ej8/screenshot013.png Graphic file (type png)
 <use ../imgs/ej8/screenshot013.png>
-Package pdftex.def Info: ../imgs/ej8/screenshot013.png  used on input line 915.
+Package pdftex.def Info: ../imgs/ej8/screenshot013.png  used on input line 920.
 
 (pdftex.def)             Requested size: 317.07614pt x 166.77507pt.
 
@@ -1114,13 +1114,13 @@ Package rerunfilecheck Info: File `"TP2 Cavicchioli".out' has not changed.
 (rerunfilecheck)             Checksum: E143627E3FBDE57626F65995F46E4E15;8157.
  ) 
 Here is how much of TeX's memory you used:
- 15387 strings out of 468133
- 255610 string characters out of 5432655
+ 15386 strings out of 468133
+ 255599 string characters out of 5432655
  677281 words of memory out of 5000000
- 43665 multiletter control sequences out of 15000+600000
+ 43664 multiletter control sequences out of 15000+600000
  639571 words of font info for 87 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,11n,79p,852b,767s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,11n,79p,960b,767s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\q\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1095
 .pk><C:/Users/q/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cm
 bx10.pfb><C:/Users/q/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/
@@ -1143,7 +1143,7 @@ ers/q/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy6.pfb><C
 :/Users/q/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy9.pf
 b><C:/Users/q/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti
 10.pfb>
-Output written on "TP2 Cavicchioli.pdf" (37 pages, 1517735 bytes).
+Output written on "TP2 Cavicchioli.pdf" (37 pages, 1518745 bytes).
 PDF statistics:
  745 PDF objects out of 1000 (max. 8388607)
  144 named destinations out of 1000 (max. 500000)
