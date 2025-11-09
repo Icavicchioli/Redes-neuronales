@@ -625,7 +625,7 @@ Las figuras \ref{fig:batch1000ecm1} y \ref{fig:batch1000ajustefuncion1} correspo
 
 El incremento del tamaño de \textit{minibatch} manteniendo la cantidad de iteraciones constante hizo que se tardara mucho más en entrenar para los \textit{minibatches} de 1000 que para el de 100 y el de 40. Claramente se entrenó con más iteraciones que las necesarias, evidente en el hecho de que el ECM converge para la iteración 4000 en los 3 casos.
 
-El ECm de entrenamiento es más ruidoso con el \textit{minibatch} más chico, lo que tiene sentido porque es el que tiene el gradiente más estocástico, de menos muestras.
+El ECm de entrenamiento es más ruidoso con el \textit{minibatch} más chico, lo que tiene sentido porque es el que tiene el gradiente más estocástico, de menos muestras. El ECM es ruidoso porque en cada pasada la dirección de descenso depende del \textit{minibatch} de ese instante, que puede no coincidir con la anterior e incluso moverse en una dirección tal que aumenta el ECM.
 
 Los 3 casos mostrados predicen con una forma aproximadamente igual, aunque considero que el mejor predictor es el de \textit{minibatch} de 1000; parece el menos disperso de los 3 a lo largo de toda la recta. Los 3 casos presentan una aparente saturación en los extremos de la recta, que recuerda a una sigmoidea, y es muy probable que sea causado por la misma función de activación.
 
