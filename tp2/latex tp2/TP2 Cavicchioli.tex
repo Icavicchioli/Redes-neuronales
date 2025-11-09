@@ -706,8 +706,98 @@ En líneas generales, la consigna permitió entender que el resultado y proceso 
 
 \subsection{Consignas}
 
-Siguiendo el trabajo de Hinton y Salakhutdinov (2006), entrene una máquina restringida de Boltzmann con imágenes de la base de datos MNIST. Muestre el error de reconstrucción durante el entrenamiento, y ejemplos de cada uno de los dígitos reconstruidos.
+Siguiendo el trabajo de Hinton y Salakhutdinov (2006), entrene una máquina restringida de Boltzmann (RBM o MRB) con imágenes de la base de datos MNIST. Muestre el error de reconstrucción durante el entrenamiento, y ejemplos de cada uno de los dígitos reconstruidos.
+
 \subsection{Desarrollo}
+
+La MRB se puede pensar como una red \textit{feedfoward} de 4 capas, en vez de pensarla como una de 2 capas con pesos simétricos. $v$ es la capa visible y $h$ es la oculta, y tenemos un $\hat{v}$ y $\hat{h}$, que son las estimaciones.
+
+Las fórmulas que hay que seguir son las siguientes:
+
+$$
+m_i = \text{pixel}_i
+$$
+
+$$
+v_i \sim  \mathcal{N}(m_i , 1)
+$$
+
+$$
+P_r (j) = g(\sum _i w_{ij} v_i + b_j) \quad \quad g (x) = \frac{1}{1+e^{-x}}
+$$
+
+$$
+h(j) =
+\begin{cases}
+	1 \quad \text{con probabilidad} \quad P_r
+	\\
+	0 \quad  \text{con probabilidad}\quad 1-P_r
+\end{cases}
+$$
+
+$$
+\text{guardar} \quad (v_i , h_j)_{data}
+$$
+
+Luego se repiten los mismos pasos pero para obtener las estimaciones:
+
+$$
+m_i = \sum _j w_{ij} v_i + b_i
+$$
+
+$$
+\hat{v}_i \sim  \mathcal{N}(m_i , 1)
+$$
+
+$$
+P_r (j) = g(\sum _i w_{ij} v_i + b_j) \quad \quad g (x) = \frac{1}{1+e^{-x}}
+$$
+
+$$
+\hat{h}(j) =
+\begin{cases}
+	1 \quad \text{con probabilidad} \quad P_r
+	\\
+	0 \quad  \text{con probabilidad}\quad 1-P_r
+\end{cases}
+$$
+
+$$
+\text{guardar} \quad (v_i , h_j)_{reconstruccion}
+$$
+
+Finalmente se hace:
+
+Al final se hace
+
+$$
+\Delta w_{ij}= \eta ( \left\langle v_i h_j \right\rangle - \left\langle \hat{v_i} \hat{h_j} \right\rangle)
+$$
+
+$$
+b_i= \eta ( \left\langle v_i \right\rangle - \left\langle \hat{v_i} \right\rangle)
+$$
+
+$$
+\Delta w_{ij}= \eta ( \left\langle v_i h_j \right\rangle - \left\langle \hat{v_i} \hat{h_j} \right\rangle)
+$$
+$$
+b_j= \eta ( \left\langle  h_j \right\rangle - \left\langle  \hat{h_j} \right\rangle)
+$$
+
+
+A grandes rasgos, la idea es que se tiene un proceso de aprendizaje no supervisado donde el modelo ajusta sus pesos (y biases) para que las correlaciones entre las unidades visibles y ocultas reconstruidas ($\hat{v}, \hat{h}$) se asemejen lo más posible a las del conjunto de datos original ($v, h$); es decir, las fórmulas buscan reducir la diferencia entre las estadísticas del modelo y las de los datos reales, permitiendo que la red aprenda a representar la distribución subyacente de las muestras de entrada. El código refleja toda esta lógica.
+
+Una de las finalidades de la MRB es obtener una representación de los datos de menor dimensión que la entrada, de modo que las variables en la capa de menor dimensión capturen las dinámicas de mayor importancia (o varianza, como en PCA). La otra función es obtener un \textit{autoencoder} no lineal (no es PCA), capaz de capturar y modelar relaciones complejas en los datos.
+
+La figura \ref{fig:ej5ecm} muestra el error de reconstrucción de las imágenes por época de entrenamiento. El error decrece de forma exponencial con
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.7\linewidth]{imgs/ej5_ecm}
+	\caption{}
+	\label{fig:ej5ecm}
+\end{figure}
 
 \subsection{Análisis}
 
