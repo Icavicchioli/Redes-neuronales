@@ -912,6 +912,8 @@ Todas las imágenes recién presentada muestran 2 tendencias claras:
 
 Estos efectos observados tienen sentido, y suceden con PCA, que sería el método de reducción de dimensionalidad lineal. En este, cuando se quitan direcciones principales, se pierde información/energía/varianza de los datos de entrada, y para el caso de mantener solo la dirección de mayor varianza, el sistema siempre va a devolver el patrón más común a todos los datos, perdiéndose todo el detalle quye estaba en las direcciones de menos varianza.
 
+\newpage
+
 
 \section{Ejercicio 6}
 
@@ -922,10 +924,143 @@ Entrene una red convolucional para clasificar las imágenes de la base de datos 
 
 \subsection{Desarrollo}
 
+Para este ejercicio se fueron generando modelos de CNN y de MLP cada vez más pequeños que lleguen al 90\% de \textit{accuracy} de testeo/evaluación.
+
+\subsubsection{CNNs}
+
+La Figura~\ref{fig:ej61} muestra la evolución de la pérdida de entrenamiento, la pérdida de validación y la precisión obtenida para la red neuronal convolucional.
+Esta red posee una capa convolucional que recibe un plano de entrada y genera 8 planos de salida, utilizando kernels de tamaño $5 \times 5$.
+Luego se aplica una capa de pooling con ventana de $2 \times 2$, que reduce a la mitad la resolución espacial, seguida de una capa completamente con 10 salidas.
+El modelo cuenta con 11,738 parámetros entrenables.
+Tras 15 épocas de entrenamiento se alcanzó una precisión del 98.46\%.
+
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.9\linewidth]{imgs/ej6_1}
+	\caption{Evolución del error y precisión para la CNN N°1.}
+	\label{fig:ej61}
+\end{figure}
+
+\newpage
+
+La Figura~\ref{fig:ej62} corresponde a la segunda CNN entrenada, que posee una capa convolucional con un plano de entrada y 5 planos de salida, con kernels de tamaño $5 \times 5$.
+A continuación se aplica una operación de pooling con ventana de $2 \times 2$ y una capa completamente conectada de 10 salidas.
+El modelo tiene un total de 7,340 parámetros entrenables.
+Luego de 17 épocas, alcanzó una precisión del 98.10\%.
+
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.9\linewidth]{imgs/ej6_2}
+	\caption{Evolución del error y precisión para la CNN N°2.}
+	\label{fig:ej62}
+\end{figure}
+
+La Figura~\ref{fig:ej63} muestra los resultados de la CNN número 3, compuesta por una capa convolucional que recibe un plano de entrada y produce 2 planos de salida mediante kernels de $5 \times 5$.
+Luego se aplica pooling con ventana de $2 \times 2$, y finalmente una capa lineal de 10 salidas.
+El modelo cuenta con 2,942 parámetros entrenables.
+Tras 30 épocas de entrenamiento, alcanzó una precisión del 97.01\%.
+
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.9\linewidth]{imgs/ej6_3}
+	\caption{Evolución del error y precisión para la CNN N°3.}
+	\label{fig:ej63}
+\end{figure}
+
+\newpage
+
+La Figura~\ref{fig:ej64} presenta la cuarta CNN ideada, conformada por una capa convolucional con un plano de entrada y 2 planos de salida, con kernels de tamaño $9 \times 9$.
+Se aplica luego una capa de pooling de $2 \times 2$, seguida de una capa totalmente conectada de 10 salidas.
+El modelo tiene 2,174 parámetros entrenables.
+Tras 23 épocas, obtuvo una precisión del 97.09\%.
+
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.9\linewidth]{imgs/ej6_4}
+	\caption{Evolución del error y precisión para la CNN N°4.}
+	\label{fig:ej64}
+\end{figure}
+
+La Figura~\ref{fig:ej65} corresponde a la CNN N°5, compuesta por una capa convolucional que recibe un plano de entrada y genera 2 planos de salida utilizando kernels de $15 \times 15$.
+Luego se aplica pooling con ventana de $2 \times 2$ y una capa lineal con 10 salidas.
+La red posee 1,442 parámetros entrenables.
+Tras 23 épocas, alcanzó una precisión del 95.32\%.
+
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.9\linewidth]{imgs/ej6_5}
+	\caption{Evolución del error y precisión para la CNN N°5.}
+	\label{fig:ej65}
+\end{figure}
+
+\newpage
+
+Finalmente, la Figura~\ref{fig:ej66} muestra los resultados de la CNN más chica.
+Esta red posee una capa convolucional que recibe un plano de entrada y genera 2 planos de salida con kernels de $15 \times 15$, seguida de una operación de pooling con ventana de $4 \times 4$ y una capa completamente conectada con 18 entradas y 10 salidas.
+El modelo tiene 642 parámetros entrenables.
+Tras 30 épocas, se obtuvo una precisión del 91.58\%.
+
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.9\linewidth]{imgs/ej6_6}
+	\caption{Evolución del error y precisión para la CNN N°6.}
+	\label{fig:ej66}
+\end{figure}
+
+
+
+
+\subsubsection{MLPs}
+
+
+La Figura~\ref{fig:ej67} corresponde al MLP N°1, compuesto por dos capas lineales: una primera capa con 784 entradas y 64 salidas, y una segunda capa con 10 salidas.
+La red posee 50,890 parámetros entrenables.
+Tras 15 épocas, alcanzó una precisión del 97.36\%.
+
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.9\linewidth]{imgs/ej6_7}
+	\caption{Evolución del error y precisión para el MLP1.}
+	\label{fig:ej67}
+\end{figure}
+
+\newpage
+
+La Figura~\ref{fig:ej68} presenta al MLP N°2, conformado por una única capa lineal con 784 entradas y 10 salidas.
+El modelo cuenta con 7,850 parámetros entrenables.
+Tras 18 épocas de entrenamiento, alcanzó una precisión del 92.86\%.
+
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.9\linewidth]{imgs/ej6_8}
+	\caption{Evolución del error y precisión para el MLP2.}
+	\label{fig:ej68}
+\end{figure}
+
+La Figura~\ref{fig:ej69} muestra los resultados del MLP N°3, compuesto por una operación de \textit{max-pooling} con ventana de $2 \times 2$, seguida de una capa lineal con 196 entradas y 10 salidas.
+El modelo tiene 1,970 parámetros entrenables.
+Tras 30 épocas, alcanzó una precisión del 92.17\%.
+
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.9\linewidth]{imgs/ej6_9}
+	\caption{Evolución del error y precisión para el MLP3.}
+	\label{fig:ej69}
+\end{figure}
+
+\newpage
+
 \subsection{Análisis}
 
+Todos los gráficos se ven razonables: los errores disminuyen con las iteraciones y el accuracy tiende a subir. A veces el ECM de testeo/evaluación queda por debajo del de entrenamiento, que puede deberse a las imágenes del dataset de testeo. Se usó la proporción de train/test de 60000/10000 ($\sim$ 83/17) propia de MNIST, con \textit{minibatches} de tamaño 64 (que aporta los beneficios ya mencionados en la consigna sobre el tema). Se usó la función de activación ReLu.
 
-\clearpage
+La CNN más chica encontrada es de 642 parámetros, y hace gran uso del pooling para disminuir fuertemente la dimensión de la capa lineal ``\textit{fully connected}'' que nos da las 10 salidas (1 por dígito).
+
+En cambio, el MLP más pequeño logrado fue de 1970 parámetros, y se hizo (según lo discutido en clase) haciendo ``trampa'' porque se aplicó pooling a los datos de entrada para poder reducir incluso más la dimensión del clasificador. Personalmente lo considero válido.
+
+Es claro que el modelo con la capa convolucional es más eficiente en términos de cantidad de parámetros (son menos). La capa convolucional no solo es ``barata'' en términos de parámetros, sino que además permite hacer \textit{feature extraction} local, es decir, sin perder la posición de la \textit{feature}, y aparte aprende que características extaer para minimizar el error en la predicción/categorización. Esto último es crucial ya que evita tener que pensar de antemano que propiedades se deben extraer de lo que se desea clasificar, se deja en ``manos'' de la máquina para que lo aprenda. Ahora si, es posible que sea imposible para un humano entender que termina extrayendo cada plano de convolución \footnote{Algo así como cuando se obtiene una matriz para una representación de un sistema en espacio de estados. Es posible que la representación no esté dada en base a estados comprensibles (como velocidad, espacio, altura, etc.), sino que una mezcla indistinguible de ellos}.
+
+\newpage
 
 \section{Ejercicio 7}
 
@@ -986,19 +1121,14 @@ Encontrar un perceptrón multicapa que resuelva una XOR de 2 entradas mediante
 
 \subsection{Desarrollo}
 
-Para este ejercicio se reusó el código del ejercicio 3, cambiando la regla de aprendizaje a aquella del \textit{simulated annealing}.
+Para este ejercicio se reusó el código del ejercicio 3, cambiando la regla de aprendizaje a aquella del \textit{simulated annealing}\footnote{Emula el proceso físico de templar y revenir una pieza de metal}.
 
-El algoritmo inicia con un set de pesos $w$, actualizados como $w(n+1)=w(n) + \mathcal{N}(0, \sigma ^2 )$. Es decir, el paso, o $\delta w$ es aleatorio, y la varianza de la gaussiana determina que tan grande es ese paso.
 
-Luego de obtener un set de parámetros $w(n+1)$, se calcula el $\delta E = E(w(n+1)) - E(w(n))$, que es lo mismo que decir que se calcula el cambio del error después del cambio de parámetros.
+El algoritmo inicia con un set de pesos $w$, actualizados como $w(n+1)=w(n) + \mathcal{N}(0, \sigma ^2 )$. Es decir, el paso, o $\delta w$ es aleatorio, y la varianza de la gaussiana determina que tan grande es ese paso. Luego de obtener un set de parámetros $w(n+1)$, se calcula el $\delta E = E(w(n+1)) - E(w(n))$, que es lo mismo que decir que se calcula el cambio del error después del cambio de parámetros.
 
 Ahora viene lo interesante: si el error decrece ($\delta E < 0$) entonces se admite el cambio de parámetros y $w(n) = w(n+1)$. En cambio, si el error empeora ($\delta E > 0$), el cambio se admite con una probabilidad $e ^\frac{-\delta E}{T}$, con $T$ la temperatura del sistema en ese instante.
 
-Emula el proceso físico de templar y revenir una pieza de metal.
-
-Como detalle final, la temperatura se debe decrecer para que el algoritmo vaya convergiendo (si es muy alta tal vez pasea por el espacio de estados sin límite). Esto generalmente se hace de forma exponencial como $T(n+1) = \alpha T(n)$.
-
-En el desarrollo hecho se usó un decaimiento de temperatura del tiempo exponencial y un $\sigma$ constante. A continuación se detallan los varios casos simulados.
+Como detalle final, la temperatura se debe decrecer para que el algoritmo vaya convergiendo (si es muy alta tal vez pasea por el espacio de estados sin límite). Esto generalmente se hace de forma exponencial como $T(n+1) = \alpha T(n)$. En el desarrollo hecho se usó un decaimiento de temperatura del tiempo exponencial y un $\sigma$ constante. A continuación se detallan los varios casos simulados.
 
 \subsubsection{XOR de 2 entradas - 2 neuronas en capa oculta}
 $\alpha = 0.995$

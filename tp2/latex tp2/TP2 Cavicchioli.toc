@@ -32,24 +32,26 @@
 \contentsline {subsection}{\numberline {6.1}Consignas}{28}{subsection.6.1}%
 \contentsline {subsection}{\numberline {6.2}Desarrollo}{28}{subsection.6.2}%
 \contentsline {subsection}{\numberline {6.3}Análisis}{35}{subsection.6.3}%
-\contentsline {section}{\numberline {7}Ejercicio 6}{35}{section.7}%
-\contentsline {subsection}{\numberline {7.1}Consignas}{35}{subsection.7.1}%
-\contentsline {subsection}{\numberline {7.2}Desarrollo}{35}{subsection.7.2}%
-\contentsline {subsection}{\numberline {7.3}Análisis}{35}{subsection.7.3}%
-\contentsline {section}{\numberline {8}Ejercicio 7}{36}{section.8}%
-\contentsline {subsection}{\numberline {8.1}Consignas}{36}{subsection.8.1}%
-\contentsline {subsection}{\numberline {8.2}Desarrollo}{36}{subsection.8.2}%
-\contentsline {subsection}{\numberline {8.3}Análisis}{36}{subsection.8.3}%
-\contentsline {section}{\numberline {9}Ejercicio 8}{37}{section.9}%
-\contentsline {subsection}{\numberline {9.1}Consignas}{37}{subsection.9.1}%
-\contentsline {subsection}{\numberline {9.2}Desarrollo}{37}{subsection.9.2}%
-\contentsline {subsubsection}{\numberline {9.2.1}XOR de 2 entradas - 2 neuronas en capa oculta}{37}{subsubsection.9.2.1}%
-\contentsline {subsubsection}{\numberline {9.2.2}XOR de 2 entradas - 4 neuronas en capa oculta}{38}{subsubsection.9.2.2}%
-\contentsline {subsubsection}{\numberline {9.2.3}XOR de 2 entradas - 10 neuronas en capa oculta}{39}{subsubsection.9.2.3}%
-\contentsline {subsubsection}{\numberline {9.2.4}XOR de 2 entradas - 2 neuronas en capa oculta}{39}{subsubsection.9.2.4}%
-\contentsline {subsubsection}{\numberline {9.2.5}XOR de 2 entradas - 2 neuronas en capa oculta}{40}{subsubsection.9.2.5}%
-\contentsline {subsubsection}{\numberline {9.2.6}XOR de 4 entradas - 4 neuronas en capa oculta}{41}{subsubsection.9.2.6}%
-\contentsline {subsubsection}{\numberline {9.2.7}XOR de 4 entradas - 5 neuronas en capa oculta}{42}{subsubsection.9.2.7}%
-\contentsline {subsubsection}{\numberline {9.2.8}XOR de 4 entradas - 6 neuronas en capa oculta}{42}{subsubsection.9.2.8}%
-\contentsline {subsection}{\numberline {9.3}Análisis}{42}{subsection.9.3}%
-\contentsline {section}{\numberline {10}Conclusiones}{43}{section.10}%
+\contentsline {section}{\numberline {7}Ejercicio 6}{36}{section.7}%
+\contentsline {subsection}{\numberline {7.1}Consignas}{36}{subsection.7.1}%
+\contentsline {subsection}{\numberline {7.2}Desarrollo}{36}{subsection.7.2}%
+\contentsline {subsubsection}{\numberline {7.2.1}CNNs}{36}{subsubsection.7.2.1}%
+\contentsline {subsubsection}{\numberline {7.2.2}MLPs}{39}{subsubsection.7.2.2}%
+\contentsline {subsection}{\numberline {7.3}Análisis}{41}{subsection.7.3}%
+\contentsline {section}{\numberline {8}Ejercicio 7}{42}{section.8}%
+\contentsline {subsection}{\numberline {8.1}Consignas}{42}{subsection.8.1}%
+\contentsline {subsection}{\numberline {8.2}Desarrollo}{42}{subsection.8.2}%
+\contentsline {subsection}{\numberline {8.3}Análisis}{42}{subsection.8.3}%
+\contentsline {section}{\numberline {9}Ejercicio 8}{43}{section.9}%
+\contentsline {subsection}{\numberline {9.1}Consignas}{43}{subsection.9.1}%
+\contentsline {subsection}{\numberline {9.2}Desarrollo}{43}{subsection.9.2}%
+\contentsline {subsubsection}{\numberline {9.2.1}XOR de 2 entradas - 2 neuronas en capa oculta}{43}{subsubsection.9.2.1}%
+\contentsline {subsubsection}{\numberline {9.2.2}XOR de 2 entradas - 4 neuronas en capa oculta}{44}{subsubsection.9.2.2}%
+\contentsline {subsubsection}{\numberline {9.2.3}XOR de 2 entradas - 10 neuronas en capa oculta}{45}{subsubsection.9.2.3}%
+\contentsline {subsubsection}{\numberline {9.2.4}XOR de 2 entradas - 2 neuronas en capa oculta}{45}{subsubsection.9.2.4}%
+\contentsline {subsubsection}{\numberline {9.2.5}XOR de 2 entradas - 2 neuronas en capa oculta}{46}{subsubsection.9.2.5}%
+\contentsline {subsubsection}{\numberline {9.2.6}XOR de 4 entradas - 4 neuronas en capa oculta}{47}{subsubsection.9.2.6}%
+\contentsline {subsubsection}{\numberline {9.2.7}XOR de 4 entradas - 5 neuronas en capa oculta}{48}{subsubsection.9.2.7}%
+\contentsline {subsubsection}{\numberline {9.2.8}XOR de 4 entradas - 6 neuronas en capa oculta}{48}{subsubsection.9.2.8}%
+\contentsline {subsection}{\numberline {9.3}Análisis}{48}{subsection.9.3}%
+\contentsline {section}{\numberline {10}Conclusiones}{49}{section.10}%
