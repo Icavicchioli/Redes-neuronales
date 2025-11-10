@@ -1118,7 +1118,6 @@ Una vez entrenado el \textit{autoencoder}, se extrajo el \textit{encoder}, se co
 	\label{tab:accuracy_por_digito}
 \end{table}
 
-\newpage
 Para comparar, se creó un MLP que pasa de la imagen de MNIST (tamaño 784) a 10 (la salida). La performance se ve en el cuadro \ref{tab:accuracy_por_digito2} y el entrenamiento tomó  $\sim \SI{7}{\min}$.
 
 \begin{table}[h!]
@@ -1146,7 +1145,7 @@ Para comparar, se creó un MLP que pasa de la imagen de MNIST (tamaño 784) a 10
 	\label{tab:accuracy_por_digito2}
 \end{table}
 
-
+\newpage
 También se probó con una red que usa el encoder pero no congela esas capas, sino que permite hacer cierto \textit{fien-tuning} y otra con más capas ocultas en el MLP post \textit{encoder}.
 
 La red con \textit{encoder} \textit{fine-tuned} tardó $SI{}{\min}$ y logró los resultados del cuadro \ref{tab:accuracy_por_digito_encoder_fine_tuned}.
@@ -1176,13 +1175,13 @@ La red con \textit{encoder} \textit{fine-tuned} tardó $SI{}{\min}$ y logró los
 	\label{tab:accuracy_por_digito_encoder_fine_tuned}
 \end{table}
 
-\newpage
+
 
 La red con otra capa oculta más y  \textit{encoder} congelado demoró $SI{7}{\min}$ con \SI{30}{\sec}, y llegó a los resultados del cuadro \ref{tab:accuracy_por_digito_encoder_fc156}.
 
 \begin{table}[h!]
 	\centering
-	\caption{Accuracy por dígito en el conjunto de prueba (\textit{encoder} + FC intermedia 156$\to$156$\to$10).}
+	\caption{Accuracy por dígito en el conjunto de prueba (\textit{encoder} + FC intermedia}
 	\begin{tabular}{c c c}
 		\hline
 		\textbf{Dígito} & \textbf{Accuracy (\%)} & \textbf{Cantidad de muestras} \\
@@ -1205,7 +1204,7 @@ La red con otra capa oculta más y  \textit{encoder} congelado demoró $SI{7}{\m
 	\label{tab:accuracy_por_digito_encoder_fc156}
 \end{table}
 
-
+\newpage
 \subsection{Análisis}
 
 Los resultados obtenidos indican que el uso del \textit{autoencoder} permitió hacerla reducción de dimensionalidad del 80\% que se buscaba, conservando gran parte de la información de la entrada. Sin embargo, esta reducción de dimensionalidad no garantizó la performance en los otros modelos.
@@ -1237,142 +1236,166 @@ Encontrar un perceptrón multicapa que resuelva una XOR de 2 entradas mediante
 
 Para este ejercicio se reusó el código del ejercicio 3, cambiando la regla de aprendizaje a aquella del \textit{simulated annealing}\footnote{Emula el proceso físico de templar y revenir una pieza de metal}.
 
-
 El algoritmo inicia con un set de pesos $w$, actualizados como $w(n+1)=w(n) + \mathcal{N}(0, \sigma ^2 )$. Es decir, el paso, o $\delta w$ es aleatorio, y la varianza de la gaussiana determina que tan grande es ese paso. Luego de obtener un set de parámetros $w(n+1)$, se calcula el $\delta E = E(w(n+1)) - E(w(n))$, que es lo mismo que decir que se calcula el cambio del error después del cambio de parámetros.
 
-Ahora viene lo interesante: si el error decrece ($\delta E < 0$) entonces se admite el cambio de parámetros y $w(n) = w(n+1)$. En cambio, si el error empeora ($\delta E > 0$), el cambio se admite con una probabilidad $e ^\frac{-\delta E}{T}$, con $T$ la temperatura del sistema en ese instante.
+Ahora viene lo interesante: si el error decrece ($\delta E < 0$) entonces se admite el cambio de parámetros y $w(n) = w(n+1)$. En cambio, si el error empeora ($\delta E > 0$), el cambio se admite con una probabilidad $e ^\frac{-\delta E}{T}$, siendo $T$ la temperatura del sistema en ese instante.
 
 Como detalle final, la temperatura se debe decrecer para que el algoritmo vaya convergiendo (si es muy alta tal vez pasea por el espacio de estados sin límite). Esto generalmente se hace de forma exponencial como $T(n+1) = \alpha T(n)$. En el desarrollo hecho se usó un decaimiento de temperatura del tiempo exponencial y un $\sigma$ constante. A continuación se detallan los varios casos simulados.
 
+\newpage
+
 \subsubsection{XOR de 2 entradas - 2 neuronas en capa oculta}
-$\alpha = 0.995$
+
+
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=0.7\linewidth]{../imgs/ej8/screenshot001}
-	\caption{Frontera de decisión de MLP de 2 neuronas en capa oculta}
+	\caption{Frontera de decisión de MLP con 2 neuronas en la capa oculta}
 	\label{fig:screenshot001}
 \end{figure}
 
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=0.7\linewidth]{../imgs/ej8/screenshot002}
-	\caption{ECM y temperatura por interación de MLP de 2 neuronas en capa oculta}
+	\caption{ECM y temperatura por iteración para MLP con 2 neuronas en la capa oculta}
 	\label{fig:screenshot002}
 \end{figure}
 
-La XOR de 2 entradas fue aprendida perfectamente por una red de 2 neuronas en la capa oculta, igual que en la consigna 3. La imagen \ref muestra la frontera de decisión{fig:screenshot001}, también recta como en el caso de gradiente descendiente. En el gráfico~\ref{fig:screenshot002} se puede ver el ECM y temperatura. hay cierta estocacidad con el ECM (como es de esperar por la temperatura), pero termina disminuyendo hasta converger en 0.
+La red con dos neuronas ocultas logró aprender perfectamente la XOR de dos entradas, igual que en la consigna 3. En la figura~\ref{fig:screenshot001} se observa una frontera de decisión con forma similar a la obtenida mediante gradiente descendente. En la figura~\ref{fig:screenshot002} se muestra la evolución del ECM y la temperatura: el error presenta cierta variabilidad debido a la naturaleza estocástica del método, pero termina convergiendo a cero. El decaimiento fue de $\alpha = 0.995$.
+
+\newpage
 
 \subsubsection{XOR de 2 entradas - 4 neuronas en capa oculta}
-$\alpha = 0.995$
+
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=0.7\linewidth]{../imgs/ej8/screenshot003}
-	\caption{Frontera de decisión de MLP de 4 neuronas en capa oculta}
+	\caption{Frontera de decisión de MLP con 4 neuronas en la capa oculta}
 	\label{fig:screenshot003}
 \end{figure}
 
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=0.7\linewidth]{../imgs/ej8/screenshot004}
-	\caption{ECM y temperatura por interación de MLP de 4 neuronas en capa oculta}
+	\caption{ECM y temperatura por iteración para MLP con 4 neuronas en la capa oculta}
 	\label{fig:screenshot004}
 \end{figure}
 
-La figura \ref{fig:screenshot003} muestra la frontera de decisión, y la \ref{fig:screenshot004} contiene el ECM y temperatura. La red aprendió el problema a la perfección. Su ECM es decreciente y la forntera es congruente con lo esperado y ya visto.
+La figura~\ref{fig:screenshot003} muestra la frontera de decisión obtenida, mientras que la figura~\ref{fig:screenshot004} presenta la evolución del ECM. En este caso la red también resolvió la XOR correctamente: el error decrece de forma sostenida y la frontera se ajusta a lo esperado. El decaimiento fue de $\alpha = 0.995$.
+
+\newpage
 
 \subsubsection{XOR de 2 entradas - 10 neuronas en capa oculta}
-$\alpha = 0.995$
+
+
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=0.7\linewidth]{../imgs/ej8/screenshot005}
-	\caption{Frontera de decisión de MLP de 10 neuronas en capa oculta}
+	\caption{Frontera de decisión de MLP con 10 neuronas en la capa oculta}
 	\label{fig:screenshot005}
 \end{figure}
 
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=0.7\linewidth]{../imgs/ej8/screenshot006}
-	\caption{ECM y temperatura por interación de MLP de 10 neuronas en capa oculta}
+	\caption{ECM y temperatura por iteración para MLP con 10 neuronas en la capa oculta}
 	\label{fig:screenshot006}
 \end{figure}
 
-La figura \ref{fig:screenshot005} muestra la frontera de decisión, y la \ref{fig:screenshot006} contiene el ECM y temperatura. la frontera de decisión es curva como en el caso de 10 neuronas con gradiente descendiente y el ECM disminuye como se esperaba.
+En la figura~\ref{fig:screenshot005} se observa una frontera de decisión más curva y compleja, coherente con el mayor número de neuronas ocultas. El error medio (figura~\ref{fig:screenshot006}) desciende de forma estable, mostrando que el método sigue funcionando correctamente incluso con una red más grande. El decaimiento fue de $\alpha = 0.995$.
 
-\subsubsection{XOR de 2 entradas - 2 neuronas en capa oculta}
-$\alpha = 0.98$
+\newpage
+
+\subsubsection{XOR de 2 entradas - 2 neuronas en capa oculta - decaimiento rápido}
+
+
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=0.7\linewidth]{../imgs/ej8/screenshot007}
-	\caption{ECM y temperatura -Decay rate de 0.98 - caso 1}
+	\caption{ECM y temperatura - decay rate $\alpha = 0.98$ (caso 1)}
 	\label{fig:screenshot007}
 \end{figure}
-
 
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=0.7\linewidth]{../imgs/ej8/screenshot008}
-	\caption{ECM y temperatura - Decay rate de 0.98 - caso 2}
+	\caption{ECM y temperatura - decay rate $\alpha = 0.98$ (caso 2)}
 	\label{fig:screenshot008}
 \end{figure}
 
-Para este caso (figuras \ref{fig:screenshot007} y \ref{fig:screenshot008}), em uno la red aprendió el problema aún cuando la regla de la actualización de la temperatura era la de una exponencial rápida. En el otro no lo aprendió. Esto claramente es algo estocástico.
+Con un decaimiento de temperatura más rápido ($\alpha = 0.98$), el comportamiento fue más variable: en algunos casos (figura~\ref{fig:screenshot007}) la red alcanzó una buena solución, mientras que en otros (figura~\ref{fig:screenshot008}) no logró converger. Esto muestra la fuerte influencia del azar en este tipo de entrenamiento estocástico.
 
-\subsubsection{XOR de 2 entradas - 2 neuronas en capa oculta}
-$\alpha = 0.999$
+\newpage
+
+\subsubsection{XOR de 2 entradas - 2 neuronas en capa oculta - decaimiento lento }
+
+
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=0.7\linewidth]{../imgs/ej8/screenshot009}
-	\caption{ECM y temperatura - Decay rate de 0.999}
+	\caption{ECM y temperatura - decay rate $\alpha = 0.999$ (caso 1)}
 	\label{fig:screenshot009}
 \end{figure}
 
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=0.7\linewidth]{../imgs/ej8/screenshot010}
-	\caption{ECM y temperatura - Decay rate de 0.999}
+	\caption{ECM y temperatura - decay rate $\alpha = 0.999$ (caso 2)}
 	\label{fig:screenshot010}
 \end{figure}
 
-Para este caso (figuras \ref{fig:screenshot009} y \ref{fig:screenshot010}), la red claramente pasó demasiado tiempo con alta temperatura, cayendo en un mínimo no global. esto se ejecutó varias veces con el mismo resultado, aunque no es definitivo.
+Con un decaimiento más lento ($\alpha = 0.999$), la temperatura se mantuvo alta durante gran parte del proceso. Como consecuencia, la red no logró estabilizarse y quedó atrapada en mínimos no globales (figuras~\ref{fig:screenshot009} y \ref{fig:screenshot010}). Este resultado se repitió en varias ejecuciones, aunque no puede considerarse definitivo debido a la aleatoriedad del método.
 
+
+\newpage
 \subsubsection{XOR de 4 entradas - 4 neuronas en capa oculta}
 
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=0.7\linewidth]{../imgs/ej8/screenshot011}
-	\caption{}
+	\caption{Frontera de decisión o error para MLP con 4 neuronas ocultas (4 entradas)}
 	\label{fig:screenshot011}
 \end{figure}
 
-No aprendió
+En este caso la red no logró aprender la XOR de 4 entradas. El error se mantuvo elevado y no se observó convergencia clara.
+
+
 
 \subsubsection{XOR de 4 entradas - 5 neuronas en capa oculta}
 
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=0.7\linewidth]{../imgs/ej8/screenshot012}
-	\caption{}
+	\caption{Resultados de MLP con 5 neuronas ocultas (4 entradas)}
 	\label{fig:screenshot012}
 \end{figure}
 
-aprendió
+Al aumentar a cinco neuronas en la capa oculta, la red sí consiguió aprender la XOR de 4 entradas, mostrando una reducción progresiva del error.
+
+\newpage
 
 \subsubsection{XOR de 4 entradas - 6 neuronas en capa oculta}
 
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=0.7\linewidth]{../imgs/ej8/screenshot013}
-	\caption{}
+	\caption{Resultados de MLP con 6 neuronas ocultas (4 entradas)}
 	\label{fig:screenshot013}
 \end{figure}
 
-Sobre estas últimas, puede ser que le sea más fácil encontrar la solución pq el esacio de soluciones es más chico y este algoritmo se lo permite encontrar.
+La red fue  capaz de aprender completamente la XOR de 4 entradas. Además, el ECM de aprendizaje se ve más estable que para las otras configuraciones de menos neuronas.
+
 
 \subsection{Análisis}
 
-\clearpage
+Las redes no tuvieron problema en aprender la XOR de 2 entradas, tal como se observó en la tercer consigna de este documento. Se notó que el factor de decaimiento de la temperatura es crítico para la convergencia, y un factor muy lento o rápido puede causar que no se aprenda.
+
+Un dato a destacar es que el aprendizaje por \textit{simulated annealing} permitió que un MLP de 6 neuronas en la capa oculta aprendiese la XOR de 4 entradas, cuando se había requerido uno de 10 cuando se usó gradiente descendiente (su versión básica). Esto puede deberse a que el espacio de soluciones se amplía, facilitando que el método encuentre una combinación de pesos que satisfaga todas las condiciones de la XOR.
 
 
 \section{Conclusiones}
+
+Cada consigna tiene su análisis, así que no voy a entrar en detalle de algún ejercicio particular. Considero que el trabajo sirvió como una introducción muy completa al tema de redes neuronales basadas en perceptrones, métodos de optimización y redes convolucionales. A mi entender, las consignas fueron resueltas de forma satisfactoria, ahondando en algunos temas no requeridos pero que hacen al entendimiento de la materia.
+
 
 \end{document}
