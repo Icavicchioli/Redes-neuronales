@@ -1070,40 +1070,53 @@ Entrene un autoencoder para obtener una representación de baja dimensionalidad 
 
 \subsection{Desarrollo}
 
+Primero se entrenó un \textit{autoencoder} como los vistos en clase (pero sin hacer el proceso con las MRB). La finalidad es poder quedarse con la etapa de codificación, de \textit{encoder}, que implicitamente ejecuta la función que transforma datos del dominio de la entrada al espacio de menor dimensión. Para este caso se eligió una reducción del 80\% de la dimensión hecho en 4 etapas: Se inició con una capa de 784 neuronas, que alimenta una de 392 y al final hay una de 156, una redución de $5$ la dimensión de entrada. La función de activación es la ReLu y se usó en conjunto con ``Adam''. El entrenamiento del \textit{autoencoder} fue no supervisado, solo requiere de los $X$, no de las \textit{labels}.
+
+La imagen \ref{fig:ej71} muestra la \textit{loss} de entrenamiento y validación. Se observa convergencia. La figura \ref{fig:ej72} muestra los datos de entrada (los dígitos originales) y salida (reconstruidos) del \textit{autoencoder}. Hay diferencias muy sutiles en la intensidad de los tonos.
+
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.8\linewidth]{imgs/ej7_1}
+	\caption{\textit{Loss} de entrenamiento y testeo.}
+	\label{fig:ej71}
+\end{figure}
+
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=1\linewidth]{imgs/ej7_2}
+	\caption{Dígitos originales y sus respectivas reconstrucciones.}
+	\label{fig:ej72}
+\end{figure}
+
+\newpage
 
 
-entrenamiento final:
-Epoch 1/30 | Loss=0.6624 | Acc=81.28%
-Epoch 2/30 | Loss=0.3537 | Acc=89.86%
-Epoch 3/30 | Loss=0.3200 | Acc=90.68%
-Epoch 4/30 | Loss=0.3073 | Acc=90.92%
-Epoch 5/30 | Loss=0.2996 | Acc=91.19%
-Epoch 6/30 | Loss=0.2962 | Acc=91.22%
-Epoch 7/30 | Loss=0.2921 | Acc=91.29%
-Epoch 8/30 | Loss=0.2884 | Acc=91.44%
-Epoch 9/30 | Loss=0.2884 | Acc=91.51%
-Epoch 10/30 | Loss=0.2855 | Acc=91.53%
-Epoch 11/30 | Loss=0.2832 | Acc=91.62%
-Epoch 12/30 | Loss=0.2837 | Acc=91.56%
-Epoch 13/30 | Loss=0.2823 | Acc=91.63%
-Epoch 14/30 | Loss=0.2813 | Acc=91.79%
-Epoch 15/30 | Loss=0.2810 | Acc=91.69%
-Epoch 16/30 | Loss=0.2799 | Acc=91.83%
-Epoch 17/30 | Loss=0.2785 | Acc=91.79%
-Epoch 18/30 | Loss=0.2773 | Acc=91.82%
-Epoch 19/30 | Loss=0.2772 | Acc=91.85%
-Epoch 20/30 | Loss=0.2775 | Acc=91.76%
-Epoch 21/30 | Loss=0.2751 | Acc=91.91%
-Epoch 22/30 | Loss=0.2738 | Acc=91.90%
-Epoch 23/30 | Loss=0.2745 | Acc=91.89%
-Epoch 24/30 | Loss=0.2738 | Acc=91.94%
-Epoch 25/30 | Loss=0.2735 | Acc=91.97%
-...
-Epoch 28/30 | Loss=0.2736 | Acc=91.98%
-Epoch 29/30 | Loss=0.2726 | Acc=91.98%
-Epoch 30/30 | Loss=0.2720 | Acc=92.05%
-Test Accuracy: 92.33%
+Una vez entrenado el \textit{autoencoder}, se extrajo el \textit{encoder}, se congelaron sus pesos y se le acopló un MLP que pasa de esas 156 neuronas a 10. Una vez entrenada, esta etapa hizo la categorización de los dígitos de MNIST. EL entrenamiento de esta parte fue supervisado ya que requirió de las \textit{labels} de las imágenes. El categorizador se entrenó por 100 epochs, y llegó a los resultados del cuadro \ref{tab:accuracy_por_digito}
 
+\begin{table}[!h]
+	\centering
+	\caption{Precisión por dígito en el conjunto de prueba.}
+	\begin{tabular}{c c c}
+		\hline
+		\textbf{Dígito} & \textbf{Accuracy [\%]} & \textbf{Cantidad de muestras} \\
+		\hline
+		0 & 97.04 & 980 \\
+		1 & 97.97 & 1135 \\
+		2 & 90.50 & 1032 \\
+		3 & 92.57 & 1010 \\
+		4 & 90.84 & 982 \\
+		5 & 81.95 & 892 \\
+		6 & 94.15 & 958 \\
+		7 & 90.76 & 1028 \\
+		8 & 90.66 & 974 \\
+		9 & 92.77 & 1009 \\
+		\hline
+		\textbf{Promedio} & \textbf{91.92} & -- \\
+		\textbf{Global} & \textbf{92.09} & \textbf{10,000} \\
+		\hline
+	\end{tabular}
+	\label{tab:accuracy_por_digito}
+\end{table}
 
 
 \subsection{Análisis}
