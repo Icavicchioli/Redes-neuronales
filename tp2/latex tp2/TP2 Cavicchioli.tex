@@ -33,7 +33,7 @@
 \usepackage{enumitem}
 \usepackage{amssymb}
 \usepackage{amsmath}
-
+\usepackage{siunitx}
 % para los cuadritos en links
 %\usepackage[linkbordercolor={0 0 1}, citebordercolor={0 1 0}, urlbordercolor={1 0 0}]{hyperref}
 \usepackage[colorlinks=true, linkcolor=black, citecolor=green, urlcolor=red]{hyperref} % solo resalta
@@ -1052,7 +1052,7 @@ Tras 30 épocas, alcanzó una precisión del 92.17\%.
 
 \subsection{Análisis}
 
-Todos los gráficos se ven razonables: los errores disminuyen con las iteraciones y el accuracy tiende a subir. A veces el ECM de testeo/evaluación queda por debajo del de entrenamiento, que puede deberse a las imágenes del dataset de testeo. Se usó la proporción de train/test de 60000/10000 ($\sim$ 83/17) propia de MNIST, con \textit{minibatches} de tamaño 64 (que aporta los beneficios ya mencionados en la consigna sobre el tema). Se usó la función de activación ReLu.
+Todos los gráficos se ven razonables: los errores disminuyen con las iteraciones y el \textit{accuracy} tiende a subir. A veces el ECM de testeo/evaluación queda por debajo del de entrenamiento, que puede deberse a las imágenes del dataset de testeo. Se usó la proporción de train/test de 60000/10000 ($\sim$ 83/17) propia de MNIST, con \textit{minibatches} de tamaño 64 (que aporta los beneficios ya mencionados en la consigna sobre el tema). Se usó la función de activación ReLu.
 
 La CNN más chica encontrada es de 642 parámetros, y hace gran uso del pooling para disminuir fuertemente la dimensión de la capa lineal ``\textit{fully connected}'' que nos da las 10 salidas (1 por dígito).
 
@@ -1072,7 +1072,7 @@ Entrene un autoencoder para obtener una representación de baja dimensionalidad 
 
 Primero se entrenó un \textit{autoencoder} como los vistos en clase (pero sin hacer el proceso con las MRB). La finalidad es poder quedarse con la etapa de codificación, de \textit{encoder}, que implicitamente ejecuta la función que transforma datos del dominio de la entrada al espacio de menor dimensión. Para este caso se eligió una reducción del 80\% de la dimensión hecho en 4 etapas: Se inició con una capa de 784 neuronas, que alimenta una de 392 y al final hay una de 156, una redución de $5$ la dimensión de entrada. La función de activación es la ReLu y se usó en conjunto con ``Adam''. El entrenamiento del \textit{autoencoder} fue no supervisado, solo requiere de los $X$, no de las \textit{labels}.
 
-La imagen \ref{fig:ej71} muestra la \textit{loss} de entrenamiento y validación. Se observa convergencia. La figura \ref{fig:ej72} muestra los datos de entrada (los dígitos originales) y salida (reconstruidos) del \textit{autoencoder}. Hay diferencias muy sutiles en la intensidad de los tonos.
+La imagen \ref{fig:ej71} muestra la \textit{loss} de entrenamiento y validación. Se observa convergencia. La figura \ref{fig:ej72} muestra los datos de entrada (los dígitos originales) y salida (reconstruidos) del \textit{autoencoder}. Hay diferencias muy sutiles en la intensidad de los tonos. El \textit{autoencoder} tomó $\sim \SI{8}{\min}$ en entrenarse.
 
 \begin{figure}[!h]
 	\centering
@@ -1091,7 +1091,7 @@ La imagen \ref{fig:ej71} muestra la \textit{loss} de entrenamiento y validación
 \newpage
 
 
-Una vez entrenado el \textit{autoencoder}, se extrajo el \textit{encoder}, se congelaron sus pesos y se le acopló un MLP que pasa de esas 156 neuronas a 10. Una vez entrenada, esta etapa hizo la categorización de los dígitos de MNIST. EL entrenamiento de esta parte fue supervisado ya que requirió de las \textit{labels} de las imágenes. El categorizador se entrenó por 100 epochs, y llegó a los resultados del cuadro \ref{tab:accuracy_por_digito}
+Una vez entrenado el \textit{autoencoder}, se extrajo el \textit{encoder}, se congelaron sus pesos y se le acopló un MLP que pasa de esas 156 neuronas a 10. Una vez entrenada, esta etapa hizo la categorización de los dígitos de MNIST. EL entrenamiento de esta parte fue supervisado ya que requirió de las \textit{labels} de las imágenes. El categorizador se entrenó por 100 epochs, y llegó a los resultados del cuadro \ref{tab:accuracy_por_digito}. El entrenamiento tomó  $\sim \SI{6}{\min}$ y $\SI{40}{\second}$
 
 \begin{table}[!h]
 	\centering
@@ -1118,12 +1118,113 @@ Una vez entrenado el \textit{autoencoder}, se extrajo el \textit{encoder}, se co
 	\label{tab:accuracy_por_digito}
 \end{table}
 
+\newpage
+Para comparar, se creó un MLP que pasa de la imagen de MNIST (tamaño 784) a 10 (la salida). La performance se ve en el cuadro \ref{tab:accuracy_por_digito2} y el entrenamiento tomó  $\sim \SI{7}{\min}$.
+
+\begin{table}[h!]
+	\centering
+	\caption{Accuracy por dígito en el conjunto de prueba}
+	\begin{tabular}{c c c}
+		\hline
+		\textbf{Dígito} & \textbf{Accuracy (\%)} & \textbf{Cantidad de muestras} \\
+		\hline
+		0 & 96.94 & 980 \\
+		1 & 97.53 & 1135 \\
+		2 & 89.73 & 1032 \\
+		3 & 90.10 & 1010 \\
+		4 & 92.77 & 982 \\
+		5 & 87.44 & 892 \\
+		6 & 95.93 & 958 \\
+		7 & 92.41 & 1028 \\
+		8 & 90.97 & 974 \\
+		9 & 92.57 & 1009 \\
+		\hline
+		\textbf{Promedio} & \textbf{92.64} & -- \\
+		\textbf{Global} & \textbf{92.73} & \textbf{10000} \\
+		\hline
+	\end{tabular}
+	\label{tab:accuracy_por_digito2}
+\end{table}
+
+
+También se probó con una red que usa el encoder pero no congela esas capas, sino que permite hacer cierto \textit{fien-tuning} y otra con más capas ocultas en el MLP post \textit{encoder}.
+
+La red con \textit{encoder} \textit{fine-tuned} tardó $SI{}{\min}$ y logró los resultados del cuadro \ref{tab:accuracy_por_digito_encoder_fine_tuned}.
+
+\begin{table}[h!]
+	\centering
+	\caption{Accuracy por dígito en el conjunto de prueba (\textit{encoder} con \textit{fine-tuning}).}
+	\begin{tabular}{c c c}
+		\hline
+		\textbf{Dígito} & \textbf{Accuracy (\%)} & \textbf{Cantidad de muestras} \\
+		\hline
+		0 & 97.65 & 980 \\
+		1 & 97.97 & 1135 \\
+		2 & 90.41 & 1032 \\
+		3 & 90.89 & 1010 \\
+		4 & 93.28 & 982 \\
+		5 & 85.87 & 892 \\
+		6 & 95.09 & 958 \\
+		7 & 91.54 & 1028 \\
+		8 & 89.12 & 974 \\
+		9 & 90.49 & 1009 \\
+		\hline
+		\textbf{Promedio} & \textbf{92.23} & -- \\
+		\textbf{Global} & \textbf{92.35} & \textbf{10000} \\
+		\hline
+	\end{tabular}
+	\label{tab:accuracy_por_digito_encoder_fine_tuned}
+\end{table}
+
+\newpage
+
+La red con otra capa oculta más y  \textit{encoder} congelado demoró $SI{7}{\min}$ con \SI{30}{\sec}, y llegó a los resultados del cuadro \ref{tab:accuracy_por_digito_encoder_fc156}.
+
+\begin{table}[h!]
+	\centering
+	\caption{Accuracy por dígito en el conjunto de prueba (\textit{encoder} + FC intermedia 156$\to$156$\to$10).}
+	\begin{tabular}{c c c}
+		\hline
+		\textbf{Dígito} & \textbf{Accuracy (\%)} & \textbf{Cantidad de muestras} \\
+		\hline
+		0 & 99.08 & 980 \\
+		1 & 99.65 & 1135 \\
+		2 & 97.87 & 1032 \\
+		3 & 98.71 & 1010 \\
+		4 & 98.27 & 982 \\
+		5 & 96.19 & 892 \\
+		6 & 98.23 & 958 \\
+		7 & 97.28 & 1028 \\
+		8 & 97.64 & 974 \\
+		9 & 96.13 & 1009 \\
+		\hline
+		\textbf{Promedio} & \textbf{97.90} & -- \\
+		\textbf{Global} & \textbf{97.94} & \textbf{10000} \\
+		\hline
+	\end{tabular}
+	\label{tab:accuracy_por_digito_encoder_fc156}
+\end{table}
+
 
 \subsection{Análisis}
 
+Los resultados obtenidos indican que el uso del \textit{autoencoder} permitió hacerla reducción de dimensionalidad del 80\% que se buscaba, conservando gran parte de la información de la entrada. Sin embargo, esta reducción de dimensionalidad no garantizó la performance en los otros modelos.
+
+El primer modelo (\textit{encoder} congelado y 1 MLP de 156 a 10) alcanzó un \textit{accuracy} global de 92.09\%, valor comparable pero ligeramente inferior al obtenido por el MLP entrenado directamente sobre las imágenes originales (92.73\%). Esto sugiere que, si bien el \textit{encoder} logra una buena compresión, falta algo más para lograr igualar las performances.
+
+Cuando se permitió el \textit{fine-tuning} del encoder (es decir, ajustar parcialmente los pesos del encoder durante el entrenamiento del clasificador), el rendimiento mejoró levemente, alcanzando un \textit{accuracy} global de 92.35\%. Esto indica que un ligero ajuste a los pesos del \textit{encoder} ayuda a recuperar parte de la información perdida, o por lo menos llevar las representaciones a formas que hacen más exacta la clasificación.
+
+Por otro lado, al agregar una capa oculta adicional de 156 neuronas (encoder congelado + FC intermedia 156$\to$156$\to$10), el desempeño aumentó notablemente, alcanzando una exactitud global de 97.94\%. Este resultado evidencia que, si bien la representación comprimida limita la información disponible, una arquitectura más elaborada permite explotar la información que sí está, que al fin y al cabo es la que representa más los datos originales en el espacio latente de menor dimensión.
+
+En cuanto al tiempo de entrenamiento, si se considera únicamente la etapa de clasificación, los modelos basados en el encoder son más rápidos debido a la menor dimensionalidad de entrada (156 frente a 784). Sin embargo, al sumar el tiempo de entrenamiento previo del \textit{autoencoder} ($\sim$8 min), el proceso completo resulta más costoso en términos computacionales que entrenar un MLP directamente sobre los datos originales.
+
+En conclusión, el uso del \textit{encoder} puede ser beneficioso para reducir la dimensionalidad de los datos y acelerar el aprendizaje de etapas posteriores, pero en este caso, un MLP entrenado sobre la imagen de forma directa logra resultados equivalentes con menor complejidad arquitectónica.
+La combinación de \textit{encoder} y clasificador más profundo (156$\to$156$\to$10) mostró ser la alternativa más efectiva y exacta dentro de los modelos derivados del \textit{autoencoder}.
 
 
-\clearpage
+Una pregunta interesante para seguir con este tema sería investigar que es más rápido cuando se habla de ejecución en tiempo real. Un sistema como el MLP que va de 784 a 10 tiene muchas conexiones, y podría tomar más tiempo en ejecutarse que hacer la codificación de la imagen con el \textit{encoder} y luego ejecutar un MLP de menor complejidad.
+
+\newpage
 
 \section{Ejercicio 8}
 
