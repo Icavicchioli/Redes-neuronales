@@ -1390,7 +1390,7 @@ La red fue  capaz de aprender completamente la XOR de 4 entradas. Además, el EC
 
 Las redes no tuvieron problema en aprender la XOR de 2 entradas, tal como se observó en la tercer consigna de este documento. Se notó que el factor de decaimiento de la temperatura es crítico para la convergencia, y un factor muy lento o rápido puede causar que no se aprenda.
 
-Un dato a destacar es que el aprendizaje por \textit{simulated annealing} permitió que un MLP de 6 neuronas en la capa oculta aprendiese la XOR de 4 entradas, cuando se había requerido uno de 10 cuando se usó gradiente descendiente (su versión básica). Esto puede deberse a que el espacio de soluciones se amplía, facilitando que el método encuentre una combinación de pesos que satisfaga todas las condiciones de la XOR.
+Un dato a destacar es que el aprendizaje por \textit{simulated annealing} permitió que un MLP de 6 neuronas en la capa oculta aprendiese la XOR de 4 entradas, cuando se había requerido uno de 10 cuando se usó gradiente descendiente (su versión básica). Esto puede deberse a que el espacio de soluciones se amplía\footnote{Es la forma mental en la que concibo como cambian los espacios por donde se mueve el vector de estados de los parámetros del sistema. Parecería que cambiar como se aprende, afecta las cuencas tal que se vuelven más profundas/accesibles/atractivas, resultando en mejores resultados.}, facilitando que el método encuentre una combinación de pesos que satisfaga todas las condiciones de la XOR.
 
 
 \section{Conclusiones}

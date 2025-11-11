@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.8.28)  11 NOV 2025 16:27
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.8.28)  11 NOV 2025 16:51
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1244,8 +1244,8 @@ Package rerunfilecheck Info: File `"TP2 Cavicchioli".out' has not changed.
 (rerunfilecheck)             Checksum: 1CE959CF36033F950DE60BBFE267F365;8567.
  ) 
 Here is how much of TeX's memory you used:
- 19514 strings out of 468133
- 382385 string characters out of 5432655
+ 19515 strings out of 468133
+ 382396 string characters out of 5432655
  761838 words of memory out of 5000000
  47735 multiletter control sequences out of 15000+600000
  639571 words of font info for 87 fonts, out of 8000000 for 9000
@@ -1274,9 +1274,9 @@ ers/q/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy6.pfb><C
 b><C:/Users/q/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy
 9.pfb><C:/Users/q/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/
 cmti10.pfb>
-Output written on "TP2 Cavicchioli.pdf" (54 pages, 2195043 bytes).
+Output written on "TP2 Cavicchioli.pdf" (54 pages, 2196444 bytes).
 PDF statistics:
- 945 PDF objects out of 1000 (max. 8388607)
- 192 named destinations out of 1000 (max. 500000)
+ 948 PDF objects out of 1000 (max. 8388607)
+ 193 named destinations out of 1000 (max. 500000)
  774 words of extra memory for PDF output out of 10000 (max. 10000000)
 
