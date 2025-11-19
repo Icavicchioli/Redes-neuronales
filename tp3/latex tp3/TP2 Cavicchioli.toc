@@ -1,0 +1,16 @@
+\babel@toc {spanish}{}\relax 
+\contentsline {section}{\numberline {1}Introducción}{1}{section.1}%
+\contentsline {section}{\numberline {2}Teoría sobre redes de Kohonen/SOM}{2}{section.2}%
+\contentsline {section}{\numberline {3}Ejercicio 1}{2}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Consignas}{2}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Desarrollo}{2}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}Análisis}{2}{subsection.3.3}%
+\contentsline {section}{\numberline {4}Ejercicio 2}{6}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Consignas}{6}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Desarrollo}{6}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}Análisis}{6}{subsection.4.3}%
+\contentsline {section}{\numberline {5}Ejercicio 3}{7}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Consignas}{7}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}Desarrollo}{7}{subsection.5.2}%
+\contentsline {subsection}{\numberline {5.3}Análisis}{7}{subsection.5.3}%
+\contentsline {section}{\numberline {6}Conclusiones}{7}{section.6}%

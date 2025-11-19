@@ -1,0 +1,184 @@
+% !TEX TS-program = pdflatex
+% !TEX encoding = UTF-8 Unicode
+
+% This is a simple template for a LaTeX document using the ``article'' class.
+% See ``book'', ``report'', ``letter'' for other types of document.
+
+\documentclass[11pt]{article} % use larger type; default would be 10pt
+
+\usepackage[utf8]{inputenc} % set input encoding (not needed with XeLaTeX)
+
+%%% Examples of Article customizations
+% These packages are optional, depending whether you want the features they provide.
+% See the LaTeX Companion or other references for full information.
+
+%%% PAGE DIMENSIONS
+\usepackage{geometry} % to change the page dimensions
+\geometry{a4paper} % or letterpaper (US) or a5paper or....
+\geometry{margin=1in} % for example, change the margins to 2 inches all round
+% \geometry{landscape} % set up the page for landscape
+%   read geometry.pdf for detailed page layout information
+
+\usepackage{graphicx} % support the \includegraphics command and options
+
+% \usepackage[parfill]{parskip} % Activate to begin paragraphs with an empty line rather than an indent
+
+%%% PACKAGES
+\usepackage{booktabs} % for much better looking tables
+\usepackage{array} % for better arrays (eg matrices) in maths
+\usepackage{paralist} % very flexible & customisable lists (eg. enumerate/itemize, etc.)
+\usepackage{verbatim} % adds environment for commenting out blocks of text & for better verbatim
+\usepackage{subfig} % make it possible to include more than one captioned figure/table in a single float
+% These packages are all incorporated in the memoir class to one degree or another...
+\usepackage{enumitem}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{siunitx}
+% para los cuadritos en links
+%\usepackage[linkbordercolor={0 0 1}, citebordercolor={0 1 0}, urlbordercolor={1 0 0}]{hyperref}
+\usepackage[colorlinks=true, linkcolor=black, citecolor=green, urlcolor=red]{hyperref} % solo resalta
+\usepackage[spanish]{babel}
+
+
+
+%%% HEADERS & FOOTERS
+\usepackage{fancyhdr} % This should be set AFTER setting up the page geometry
+\pagestyle{fancy} % options: empty , plain , fancy
+\renewcommand{\headrulewidth}{0pt} % customise the layout...
+\lhead{}\chead{}\rhead{}
+\lfoot{}\cfoot{\thepage}\rfoot{}
+
+%%% SECTION TITLE APPEARANCE
+\usepackage{sectsty}
+\allsectionsfont{\sffamily\mdseries\upshape} % (See the fntguide.pdf for font help)
+% (This matches ConTeXt defaults)
+
+%%% ToC (table of contents) APPEARANCE
+\usepackage[nottoc,notlof,notlot]{tocbibind} % Put the bibliography in the ToC
+\usepackage[titles,subfigure]{tocloft} % Alter the style of the Table of Contents
+\renewcommand{\cftsecfont}{\rmfamily\mdseries\upshape}
+\renewcommand{\cftsecpagefont}{\rmfamily\mdseries\upshape} % No bold!
+
+%%% END Article customizations
+
+%%% The ``real'' document content comes below...
+
+\title{Trabajo práctico 3\\ Redes Neuronales y Aprendizaje Profundo}
+\author{Ignacio Ezequiel Cavicchioli\\Padrón 109428\\icavicchioli@fi.uba.ar}
+\date{11/11/2025} % Activate to display a given date or no date (if empty),
+         % otherwise the current date is printed
+
+
+
+\begin{document}
+\maketitle
+
+\tableofcontents
+
+
+
+\section{Introducción}
+
+Este documento presenta el desarrollo de las consignas del trabajo práctico N°2 de la materia de \textbf{Redes Neuronales y Aprendizaje Profundo}.  El código correspondiente fue realizado en  \textit{Jupyter notebooks}, \textit{Python}, adjuntados a la entrega en formato PDF. Toda imagen o implementación requeridas para el análisis se explicitarán en el presente archivo, por lo que la lectura del código en sí queda a discreción del lector. La teoría relevante será presentada y discutida en la sección pertinente.
+
+
+\newpage
+
+\section{Teoría sobre redes de Kohonen/SOM}
+
+\section{Ejercicio 1}
+
+\subsection{Consignas}
+Construya una red de Kohonen de 2 entradas que aprenda una distribución uniforme dentro del círculo unitario. Mostrar el mapa de preservación de topología. Probar con distribuciones uniformes dentro de otras figuras geométricas.
+
+\subsection{Desarrollo}
+
+Dado lo expuesto en la teoría sobre redes de Kohonen y lo visto en clase, se espera que las redes implementadas y entrenadas puedan aprender las distribuciones uniformes que se les van a dar en este inciso. Visualmente, esto debería notarse como que las neuronas están aproximadamente equidistantes las unas de las otras, siempre dentro de los límites de la distribución.
+
+Ahora bien, para generar muestras aleatorias uniformes en un círculo hay que pensar que se quiere la misma probabilidad de caer en cualquier parte de su área. Como el área de esta figura depende del radio, sortear un $r$ y $\theta$ distribuidos uniformemente entre $(0,1)$ y $(0,360^{\circ})$ respectivamente generaría una distribución conjunta con mayor densidad de muestras en el centro, indicativo de mayor probabilidad.
+
+Para balancear esto, se ajusta la distribución del radio sorteado a $r=R\sqrt{u}$ con $u \sim \mathcal{U}\{0,1\}$.
+
+Con un $r$ y $theta$ correctamente generados, se procede a hacer una conversión a coordenadas cartesianas, que van a usar las neuronas.
+
+Las otras figuras geométricas fueron generadas de forma similar, haciendo uso de cambios de coordenadas para mantener la uniformidad.
+
+las imágenes de a continuación muestran las figuras generadas con las neuronas en sus ubicaciones aprendidas. Las figuras tienen 1000 muestras (puntos de datos), y hay 25 neuronas distribuidas en una matriz de $5x5$, razón por la cual se forma una \textit{lattice} de polígonos de 4 lados; cada neurona se conecta a otras 4.
+
+
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.7\linewidth]{imgs/ej1/circulo con neuronas}
+	\caption{}
+	\label{fig:circulo-con-neuronas}
+\end{figure}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.7\linewidth]{imgs/ej1/dona con neuronas}
+	\caption{}
+	\label{fig:dona-con-neuronas}
+\end{figure}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.7\linewidth]{imgs/ej1/Ucon neuronas}
+	\caption{}
+	\label{fig:ucon-neuronas}
+\end{figure}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.7\linewidth]{imgs/ej1/triangulo con neuronas}
+	\caption{}
+	\label{fig:triangulo-con-neuronas}
+\end{figure}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.7\linewidth]{imgs/ej1/cuadradocon neuronas}
+	\caption{}
+	\label{fig:cuadradocon-neuronas}
+\end{figure}
+
+
+
+\subsection{Análisis}
+
+\clearpage
+
+\section{Ejercicio 2}
+
+\subsection{Consignas}
+Resuelva (aproximadamente) el “Traveling salesman problem” para 200 ciudades con una red de Kohonen.
+
+\subsection{Desarrollo}
+
+\subsection{Análisis}
+
+\clearpage
+
+\section{Ejercicio 3}
+
+En el campus encontrará el archivo ``datos\_para\_clustering.mat'' que contiene una matriz de datos de 500 mediciones de una variable de 100 dimensiones.
+
+a) Utilice una red de Kohonen para reducir la dimensionalidad de los datos.
+
+
+b) Verifique la presencia de clusters, e indique cuantos puede visualizar, haciendo uso de la matriz U.
+
+\subsection{Consignas}
+
+\subsection{Desarrollo}
+
+\subsection{Análisis}
+
+
+
+\section{Conclusiones}
+
+Cada consigna tiene su análisis, así que no es necesario en detalle sobre algún ejercicio particular. Considero que el trabajo sirvió como una introducción extremadamente completa los temas de redes neuronales basadas en perceptrones, métodos de optimización y redes convolucionales. A mi entender, las consignas fueron resueltas de forma satisfactoria, ahondando en algunos temas no requeridos pero que hacen al entendimiento de la materia.
+
+
+\end{document}
