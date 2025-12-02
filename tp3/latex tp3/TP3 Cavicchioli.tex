@@ -6,6 +6,7 @@
 
 \documentclass[11pt]{article} % use larger type; default would be 10pt
 
+
 \usepackage[utf8]{inputenc} % set input encoding (not needed with XeLaTeX)
 
 %%% Examples of Article customizations
@@ -65,7 +66,7 @@
 
 \title{Trabajo práctico 3\\ Redes Neuronales y Aprendizaje Profundo}
 \author{Ignacio Ezequiel Cavicchioli\\Padrón 109428\\icavicchioli@fi.uba.ar}
-\date{11/11/2025} % Activate to display a given date or no date (if empty),
+\date{2/12/2025} % Activate to display a given date or no date (if empty),
          % otherwise the current date is printed
 
 
@@ -75,14 +76,13 @@
 
 \tableofcontents
 
-
+\newpage
 
 \section{Introducción}
 
 Este documento presenta el desarrollo de las consignas del trabajo práctico N°3 de la materia de \textbf{Redes Neuronales y Aprendizaje Profundo}.  El código correspondiente fue realizado en  \textit{Jupyter notebooks}, \textit{Python}, adjuntados a la entrega en formato PDF. Toda imagen o implementación requeridas para el análisis se explicitarán en el presente archivo, por lo que la lectura del código en sí queda a discreción del lector. La teoría relevante será presentada y discutida en la sección pertinente.
 
 
-\newpage
 
 \section{Teoría sobre redes de Kohonen y SOM}
 
@@ -100,6 +100,7 @@ El mecanismo de entrenamiento está inspirado en el aprendizaje hebbiano: las ne
 
 Las SOM actúan como un método de reducción de dimensionalidad no lineal, construyendo representaciones espaciales que capturan regularidades estadísticas de los datos sin requerir etiquetas. Esto mismo se va a ver en la tercer consigna de este trabajo, donde se pasa de un espacio dimensional de N dimensiones al espacio 2D de la rejilla de neuronas, y se usa la matriz U para ratificar la existencia de \textit{clusters}.
 
+\newpage
 
 \section{Ejercicio 1}
 
@@ -118,50 +119,77 @@ Con un $r$ y $theta$ correctamente generados, se procede a hacer una conversión
 
 Las otras figuras geométricas fueron generadas de forma similar, haciendo uso de cambios de coordenadas para mantener la uniformidad.
 
-las imágenes de a continuación muestran las figuras generadas con las neuronas en sus ubicaciones aprendidas. Las figuras tienen 1000 muestras (puntos de datos), y hay 25 neuronas distribuidas en una matriz de $5x5$, razón por la cual se forma una \textit{lattice} de polígonos de 4 lados; cada neurona se conecta a otras 4.
+Para entrenar la red de Kohonen utilizada en este ejercicio, se implementó una versión vectorizada del algoritmo, que es más rápida que \textit{loopear} por todas las neuronas. La inicialización de los pesos se realizó tomando muestras aleatorias del propio conjunto de datos. Durante el entrenamiento, los pesos se modificaron mediante una función de vecindad gaussiana, de varianza linealmente decreciente con las iteraciones, que debería ayudar con la organización del mapa. La tasa de aprendizaje se mantuvo constante.
 
+Para cada muestra, se determina la neurona ganadora (\textit{Best Matching Unit}, BMU) y se actualizan tanto ella como sus vecinas de acuerdo con la función de vecindad. Esto se hace una cantidad de iteraciones determinada por el usuario. Para este caso, el algoritmo se ejecutó hasta ver un resultado invariante.
+
+
+las imágenes de a continuación muestran las figuras generadas con las neuronas en sus ubicaciones aprendidas. Las figuras tienen 1000 muestras (puntos de datos), y hay 25 neuronas distribuidas en una matriz de $5x5$, razón por la cual se forma una \textit{lattice} (rejilla) de polígonos de 4 lados; cada neurona se conecta a otras 4.
 
 
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=0.7\linewidth]{imgs/ej1/circulo con neuronas}
-	\caption{}
+	\caption{Distribución de datos con forma de círculo y posiciones finales de las neuronas de la red luego del entrenamiento.}
 	\label{fig:circulo-con-neuronas}
 \end{figure}
 
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=0.7\linewidth]{imgs/ej1/dona con neuronas}
-	\caption{}
+	\caption{Distribución de datos con forma de dona y posiciones finales de las neuronas de la red luego del entrenamiento.}
 	\label{fig:dona-con-neuronas}
 \end{figure}
 
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=0.7\linewidth]{imgs/ej1/Ucon neuronas}
-	\caption{}
+	\caption{Distribución de datos con forma de U y posiciones finales de las neuronas de la red luego del entrenamiento.}
 	\label{fig:ucon-neuronas}
 \end{figure}
 
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=0.7\linewidth]{imgs/ej1/triangulo con neuronas}
-	\caption{}
+	\caption{Distribución de datos con forma de triángulo y posiciones finales de las neuronas de la red luego del entrenamiento.}
 	\label{fig:triangulo-con-neuronas}
 \end{figure}
 
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=0.7\linewidth]{imgs/ej1/cuadradocon neuronas}
-	\caption{}
+	\caption{Distribución de datos con forma de cuadrado y posiciones finales de las neuronas de la red luego del entrenamiento.}
 	\label{fig:cuadradocon-neuronas}
 \end{figure}
 
 
+\clearpage
 
 \subsection{Análisis}
 
+Se observa que la red implementada es capaz de aprender considerablemente bien las distribuciones de las figuras \ref{fig:circulo-con-neuronas}, \ref{fig:triangulo-con-neuronas} y \ref{fig:cuadradocon-neuronas}, que son el círculo, triángulo y cuadrado respectivamente. La posición de las neuronas es aproximadamente equidistante las unas de las otras, respondiendo a la distribución de datos subyacente. También se pudieron generar los mapas de preservación de topología.
+
+En las formas U y dona (fig. \ref{fig:dona-con-neuronas} y \ref{fig:ucon-neuronas}), las neuronas aprendieron la distribución pero hay algunas unidades que quedaron por fuera de las figuras: en la U quedaron 2 neuronas mientras que en la dona, 1. Se considera que este efecto tiene su origen en que esas neuronas nunca ganan, y son movidas por todas las otras neuronas con una ``fuerza'' inversamente proporcional a la distancia. Por esto mismo hay neuronas en el centro de la dona (todas las neuronas dentro de la dona tiran con la misma fuerza por estar a la misma distancia), y en la U tenemos neuronas más arriba o abajo (las neuronas de los laterales tiran hacia si mismas y contrarrestan los efectos de las de la parte de abajo de la U).
+
+En las otras geometrías esto no sucede.
+
+Para entender esto se puede ver la imagen \ref{fig:dona-y-u-con-neuronas-vector}, que tiene algunos de los vectores de fuerza imaginaria en verde. En ella se va a notar con claridad lo enunciado más arriba.
+
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=1\linewidth]{imgs/ej1/dona y u con neuronas vector}
+	\caption{}
+	\label{fig:dona-y-u-con-neuronas-vector}
+\end{figure}
+
+Otro detalle interesante es que, si se observa con detenimiento, las neuronas están sobre los puntos de mayor densidad de muestras, indicando que:
+\begin{enumerate}
+	\item El aprendizaje está funcionando porque las neuronas se acercan a donde ganan más, que coincide con las zonas donde hay mayor concentración de muestras.
+	\item Las distribuciones generadas no fueron perfectamente uniformes: la presencia de cúmulos locales de mayor densidad hace que algunas neuronas se agrupen en esas regiones.
+\end{enumerate}
+
 \clearpage
+
 
 \section{Ejercicio 2}
 
@@ -170,7 +198,9 @@ Resuelva (aproximadamente) el “Traveling salesman problem” para 200 ciudades
 
 \subsection{Desarrollo}
 
+Para este ejercicio se usó un \textit{dataset} de 312 ciudades estadounidenses, a partir del cual se crearon sets de menos muestras para ir mostrando la resolución del problema del “Traveling salesman problem” de menor a mayor complejidad.
 
+La
 
 \begin{figure}[h!]
 	\centering

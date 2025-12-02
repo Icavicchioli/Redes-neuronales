@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.8.28)  2 DEC 2025 14:36
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.8.28)  2 DEC 2025 16:19
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -452,9 +452,9 @@ Package babel Info: Making < an active character on input line 722.
 Package babel Info: Making > an active character on input line 722.
 ))
 LaTeX Encoding Info:    Redeclaring text command \guillemotleft (encoding OT1) 
-on input line 41.
+on input line 42.
 LaTeX Encoding Info:    Redeclaring text command \guillemotright (encoding OT1)
- on input line 41.
+ on input line 42.
 
 (C:\Users\q\AppData\Local\Programs\MiKTeX\tex/latex/fancyhdr\fancyhdr.sty
 Package: fancyhdr 2025/02/07 v5.2 Extensive control of page headers and footers
@@ -556,24 +556,24 @@ Package babel Info: 'spanish' activates 'spanish' shorthands.
 )
 \openout1 = `"TP3 Cavicchioli.aux"'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 73.
-LaTeX Font Info:    ... okay on input line 73.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 73.
-LaTeX Font Info:    ... okay on input line 73.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 73.
-LaTeX Font Info:    ... okay on input line 73.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 73.
-LaTeX Font Info:    ... okay on input line 73.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 73.
-LaTeX Font Info:    ... okay on input line 73.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 73.
-LaTeX Font Info:    ... okay on input line 73.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 73.
-LaTeX Font Info:    ... okay on input line 73.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 73.
-LaTeX Font Info:    ... okay on input line 73.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 73.
-LaTeX Font Info:    ... okay on input line 73.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 74.
+LaTeX Font Info:    ... okay on input line 74.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 74.
+LaTeX Font Info:    ... okay on input line 74.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 74.
+LaTeX Font Info:    ... okay on input line 74.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 74.
+LaTeX Font Info:    ... okay on input line 74.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 74.
+LaTeX Font Info:    ... okay on input line 74.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 74.
+LaTeX Font Info:    ... okay on input line 74.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 74.
+LaTeX Font Info:    ... okay on input line 74.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 74.
+LaTeX Font Info:    ... okay on input line 74.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 74.
+LaTeX Font Info:    ... okay on input line 74.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -643,20 +643,20 @@ File: translations-basic-dictionary-spanish.trsl (spanish translation file `tra
 nslations-basic-dictionary')
 )
 Package translations Info: loading dictionary `translations-basic-dictionary' f
-or `spanish'. on input line 73.
-Package hyperref Info: Link coloring ON on input line 73.
+or `spanish'. on input line 74.
+Package hyperref Info: Link coloring ON on input line 74.
  (TP3 Cavicchioli.out) (TP3 Cavicchioli.out)
 \@outlinefile=\write3
 \openout3 = `"TP3 Cavicchioli.out"'.
 
-LaTeX Info: Redefining \. on input line 73.
-LaTeX Info: Redefining \% on input line 73.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 75.
+LaTeX Info: Redefining \. on input line 74.
+LaTeX Info: Redefining \% on input line 74.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 76.
 
 (C:\Users\q\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 75.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 76.
 
 
 (C:\Users\q\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
@@ -674,234 +674,250 @@ LaTeX Info: Redefining \% on input line 1.
 [1
 
 {C:/Users/q/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}]
-<imgs/ej1/circulo con neuronas.png, id=91, 444.91219pt x 444.15938pt>
+
+[2]
+<imgs/ej1/circulo con neuronas.png, id=95, 444.91219pt x 444.15938pt>
 File: imgs/ej1/circulo con neuronas.png Graphic file (type png)
 <use imgs/ej1/circulo con neuronas.png>
 Package pdftex.def Info: imgs/ej1/circulo con neuronas.png  used on input line 
-127.
+132.
 (pdftex.def)             Requested size: 317.07614pt x 316.54138pt.
-
-
-[2]
-<imgs/ej1/dona con neuronas.png, id=100, 442.65375pt x 444.15938pt>
-File: imgs/ej1/dona con neuronas.png Graphic file (type png)
-<use imgs/ej1/dona con neuronas.png>
-Package pdftex.def Info: imgs/ej1/dona con neuronas.png  used on input line 134
-.
-(pdftex.def)             Requested size: 317.07614pt x 318.16794pt.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<imgs/ej1/Ucon neuronas.png, id=101, 440.39531pt x 444.15938pt>
+<imgs/ej1/dona con neuronas.png, id=97, 442.65375pt x 444.15938pt>
+File: imgs/ej1/dona con neuronas.png Graphic file (type png)
+<use imgs/ej1/dona con neuronas.png>
+Package pdftex.def Info: imgs/ej1/dona con neuronas.png  used on input line 139
+.
+(pdftex.def)             Requested size: 317.07614pt x 318.16794pt.
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+<imgs/ej1/Ucon neuronas.png, id=98, 440.39531pt x 444.15938pt>
 File: imgs/ej1/Ucon neuronas.png Graphic file (type png)
 <use imgs/ej1/Ucon neuronas.png>
-Package pdftex.def Info: imgs/ej1/Ucon neuronas.png  used on input line 141.
+Package pdftex.def Info: imgs/ej1/Ucon neuronas.png  used on input line 146.
 (pdftex.def)             Requested size: 317.07614pt x 319.7945pt.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<imgs/ej1/triangulo con neuronas.png, id=102, 442.65375pt x 258.21469pt>
+<imgs/ej1/triangulo con neuronas.png, id=99, 442.65375pt x 258.21469pt>
 File: imgs/ej1/triangulo con neuronas.png Graphic file (type png)
 <use imgs/ej1/triangulo con neuronas.png>
 Package pdftex.def Info: imgs/ej1/triangulo con neuronas.png  used on input lin
-e 148.
+e 153.
 (pdftex.def)             Requested size: 317.07614pt x 184.96881pt.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<imgs/ej1/cuadradocon neuronas.png, id=103, 438.8897pt x 444.15938pt>
+<imgs/ej1/cuadradocon neuronas.png, id=100, 438.8897pt x 444.15938pt>
 File: imgs/ej1/cuadradocon neuronas.png Graphic file (type png)
 <use imgs/ej1/cuadradocon neuronas.png>
 Package pdftex.def Info: imgs/ej1/cuadradocon neuronas.png  used on input line 
-155.
+160.
 (pdftex.def)             Requested size: 317.07614pt x 320.89243pt.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
 
-[3 <./imgs/ej1/circulo con neuronas.png>]
+[3]
 
-[4 <./imgs/ej1/dona con neuronas.png> <./imgs/ej1/Ucon neuronas.png>]
+[4 <./imgs/ej1/circulo con neuronas.png>]
 
-[5 <./imgs/ej1/triangulo con neuronas.png> <./imgs/ej1/cuadradocon neuronas.png
->]
-<imgs/ej2/muestras.png, id=126, 903.375pt x 702.625pt>
+[5 <./imgs/ej1/dona con neuronas.png>]
+
+[6 <./imgs/ej1/Ucon neuronas.png> <./imgs/ej1/triangulo con neuronas.png>]
+
+[7 <./imgs/ej1/cuadradocon neuronas.png>]
+<imgs/ej1/dona y u con neuronas vector.png, id=141, 915.42pt x 453.19313pt>
+File: imgs/ej1/dona y u con neuronas vector.png Graphic file (type png)
+<use imgs/ej1/dona y u con neuronas vector.png>
+Package pdftex.def Info: imgs/ej1/dona y u con neuronas vector.png  used on inp
+ut line 180.
+(pdftex.def)             Requested size: 452.9679pt x 224.24484pt.
+
+
+[8
+
+ <./imgs/ej1/dona y u con neuronas vector.png>]
+<imgs/ej2/muestras.png, id=150, 903.375pt x 702.625pt>
 File: imgs/ej2/muestras.png Graphic file (type png)
 <use imgs/ej2/muestras.png>
-Package pdftex.def Info: imgs/ej2/muestras.png  used on input line 177.
+Package pdftex.def Info: imgs/ej2/muestras.png  used on input line 207.
 (pdftex.def)             Requested size: 317.07614pt x 246.61931pt.
-<imgs/ej2/20 ciudades 20 neuronas camino.png, id=127, 803.0pt x 702.625pt>
+<imgs/ej2/20 ciudades 20 neuronas camino.png, id=151, 803.0pt x 702.625pt>
 File: imgs/ej2/20 ciudades 20 neuronas camino.png Graphic file (type png)
 <use imgs/ej2/20 ciudades 20 neuronas camino.png>
 Package pdftex.def Info: imgs/ej2/20 ciudades 20 neuronas camino.png  used on i
-nput line 184.
+nput line 214.
 (pdftex.def)             Requested size: 317.07614pt x 277.4427pt.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<imgs/ej2/20 ciudades 20 neuronas.png, id=128, 803.0pt x 702.625pt>
+<imgs/ej2/20 ciudades 20 neuronas.png, id=152, 803.0pt x 702.625pt>
 File: imgs/ej2/20 ciudades 20 neuronas.png Graphic file (type png)
 <use imgs/ej2/20 ciudades 20 neuronas.png>
 Package pdftex.def Info: imgs/ej2/20 ciudades 20 neuronas.png  used on input li
-ne 191.
+ne 221.
 (pdftex.def)             Requested size: 317.07614pt x 277.4427pt.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<imgs/ej2/20 ciudades 40 neuronas camino.png, id=129, 803.0pt x 702.625pt>
+<imgs/ej2/20 ciudades 40 neuronas camino.png, id=153, 803.0pt x 702.625pt>
 File: imgs/ej2/20 ciudades 40 neuronas camino.png Graphic file (type png)
 <use imgs/ej2/20 ciudades 40 neuronas camino.png>
 Package pdftex.def Info: imgs/ej2/20 ciudades 40 neuronas camino.png  used on i
-nput line 198.
+nput line 228.
 (pdftex.def)             Requested size: 317.07614pt x 277.4427pt.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<imgs/ej2/20 ciudades 40 neuronas.png, id=130, 803.0pt x 702.625pt>
+<imgs/ej2/20 ciudades 40 neuronas.png, id=154, 803.0pt x 702.625pt>
 File: imgs/ej2/20 ciudades 40 neuronas.png Graphic file (type png)
 <use imgs/ej2/20 ciudades 40 neuronas.png>
 Package pdftex.def Info: imgs/ej2/20 ciudades 40 neuronas.png  used on input li
-ne 205.
+ne 235.
 (pdftex.def)             Requested size: 317.07614pt x 277.4427pt.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<imgs/ej2/50 ciudades 100 neuronas camino.png, id=131, 803.0pt x 702.625pt>
+<imgs/ej2/50 ciudades 100 neuronas camino.png, id=155, 803.0pt x 702.625pt>
 File: imgs/ej2/50 ciudades 100 neuronas camino.png Graphic file (type png)
 <use imgs/ej2/50 ciudades 100 neuronas camino.png>
 Package pdftex.def Info: imgs/ej2/50 ciudades 100 neuronas camino.png  used on 
-input line 212.
+input line 242.
 (pdftex.def)             Requested size: 317.07614pt x 277.4427pt.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<imgs/ej2/50 ciudades 100 neuronas.png, id=132, 803.0pt x 702.625pt>
+<imgs/ej2/50 ciudades 100 neuronas.png, id=156, 803.0pt x 702.625pt>
 File: imgs/ej2/50 ciudades 100 neuronas.png Graphic file (type png)
 <use imgs/ej2/50 ciudades 100 neuronas.png>
 Package pdftex.def Info: imgs/ej2/50 ciudades 100 neuronas.png  used on input l
-ine 219.
+ine 249.
 (pdftex.def)             Requested size: 317.07614pt x 277.4427pt.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<imgs/ej2/100 ciudades 200 neuronas camino.png, id=133, 803.0pt x 702.625pt>
+<imgs/ej2/100 ciudades 200 neuronas camino.png, id=157, 803.0pt x 702.625pt>
 File: imgs/ej2/100 ciudades 200 neuronas camino.png Graphic file (type png)
 <use imgs/ej2/100 ciudades 200 neuronas camino.png>
 Package pdftex.def Info: imgs/ej2/100 ciudades 200 neuronas camino.png  used on
- input line 226.
+ input line 256.
 (pdftex.def)             Requested size: 317.07614pt x 277.4427pt.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<imgs/ej2/100 ciudades 200 neuronas.png, id=134, 803.0pt x 702.625pt>
+<imgs/ej2/100 ciudades 200 neuronas.png, id=158, 803.0pt x 702.625pt>
 File: imgs/ej2/100 ciudades 200 neuronas.png Graphic file (type png)
 <use imgs/ej2/100 ciudades 200 neuronas.png>
 Package pdftex.def Info: imgs/ej2/100 ciudades 200 neuronas.png  used on input 
-line 233.
+line 263.
 (pdftex.def)             Requested size: 317.07614pt x 277.4427pt.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<imgs/ej2/200 ciudades 400 neuronas 2 datos 3 neuronas 1.png, id=135, 803.0pt x
+<imgs/ej2/200 ciudades 400 neuronas 2 datos 3 neuronas 1.png, id=159, 803.0pt x
  702.625pt>
 File: imgs/ej2/200 ciudades 400 neuronas 2 datos 3 neuronas 1.png Graphic file 
 (type png)
 <use imgs/ej2/200 ciudades 400 neuronas 2 datos 3 neuronas 1.png>
 Package pdftex.def Info: imgs/ej2/200 ciudades 400 neuronas 2 datos 3 neuronas 
-1.png  used on input line 240.
+1.png  used on input line 270.
 (pdftex.def)             Requested size: 317.07614pt x 277.4427pt.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<imgs/ej2/200 ciudades 400 neuronas 2 datos 3 neuronas 2.png, id=136, 803.0pt x
+<imgs/ej2/200 ciudades 400 neuronas 2 datos 3 neuronas 2.png, id=160, 803.0pt x
  702.625pt>
 File: imgs/ej2/200 ciudades 400 neuronas 2 datos 3 neuronas 2.png Graphic file 
 (type png)
 <use imgs/ej2/200 ciudades 400 neuronas 2 datos 3 neuronas 2.png>
 Package pdftex.def Info: imgs/ej2/200 ciudades 400 neuronas 2 datos 3 neuronas 
-2.png  used on input line 247.
+2.png  used on input line 277.
 (pdftex.def)             Requested size: 317.07614pt x 277.4427pt.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<imgs/ej2/200 ciudades 400 neuronas camino.png, id=137, 803.0pt x 702.625pt>
+<imgs/ej2/200 ciudades 400 neuronas camino.png, id=161, 803.0pt x 702.625pt>
 File: imgs/ej2/200 ciudades 400 neuronas camino.png Graphic file (type png)
 <use imgs/ej2/200 ciudades 400 neuronas camino.png>
 Package pdftex.def Info: imgs/ej2/200 ciudades 400 neuronas camino.png  used on
- input line 254.
+ input line 284.
 (pdftex.def)             Requested size: 317.07614pt x 277.4427pt.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<imgs/ej2/200 ciudades 400 neuronas zoom.png, id=138, 803.0pt x 702.625pt>
+<imgs/ej2/200 ciudades 400 neuronas zoom.png, id=162, 803.0pt x 702.625pt>
 File: imgs/ej2/200 ciudades 400 neuronas zoom.png Graphic file (type png)
 <use imgs/ej2/200 ciudades 400 neuronas zoom.png>
 Package pdftex.def Info: imgs/ej2/200 ciudades 400 neuronas zoom.png  used on i
-nput line 261.
+nput line 291.
 (pdftex.def)             Requested size: 317.07614pt x 277.4427pt.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<imgs/ej2/200 ciudades 400 neuronas.png, id=139, 803.0pt x 702.625pt>
+<imgs/ej2/200 ciudades 400 neuronas.png, id=163, 803.0pt x 702.625pt>
 File: imgs/ej2/200 ciudades 400 neuronas.png Graphic file (type png)
 <use imgs/ej2/200 ciudades 400 neuronas.png>
 Package pdftex.def Info: imgs/ej2/200 ciudades 400 neuronas.png  used on input 
-line 268.
+line 298.
 (pdftex.def)             Requested size: 317.07614pt x 277.4427pt.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<imgs/ej2/312 ciudades 624 neuronas camino.png, id=140, 803.0pt x 702.625pt>
+<imgs/ej2/312 ciudades 624 neuronas camino.png, id=164, 803.0pt x 702.625pt>
 File: imgs/ej2/312 ciudades 624 neuronas camino.png Graphic file (type png)
 <use imgs/ej2/312 ciudades 624 neuronas camino.png>
 Package pdftex.def Info: imgs/ej2/312 ciudades 624 neuronas camino.png  used on
- input line 275.
+ input line 305.
 (pdftex.def)             Requested size: 317.07614pt x 277.4427pt.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<imgs/ej2/312 ciudades 624 neuronas.png, id=141, 803.0pt x 702.625pt>
+<imgs/ej2/312 ciudades 624 neuronas.png, id=165, 803.0pt x 702.625pt>
 File: imgs/ej2/312 ciudades 624 neuronas.png Graphic file (type png)
 <use imgs/ej2/312 ciudades 624 neuronas.png>
 Package pdftex.def Info: imgs/ej2/312 ciudades 624 neuronas.png  used on input 
-line 282.
+line 312.
 (pdftex.def)             Requested size: 317.07614pt x 277.4427pt.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
 
-[6
+[9
 
  <./imgs/ej2/muestras.png>]
 
-[7 <./imgs/ej2/20 ciudades 20 neuronas camino.png> <./imgs/ej2/20 ciudades 20 n
-euronas.png>]
+[10 <./imgs/ej2/20 ciudades 20 neuronas camino.png> <./imgs/ej2/20 ciudades 20 
+neuronas.png>]
 
-[8 <./imgs/ej2/20 ciudades 40 neuronas camino.png> <./imgs/ej2/20 ciudades 40 n
-euronas.png>]
+[11 <./imgs/ej2/20 ciudades 40 neuronas camino.png> <./imgs/ej2/20 ciudades 40 
+neuronas.png>]
 
-[9 <./imgs/ej2/50 ciudades 100 neuronas camino.png> <./imgs/ej2/50 ciudades 100
- neuronas.png>]
+[12 <./imgs/ej2/50 ciudades 100 neuronas camino.png> <./imgs/ej2/50 ciudades 10
+0 neuronas.png>]
 
-[10 <./imgs/ej2/100 ciudades 200 neuronas camino.png> <./imgs/ej2/100 ciudades 
+[13 <./imgs/ej2/100 ciudades 200 neuronas camino.png> <./imgs/ej2/100 ciudades 
 200 neuronas.png>]
 
-[11 <./imgs/ej2/200 ciudades 400 neuronas 2 datos 3 neuronas 1.png> <./imgs/ej2
+[14 <./imgs/ej2/200 ciudades 400 neuronas 2 datos 3 neuronas 1.png> <./imgs/ej2
 /200 ciudades 400 neuronas 2 datos 3 neuronas 2.png>]
 
-[12 <./imgs/ej2/200 ciudades 400 neuronas camino.png> <./imgs/ej2/200 ciudades 
+[15 <./imgs/ej2/200 ciudades 400 neuronas camino.png> <./imgs/ej2/200 ciudades 
 400 neuronas zoom.png>]
 
-[13 <./imgs/ej2/200 ciudades 400 neuronas.png> <./imgs/ej2/312 ciudades 624 neu
+[16 <./imgs/ej2/200 ciudades 400 neuronas.png> <./imgs/ej2/312 ciudades 624 neu
 ronas camino.png>]
 
-[14 <./imgs/ej2/312 ciudades 624 neuronas.png>]
+[17 <./imgs/ej2/312 ciudades 624 neuronas.png>]
 
-[15
+[18
 
 ] (TP3 Cavicchioli.aux
 LaTeX Info: Redefining \. on input line 11.
@@ -915,13 +931,13 @@ Package rerunfilecheck Info: File `"TP3 Cavicchioli".out' has not changed.
 (rerunfilecheck)             Checksum: 273B4D2C10B33B185333B0F63A9B2772;1684.
  ) 
 Here is how much of TeX's memory you used:
- 18746 strings out of 468133
- 367185 string characters out of 5432655
- 751384 words of memory out of 5000000
- 47114 multiletter control sequences out of 15000+600000
+ 18768 strings out of 468133
+ 367892 string characters out of 5432655
+ 749983 words of memory out of 5000000
+ 47130 multiletter control sequences out of 15000+600000
  636426 words of font info for 75 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,11n,80p,583b,1080s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,11n,80p,795b,1057s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\q\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1095
 .pk><C:/Users/q/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cm
 bx10.pfb><C:/Users/q/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/
@@ -933,9 +949,9 @@ lic/amsfonts/cm/cmr17.pfb><C:/Users/q/AppData/Local/Programs/MiKTeX/fonts/type1
 type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/q/AppData/Local/Programs/MiKTeX/f
 onts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/q/AppData/Local/Programs/MiKT
 eX/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on "TP3 Cavicchioli.pdf" (15 pages, 979433 bytes).
+Output written on "TP3 Cavicchioli.pdf" (18 pages, 1121607 bytes).
 PDF statistics:
- 272 PDF objects out of 1000 (max. 8388607)
- 53 named destinations out of 1000 (max. 500000)
- 226 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 296 PDF objects out of 1000 (max. 8388607)
+ 59 named destinations out of 1000 (max. 500000)
+ 231 words of extra memory for PDF output out of 10000 (max. 10000000)
 
