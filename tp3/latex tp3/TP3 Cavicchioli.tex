@@ -79,12 +79,27 @@
 
 \section{Introducción}
 
-Este documento presenta el desarrollo de las consignas del trabajo práctico N°2 de la materia de \textbf{Redes Neuronales y Aprendizaje Profundo}.  El código correspondiente fue realizado en  \textit{Jupyter notebooks}, \textit{Python}, adjuntados a la entrega en formato PDF. Toda imagen o implementación requeridas para el análisis se explicitarán en el presente archivo, por lo que la lectura del código en sí queda a discreción del lector. La teoría relevante será presentada y discutida en la sección pertinente.
+Este documento presenta el desarrollo de las consignas del trabajo práctico N°3 de la materia de \textbf{Redes Neuronales y Aprendizaje Profundo}.  El código correspondiente fue realizado en  \textit{Jupyter notebooks}, \textit{Python}, adjuntados a la entrega en formato PDF. Toda imagen o implementación requeridas para el análisis se explicitarán en el presente archivo, por lo que la lectura del código en sí queda a discreción del lector. La teoría relevante será presentada y discutida en la sección pertinente.
 
 
 \newpage
 
-\section{Teoría sobre redes de Kohonen/SOM}
+\section{Teoría sobre redes de Kohonen y SOM}
+
+Las \textit{Self-Organizing Maps} (SOM), o \textit{redes de Kohonen}, son un tipo de red neuronal no supervisada diseñada para proyectar datos de alta dimensionalidad sobre una rejilla de menor dimensión, preservando en lo posible la topología del espacio original. Este proceso permite visualizar, agrupar y extraer estructuras latentes en los datos.
+
+La palabra ``rejilla'' se refiere a la estructura informática/topológica donde viven las neuronas. Esta puede ser:
+\begin{itemize}
+	\item 1D: una línea (vector de neuronas) que se cierra o no en los extremos.
+	\item 2D: una matriz, que se puede o no cerrar en sus lados.
+	\item 3D o más: un tensor de orden mayor.
+\end{itemize}
+
+
+El mecanismo de entrenamiento está inspirado en el aprendizaje hebbiano: las neuronas que responden de manera similar a un mismo estímulo se refuerzan conjuntamente. Sin embargo, la SOM incorpora además un esquema de \textit{competitive learning}, donde sólo la neurona ganadora (y sus vecinas en la rejilla) actualizan sus pesos (o lo que corresponda según la función de vecindad). Esto genera la organización progresiva del mapa y produce un \textit{feature mapping} explícito, ordenando los patrones según similitud.
+
+Las SOM actúan como un método de reducción de dimensionalidad no lineal, construyendo representaciones espaciales que capturan regularidades estadísticas de los datos sin requerir etiquetas. Esto mismo se va a ver en la tercer consigna de este trabajo, donde se pasa de un espacio dimensional de N dimensiones al espacio 2D de la rejilla de neuronas, y se usa la matriz U para ratificar la existencia de \textit{clusters}.
+
 
 \section{Ejercicio 1}
 
