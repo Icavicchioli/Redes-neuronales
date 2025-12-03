@@ -364,30 +364,145 @@ Ante todo, se destaca que se pudo resolver el problema del \textit{travelling sa
 
 Estos problemas no invalidan la solución porque la corrección del trayecto es trivial; alcanza con elegir el orden que minimiza la distancia. Pero es importante remarcar que, estrictamente, la solución es aproximada, y, si se fuera a usar de verdad, requeriría de un ajuste manual y verificación.
 
-Aunque el método no garantiza optimalidad, los trayectos generados parecen coherentes, y resultan en un viaje que parecería ser corto
+Aunque el método no garantiza optimalidad, los trayectos generados parecen coherentes y de longitud visualmente razonable.
 
 \clearpage
 
 \section{Ejercicio 3}
-
+\subsection{Consignas}
 En el campus encontrará el archivo ``datos\_para\_clustering.mat'' que contiene una matriz de datos de 500 mediciones de una variable de 100 dimensiones.
 
-a) Utilice una red de Kohonen para reducir la dimensionalidad de los datos.
-
-
-b) Verifique la presencia de clusters, e indique cuantos puede visualizar, haciendo uso de la matriz U.
-
-\subsection{Consignas}
+\begin{enumerate}
+\item[a)] Utilice una red de Kohonen para reducir la dimensionalidad de los datos.
+\item[b)] Verifique la presencia de clusters, e indique cuantos puede visualizar, haciendo uso de la matriz U.
+\end{enumerate}
 
 \subsection{Desarrollo}
 
+Para este inciso se usó una red de Kohonen grilla 2D de 60x60 neuronas, cada una con 100 pesos de entrada. La dimensión de entrada es de 100, y la de salida, 2. El proceso de entrenamiento tomó 10 minutos. El tamaño de 60x60 es relevante ya que aumenta el tiempo de procesamiento pero también la resolución de la matriz U, ya que son coincidentes en dimensiones.
+
+La matriz U (Unified Distance Matrix) es una representación visual que permite analizar la topología y calidad del ordenamiento del SOM.
+
+La matriz U muestra:
+
+\begin{itemize}
+	\item Zonas donde las neuronas son similares entre sí (distancias pequeñas).
+	\item Zonas donde hay cambios bruscos entre neuronas (distancias grandes).
+\end{itemize}
+
+La definición formal es
+
+$$
+U(i,j) = \frac{1}{|\mathcal{N}_{i,j}|}
+\sum_{(k,l)\in \mathcal{N}_{i,j}}
+\left\| \mathbf{w}_{i,j} - \mathbf{w}_{k,l} \right\|
+$$
+
+Donde $\mathcal{N}_{i,j}$ es el conjunto de neuronas vecinas.  Basándonos en esto, los pasos para calcular la matriz U son:
+
+\begin{enumerate}
+	\item Elegir una neurona e identificar sus vecinos en la grilla 2D.
+	\item Calcular la distancia euclídea entre el vector de pesos de la neurona y el de cada vecino.
+	$$
+	d_{(i,j),(k,l)} = \left\| \mathbf{w}_{i,j} - \mathbf{w}_{k,l} \right\|
+	$$
+	\item Promediar todas las distancias calculadas.
+	$$
+	U(i,j) =
+	\frac{1}{|\mathcal{N}_{i,j}|}
+	\sum_{(k,l)\in\mathcal{N}_{i,j}}
+	d_{(i,j),(k,l)}
+	$$
+	\item Repetir el cálculo para todas las neuronas del mapa, generando una matriz 2D del mismo tamaño que el SOM.
+
+
+Los valores bajos en la matriz indican regiones de neuronas similares (clústeres), mientras que valores elevados indican regiones de neuronas distantes, que serían posibles fronteras de clústeres.
+\end{enumerate}
+
+
+\newpage
+
+Primero, se hizo una exploración de los datos por medio de un PCA de 2 dimensiones, que se puede ver en la figura \ref{fig:pca-datos}
+
+
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.8\linewidth]{imgs/ej3/PCA datos}
+	\caption{PCA de los datos}
+	\label{fig:pca-datos}
+\end{figure}
+
+Se notan 4 clústeres y algunas muestras en el centro que no parecen pertenecer a ningún grupo en particular. la mezcla de colores en los datos indica que las muestras no siguen un orden en particular.
+
+Hecho esto, se pasó a entrenar la red, obteniéndose una matriz de 60x60 neuronas, cada una con 100 pesos ajustados a estos datos recién mostrados.
+
+Posteriormente, se ejecutó un análisis PCA sobre los pesos entrenados para saber que esperar con la matriz U. La figura \ref{fig:pca-colores} muestra un PCA de 2 dimensiones, donde los colores indican la cercanía de las neuronas en la grilla 2D. La imagen \ref{fig:pca3-colores} muestra un PCA 3D, cuya perspectiva no es muy cómoda pero muestra 4 regiones de mayor densidad de unidades\footnote{Para una mejor exploración recomiendo correr el \textit{notebook}.}.
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.6\linewidth]{imgs/ej3/PCA colores}
+	\caption{PCA de 2 dimensiones}
+	\label{fig:pca-colores}
+\end{figure}
+
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.6\linewidth]{imgs/ej3/PCA3 colores}
+	\caption{PCA de 3 dimensiones}
+	\label{fig:pca3-colores}
+\end{figure}
+
+Ambos PCAs muestran 4 clústeres bien definidos, y se nota que las neuronas de los clústeres están coloreadas de forma similar, indicando que están cerca en la matriz de neuronas. Además, la observación se condice con el PCA de los datos originales. Se espera que la matriz U también muestre 4 clústeres.
+
+\clearpage
+
+La matriz U se calculó con el método indicado al inicio del desarrollo. Las figuras \ref{fig:u} y \ref{fig:u-bilineal} muestran el mismo mapa de calor de la matriz U con y sin una interpolación.
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.6\linewidth]{imgs/ej3/U}
+	\caption{Matriz U sin interpolación}
+	\label{fig:u}
+\end{figure}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.6\linewidth]{imgs/ej3/U bilineal}
+	\caption{Matriz U con interpolación bilineal}
+	\label{fig:u-bilineal}
+\end{figure}
+
+Se ve que hay 4 regiones de un color amarillo intenso delimitadas por regiones de un violeta oscuro. Traducido a distancias, esto indica que hay 4 regiones donde la distancia promedio entre unidades es baja (están cerca), y están separadas por regiones donde la distancia promedio es elevada, apuntando a la existencia de fronteras.
+
+Sería incorrecto decir que el \textit{kernel} de los datos existe en un subespacios de 2 dimensiones, pero 2 dimensiones parecerían alcanzar para hacer una caracterización gruesa de los datos.
+
 \subsection{Análisis}
+
+Antes que todo, se destaca que se logró el \textit{clustering} pedido en las consignas, y se validó por PCA, que dió una noción de como se agrupan los datos y pesos.
+
+Se considera que la deficiencia principal del SOM para \textit{clustering} es que tarda mucho, es un algoritmo de alto costo computacional.
+
+Se me ocurre que se podría hacer clasificación de la siguiente forma: Antes que nada, se deben encontrar los clúster como ya se hizo (de forma no supervisada), y luego asignarle una clase (si correspondiese). Luego, se puede hacer lo siguiente:
+\begin{enumerate}
+	\item Se toma el vector de entrada (la muestra a clasificar).
+	\item Se busca la BMU - la neurona de pesos más cercanos a la muestra.
+	\item La muestra es asignada el cluster de la BMU.
+\end{enumerate}
+
+De cierta manera, estaría operando como un extractor de \textit{features}.
 
 
 
 \section{Conclusiones}
 
-Cada consigna tiene su análisis, así que no es necesario en detalle sobre algún ejercicio particular. Considero que el trabajo sirvió como una introducción extremadamente completa los temas de redes neuronales basadas en perceptrones, métodos de optimización y redes convolucionales. A mi entender, las consignas fueron resueltas de forma satisfactoria, ahondando en algunos temas no requeridos pero que hacen al entendimiento de la materia.
+Las tres consignas permitieron profundizar en el funcionamiento y las capacidades de los mapas auto-organizados (SOM). A lo largo del trabajo se observó que este tipo de redes resulta especialmente útil en problemas donde la estructura geométrica de los datos es relevante, ya sea para realizar reducción de dimensionalidad, hacer \textit{clustering}, aproximar distribuciones o generar representaciones ordenadas de datos.
+
+El primer ejercicio mostró la capacidad de generalizar de estas redes haciendo que aprendan distribuciones uniformes de varias geometrías. El segundo inciso mostró la capacidad de preservar distancias y auto-ordenamiento del algoritmo. El último punto ahondó en la capacidad de reducir la dimensionalidad de datos de alta dimensión para encontrar las estructuras subyacentes.
+
+Si bien los entrenamientos de las redes más grandes pueden haber tardado mucho tiempo, los resultados indican que este es un método interesante de tener en mente para la resolución de ciertos problemas menos convencionales que requieran de las capacidades ya mencionadas.
+
+Se considera que las consignas fueron resueltas de forma satisfactoria y permitieron obtener una comprensión sólida del uso práctico del SOM en distintos contextos.
 
 
 \end{document}
