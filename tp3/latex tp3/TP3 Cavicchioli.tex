@@ -96,9 +96,9 @@ La palabra ``rejilla'' se refiere a la estructura informática/topológica donde
 \end{itemize}
 
 
-El mecanismo de entrenamiento está inspirado en el aprendizaje hebbiano: las neuronas que responden de manera similar a un mismo estímulo se refuerzan conjuntamente. Sin embargo, la SOM incorpora además un esquema de \textit{competitive learning}, donde sólo la neurona ganadora (y sus vecinas en la rejilla) actualizan sus pesos (o lo que corresponda según la función de vecindad). Esto genera la organización progresiva del mapa y produce un \textit{feature mapping} explícito, ordenando los patrones según similitud.
+El mecanismo de entrenamiento está inspirado en el aprendizaje hebbiano: las neuronas que responden de manera similar a un mismo estímulo se refuerzan conjuntamente, y sus pesos se ``acercan'' al estímulo. Sin embargo, además se incluye un esquema de aprendizaje competitivo, donde sólo la neurona ganadora (y sus vecinas en la rejilla) actualizan sus pesos (o lo que corresponda según la función de vecindad). Esto genera la organización progresiva del mapa, ordenando los patrones según similitud.
 
-Las SOM actúan como un método de reducción de dimensionalidad no lineal, construyendo representaciones espaciales que capturan regularidades estadísticas de los datos sin requerir etiquetas. Esto mismo se va a ver en la tercer consigna de este trabajo, donde se pasa de un espacio dimensional de N dimensiones al espacio 2D de la rejilla de neuronas, y se usa la matriz U para ratificar la existencia de \textit{clusters}.
+También, las SOM actúan como un método de reducción de dimensionalidad no lineal y no supervisado. Esto mismo se va a ver en la tercer consigna de este trabajo, donde se pasa de un espacio dimensional de N dimensiones al espacio 2D de la rejilla de neuronas, y se usa la matriz U para ratificar la existencia de \textit{clusters}.
 
 \newpage
 
@@ -169,11 +169,9 @@ las imágenes de a continuación muestran las figuras generadas con las neuronas
 
 Se observa que la red implementada es capaz de aprender considerablemente bien las distribuciones de las figuras \ref{fig:circulo-con-neuronas}, \ref{fig:triangulo-con-neuronas} y \ref{fig:cuadradocon-neuronas}, que son el círculo, triángulo y cuadrado respectivamente. La posición de las neuronas es aproximadamente equidistante las unas de las otras, respondiendo a la distribución de datos subyacente. También se pudieron generar los mapas de preservación de topología.
 
-En las formas U y dona (fig. \ref{fig:dona-con-neuronas} y \ref{fig:ucon-neuronas}), las neuronas aprendieron la distribución pero hay algunas unidades que quedaron por fuera de las figuras: en la U quedaron 2 neuronas mientras que en la dona, 1. Se considera que este efecto tiene su origen en que esas neuronas nunca ganan, y son movidas por todas las otras neuronas con una ``fuerza'' inversamente proporcional a la distancia. Por esto mismo hay neuronas en el centro de la dona (todas las neuronas dentro de la dona tiran con la misma fuerza por estar a la misma distancia), y en la U tenemos neuronas más arriba o abajo (las neuronas de los laterales tiran hacia si mismas y contrarrestan los efectos de las de la parte de abajo de la U).
+En las formas U y dona (fig. \ref{fig:dona-con-neuronas} y \ref{fig:ucon-neuronas}), las neuronas aprendieron la distribución pero hay algunas unidades que quedaron por fuera de las figuras: en la U quedaron 2 neuronas mientras que en la dona, 1. Se considera que este efecto tiene su origen en que esas neuronas nunca ganan, y son movidas por todas las otras neuronas con una ``fuerza'' inversamente proporcional a la distancia. Por esto mismo hay neuronas en el centro de la dona (todas las neuronas dentro de la dona tiran con la misma fuerza por estar a la misma distancia), y en la U tenemos neuronas más arriba o abajo (las neuronas de los laterales tiran hacia si mismas y contrarrestan los efectos de las de la parte de abajo de la U).La imagen \ref{fig:dona-y-u-con-neuronas-vector} tiene algunos de los vectores de ``fuerza'' imaginaria en verde. En ella se va a notar con claridad lo enunciado antes.
 
-En las otras geometrías esto no sucede.
-
-Para entender esto se puede ver la imagen \ref{fig:dona-y-u-con-neuronas-vector}, que tiene algunos de los vectores de fuerza imaginaria en verde. En ella se va a notar con claridad lo enunciado más arriba.
+En las otras geometrías no hay neuronas ``huérfanas'' debido a que no tienen regiones sin datos en las que puedan quedar varadas.
 
 \begin{figure}[!h]
 	\centering
@@ -182,7 +180,7 @@ Para entender esto se puede ver la imagen \ref{fig:dona-y-u-con-neuronas-vector}
 	\label{fig:dona-y-u-con-neuronas-vector}
 \end{figure}
 
-Otro detalle interesante es que, si se observa con detenimiento, las neuronas están sobre los puntos de mayor densidad de muestras, indicando que:
+Otro detalle interesante es que, si se observa con detenimiento cualquiera de las imágenes, las neuronas están sobre los puntos de mayor densidad de muestras, indicando que:
 \begin{enumerate}
 	\item El aprendizaje está funcionando porque las neuronas se acercan a donde ganan más, que coincide con las zonas donde hay mayor concentración de muestras.
 	\item Las distribuciones generadas no fueron perfectamente uniformes: la presencia de cúmulos locales de mayor densidad hace que algunas neuronas se agrupen en esas regiones.
@@ -492,7 +490,7 @@ Se me ocurre que se podría hacer clasificación de la siguiente forma: Antes qu
 
 De cierta manera, estaría operando como un extractor de \textit{features}.
 
-
+Otro detalle es que el \textit{clustering} por matriz U no se podría hacer directamente con los datos porque no están topológicamente ordenados. Es la red de Kohonen la que aporta el orden necesario para poder aplicar el método usado.
 
 \section{Conclusiones}
 
