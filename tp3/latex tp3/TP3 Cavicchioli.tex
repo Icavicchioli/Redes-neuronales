@@ -198,125 +198,173 @@ Resuelva (aproximadamente) el “Traveling salesman problem” para 200 ciudades
 
 \subsection{Desarrollo}
 
-Para este ejercicio se usó un \textit{dataset} de 312 ciudades estadounidenses, a partir del cual se crearon sets de menos muestras para ir mostrando la resolución del problema del “Traveling salesman problem” de menor a mayor complejidad.
+Para este ejercicio se usó un \textit{dataset} de coordenadas (X,Y) de 312 ciudades estadounidenses, a partir del cual se crearon sets de menos muestras para ir mostrando la resolución del problema del “Traveling salesman problem” en orden de menor a mayor complejidad.
 
-La
+Además, se modificó el código de entrenamiento de la red de Kohonen para que la rejilla de neuronas no fuera una grilla 2D sino una línea cuyos extremos están conectados entre sí. Es decir, la topología utilizada fue un anillo.
+Esta configuración asegura que, la red final sea un camino cerrado, lo cual es consistente con la solución del problema del vendedor viajante, donde la ruta debe iniciar y finalizar en el mismo punto. Aparte, la naturaleza de como se organiza el mapa según cercanía debería resultar en una solución buena del problema (seguramente no óptima).
+
+La Figura \ref{fig:muestras} muestra la distribución completa de las ciudades del dataset.
 
 \begin{figure}[h!]
 	\centering
-	\includegraphics[width=0.7\linewidth]{imgs/ej2/muestras}
+	\includegraphics[width=0.8\linewidth]{imgs/ej2/muestras}
 	\caption{Todas las muestras de ciudades de USA del dataset}
 	\label{fig:muestras}
 \end{figure}
 
+
+Para los mapas de menos ciudades, se usaron 3000 iteraciones con una varianza de 2. Para los mapas más grandes, se usaron 1000 iteraciones y varianza de 8, pero todos con \textit{learning rate} de $0.5$. Este ajuste de parámetros fue empírico, y siempre se buscó la solución que pareciera mejor.
+
+\newpage
+
+Iniciamos con un conjunto de 20 ciudades y una red de 20 neuronas.
+La Figura \ref{fig:20-ciudades-20-neuronas-camino} muestra únicamente el camino resultante (sin visualizar neuronas ni muestras).
+Luego, en la Figura \ref{fig:20-ciudades-20-neuronas} puede verse una situación típicamente notada cuando la cantidad de neuronas coincide con la cantidad de ciudades: algunas neuronas quedan exactamente sobre las ciudades, pero otras quedan entre ellas, sin representar ninguna muestra en particular. Es análogo a lo observado en la consigna anterior, donde algunas neuronas quedan fuera de la distribución.
+
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=0.7\linewidth]{imgs/ej2/20 ciudades 20 neuronas camino}
-	\caption{20 ciudades con 20 neuronas - el camino sin las neuronas o ciudades}
+	\caption{20 ciudades con 20 neuronas - El camino sin las neuronas o ciudades}
 	\label{fig:20-ciudades-20-neuronas-camino}
 \end{figure}
-
+\vspace{-0.5cm}
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=0.7\linewidth]{imgs/ej2/20 ciudades 20 neuronas}
-	\caption{20 ciudades con 20 neuronas - puede haber overfitting: neuronas sobrantes o neuronas que representan varias ciudades}
+	\caption{20 ciudades con 20 neuronas - Pueden aparecer neuronas que quedan entre ciudades}
 	\label{fig:20-ciudades-20-neuronas}
 \end{figure}
 
+En mi opinión, no se busca que el modelo aprenda a la perfección la distribución, pero estos casos de generalización (una unidad entre 2 muestras) no son deseables cuando el resultado final deseado es un trayecto que pase por todos los puntos. Para corregir este comportamiento, se aumentó la cantidad de neuronas al doble de ciudades, con la intención de que hayan más unidades, logrando más ajuste a los datos y caminos que si pasan por todos los puntos a visitar.
+
+\clearpage
+
+
+Ahora, con 40 neuronas para 20 ciudades (Figuras \ref{fig:20-ciudades-40-neuronas-camino} y \ref{fig:20-ciudades-40-neuronas}) se observa que, al haber neuronas sobrantes, siempre hay unidades representando correctamente las muestras y el trayecto final pasa por todos los puntos. Se notó que las unidades sobrantes se acomodan sobre los trayectos rectos del viaje, como se observó en la consigna anterior con la U o dona. No ``entorpecen'' (hasta se podrían remover) y, a priori, no parecerían empeorar la solución.
+
 \begin{figure}[h!]
 	\centering
-	\includegraphics[width=0.7\linewidth]{imgs/ej2/20 ciudades 40 neuronas camino}
-	\caption{20 ciudades 40 neuronas - el camino sin las neuronas o ciudades}
+	\includegraphics[width=0.8\linewidth]{imgs/ej2/20 ciudades 40 neuronas camino}
+	\caption{20 ciudades con 40 neuronas - El camino sin las neuronas}
 	\label{fig:20-ciudades-40-neuronas-camino}
 \end{figure}
 
 \begin{figure}[h!]
 	\centering
-	\includegraphics[width=0.7\linewidth]{imgs/ej2/20 ciudades 40 neuronas}
-	\caption{20 ciudades 40 neuronas}
+	\includegraphics[width=0.8\linewidth]{imgs/ej2/20 ciudades 40 neuronas}
+	\caption{20 ciudades con 40 neuronas}
 	\label{fig:20-ciudades-40-neuronas}
 \end{figure}
 
+\clearpage
+
+Pasando a un conjunto mayor, con 50 ciudades y 100 neuronas (Figuras \ref{fig:50-ciudades-100-neuronas-camino} y \ref{fig:50-ciudades-100-neuronas}), se observa que las neuronas logran ajustarse a la distribución, aún si quedan algunos puntos intermedios que no corresponden a ninguna ciudad (se notó en el visualizador integrado en el \textit{notebook}). El trayecto resultante pasa por todas las ciudades.
+
 \begin{figure}[h!]
 	\centering
-	\includegraphics[width=0.7\linewidth]{imgs/ej2/50 ciudades 100 neuronas camino}
-	\caption{50 ciudades 100 neuronas - el camino sin las neuronas o ciudades}
+	\includegraphics[width=0.8\linewidth]{imgs/ej2/50 ciudades 100 neuronas camino}
+	\caption{50 ciudades con 100 neuronas - El camino sin las neuronas o ciudades}
 	\label{fig:50-ciudades-100-neuronas-camino}
 \end{figure}
 
 \begin{figure}[h!]
 	\centering
-	\includegraphics[width=0.7\linewidth]{imgs/ej2/50 ciudades 100 neuronas}
-	\caption{50 ciudades 100 neuronas}
+	\includegraphics[width=0.8\linewidth]{imgs/ej2/50 ciudades 100 neuronas}
+	\caption{50 ciudades con 100 neuronas}
 	\label{fig:50-ciudades-100-neuronas}
 \end{figure}
 
+
+\clearpage
+
+Para 100 ciudades con 200 neuronas (Figuras \ref{fig:100-ciudades-200-neuronas-camino} y \ref{fig:100-ciudades-200-neuronas}), la red continúa manteniendo un comportamiento adecuado, ajustándose al contorno general del mapa y generando un camino continuo y ordenado.
+
 \begin{figure}[h!]
 	\centering
-	\includegraphics[width=0.7\linewidth]{imgs/ej2/100 ciudades 200 neuronas camino}
-	\caption{100 ciudades 200 neuronas - el camino sin las neuronas o ciudades}
+	\includegraphics[width=0.8\linewidth]{imgs/ej2/100 ciudades 200 neuronas camino}
+	\caption{100 ciudades 200 neuronas - El camino sin las neuronas o ciudades}
 	\label{fig:100-ciudades-200-neuronas-camino}
 \end{figure}
 
 \begin{figure}[h!]
 	\centering
-	\includegraphics[width=0.7\linewidth]{imgs/ej2/100 ciudades 200 neuronas}
+	\includegraphics[width=0.8\linewidth]{imgs/ej2/100 ciudades 200 neuronas}
 	\caption{100 ciudades 200 neuronas}
 	\label{fig:100-ciudades-200-neuronas}
 \end{figure}
 
+
+\clearpage
+
+Al aumentar a 200 ciudades y 400 neuronas, los fenómenos de 1 unidad entre 2 ciudades se vuelve más prolifero, como se ve en la figura \ref{fig:200-ciudades-400-neuronas-zoom}, Lo mismo sucede con el fenómeno de la neurona atrapada entre 2 ciudades, como muestran las figuras \ref{fig:200-ciudades-400-neuronas-2-datos-3-neuronas-1} y \ref{fig:200-ciudades-400-neuronas-2-datos-3-neuronas-2}.
+
 \begin{figure}[h!]
 	\centering
-	\includegraphics[width=0.7\linewidth]{imgs/ej2/200 ciudades 400 neuronas 2 datos 3 neuronas 1}
-	\caption{200 ciudades 400 neuronas - dos ciudades representadas por tres neuronas, una queda en el medio}
+	\includegraphics[width=0.8\linewidth]{imgs/ej2/200 ciudades 400 neuronas 2 datos 3 neuronas 1}
+	\caption{200 ciudades 400 neuronas - Dos ciudades representadas por tres neuronas, una queda en el medio}
 	\label{fig:200-ciudades-400-neuronas-2-datos-3-neuronas-1}
 \end{figure}
 
 \begin{figure}[h!]
 	\centering
-	\includegraphics[width=0.7\linewidth]{imgs/ej2/200 ciudades 400 neuronas 2 datos 3 neuronas 2}
-	\caption{200 ciudades 400 neuronas - se ve la neurona intermedia entre dos ciudades cercanas}
+	\includegraphics[width=0.8\linewidth]{imgs/ej2/200 ciudades 400 neuronas 2 datos 3 neuronas 2}
+	\caption{200 ciudades 400 neuronas - Se observa la neurona intermedia entre dos ciudades cercanas}
 	\label{fig:200-ciudades-400-neuronas-2-datos-3-neuronas-2}
 \end{figure}
 
+El camino completo para este caso se muestra en las Figuras \ref{fig:200-ciudades-400-neuronas-camino} y \ref{fig:200-ciudades-400-neuronas}. En la imagen \ref{fig:200-ciudades-400-neuronas-zoom} se hace \textit{zoom} al camino, y se ve que claramente la solución no pasa por encima de todas las ciudades, lo que técnicamente invalidaría este camino como solución. Sin embargo, como estas ciudades están muy cerca (razón por la cual sucede este fenómeno de que la neurona queda en el medio), la corrección del trayecto es trivial, solo se debe elegir una de las 2 combinaciones que minimice la distancia.
+
 \begin{figure}[h!]
 	\centering
-	\includegraphics[width=0.7\linewidth]{imgs/ej2/200 ciudades 400 neuronas camino}
+	\includegraphics[width=0.8\linewidth]{imgs/ej2/200 ciudades 400 neuronas camino}
 	\caption{200 ciudades 400 neuronas - el camino sin las neuronas o ciudades}
 	\label{fig:200-ciudades-400-neuronas-camino}
 \end{figure}
 
 \begin{figure}[h!]
 	\centering
-	\includegraphics[width=0.7\linewidth]{imgs/ej2/200 ciudades 400 neuronas zoom}
+	\includegraphics[width=0.8\linewidth]{imgs/ej2/200 ciudades 400 neuronas zoom}
 	\caption{200 ciudades 400 neuronas - zoom para más detalle}
 	\label{fig:200-ciudades-400-neuronas-zoom}
 \end{figure}
 
 \begin{figure}[h!]
 	\centering
-	\includegraphics[width=0.7\linewidth]{imgs/ej2/200 ciudades 400 neuronas}
+	\includegraphics[width=0.9\linewidth]{imgs/ej2/200 ciudades 400 neuronas}
 	\caption{200 ciudades 400 neuronas}
 	\label{fig:200-ciudades-400-neuronas}
 \end{figure}
 
+\clearpage
+
+Finalmente, se entrenó el modelo con las 312 ciudades del dataset completo y 624 neuronas.
+
+
+Las Figuras \ref{fig:312-ciudades-624-neuronas-camino} y \ref{fig:312-ciudades-624-neuronas} muestran el resultado final, donde el mapa neuronal se ajusta al contorno general del país, produciendo una ruta continua que enlaza todas las ciudades.
+
 \begin{figure}[h!]
 	\centering
-	\includegraphics[width=0.7\linewidth]{imgs/ej2/312 ciudades 624 neuronas camino}
+	\includegraphics[width=0.8\linewidth]{imgs/ej2/312 ciudades 624 neuronas camino}
 	\caption{312 ciudades 624 neuronas - el camino sin las neuronas o ciudades}
 	\label{fig:312-ciudades-624-neuronas-camino}
 \end{figure}
 
 \begin{figure}[h!]
 	\centering
-	\includegraphics[width=0.7\linewidth]{imgs/ej2/312 ciudades 624 neuronas}
+	\includegraphics[width=0.8\linewidth]{imgs/ej2/312 ciudades 624 neuronas}
 	\caption{312 ciudades 624 neuronas}
 	\label{fig:312-ciudades-624-neuronas}
 \end{figure}
 
-
+\clearpage
 
 \subsection{Análisis}
+
+Ante todo, se destaca que se pudo resolver el problema del \textit{travelling salesman} de forma aproximada por medio de redes de Kohonen. El \textit{approach} de que las neuronas dupliquen la cantidad de ciudades ayudó a minimizar la aparición de neuronas que quedan ubicadas entre dos ciudades muy cercanas, a costas de tener más unidades innecesariamente ubicadas en el trayecto.
+
+Estos problemas no invalidan la solución porque la corrección del trayecto es trivial; alcanza con elegir el orden que minimiza la distancia. Pero es importante remarcar que, estrictamente, la solución es aproximada, y, si se fuera a usar de verdad, requeriría de un ajuste manual y verificación.
+
+Aunque el método no garantiza optimalidad, los trayectos generados parecen coherentes, y resultan en un viaje que parecería ser corto
 
 \clearpage
 

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.8.28)  2 DEC 2025 16:19
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.8.28)  2 DEC 2025 22:01
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -743,181 +743,168 @@ ut line 180.
 [8
 
  <./imgs/ej1/dona y u con neuronas vector.png>]
-<imgs/ej2/muestras.png, id=150, 903.375pt x 702.625pt>
+<imgs/ej2/muestras.png, id=151, 619.56468pt x 440.39531pt>
 File: imgs/ej2/muestras.png Graphic file (type png)
 <use imgs/ej2/muestras.png>
-Package pdftex.def Info: imgs/ej2/muestras.png  used on input line 207.
-(pdftex.def)             Requested size: 317.07614pt x 246.61931pt.
-<imgs/ej2/20 ciudades 20 neuronas camino.png, id=151, 803.0pt x 702.625pt>
-File: imgs/ej2/20 ciudades 20 neuronas camino.png Graphic file (type png)
-<use imgs/ej2/20 ciudades 20 neuronas camino.png>
-Package pdftex.def Info: imgs/ej2/20 ciudades 20 neuronas camino.png  used on i
-nput line 214.
-(pdftex.def)             Requested size: 317.07614pt x 277.4427pt.
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-<imgs/ej2/20 ciudades 20 neuronas.png, id=152, 803.0pt x 702.625pt>
-File: imgs/ej2/20 ciudades 20 neuronas.png Graphic file (type png)
-<use imgs/ej2/20 ciudades 20 neuronas.png>
-Package pdftex.def Info: imgs/ej2/20 ciudades 20 neuronas.png  used on input li
-ne 221.
-(pdftex.def)             Requested size: 317.07614pt x 277.4427pt.
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-<imgs/ej2/20 ciudades 40 neuronas camino.png, id=153, 803.0pt x 702.625pt>
-File: imgs/ej2/20 ciudades 40 neuronas camino.png Graphic file (type png)
-<use imgs/ej2/20 ciudades 40 neuronas camino.png>
-Package pdftex.def Info: imgs/ej2/20 ciudades 40 neuronas camino.png  used on i
-nput line 228.
-(pdftex.def)             Requested size: 317.07614pt x 277.4427pt.
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-<imgs/ej2/20 ciudades 40 neuronas.png, id=154, 803.0pt x 702.625pt>
-File: imgs/ej2/20 ciudades 40 neuronas.png Graphic file (type png)
-<use imgs/ej2/20 ciudades 40 neuronas.png>
-Package pdftex.def Info: imgs/ej2/20 ciudades 40 neuronas.png  used on input li
-ne 235.
-(pdftex.def)             Requested size: 317.07614pt x 277.4427pt.
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-<imgs/ej2/50 ciudades 100 neuronas camino.png, id=155, 803.0pt x 702.625pt>
-File: imgs/ej2/50 ciudades 100 neuronas camino.png Graphic file (type png)
-<use imgs/ej2/50 ciudades 100 neuronas camino.png>
-Package pdftex.def Info: imgs/ej2/50 ciudades 100 neuronas camino.png  used on 
-input line 242.
-(pdftex.def)             Requested size: 317.07614pt x 277.4427pt.
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-<imgs/ej2/50 ciudades 100 neuronas.png, id=156, 803.0pt x 702.625pt>
-File: imgs/ej2/50 ciudades 100 neuronas.png Graphic file (type png)
-<use imgs/ej2/50 ciudades 100 neuronas.png>
-Package pdftex.def Info: imgs/ej2/50 ciudades 100 neuronas.png  used on input l
-ine 249.
-(pdftex.def)             Requested size: 317.07614pt x 277.4427pt.
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-<imgs/ej2/100 ciudades 200 neuronas camino.png, id=157, 803.0pt x 702.625pt>
-File: imgs/ej2/100 ciudades 200 neuronas camino.png Graphic file (type png)
-<use imgs/ej2/100 ciudades 200 neuronas camino.png>
-Package pdftex.def Info: imgs/ej2/100 ciudades 200 neuronas camino.png  used on
- input line 256.
-(pdftex.def)             Requested size: 317.07614pt x 277.4427pt.
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-<imgs/ej2/100 ciudades 200 neuronas.png, id=158, 803.0pt x 702.625pt>
-File: imgs/ej2/100 ciudades 200 neuronas.png Graphic file (type png)
-<use imgs/ej2/100 ciudades 200 neuronas.png>
-Package pdftex.def Info: imgs/ej2/100 ciudades 200 neuronas.png  used on input 
-line 263.
-(pdftex.def)             Requested size: 317.07614pt x 277.4427pt.
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-<imgs/ej2/200 ciudades 400 neuronas 2 datos 3 neuronas 1.png, id=159, 803.0pt x
- 702.625pt>
-File: imgs/ej2/200 ciudades 400 neuronas 2 datos 3 neuronas 1.png Graphic file 
-(type png)
-<use imgs/ej2/200 ciudades 400 neuronas 2 datos 3 neuronas 1.png>
-Package pdftex.def Info: imgs/ej2/200 ciudades 400 neuronas 2 datos 3 neuronas 
-1.png  used on input line 270.
-(pdftex.def)             Requested size: 317.07614pt x 277.4427pt.
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-<imgs/ej2/200 ciudades 400 neuronas 2 datos 3 neuronas 2.png, id=160, 803.0pt x
- 702.625pt>
-File: imgs/ej2/200 ciudades 400 neuronas 2 datos 3 neuronas 2.png Graphic file 
-(type png)
-<use imgs/ej2/200 ciudades 400 neuronas 2 datos 3 neuronas 2.png>
-Package pdftex.def Info: imgs/ej2/200 ciudades 400 neuronas 2 datos 3 neuronas 
-2.png  used on input line 277.
-(pdftex.def)             Requested size: 317.07614pt x 277.4427pt.
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-<imgs/ej2/200 ciudades 400 neuronas camino.png, id=161, 803.0pt x 702.625pt>
-File: imgs/ej2/200 ciudades 400 neuronas camino.png Graphic file (type png)
-<use imgs/ej2/200 ciudades 400 neuronas camino.png>
-Package pdftex.def Info: imgs/ej2/200 ciudades 400 neuronas camino.png  used on
- input line 284.
-(pdftex.def)             Requested size: 317.07614pt x 277.4427pt.
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-<imgs/ej2/200 ciudades 400 neuronas zoom.png, id=162, 803.0pt x 702.625pt>
-File: imgs/ej2/200 ciudades 400 neuronas zoom.png Graphic file (type png)
-<use imgs/ej2/200 ciudades 400 neuronas zoom.png>
-Package pdftex.def Info: imgs/ej2/200 ciudades 400 neuronas zoom.png  used on i
-nput line 291.
-(pdftex.def)             Requested size: 317.07614pt x 277.4427pt.
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-<imgs/ej2/200 ciudades 400 neuronas.png, id=163, 803.0pt x 702.625pt>
-File: imgs/ej2/200 ciudades 400 neuronas.png Graphic file (type png)
-<use imgs/ej2/200 ciudades 400 neuronas.png>
-Package pdftex.def Info: imgs/ej2/200 ciudades 400 neuronas.png  used on input 
-line 298.
-(pdftex.def)             Requested size: 317.07614pt x 277.4427pt.
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-<imgs/ej2/312 ciudades 624 neuronas camino.png, id=164, 803.0pt x 702.625pt>
-File: imgs/ej2/312 ciudades 624 neuronas camino.png Graphic file (type png)
-<use imgs/ej2/312 ciudades 624 neuronas camino.png>
-Package pdftex.def Info: imgs/ej2/312 ciudades 624 neuronas camino.png  used on
- input line 305.
-(pdftex.def)             Requested size: 317.07614pt x 277.4427pt.
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-<imgs/ej2/312 ciudades 624 neuronas.png, id=165, 803.0pt x 702.625pt>
-File: imgs/ej2/312 ciudades 624 neuronas.png Graphic file (type png)
-<use imgs/ej2/312 ciudades 624 neuronas.png>
-Package pdftex.def Info: imgs/ej2/312 ciudades 624 neuronas.png  used on input 
-line 312.
-(pdftex.def)             Requested size: 317.07614pt x 277.4427pt.
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
+Package pdftex.def Info: imgs/ej2/muestras.png  used on input line 210.
+(pdftex.def)             Requested size: 362.37569pt x 257.57982pt.
 
 
 [9
 
  <./imgs/ej2/muestras.png>]
+<imgs/ej2/20 ciudades 20 neuronas camino.png, id=160, 589.4522pt x 435.12563pt>
+
+File: imgs/ej2/20 ciudades 20 neuronas camino.png Graphic file (type png)
+<use imgs/ej2/20 ciudades 20 neuronas camino.png>
+Package pdftex.def Info: imgs/ej2/20 ciudades 20 neuronas camino.png  used on i
+nput line 226.
+(pdftex.def)             Requested size: 317.07614pt x 234.06137pt.
+<imgs/ej2/20 ciudades 20 neuronas.png, id=161, 586.44093pt x 435.87843pt>
+File: imgs/ej2/20 ciudades 20 neuronas.png Graphic file (type png)
+<use imgs/ej2/20 ciudades 20 neuronas.png>
+Package pdftex.def Info: imgs/ej2/20 ciudades 20 neuronas.png  used on input li
+ne 233.
+(pdftex.def)             Requested size: 317.07614pt x 235.67014pt.
+
 
 [10 <./imgs/ej2/20 ciudades 20 neuronas camino.png> <./imgs/ej2/20 ciudades 20 
 neuronas.png>]
+<imgs/ej2/20 ciudades 40 neuronas camino.png, id=172, 584.1825pt x 433.62pt>
+File: imgs/ej2/20 ciudades 40 neuronas camino.png Graphic file (type png)
+<use imgs/ej2/20 ciudades 40 neuronas camino.png>
+Package pdftex.def Info: imgs/ej2/20 ciudades 40 neuronas camino.png  used on i
+nput line 247.
+(pdftex.def)             Requested size: 362.37569pt x 268.98718pt.
+<imgs/ej2/20 ciudades 40 neuronas.png, id=173, 588.69937pt x 432.86719pt>
+File: imgs/ej2/20 ciudades 40 neuronas.png Graphic file (type png)
+<use imgs/ej2/20 ciudades 40 neuronas.png>
+Package pdftex.def Info: imgs/ej2/20 ciudades 40 neuronas.png  used on input li
+ne 254.
+(pdftex.def)             Requested size: 362.37569pt x 266.45282pt.
 
-[11 <./imgs/ej2/20 ciudades 40 neuronas camino.png> <./imgs/ej2/20 ciudades 40 
-neuronas.png>]
 
-[12 <./imgs/ej2/50 ciudades 100 neuronas camino.png> <./imgs/ej2/50 ciudades 10
+[11
+
+ <./imgs/ej2/20 ciudades 40 neuronas camino.png> <./imgs/ej2/20 ciudades 40 neu
+ronas.png>]
+<imgs/ej2/50 ciudades 100 neuronas camino.png, id=184, 588.69937pt x 441.14813p
+t>
+File: imgs/ej2/50 ciudades 100 neuronas camino.png Graphic file (type png)
+<use imgs/ej2/50 ciudades 100 neuronas camino.png>
+Package pdftex.def Info: imgs/ej2/50 ciudades 100 neuronas camino.png  used on 
+input line 265.
+(pdftex.def)             Requested size: 362.37569pt x 271.55019pt.
+<imgs/ej2/50 ciudades 100 neuronas.png, id=185, 593.96906pt x 443.40656pt>
+File: imgs/ej2/50 ciudades 100 neuronas.png Graphic file (type png)
+<use imgs/ej2/50 ciudades 100 neuronas.png>
+Package pdftex.def Info: imgs/ej2/50 ciudades 100 neuronas.png  used on input l
+ine 272.
+(pdftex.def)             Requested size: 362.37569pt x 270.53172pt.
+
+
+[12
+
+ <./imgs/ej2/50 ciudades 100 neuronas camino.png> <./imgs/ej2/50 ciudades 100 n
+euronas.png>]
+<imgs/ej2/100 ciudades 200 neuronas camino.png, id=196, 588.69937pt x 438.13687
+pt>
+File: imgs/ej2/100 ciudades 200 neuronas camino.png Graphic file (type png)
+<use imgs/ej2/100 ciudades 200 neuronas camino.png>
+Package pdftex.def Info: imgs/ej2/100 ciudades 200 neuronas camino.png  used on
+ input line 284.
+(pdftex.def)             Requested size: 362.37569pt x 269.69658pt.
+<imgs/ej2/100 ciudades 200 neuronas.png, id=197, 593.96906pt x 433.62pt>
+File: imgs/ej2/100 ciudades 200 neuronas.png Graphic file (type png)
+<use imgs/ej2/100 ciudades 200 neuronas.png>
+Package pdftex.def Info: imgs/ej2/100 ciudades 200 neuronas.png  used on input 
+line 291.
+(pdftex.def)             Requested size: 362.37569pt x 264.56075pt.
+
+
+[13
+
+ <./imgs/ej2/100 ciudades 200 neuronas camino.png> <./imgs/ej2/100 ciudades 200
+ neuronas.png>]
+<imgs/ej2/200 ciudades 400 neuronas 2 datos 3 neuronas 1.png, id=210, 586.44093
+pt x 436.63126pt>
+File: imgs/ej2/200 ciudades 400 neuronas 2 datos 3 neuronas 1.png Graphic file 
+(type png)
+<use imgs/ej2/200 ciudades 400 neuronas 2 datos 3 neuronas 1.png>
+Package pdftex.def Info: imgs/ej2/200 ciudades 400 neuronas 2 datos 3 neuronas 
+1.png  used on input line 303.
+(pdftex.def)             Requested size: 362.37569pt x 269.80249pt.
+<imgs/ej2/200 ciudades 400 neuronas 2 datos 3 neuronas 2.png, id=211, 587.94656
+pt x 437.38406pt>
+File: imgs/ej2/200 ciudades 400 neuronas 2 datos 3 neuronas 2.png Graphic file 
+(type png)
+<use imgs/ej2/200 ciudades 400 neuronas 2 datos 3 neuronas 2.png>
+Package pdftex.def Info: imgs/ej2/200 ciudades 400 neuronas 2 datos 3 neuronas 
+2.png  used on input line 310.
+(pdftex.def)             Requested size: 362.37569pt x 269.58023pt.
+
+
+[14
+
+ <./imgs/ej2/200 ciudades 400 neuronas 2 datos 3 neuronas 1.png> <./imgs/ej2/20
+0 ciudades 400 neuronas 2 datos 3 neuronas 2.png>]
+<imgs/ej2/200 ciudades 400 neuronas camino.png, id=224, 587.94656pt x 442.65375
+pt>
+File: imgs/ej2/200 ciudades 400 neuronas camino.png Graphic file (type png)
+<use imgs/ej2/200 ciudades 400 neuronas camino.png>
+Package pdftex.def Info: imgs/ej2/200 ciudades 400 neuronas camino.png  used on
+ input line 319.
+(pdftex.def)             Requested size: 362.37569pt x 272.82819pt.
+<imgs/ej2/200 ciudades 400 neuronas zoom.png, id=225, 590.205pt x 436.63126pt>
+File: imgs/ej2/200 ciudades 400 neuronas zoom.png Graphic file (type png)
+<use imgs/ej2/200 ciudades 400 neuronas zoom.png>
+Package pdftex.def Info: imgs/ej2/200 ciudades 400 neuronas zoom.png  used on i
+nput line 326.
+(pdftex.def)             Requested size: 362.37569pt x 268.09024pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+<imgs/ej2/200 ciudades 400 neuronas.png, id=226, 594.72188pt x 432.86719pt>
+File: imgs/ej2/200 ciudades 400 neuronas.png Graphic file (type png)
+<use imgs/ej2/200 ciudades 400 neuronas.png>
+Package pdftex.def Info: imgs/ej2/200 ciudades 400 neuronas.png  used on input 
+line 333.
+(pdftex.def)             Requested size: 407.66833pt x 296.71698pt.
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+
+[15 <./imgs/ej2/200 ciudades 400 neuronas camino.png>]
+
+[16 <./imgs/ej2/200 ciudades 400 neuronas zoom.png> <./imgs/ej2/200 ciudades 40
 0 neuronas.png>]
+<imgs/ej2/312 ciudades 624 neuronas camino.png, id=242, 591.71063pt x 441.90094
+pt>
+File: imgs/ej2/312 ciudades 624 neuronas camino.png Graphic file (type png)
+<use imgs/ej2/312 ciudades 624 neuronas camino.png>
+Package pdftex.def Info: imgs/ej2/312 ciudades 624 neuronas camino.png  used on
+ input line 347.
+(pdftex.def)             Requested size: 362.37569pt x 270.63803pt.
+<imgs/ej2/312 ciudades 624 neuronas.png, id=243, 593.21625pt x 434.37282pt>
+File: imgs/ej2/312 ciudades 624 neuronas.png Graphic file (type png)
+<use imgs/ej2/312 ciudades 624 neuronas.png>
+Package pdftex.def Info: imgs/ej2/312 ciudades 624 neuronas.png  used on input 
+line 354.
+(pdftex.def)             Requested size: 362.37569pt x 265.35146pt.
 
-[13 <./imgs/ej2/100 ciudades 200 neuronas camino.png> <./imgs/ej2/100 ciudades 
-200 neuronas.png>]
 
-[14 <./imgs/ej2/200 ciudades 400 neuronas 2 datos 3 neuronas 1.png> <./imgs/ej2
-/200 ciudades 400 neuronas 2 datos 3 neuronas 2.png>]
+[17
 
-[15 <./imgs/ej2/200 ciudades 400 neuronas camino.png> <./imgs/ej2/200 ciudades 
-400 neuronas zoom.png>]
-
-[16 <./imgs/ej2/200 ciudades 400 neuronas.png> <./imgs/ej2/312 ciudades 624 neu
-ronas camino.png>]
-
-[17 <./imgs/ej2/312 ciudades 624 neuronas.png>]
+ <./imgs/ej2/312 ciudades 624 neuronas camino.png> <./imgs/ej2/312 ciudades 624
+ neuronas.png>]
 
 [18
+
+]
+
+[19
 
 ] (TP3 Cavicchioli.aux
 LaTeX Info: Redefining \. on input line 11.
@@ -931,10 +918,10 @@ Package rerunfilecheck Info: File `"TP3 Cavicchioli".out' has not changed.
 (rerunfilecheck)             Checksum: 273B4D2C10B33B185333B0F63A9B2772;1684.
  ) 
 Here is how much of TeX's memory you used:
- 18768 strings out of 468133
- 367892 string characters out of 5432655
- 749983 words of memory out of 5000000
- 47130 multiletter control sequences out of 15000+600000
+ 18772 strings out of 468133
+ 367935 string characters out of 5432655
+ 749957 words of memory out of 5000000
+ 47133 multiletter control sequences out of 15000+600000
  636426 words of font info for 75 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  75i,11n,80p,795b,1057s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -949,9 +936,9 @@ lic/amsfonts/cm/cmr17.pfb><C:/Users/q/AppData/Local/Programs/MiKTeX/fonts/type1
 type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/q/AppData/Local/Programs/MiKTeX/f
 onts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/q/AppData/Local/Programs/MiKT
 eX/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on "TP3 Cavicchioli.pdf" (18 pages, 1121607 bytes).
+Output written on "TP3 Cavicchioli.pdf" (19 pages, 1102993 bytes).
 PDF statistics:
- 296 PDF objects out of 1000 (max. 8388607)
- 59 named destinations out of 1000 (max. 500000)
+ 318 PDF objects out of 1000 (max. 8388607)
+ 60 named destinations out of 1000 (max. 500000)
  231 words of extra memory for PDF output out of 10000 (max. 10000000)
 
