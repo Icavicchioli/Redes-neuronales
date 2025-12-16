@@ -1,0 +1,405 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      -->
+<title>mat_tanque</title>
+<meta name="generator" content="MATLAB 23.2">
+<link rel="schema.DC" href="http://purl.org/dc/elements/1.1/">
+<meta name="DC.date" content="2025-12-15">
+<meta name="DC.source" content="mat_tanque.m">
+<style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; }
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+span.typesection { color:#A0522D }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style>
+</head>
+<body>
+<div class="content">
+<h2>Contents</h2>
+<div>
+<ul>
+<li>
+<a href="#2">Datos f&iacute;sicos</a>
+</li>
+<li>
+<a href="#3">Par&aacute;metros hidr&aacute;ulicos</a>
+</li>
+<li>
+<a href="#4">Caudal deseado de salida</a>
+</li>
+<li>
+<a href="#5">Altura de equilibrio en el tanque 2</a>
+</li>
+<li>
+<a href="#6">Caudal nominal requerido</a>
+</li>
+<li>
+<a href="#7">Altura en tanque 1 en equilibrio</a>
+</li>
+<li>
+<a href="#8">Mostrar resultados</a>
+</li>
+<li>
+<a href="#9">linealizaci&oacute;n</a>
+</li>
+<li>
+<a href="#12">Par&aacute;metros</a>
+</li>
+<li>
+<a href="#13">Punto de operaci&oacute;n</a>
+</li>
+<li>
+<a href="#14">Derivadas</a>
+</li>
+<li>
+<a href="#15">Matrices linealizadas</a>
+</li>
+</ul>
+</div>
+<pre class="codeinput">clc
+</pre>
+<h2 id="2">Datos f&iacute;sicos</h2>
+<pre class="codeinput">g   = 9.81;
+
+<span class="comment">% Geometr&iacute;a</span>
+V1 = 0.5;          <span class="comment">% m^3  (500 L)</span>
+D1 = 0.66;         <span class="comment">% m</span>
+A1 = pi*(D1/2)^2;
+
+V2 = 0.1;          <span class="comment">% m^3  (100 L)</span>
+D2 = 0.40;         <span class="comment">% m</span>
+A2 = pi*(D2/2)^2;
+
+h1_max = V1/A1;
+h2_max = V2/A2;
+</pre>
+<h2 id="3">Par&aacute;metros hidr&aacute;ulicos</h2>
+<pre class="codeinput">k12 = 5e-4;
+k2  = 1e-3;
+</pre>
+<h2 id="4">Caudal deseado de salida</h2>
+<pre class="codeinput">q2_star = 0.002;   <span class="comment">% m^3/s  (2 L/s)</span>
+</pre>
+<h2 id="5">Altura de equilibrio en el tanque 2</h2>
+<pre class="codeinput">h2_star = (q2_star/k2)^2 / (2*g);
+</pre>
+<h2 id="6">Caudal nominal requerido</h2>
+<pre class="codeinput">u_star = k2 * sqrt(2*g*h2_star); <span class="comment">% si se hacen los c&aacute;lculos se nota que en equulibrio todos los caudales son iguales, as&iacute; que este resultado tiene sentido</span>
+</pre>
+<h2 id="7">Altura en tanque 1 en equilibrio</h2>
+<pre class="codeinput">h1_star = h2_star + (u_star/k12)^2/(2*g);
+</pre>
+<h2 id="8">Mostrar resultados</h2>
+<pre class="codeinput">fprintf(<span class="string">'--- RESULTADOS ---\n'</span>);
+fprintf(<span class="string">'h1_max  = %.3f m\n'</span>, h1_max);
+fprintf(<span class="string">'h2_max  = %.3f m\n\n'</span>, h2_max);
+
+fprintf(<span class="string">'h2*     = %.3f m\n'</span>, h2_star);
+fprintf(<span class="string">'u*      = %.6f m^3/s (%.3f L/s)\n'</span>, u_star, u_star*1000);
+fprintf(<span class="string">'h1*     = %.3f m\n'</span>, h1_star);
+</pre>
+<pre class="codeoutput">--- RESULTADOS ---
+h1_max  = 1.461 m
+h2_max  = 0.796 m
+
+h2*     = 0.204 m
+u*      = 0.002000 m^3/s (2.000 L/s)
+h1*     = 1.019 m
+</pre>
+<h2 id="9">linealizaci&oacute;n</h2>
+<p>$\section*{Modelo no lineal del sistema de dos tanques}</p>
+<p>\subsection*{Variables y par&aacute;metros}</p>
+<p>\begin{itemize} \item <img src="mat_tanque_eq14835706375949850364.png" alt="$h_1(t)$">, <img src="mat_tanque_eq05419649092187671450.png" alt="$h_2(t)$">: niveles de l&iacute;quido en los tanques 1 y 2 [$\mathrm{m}$] \item <img src="mat_tanque_eq17747544483164529551.png" alt="$u(t)$">: caudal de entrada al tanque 1 [$\mathrm{m^3/s}$] \item <img src="mat_tanque_eq11851299345599123836.png" alt="$A_1$">, <img src="mat_tanque_eq16868478922075211937.png" alt="$A_2$">: &aacute;reas de secci&oacute;n transversal de los tanques [$\mathrm{m^2}$] \item <img src="mat_tanque_eq11685317471816700600.png" alt="$a_{12}$">: &aacute;rea efectiva del orificio entre tanques [$\mathrm{m^2}$] \item <img src="mat_tanque_eq05038974766009111163.png" alt="$a_2$">: &aacute;rea efectiva del orificio de salida del tanque 2 [$\mathrm{m^2}$] \item <img src="mat_tanque_eq08202502916237421757.png" alt="$g$">: aceleraci&oacute;n de la gravedad [$\mathrm{m/s^2}$] \end{itemize}</p>
+<p>\subsection*{Caudales}</p>
+<p>Caudal entre tanques (ley de Torricelli): \[ q_{12}(t) = a_{12}\,\sqrt{2g}\,\sqrt{h_1(t) - h_2(t)} \]</p>
+<p>Caudal de salida al ambiente: \[ q_2(t) = a_2\,\sqrt{2g}\,\sqrt{h_2(t)} \]</p>
+<p>\subsection*{Ecuaciones din&aacute;micas no lineales}</p>
+<p>Tanque 1: \[ A_1 \,\dot{h}_1(t) = u(t) - q_{12}(t) \]</p>
+<p>o equivalentemente: \[ \dot{h}_1(t) = \frac{1}{A_1}\,u(t) - \frac{a_{12}}{A_1}\,\sqrt{2g}\,\sqrt{h_1(t) - h_2(t)} \]</p>
+<p>Tanque 2: \[ A_2 \,\dot{h}_2(t) = q_{12}(t) - q_2(t) \]</p>
+<p>o equivalentemente: \[ \dot{h}_2(t) = \frac{a_{12}}{A_2}\,\sqrt{2g}\,\sqrt{h_1(t) - h_2(t)} - \frac{a_2}{A_2}\,\sqrt{2g}\,\sqrt{h_2(t)} \]</p>
+<p>\subsection*{Forma en espacio de estados}</p>
+<p>Definiendo el vector de estado: \[ x(t) = \begin{bmatrix} h_1(t) \\ h_2(t) \end{bmatrix} \]</p>
+<p>el sistema queda: \[ \dot{x}(t) = \begin{bmatrix} \dfrac{1}{A_1} u(t) - \dfrac{a_{12}}{A_1}\sqrt{2g}\sqrt{h_1 - h_2} \\[10pt] \dfrac{a_{12}}{A_2}\sqrt{2g}\sqrt{h_1 - h_2} - \dfrac{a_2}{A_2}\sqrt{2g}\sqrt{h_2} \end{bmatrix} \]</p>
+<p>\subsection*{Condiciones de equilibrio}</p>
+<p>En un punto de operaci&oacute;n <img src="mat_tanque_eq11555626397573004672.png" alt="$(h_1^\ast, h_2^\ast, u^\ast)$"> se cumple: \[ u^\ast = a_{12}\sqrt{2g}\sqrt{h_1^\ast - h_2^\ast} \]</p>
+<p>\[ a_{12}\sqrt{h_1^\ast - h_2^\ast} = a_2\sqrt{h_2^\ast} \]</p>
+<p>$</p>
+<h2 id="12">Par&aacute;metros</h2>
+<pre class="codeinput">g   = 9.81;
+A1  = 0.015;
+A2  = 0.02;
+k12 = 5e-4;
+k2  = 1e-3;
+</pre>
+<h2 id="13">Punto de operaci&oacute;n</h2>
+<pre class="codeinput">h1s = 1.019;
+h2s = 0.204;
+us  = 0.002;
+
+Dh = h1s - h2s;
+</pre>
+<h2 id="14">Derivadas</h2>
+<pre class="codeinput">dq12_dh1 =  k12*sqrt(2*g)/(2*sqrt(Dh));
+dq12_dh2 = -k12*sqrt(2*g)/(2*sqrt(Dh));
+dq2_dh2  =  k2 *sqrt(2*g)/(2*sqrt(h2s));
+</pre>
+<h2 id="15">Matrices linealizadas</h2>
+<pre class="codeinput">A = [ <span class="keyword">...</span>
+    -dq12_dh1/A1,   -dq12_dh2/A1;
+     dq12_dh1/A2,   (dq12_dh2 - dq2_dh2)/A2 ];
+
+B = [1/A1; 0];
+C = [0 1];
+D = 0;
+
+sysc = ss(A,B,C,D);
+
+Ts = 1; <span class="comment">% discretizado a 1 s</span>
+sysd = c2d(sysc, Ts, <span class="string">'zoh'</span>);
+</pre>
+<p class="footer">
+<br>
+<a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2023b</a>
+<br>
+</p>
+</div>
+<!--
+##### SOURCE BEGIN #####
+clc
+%% Datos físicos
+g   = 9.81;
+
+% Geometría
+V1 = 0.5;          % m^3  (500 L)
+D1 = 0.66;         % m
+A1 = pi*(D1/2)^2;
+
+V2 = 0.1;          % m^3  (100 L)
+D2 = 0.40;         % m
+A2 = pi*(D2/2)^2;
+
+h1_max = V1/A1;
+h2_max = V2/A2;
+
+%% Parámetros hidráulicos
+k12 = 5e-4;
+k2  = 1e-3;
+
+%% Caudal deseado de salida
+q2_star = 0.002;   % m^3/s  (2 L/s)
+
+%% Altura de equilibrio en el tanque 2
+h2_star = (q2_star/k2)^2 / (2*g);
+
+
+%% Caudal nominal requerido
+u_star = k2 * sqrt(2*g*h2_star); % si se hacen los cálculos se nota que en equulibrio todos los caudales son iguales, así que este resultado tiene sentido
+
+%% Altura en tanque 1 en equilibrio
+h1_star = h2_star + (u_star/k12)^2/(2*g);
+
+%% Mostrar resultados
+fprintf('REPLACE_WITH_DASH_DASH- RESULTADOS REPLACE_WITH_DASH_DASH-\n');
+fprintf('h1_max  = %.3f m\n', h1_max);
+fprintf('h2_max  = %.3f m\n\n', h2_max);
+
+fprintf('h2*     = %.3f m\n', h2_star);
+fprintf('u*      = %.6f m^3/s (%.3f L/s)\n', u_star, u_star*1000);
+fprintf('h1*     = %.3f m\n', h1_star);
+
+%% linealización
+
+
+%%
+%%
+% $\section*{Modelo no lineal del sistema de dos tanques}
+% 
+% \subsection*{Variables y parámetros}
+% 
+% \begin{itemize}
+%  \item $h_1(t)$, $h_2(t)$: niveles de líquido en los tanques 1 y 2 [$\mathrm{m}$]
+%  \item $u(t)$: caudal de entrada al tanque 1 [$\mathrm{m^3/s}$]
+%  \item $A_1$, $A_2$: áreas de sección transversal de los tanques [$\mathrm{m^2}$]
+%  \item $a_{12}$: área efectiva del orificio entre tanques [$\mathrm{m^2}$]
+%  \item $a_2$: área efectiva del orificio de salida del tanque 2 [$\mathrm{m^2}$]
+%  \item $g$: aceleración de la gravedad [$\mathrm{m/s^2}$]
+% \end{itemize}
+% 
+% \subsection*{Caudales}
+% 
+% Caudal entre tanques (ley de Torricelli):
+% \[
+% q_{12}(t) = a_{12}\,\sqrt{2g}\,\sqrt{h_1(t) - h_2(t)}
+% \]
+% 
+% Caudal de salida al ambiente:
+% \[
+% q_2(t) = a_2\,\sqrt{2g}\,\sqrt{h_2(t)}
+% \]
+% 
+% \subsection*{Ecuaciones dinámicas no lineales}
+% 
+% Tanque 1:
+% \[
+% A_1 \,\dot{h}_1(t) = u(t) - q_{12}(t)
+% \]
+% 
+% o equivalentemente:
+% \[
+% \dot{h}_1(t) =
+% \frac{1}{A_1}\,u(t)
+% -
+% \frac{a_{12}}{A_1}\,\sqrt{2g}\,\sqrt{h_1(t) - h_2(t)}
+% \]
+% 
+% Tanque 2:
+% \[
+% A_2 \,\dot{h}_2(t) = q_{12}(t) - q_2(t)
+% \]
+% 
+% o equivalentemente:
+% \[
+% \dot{h}_2(t) =
+% \frac{a_{12}}{A_2}\,\sqrt{2g}\,\sqrt{h_1(t) - h_2(t)}
+% -
+% \frac{a_2}{A_2}\,\sqrt{2g}\,\sqrt{h_2(t)}
+% \]
+% 
+% \subsection*{Forma en espacio de estados}
+% 
+% Definiendo el vector de estado:
+% \[
+% x(t) =
+% \begin{bmatrix}
+% h_1(t) \\
+% h_2(t)
+% \end{bmatrix}
+% \]
+% 
+% el sistema queda:
+% \[
+% \dot{x}(t) =
+% \begin{bmatrix}
+% \dfrac{1}{A_1} u(t)
+% - \dfrac{a_{12}}{A_1}\sqrt{2g}\sqrt{h_1 - h_2}
+% \\[10pt]
+% \dfrac{a_{12}}{A_2}\sqrt{2g}\sqrt{h_1 - h_2}
+% - \dfrac{a_2}{A_2}\sqrt{2g}\sqrt{h_2}
+% \end{bmatrix}
+% \]
+% 
+% \subsection*{Condiciones de equilibrio}
+% 
+% En un punto de operación $(h_1^\ast, h_2^\ast, u^\ast)$ se cumple:
+% \[
+% u^\ast = a_{12}\sqrt{2g}\sqrt{h_1^\ast - h_2^\ast}
+% \]
+% 
+% \[
+% a_{12}\sqrt{h_1^\ast - h_2^\ast}
+% =
+% a_2\sqrt{h_2^\ast}
+% \]
+% 
+% $ 
+
+%% Parámetros
+g   = 9.81;
+A1  = 0.015;
+A2  = 0.02;
+k12 = 5e-4;
+k2  = 1e-3;
+
+%% Punto de operación
+h1s = 1.019;
+h2s = 0.204;
+us  = 0.002;
+
+Dh = h1s - h2s;
+
+%% Derivadas
+dq12_dh1 =  k12*sqrt(2*g)/(2*sqrt(Dh));
+dq12_dh2 = -k12*sqrt(2*g)/(2*sqrt(Dh));
+dq2_dh2  =  k2 *sqrt(2*g)/(2*sqrt(h2s));
+
+%% Matrices linealizadas
+A = [ ...
+    -dq12_dh1/A1,   -dq12_dh2/A1;
+     dq12_dh1/A2,   (dq12_dh2 - dq2_dh2)/A2 ];
+
+B = [1/A1; 0];
+C = [0 1];
+D = 0;
+
+sysc = ss(A,B,C,D);
+
+Ts = 1; % discretizado a 1 s
+sysd = c2d(sysc, Ts, 'zoh');
+
+
+##### SOURCE END #####
+-->
+</body>
+</html>
