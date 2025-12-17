@@ -65,7 +65,7 @@
 \title{Trabajo práctico 1\\ Redes Neuronales y Aprendizaje Profundo}
 \author{Ignacio Ezequiel Cavicchioli\\Padrón 109428\\icavicchioli@fi.uba.ar}
 \date{10/9/2025} % Activate to display a given date or no date (if empty),
-         % otherwise the current date is printed 
+         % otherwise the current date is printed
 
 
 
@@ -78,15 +78,15 @@
 
 \section{Introducción}
 
-Este documento presenta el desarrollo de las consignas del trabajo práctico N°1 de la materia de \textbf{Redes Neuronales y Aprendizaje Profundo}.  El código correspondiente fue realizado en  \textit{Jupyter notebooks}, \textit{Python}, adjuntados a la entrega en formato PDF. Toda imagen o implementación requeridas para el análisis se explicitarán en el presente archivo, por lo que la lectura del código en sí queda a discreción del lector. La teoría relevante será presentada y discutida en la sección pertinente. 
-Cabe mencionar que, debido a limitaciones de memoria y tiempo de computo, los experimentos se realizaron con redes de hasta 1000 neuronas. Los resultados son suficientes como para observar los varios fenómenos pedidos, pero no para converger perfectamente a los valores teóricos. 
+Este documento presenta el desarrollo de las consignas del trabajo práctico N°1 de la materia de \textbf{Redes Neuronales y Aprendizaje Profundo}.  El código correspondiente fue realizado en  \textit{Jupyter notebooks}, \textit{Python}, adjuntados a la entrega en formato PDF. Toda imagen o implementación requeridas para el análisis se explicitarán en el presente archivo, por lo que la lectura del código en sí queda a discreción del lector. La teoría relevante será presentada y discutida en la sección pertinente.
+Cabe mencionar que, debido a limitaciones de memoria y tiempo de computo, los experimentos se realizaron con redes de hasta 1000 neuronas. Los resultados son suficientes como para observar los varios fenómenos pedidos, pero no para converger perfectamente a los valores teóricos.
 
 \newpage
 
 \section{Ejercicio 1}
 
 \subsection{Consignas}
-Entrene una red de Hopfield ‘82 con las imágenes binarias disponibles en el campus. 
+Entrene una red de Hopfield ‘82 con las imágenes binarias disponibles en el campus.
 \begin{enumerate}[label=\alph*]
 \item Verifique si la red aprendió las imágenes enseñadas.
 \item Evalúe la evolución de la red al presentarle versiones alteradas de las imágenes
@@ -100,11 +100,11 @@ aprender todas las imágenes? Explique.
 
 \subsection{Desarrollo}
 
-Una red de Hopfield es, en esencia, una memoria direccionable por contenido (\textit{content-adressable memory})\footnote{Neural Networks and Physical Systems with Emergent Collective Computational Abilities, Campus, J. J. Hopfield }; permite obtener un estado memorizado completo a partir de un estado incompleto suficientemente parecido. Como se va a mostrar en los varios incisos, la red de Hopfield no es una memoria ideal, pero bajo ciertas condiciones, el error en la recuperación de estados está acotado. 
+Una red de Hopfield es, en esencia, una memoria direccionable por contenido (\textit{content-adressable memory})\footnote{Neural Networks and Physical Systems with Emergent Collective Computational Abilities, Campus, J. J. Hopfield }; permite obtener un estado memorizado completo a partir de un estado incompleto suficientemente parecido. Como se va a mostrar en los varios incisos, la red de Hopfield no es una memoria ideal, pero bajo ciertas condiciones, el error en la recuperación de estados está acotado.
 
-La red de Hopfield a tratar es una colección de neuronas de McCulloch-Pitts. En pocas palabras, cada neurona tiene como ``entrada'' los estados de todas las otras neuronas menos sí misma. Estos se ponderan por un peso $w_{i,j}$ calculado por aprendizaje Hebbiano, se suman, conformando una $h$, que se pasa por una función de activación, determinando la ``salida'', o estado futuro, de la neurona. En los ejercicios se trabajó con una función de activación del tipo signo, que devuelve $-1$ o $1$ según el signo de $h$. Para $h = 0$ se determinó que la salida toma valor $1$. 
+La red de Hopfield a tratar es una colección de neuronas de McCulloch-Pitts. En pocas palabras, cada neurona tiene como ``entrada'' los estados de todas las otras neuronas menos sí misma. Estos se ponderan por un peso $w_{i,j}$ calculado por aprendizaje Hebbiano, se suman, conformando una $h$, que se pasa por una función de activación, determinando la ``salida'', o estado futuro, de la neurona. En los ejercicios se trabajó con una función de activación del tipo signo, que devuelve $-1$ o $1$ según el signo de $h$. Para $h = 0$ se determinó que la salida toma valor $1$.
 
-La red es entrenada por medio del aprendizaje de todos los $w_{i,j}$ según la regla de aprendizaje \eqref{eq:regla_aprendizaje}, que se puede generalizar matricialmente como se ve en \eqref{eq:generalizacion_matricial}. A cada imágen le corresponde una única iteración ($\Delta w_{i,j}$), por lo que solo se suma una vez a la matriz $\mathbf{W}$. En términos más informales, la red solo ``ve'' las imágenes 1 vez.  El peso $\eta$ se mantuvo unitario para todo entrenamiento. 
+La red es entrenada por medio del aprendizaje de todos los $w_{i,j}$ según la regla de aprendizaje \eqref{eq:regla_aprendizaje}, que se puede generalizar matricialmente como se ve en \eqref{eq:generalizacion_matricial}. A cada imágen le corresponde una única iteración ($\Delta w_{i,j}$), por lo que solo se suma una vez a la matriz $\mathbf{W}$. En términos más informales, la red solo ``ve'' las imágenes 1 vez.  El peso $\eta$ se mantuvo unitario para todo entrenamiento.
 
 \begin{equation}
 \begin{split}
@@ -122,15 +122,15 @@ w_{{i,j}_n} &= w_{{i,j} _{n-1}} + \Delta w_{i,j}
 \label{eq:generalizacion_matricial}
 \end{equation}
 
-El proceso de aprendizaje equivale a aprender la correlación entre todas las imágenes. Imágenes muy parecidas (por algún criterio, ej.: distancia de Hamming) van a quedar ``cerca'' en la función energética subyacente. Esto trae a colación un aspecto importante para toda memoria, que es la capacidad. Como se va a demostrar más adelante, la capacidad es función de la cantidad de neuronas y correlación ente estados memorizados. 
+El proceso de aprendizaje equivale a aprender la correlación entre todas las imágenes. Imágenes muy parecidas (por algún criterio, ej.: distancia de Hamming) van a quedar ``cerca'' en la función energética subyacente. Esto trae a colación un aspecto importante para toda memoria, que es la capacidad. Como se va a demostrar más adelante, la capacidad es función de la cantidad de neuronas y correlación ente estados memorizados.
 
 Para ``ejecutar'' la red neuronal alcanza con calcular todos los estados siguientes de las neuronas. Esto se puede hacer de dos formas:
 \begin{itemize}
 \item Actualización sincrónica: se computa el siguiente estado de todas las neuronas a la vez.
-\item Actualización asincrónica: las neuronas son aleatoriamente actualizadas, sin seguir un orden particular. La idea es que todas se actualicen al finalizar el ciclo. 
+\item Actualización asincrónica: las neuronas son aleatoriamente actualizadas, sin seguir un orden particular. La idea es que todas se actualicen al finalizar el ciclo.
 \end{itemize}
 
-Para este trabajo se usó una actualización sincrónica, pero la actualización asincrónica tiene beneficios en lo relativo a convergencia de la red. 
+Para este trabajo se usó una actualización sincrónica, pero la actualización asincrónica tiene beneficios en lo relativo a convergencia de la red.
 
 Ahora bien, ¿Cómo se parte de una matriz de pesos y se termina con un sistema que recuerda estados? El libro ``\textit{Introduction To The Theory Of Neural Computation}'' provisto por el Campus de la materia explica que los estados memorizados son atractores en el espacio de todos los estados posibles, cuencas energéticas que captan y capturan al estado de la red. Como se va a tratar más adelante, existen otros atractores que no son los patrones aprendidos: los inversos de estos, las combinaciones lineales de un número impar de patrones (estados espurios de mezcla) y otros estados espurios que aparecen como consecuencia de la dinámica de la red.
 
@@ -138,12 +138,12 @@ Ahora bien, ¿Cómo se parte de una matriz de pesos y se termina con un sistema 
 \rule{0.5\linewidth}{0.5pt} % línea de mitad de ancho y 0.5pt de grosor
 \end{center}
 
-Ahora que se tiene cierta noción sobre las redes de Hopfield se puede pasar al desarrollo de las consignas como tales. 
+Ahora que se tiene cierta noción sobre las redes de Hopfield se puede pasar al desarrollo de las consignas como tales.
 
 \subsubsection{Consigna a}
-La primera pide verificar que la red entrenada haya aprendido las imágenes. Recordando, si los patrones fueron memorizados, serían atractores, y la red se mantendría en ellos aunque se itere, lo cual constituye una forma simple de verificar el aprendizaje. 
+La primera pide verificar que la red entrenada haya aprendido las imágenes. Recordando, si los patrones fueron memorizados, serían atractores, y la red se mantendría en ellos aunque se itere, lo cual constituye una forma simple de verificar el aprendizaje.
 
-Por un tema de las dimensiones de las imágenes, los tres primeros incisos se realizaron con dos redes neuronales de tres imágenes cada una, para luego unificar los tamaños en el cuarto. Las figuras \ref{fig:ej1_a} y \ref{fig:ej1_b} muestran, para cada subfigura, la imagen enseñada (izquierda) y la recordada (derecha) de las dos redes neuronales. Ambas redes devolvieron correctamente las imágenes enseñadas. 
+Por un tema de las dimensiones de las imágenes, los tres primeros incisos se realizaron con dos redes neuronales de tres imágenes cada una, para luego unificar los tamaños en el cuarto. Las figuras \ref{fig:ej1_a} y \ref{fig:ej1_b} muestran, para cada subfigura, la imagen enseñada (izquierda) y la recordada (derecha) de las dos redes neuronales. Ambas redes devolvieron correctamente las imágenes enseñadas.
 \subsubsection{Consigna b}
 La segunda consigna pide evaluar la propiedad de la red de recordar contenido. La idea es iniciar con una imagen alterada, permitir que la red evolucione y verificar a que estado convergió. Idealmente la red va a poder devolver el estado deseado, que sería el inicial sin las alteraciones. Las figuras \ref{fig:ej2_a} y \ref{fig:ej2_b} presentan los resultados de partir de una imagen alterada. Ambas redes neuronales fueron capaces de converger a los estados memorizados correctos, habiendo partido de los estados alterados. Esto se logró en 2 iteraciones, ya que se requieren dos para verificar la convergencia de la red (ausencia de cambios entre iteraciones).
 \subsubsection{Consigna c}
@@ -159,13 +159,13 @@ donde la función signo se aplica componente a componente. Estos estados son atr
 \item \textbf{Estados verdaderamente espurios:} atractores que no están relacionados directamente con los patrones memorizados; su aparición es más rara y depende de la red y la configuración de los patrones.
 \end{itemize}
 
-La figura \ref{fig:ej1_3_1} muestra, a la izquierda, el estado entregado a la red (el inverso del panda) y, a la derecha, el estado al que convergió en una iteración, indicando que es un punto de estabilidad en la red 1.  
+La figura \ref{fig:ej1_3_1} muestra, a la izquierda, el estado entregado a la red (el inverso del panda) y, a la derecha, el estado al que convergió en una iteración, indicando que es un punto de estabilidad en la red 1.
 
-La figura \ref{fig:ej1_3_2} demuestra que el inverso del estado de ``v'' también constituye un atractor estable en la red 1.  
+La figura \ref{fig:ej1_3_2} demuestra que el inverso del estado de ``v'' también constituye un atractor estable en la red 1.
 
-La figura \ref{fig:ej1_3_3} muestra un caso similar, partiendo del inverso del torero editado. La convergencia al estado inverso indica que el torero inverso es un atractor en la red 2.  
+La figura \ref{fig:ej1_3_3} muestra un caso similar, partiendo del inverso del torero editado. La convergencia al estado inverso indica que el torero inverso es un atractor en la red 2.
 
-La figura \ref{fig:ej1_3_4} presenta como entrada una combinación lineal de los tres patrones usados para entrenar la red 1. La red no cambia de estado al iterar, lo que indica que esta combinación es estable.  
+La figura \ref{fig:ej1_3_4} presenta como entrada una combinación lineal de los tres patrones usados para entrenar la red 1. La red no cambia de estado al iterar, lo que indica que esta combinación es estable.
 
 Finalmente, la figura \ref{fig:ej1_3_5} muestra como entrada una combinación lineal de los tres patrones usados para entrenar la red 2, incluyendo la paloma editada. La convergencia al estado de combinación lineal indica que esta combinación también es estable y actúa como atractor.
 
@@ -178,10 +178,10 @@ Para analizar la dependencia con el tamaño de la red, se repitió el entrenamie
 
 Dado lo anterior, se calcularon la correlación y la distancia de Hamming entre imágenes para investigar el origen de la falla. La correlación no aportó información concluyente, pero la distancia de Hamming entre las imágenes no memorizadas resultó ser la menor entre todos los pares. Como el experimento se repitió con dos tamaños distintos y el desempeño no cambió, se infiere que la causa principal de no poder memorizar las 6 imágenes es la similitud (según el criterio de distancia de Hamming) entre los patrones ``panda'' y ``paloma'', y no el tamaño de la red.
 
-\textit{Nota:} en redes de Hopfield, la capacidad teórica crece con el número de neuronas, por lo que con $N=3600$ o $N=10\,000$ la cantidad de patrones usados está muy por debajo de los umbrales discutidos en clase y propuestos en el ejercicio 2. 
+\textit{Nota:} en redes de Hopfield, la capacidad teórica crece con el número de neuronas, por lo que con $N=3600$ o $N=10\,000$ la cantidad de patrones usados está muy por debajo de los umbrales discutidos en clase y propuestos en el ejercicio 2.
 
 \subsubsection{Imágenes}
-La siguiente sección concentra todas las imágenes relativas al ejercicio 1. No se intercalaron en el documento porque son muchas y de gran dimensión. 
+La siguiente sección concentra todas las imágenes relativas al ejercicio 1. No se intercalaron en el documento porque son muchas y de gran dimensión.
 \clearpage
 \begin{figure}[p]
     \centering
@@ -310,13 +310,13 @@ La siguiente sección concentra todas las imágenes relativas al ejercicio 1. No
 
 \subsection{Análisis}
 
-En los 4 incisos desarrollados no solo se ahondó en la implementación de una red de Hopfield con actualización sincrónica, sino que además se estudiaron la capacidad de memorización, una de sus limitaciones y la existencia de estados estables (atractores) en la red. 
+En los 4 incisos desarrollados no solo se ahondó en la implementación de una red de Hopfield con actualización sincrónica, sino que además se estudiaron la capacidad de memorización, una de sus limitaciones y la existencia de estados estables (atractores) en la red.
 
 El primer inciso evaluó la memoria de la red, verificando que los patrones enseñados fueran correctamente recordados. Ambas redes entrenadas lograron aprender los tres patrones  sin errores. Este resultado contrasta con lo observado en el inciso 4, donde no se pudieron memorizar todos los patrones. Esto sugiere que las limitaciones de una red neuronal no dependen únicamente de, por ejemplo, su cantidad de neuronas, sino también de las características de los datos: patrones demasiado similares entre sí reducen la capacidad efectiva de la red\footnote{siempre que la capacidad se mida con la expectativa de que el \textit{recall} sea perfecto, sin errores}.
 
-Por otro lado, las redes no solo contienen los patrones enseñados, sino que también generan estados estables espurios. Estos atractores pueden atrapar a la red en configuraciones no deseadas, como la inversión de un patrón aprendido o una mezcla de varios.   Si el estado inicial $P$ es suficientemente cercano a uno de estos atractores, la red puede converger allí en lugar de al patrón buscado. Se considera que esto constituye una limitación no menor para aplicaciones prácticas en las que se espera que la red aprenda y recuerde un conjunto específico de patrones. 
+Por otro lado, las redes no solo contienen los patrones enseñados, sino que también generan estados estables espurios. Estos atractores pueden atrapar a la red en configuraciones no deseadas, como la inversión de un patrón aprendido o una mezcla de varios.   Si el estado inicial $P$ es suficientemente cercano a uno de estos atractores, la red puede converger allí en lugar de al patrón buscado. Se considera que esto constituye una limitación no menor para aplicaciones prácticas en las que se espera que la red aprenda y recuerde un conjunto específico de patrones.
 
-Cabe destacar que, aún si no se probaron todos los estados espurios existentes, se considera que el objetivo académico de conocer de su existencia se cumplió. 
+Cabe destacar que, aún si no se probaron todos los estados espurios existentes, se considera que el objetivo académico de conocer de su existencia se cumplió.
 
 \clearpage
 \newpage
@@ -352,7 +352,7 @@ $0.1$       & $0.61$      \\ \hline
 
 \subsection{Desarrollo}
 
-En este ejercicio se pide evaluar la capacidad de una red neuronal de Hopfield. En este contexto, la capacidad es función de la cantidad de neuronas y la probabilidad de error admisible, como se ve en las ecuaciones \eqref{eq:capacidad} y \eqref{eq:capacidad2}. 
+En este ejercicio se pide evaluar la capacidad de una red neuronal de Hopfield. En este contexto, la capacidad es función de la cantidad de neuronas y la probabilidad de error admisible, como se ve en las ecuaciones \eqref{eq:capacidad} y \eqref{eq:capacidad2}.
 
 \begin{equation}
 \text{Capacidad}(P_{\text{error}} , N_{\text{neuronas}}) = \frac{\max N_{\text{patrones}} \quad \text{tq} \quad E_{tot}<P_{\text{error}}}{N_{\text{neuronas}}}
@@ -364,7 +364,7 @@ E_{tot} = \frac{\text{\# neuronas equivocadas}}{N_{\text{neuronas}} \cdot N_{\te
 \label{eq:capacidad2}
 \end{equation}
 
-Los números provistos en el  cuadro~\ref{tab:1} se corresponden a una red de muchas neuronas entrenada con patrones descorrelacionados para varios umbrales de error, así que el primer experimento es entrenar una red de un tamaño adecuado (en este caso de 200 neuronas) y evaluar la capacidad en función de la probabilidad de cometer un error (un \textit{bit-flip}). La segunda parte del experimento consiste en ``barrer'' la correlación entre patrones para observar que sucede a medida que los patrones están más correlacionados. Como indica la bibliografía indicada en las consignas, esta capacidad usa solo una iteración para el cálculo de error, y existe la posibilidad de que pocos cambios causen una avalancha de cambios de estado, lo que implicaría que la capacidad es menor a la esperada. 
+Los números provistos en el  cuadro~\ref{tab:1} se corresponden a una red de muchas neuronas entrenada con patrones descorrelacionados para varios umbrales de error, así que el primer experimento es entrenar una red de un tamaño adecuado (en este caso de 200 neuronas) y evaluar la capacidad en función de la probabilidad de cometer un error (un \textit{bit-flip}). La segunda parte del experimento consiste en ``barrer'' la correlación entre patrones para observar que sucede a medida que los patrones están más correlacionados. Como indica la bibliografía indicada en las consignas, esta capacidad usa solo una iteración para el cálculo de error, y existe la posibilidad de que pocos cambios causen una avalancha de cambios de estado, lo que implicaría que la capacidad es menor a la esperada.
 
 Para generar patrones correlacionados se parte de la definición de la correlación de Pearson y dos patrones generados aleatoriamente. Se suponen vectores X e Y generados de tal forma que toman valores discretos $-1$ y $1$ con probabilidad $1/2$. Así, sus medias son cero y las varianzas son unitarias. Se plantea el coeficiente de correlación de Pearson como:
 
@@ -395,14 +395,14 @@ corr_{coef} = 2p-1 \quad \Leftrightarrow \quad p = \frac{corr_{coef} +1}{2}
 
 De esta manera, se puede tomar un vector $X$ generado como cualquier vector aleatorio y luego generar un vector $Y$ en base a la probabilidad $p$ de que concuerde con $X$. Si $x=1$, se tira una ``moneda'' con probabilidad $p$ de que $y=x$.
 
-En el código correspondiente a esta actividad se genera un primer vector y se guarda como ``semilla'' para generar el resto. 
+En el código correspondiente a esta actividad se genera un primer vector y se guarda como ``semilla'' para generar el resto.
 
 \newpage
 \subsubsection{Consigna a}
 
-La idea general detrás del algoritmo implementado de calculo de capacidad de la red es simple: se crea una red de N neuronas y se itera desde 1 hasta N. En cada iteración se agrega un patrón más a la red (se actualiza la W) y se calcula cuantos errores tiene en la recuperación de todos los patrones contenidos en W. Luego, estos datos pueden usarse para estimar los intervalos de patrones enseñados que aseguren ciertas probabilidades de error. 
+La idea general detrás del algoritmo implementado de calculo de capacidad de la red es simple: se crea una red de N neuronas y se itera desde 1 hasta N. En cada iteración se agrega un patrón más a la red (se actualiza la W) y se calcula cuantos errores tiene en la recuperación de todos los patrones contenidos en W. Luego, estos datos pueden usarse para estimar los intervalos de patrones enseñados que aseguren ciertas probabilidades de error.
 
-La figura \ref{fig:ej2_1_1} muestra la evolución de la capacidad de la red en función de la probabilidad de cometer un error para patrones con correlación de valor $0$ (coeficiente de correlación de Pearson). El cuadro~\ref{tab:2} muestra los datos en su forma tabular. La capacidad fue evaluada para los valores en el cuadro teórico. Se observa una coincidencia muy elevada entre los valores teóricos y los experimentales, con una diferencia relativa porcentual máxima de $2.7\%$. 
+La figura \ref{fig:ej2_1_1} muestra la evolución de la capacidad de la red en función de la probabilidad de cometer un error para patrones con correlación de valor $0$ (coeficiente de correlación de Pearson). El cuadro~\ref{tab:2} muestra los datos en su forma tabular. La capacidad fue evaluada para los valores en el cuadro teórico. Se observa una coincidencia muy elevada entre los valores teóricos y los experimentales, con una diferencia relativa porcentual máxima de $2.7\%$.
 
 
 \begin{figure}[h!]
@@ -431,7 +431,7 @@ $0.1$       & $0.615$    & 0.82 \\ \hline
 
 \subsubsection{Consigna b}
 
-El cuadro~\ref{tab:correlaciones} muestra como varía la capacidad en función de la correlación entre patrones y las probabilidades de error. Las figuras 13 a 18 muestran la evolución de la capacidad para cada correlación simulada. 
+El cuadro~\ref{tab:correlaciones} muestra como varía la capacidad en función de la correlación entre patrones y las probabilidades de error. Las figuras 13 a 18 muestran la evolución de la capacidad para cada correlación simulada.
 
 \begin{table}[h!]
 \centering
@@ -500,9 +500,9 @@ Correlación  &0.2  &0.4&0.6&0.8&0.99&1 \\ \hline
 
 La capacidad teórica y la obtenida experimentalmente difieren por un error relativo máximo de $2.7 \%$, lo que indica una coincidencia prácticamente perfecta. Esta diferencia puede explicarse porque la capacidad teórica se calcula suponiendo una cantidad elevada (tendiente a infinito) de neuronas, mientras que en el experimento se utilizó una red de 200 neuronas. Además, los valores mostrados corresponden a un promedio de múltiples redes; aumentar el número de redes promedio podría acercar aún más los resultados al valor teórico.
 
-Respecto a la capacidad en función de la correlación, se observa un comportamiento dual. Un incremento en la correlación causa una disminución en la capacidad para umbrales de error bajos debido a que la red termina aprendiendo una combinación de todos los estados enseñados, producto de la similitud entre patrones. Sin embargo, para umbrales de error altos, la similitud de los patrones y su cercanía al estado memorizado por la red causa un incremento en la capacidad. 
+Respecto a la capacidad en función de la correlación, se observa un comportamiento dual. Un incremento en la correlación causa una disminución en la capacidad para umbrales de error bajos debido a que la red termina aprendiendo una combinación de todos los estados enseñados, producto de la similitud entre patrones. Sin embargo, para umbrales de error altos, la similitud de los patrones y su cercanía al estado memorizado por la red causa un incremento en la capacidad.
 
-Este comportamiento sugiere una posible aplicación: Si se entrenara una red de este tipo con un conjunto de imágenes similares y luego se obtuviera el estado estable, la red podría utilizarse para identificar elementos pertenecientes a la misma categoría que los del set de entrenamiento. El funcionamiento sería análogo al de un clasificador basado en similitud de patrones pero de ``si'' o ``no''. Es decir, se puede entrenar una red para que aprenda el ``arquetipo'' de una clase (ej.: perros). Después del entrenamiento, si se le diera una imagen de un perro, la red convergería a un estado con cierta energía, y lo que no es ``perro'' tal vez convergería a otra región, con otra energía. La diferencia se podría medir y usar como parámetro de decisión para clasificar. 
+Este comportamiento sugiere una posible aplicación: Si se entrenara una red de este tipo con un conjunto de imágenes similares y luego se obtuviera el estado estable, la red podría utilizarse para identificar elementos pertenecientes a la misma categoría que los del set de entrenamiento. El funcionamiento sería análogo al de un clasificador basado en similitud de patrones pero de ``si'' o ``no''. Es decir, se puede entrenar una red para que aprenda el ``arquetipo'' de una clase (ej.: perros). Después del entrenamiento, si se le diera una imagen de un perro, la red convergería a un estado con cierta energía, y lo que no es ``perro'' tal vez convergería a otra región, con otra energía. La diferencia se podría medir y usar como parámetro de decisión para clasificar.
 
 \newpage
 \section{Ejercicio Complementario}
@@ -516,9 +516,9 @@ Implemente una red de Hopfield ‘82 que aprenda patrones pseudo-aleatorios y es
 
 \subsection{Desarrollo y análisis}
 
-Para este ejercicio complementario se aprovechó el código del ejercicio 2, agregando un ``bucle'' externo que permitiese pasar por varios porcentajes de interconexiones eliminadas. Internamente usa una máscara de unos y ceros multiplicada elemento a elemento con $\mathbf{W}$. 
+Para este ejercicio complementario se aprovechó el código del ejercicio 2, agregando un ``bucle'' externo que permitiese pasar por varios porcentajes de interconexiones eliminadas. Internamente usa una máscara de unos y ceros multiplicada elemento a elemento con $\mathbf{W}$.
 
-La figura \ref{fig:1000_neuronas} una prueba con 1000 neuronas, usada solo para observar la forma que deberían seguir las curvas a medida que se usan más neuronas. El resto de simulaciones se hicieron con menos neuronas por razones de tiempo de computo (este gráfico tardó $14$ minutos). 
+La figura \ref{fig:1000_neuronas} una prueba con 1000 neuronas, usada solo para observar la forma que deberían seguir las curvas a medida que se usan más neuronas. El resto de simulaciones se hicieron con menos neuronas por razones de tiempo de computo (este gráfico tardó $14$ minutos).
 
 \begin{figure}[h!]
 	\centering
@@ -527,14 +527,14 @@ La figura \ref{fig:1000_neuronas} una prueba con 1000 neuronas, usada solo para 
 	\label{fig:1000_neuronas}
 \end{figure}
 
-En sí, esta figura indica que la capacidad inicia en un valor similar al determinado por la tabla estudiada en el ejercicio anterior, y debería caer linealmente a medida que se eliminan sinapsis. En cambio,el error se acerca a $1/2$ de forma exponencial. 
+En sí, esta figura indica que la capacidad inicia en un valor similar al determinado por la tabla estudiada en el ejercicio anterior, y debería caer linealmente a medida que se eliminan sinapsis. En cambio,el error se acerca a $1/2$ de forma exponencial.
 
 Ahora bien, el error converge a ese valor debido a que, a medida que la matriz de pesos contiene más ceros, hasta que para una matriz de todos ceros los estados actualizados (la siguiente iteración) son solo vectores completos de unos. Como los patrones originales son generados pseudo-aleatoriamente con dos estados equiprobables ($1$ y $-1$), estadísticamente el estado ``todos unos'' va a coincidir en la mitad de bits. Así, el error promedio converge a 1/2, que corresponde a la probabilidad de coincidencia entre un patrón aleatorio binario y el vector fijo de unos.
 
 $$
-\text{Error promedio} = \frac{\text{\# Bits incorrectos}}{\text{\# Bits totales}} \rightarrow 
+\text{Error promedio} = \frac{\text{\# Bits incorrectos}}{\text{\# Bits totales}} \rightarrow
  \frac{\# \text{Bits}=0}{\text{\# Bits totales (todos unos)}} \simeq \frac{1}{2}
-$$ 
+$$
 
 \newpage
 \clearpage
@@ -556,7 +556,7 @@ $$
 \newpage
 \clearpage
 
-La figura \ref{fig:ej3cap} muestra la variación de las capacidades en función de las sinapsis eliminadas para los 5 umbrales del ejercicio 2, con 500 neuronas. Lo primero que se observa es que las capacidades inician en valores similares a los tabulados, lo que es un indicador favorable para el experimento. Aparte, las curvas presentan un comportamiento aproximadamente lineal, idéntico al visto con 1000 neuronas. 
+La figura \ref{fig:ej3cap} muestra la variación de las capacidades en función de las sinapsis eliminadas para los 5 umbrales del ejercicio 2, con 500 neuronas. Lo primero que se observa es que las capacidades inician en valores similares a los tabulados, lo que es un indicador favorable para el experimento. Aparte, las curvas presentan un comportamiento aproximadamente lineal, idéntico al visto con 1000 neuronas.
 
 La figura \ref{fig:ej3err} muestra lo mismo que la otra imagen pero para el error promedio. Todas las curvas son exponenciales que terminan en $1/2$, que es el resultado esperado.
 

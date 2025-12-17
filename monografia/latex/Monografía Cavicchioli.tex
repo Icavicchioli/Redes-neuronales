@@ -1,0 +1,176 @@
+% !TEX TS-program = pdflatex
+% !TEX encoding = UTF-8 Unicode
+
+% This is a simple template for a LaTeX document using the ``article'' class.
+% See ``book'', ``report'', ``letter'' for other types of document.
+
+\documentclass[11pt]{article} % use larger type; default would be 10pt
+
+\usepackage[utf8]{inputenc} % set input encoding (not needed with XeLaTeX)
+
+%%% Examples of Article customizations
+% These packages are optional, depending whether you want the features they provide.
+% See the LaTeX Companion or other references for full information.
+
+%%% PAGE DIMENSIONS
+\usepackage{geometry} % to change the page dimensions
+\geometry{a4paper} % or letterpaper (US) or a5paper or....
+\geometry{margin=1in} % for example, change the margins to 2 inches all round
+% \geometry{landscape} % set up the page for landscape
+%   read geometry.pdf for detailed page layout information
+
+\usepackage{graphicx} % support the \includegraphics command and options
+
+% \usepackage[parfill]{parskip} % Activate to begin paragraphs with an empty line rather than an indent
+
+%%% PACKAGES
+\usepackage{booktabs} % for much better looking tables
+\usepackage{array} % for better arrays (eg matrices) in maths
+\usepackage{paralist} % very flexible & customisable lists (eg. enumerate/itemize, etc.)
+\usepackage{verbatim} % adds environment for commenting out blocks of text & for better verbatim
+\usepackage{subfig} % make it possible to include more than one captioned figure/table in a single float
+% These packages are all incorporated in the memoir class to one degree or another...
+\usepackage{enumitem}
+\usepackage{amsmath}
+
+% para los cuadritos en links
+%\usepackage[linkbordercolor={0 0 1}, citebordercolor={0 1 0}, urlbordercolor={1 0 0}]{hyperref}
+\usepackage[colorlinks=true, linkcolor=black, citecolor=green, urlcolor=red]{hyperref} % solo resalta
+\usepackage[spanish]{babel}
+
+
+
+%%% HEADERS & FOOTERS
+\usepackage{fancyhdr} % This should be set AFTER setting up the page geometry
+\pagestyle{fancy} % options: empty , plain , fancy
+\renewcommand{\headrulewidth}{0pt} % customise the layout...
+\lhead{}\chead{}\rhead{}
+\lfoot{}\cfoot{\thepage}\rfoot{}
+
+%%% SECTION TITLE APPEARANCE
+\usepackage{sectsty}
+\allsectionsfont{\sffamily\mdseries\upshape} % (See the fntguide.pdf for font help)
+% (This matches ConTeXt defaults)
+
+%%% ToC (table of contents) APPEARANCE
+\usepackage[nottoc,notlof,notlot]{tocbibind} % Put the bibliography in the ToC
+\usepackage[titles,subfigure]{tocloft} % Alter the style of the Table of Contents
+\renewcommand{\cftsecfont}{\rmfamily\mdseries\upshape}
+\renewcommand{\cftsecpagefont}{\rmfamily\mdseries\upshape} % No bold!
+
+%%% END Article customizations
+
+%%% The ``real'' document content comes below...
+
+
+
+\title{
+	\vspace{-2cm} % Ajusta este valor para subir/bajar todo el bloque
+	\centering
+	\LARGE \textbf{Monografía Final} \\[0.8cm]
+	\Huge \textbf{Mi título} \\[1.5cm]
+	\large
+	\textbf{Universidad de Buenos Aires} \\
+	Facultad de Ingeniería \\[0.5cm]
+	\normalsize
+	\begin{tabular}{r l}
+		\textbf{Alumno:} & Ignacio Ezequiel Cavicchioli \\
+		\textbf{Padrón:} & 109428 \\
+		\textbf{Email:} & icavicchioli@fi.uba.ar
+	\end{tabular}
+}
+\author{} % Dejamos vacío porque el autor ya está en el título
+\date{\vspace{0.5cm} \today} % Fecha actual
+
+\begin{document}
+\maketitle
+
+%\tableofcontents
+
+\begin{abstract}
+	\noindent
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren,
+
+	\vspace{0.5em}
+	\noindent
+	\textbf{Palabras clave:} Lorem ipsum dolor sit amet.
+\end{abstract}
+
+\vspace{1cm}
+
+% TABLA DE CONTENIDOS
+\tableofcontents
+\newpage
+
+% CONTENIDO PRINCIPAL
+\section{Introducción}
+\label{sec:introduccion}
+
+Las redes neuronales en sus múltiples formas constituyen sistemas no lineales con un amplio alcance de aplicación en campos como la biología, neurociencia y, al que se avoca este trabajo, aprendizaje automático (\textit{machine learning}, ML). En particular, nos interesa centrarnos en las aplicaciones de las redes neuronales en el campo de control automático. Esta doctrina se encarga del diseño sistemas para regular, guiar o estabilizar procesos de manera autónoma, mediante la realimentación y corrección continua de errores.
+
+La denominada ``caja de herramientas'' de aquellos en el área de control está compuesta por ciertos artefactos matemáticos que permiten encarar estos problemas, como la linealización de un sistema, el control PID, realimentación de estados, \textit{loop-shaping}, observadores, etc. Lo que no se ha tocado en las materias de control son las estrategias no lineales. En líneas generales, todos los sistemas reales exhiben cierto grado de no linearidad (citar CONTROL SYSTEM DESIGN Goodwin  Graebe Salgado, p551, cap19), lo que implica que las estrategias de control lineales son válidas siempre que las no linealidades sean despreciables. Análogamente, las herramientas de identificación de sistemas basadas en la linealización de un sistema fallaran en modelar las no linealidades de estos (Como PCA vs los \textit{autoencoders}).
+
+Este trabajo va a trabajar sobre el uso de redes neuronales en la doctrina de control automático, como identificacores de sistemas, controladores
+
+\textbf{VER SI QUERËS METER ALGO DEL SOM QUE SALIÖ MAL Y DE OBERVADORES Y DE GAIN SCHEDULING}
+
+\section{Modelo elegido}
+
+Que
+tamaños
+Porque
+lo bueno
+lo malo
+la matemática -> espacio de estados no lineal y linealizado, transferencia (lineal).
+el simulink
+
+
+\section{Identificación de sistemas}
+\label{subsec:ids}
+
+La idea es que la red copie la no linealidad de la planta
+
+1 armé esa red rancia que en fre run anda para el orto pero en predicción de a 0 anda bien
+
+Es decir, si se alimenta con los estados de la planta no lineal es un excelente predictor, pero en free-run, realimentado con si mismo, diverge en X tiempo. Para remediar esto, se buscan alternativas.
+
+La primera es espacio de estados no lineal. hay un mapeo entre estado actual al siguiente dado por una función no lineal, y un mapeo de estado actual a salida tambien dado por funci¿ón no lineal. La idea es que el sistema aprenda esas funciones en vez de todo el proceso de integración implicito en la planta no lineal
+
+para resolver eso hacemos:
+
+luegoe spacio de estados no lineal
+parte linealizada y luego entrenas la no lineal para que te de la parte no lineal y cerras el lazo con lo no lineal + lineal a ver que tal
+
+
+
+\section{Control de sistemas}
+\label{sec:control}
+
+\section{Observadores}
+\label{subsec:obs}
+
+\section{Misceláneos}
+\label{subsec:misc}
+
+
+
+\section{Conclusiones}
+\label{sec:conclusiones}
+
+
+
+\href{https://en.wikipedia.org/wiki/Neural_network_(machine_learning)}{text}
+\href{https://en.wikipedia.org/wiki/Machine_learning}{text}
+\href{https://en.wikipedia.org/wiki/Neural_network}{text}
+\href{https://la.mathworks.com/help/deeplearning/ug/introduction-to-neural-network-control-systems.html}{text}
+\href{https://www.sciencedirect.com/topics/engineering/neural-network-controller}{text}
+\href{}{text}
+\href{}{text}
+
+CONTROL SYSTEM
+DESIGN
+Graham C. Goodwin1
+Stefan F. Graebe2
+Mario E. Salgado3
+
+\end{document}
