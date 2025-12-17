@@ -32,7 +32,7 @@
 % These packages are all incorporated in the memoir class to one degree or another...
 \usepackage{enumitem}
 \usepackage{amsmath}
-
+\usepackage{siunitx}
 % para los cuadritos en links
 %\usepackage[linkbordercolor={0 0 1}, citebordercolor={0 1 0}, urlbordercolor={1 0 0}]{hyperref}
 \usepackage[colorlinks=true, linkcolor=black, citecolor=green, urlcolor=red]{hyperref} % solo resalta
@@ -114,7 +114,7 @@ Este trabajo va a trabajar sobre el uso de redes neuronales en la doctrina de co
 
 \textbf{VER SI QUERËS METER ALGO DEL SOM QUE SALIÖ MAL Y DE OBERVADORES Y DE GAIN SCHEDULING}
 
-\section{Modelo elegido}
+\section{Sistema de referencia}
 
 Que
 tamaños
@@ -124,6 +124,199 @@ lo malo
 la matemática -> espacio de estados no lineal y linealizado, transferencia (lineal).
 el simulink
 
+
+El sistema de referencia elegido está compuesto por 2 tanques de agua de dimensiones diferentes. Tanto la tubería que une los tanques como la que sale tienen cierto coeficiente hidráulico asociado a su geometría. Los valores se eligieron para que el sistema tenga sentido físico aunque no es un requisito. Se podría pensar que el sistema actúa como una cisterna amortiguadora de fluctuaciones en el caudal seguido de un reservorio que ajusta el caudal de salida.
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.7\linewidth]{imgs/tanques}
+	\caption{Sistema elegido}
+	\label{fig:tanques}
+\end{figure}
+
+La figura \ref{fig:tanques} muestra el sistema recién descripto, agregando los caudales de entrada y salida $u$ e $y$. Ambos caudales son muestreados a \SI{1}{\Hz}, que debería ser más que suficiente para este tipo de dinámicas lentas.
+
+
+\subsection{Modelo matemático}
+
+El modelado de este sistema hace uso de varias leyes físicas de la hidráulica. Iniciando, primero se plantea que el líquido es incompresible, por lo que el volumen solo varía si los caudales de entrada y salida no son iguales.
+
+\begin{equation}
+	\frac{dV}{dt} = \sum q_{in} - \sum q_{out}
+	\label{eq:1}
+\end{equation}
+
+
+Además, el volumen es función del área del tanque y su superficie (en este caso que el área es independiente del nivel de agua). Podemos derivar respecto del tiempo.
+
+\begin{equation}
+	V(t) = A \cdot h(t) \overset{d/dt}{\longrightarrow } \frac{dV}{dt} = A \cdot \frac{dh(t)}{dt}
+	\label{eq:2}
+\end{equation}
+
+Luego se aplica la ley de caudal, que relaciona el caudal entre 2 puntos con la diferencia de nivel entre ellos mismos.
+
+\begin{equation}
+	q = k\,\sqrt{2g}\,\sqrt{\Delta h}
+	\label{eq:3}
+\end{equation}
+
+El caudal entre los tanques resulta:
+
+\begin{equation}
+	q_{12}(t) = k_{12}\,\sqrt{2g}\,\sqrt{h_1(t) -h_2(t)}
+	\label{eq:4}
+\end{equation}
+
+El caudal de salida del segundo tanque, que también es la salida $y$, es:
+\begin{equation}
+	q_{2}(t) = y(t) = k_{2}\,\sqrt{2g}\,\sqrt{h_2(t)}
+		\label{eq:5}
+\end{equation}
+
+
+Ahora, se plantea un balance en cada tanque igualando \eqref{eq:1} y \eqref{eq:2}.
+
+\begin{equation}
+	A_1 \cdot \frac{dh_1}{dt} = u(t) - q_{12}(t)
+	\label{eq:6}
+\end{equation}
+
+\begin{equation}
+	A_2 \cdot \frac{dh_2}{dt} = q_{12}(t) - q_{2}(t) =  q_{12}(t) - y(t)
+	\label{eq:7}
+\end{equation}
+
+sustituyendo con \eqref{eq:4} :
+
+\begin{equation}
+	A_1 \cdot \frac{dh_1}{dt} = u(t) - k_{12}\,\sqrt{2g}\,\sqrt{h_1(t) -h_2(t)}
+	\label{eq:8}
+\end{equation}
+
+\begin{equation}
+	A_2 \cdot \frac{dh_2}{dt} = k_{12}\,\sqrt{2g}\,\sqrt{h_1(t) -h_2(t)} -  k_{2}\,\sqrt{2g}\,\sqrt{h_2(t)}
+	\label{eq:9}
+\end{equation}
+
+Con todo esto se plantea el espacio de estados\textbf{ no lineal} y continuo con la forma de a continuación:
+
+\begin{equation}
+	\frac{d}{dt}
+	\begin{bmatrix}
+		h_1
+		\\
+		h_2
+	\end{bmatrix} =
+	\begin{bmatrix}
+		(u - k_{12}\,\sqrt{2g}\,\sqrt{h_1 -h_2})\cdot \frac{1}{A_1}
+		\\
+		(k_{12}\,\sqrt{2g}\,\sqrt{h_1 -h_2} -  k_{2}\,\sqrt{2g}\,\sqrt{h_2})\cdot \frac{1}{A_2}
+	\end{bmatrix}
+	\label{eq:ss1}
+\end{equation}
+
+
+\begin{equation}
+	y=k_{2}\,\sqrt{2g}\,\sqrt{h_2}
+	\label{eq:ss2}
+\end{equation}
+
+Las expresiones \eqref{ss1} y \eqref{ss2} se van a linealizar en torno al punto operativo del tanque, definido por:
+g   = 9.81;
+A1  = 0.015;
+A2  = 0.02;
+k12 = 5e-4;
+k2  = 1e-3;
+h1s = 1.019;
+h2s = 0.204;
+us  = 0.002;
+
+$$
+\overset{\,\circ }{X} = f(x_e,u_e) + \frac{df}{d x}|_{(x_e,u_e)} (x-x_e,u-u_e) +  \frac{df}{d u}|_{(x_e,u_e)} (x-x_e,u-u_e)
+$$
+
+$$
+f(x_e,u_e)=0
+$$
+
+$$
+\frac{df}{d x}|_{(x_e,u_e)} (x-x_e,u-u_e) = \begin{bmatrix}
+	\frac{-k_{12} \sqrt{2g}}{A_1 \cdot 2 \sqrt{h_1-h_2}}
+	&
+	\frac{k_{12} \sqrt{2g}}{A_1 \cdot 2 \sqrt{h_1-h_2}}
+	\\
+	\frac{k_{12} \sqrt{2g}}{A_2 \cdot 2 \sqrt{h_1-h_2}}
+	&
+	\frac{-k_{12} \sqrt{2g}}{A_2 \cdot 2 \sqrt{h_1-h_2}} - \frac{k_{2} \sqrt{2g}}{A_2 \cdot 2 \sqrt{h_2}}
+\end{bmatrix}
+|_{(x_e,u_e)} \simeq
+\begin{bmatrix}
+	-0.818
+	&
+	0.818
+	\\
+	0.613
+	&
+	-0.1841
+\end{bmatrix}
+$$
+
+$$
+\frac{df}{d u}|_{(x_e,u_e)} (x-x_e,u-u_e) = \begin{bmatrix}
+	\frac{1}{A_1}
+	\\
+	0
+\end{bmatrix}|_{(x_e,u_e)}=
+\begin{bmatrix}
+	66.67
+	\\
+	0
+\end{bmatrix}
+$$
+
+Entonces
+$$
+\overset{\,\circ }{\begin{bmatrix}
+		h_1
+		\\
+		h_2
+\end{bmatrix}} =
+\begin{bmatrix}
+	-0.0818
+	&
+	0.0818
+	\\
+	0.0613
+	&
+	-0.1841
+\end{bmatrix}
+\begin{bmatrix}
+	h_1
+	\\
+	h_2
+\end{bmatrix}
++
+\begin{bmatrix}
+	66.67
+	\\
+	0
+\end{bmatrix} u
+$$
+
+Pero acá son las linealizadas, así que son sin el punto de trabajo. la entrada que tenga deberá ser - 0.002.
+
+Y por un proceso similar se llega a que
+
+$$
+y = \begin{bmatrix}
+	0 & 0.00246
+\end{bmatrix} \begin{bmatrix}
+	h_1
+	\\
+	h_2
+\end{bmatrix}
+$$
 
 \section{Identificación de sistemas}
 \label{subsec:ids}

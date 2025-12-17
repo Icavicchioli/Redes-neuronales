@@ -1,8 +1,9 @@
 \babel@toc {spanish}{}\relax 
 \contentsline {section}{\numberline {1}Introducción}{2}{section.1}%
-\contentsline {section}{\numberline {2}Modelo elegido}{2}{section.2}%
-\contentsline {section}{\numberline {3}Identificación de sistemas}{2}{section.3}%
-\contentsline {section}{\numberline {4}Control de sistemas}{3}{section.4}%
-\contentsline {section}{\numberline {5}Observadores}{3}{section.5}%
-\contentsline {section}{\numberline {6}Misceláneos}{3}{section.6}%
-\contentsline {section}{\numberline {7}Conclusiones}{3}{section.7}%
+\contentsline {section}{\numberline {2}Sistema de referencia}{2}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Modelo matemático}{3}{subsection.2.1}%
+\contentsline {section}{\numberline {3}Identificación de sistemas}{4}{section.3}%
+\contentsline {section}{\numberline {4}Control de sistemas}{4}{section.4}%
+\contentsline {section}{\numberline {5}Observadores}{4}{section.5}%
+\contentsline {section}{\numberline {6}Misceláneos}{4}{section.6}%
+\contentsline {section}{\numberline {7}Conclusiones}{4}{section.7}%
