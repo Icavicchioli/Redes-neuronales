@@ -1,0 +1,53 @@
+%% entrenar_con_datasets.m
+% Entrena redes para dataset14400 y dataset3600
+
+clear; clc;
+
+ny = 10;
+nu = 1;
+
+% Lista de datasets
+datasets = { 'dataset14400.mat', 'dataset3600.mat'};
+
+for i = 1:numel(datasets)
+    archivo = datasets{i};
+
+    fprintf('\n=== Procesando %s ===\n', archivo);
+
+    % Cargar dataset (debe contener "out")
+    load(archivo, 'out');
+
+    % Preparar datos (Xn, Tn, normalización)
+    [Xn, Tn, muX, sigX, muT, sigT, ny, nu] = preparar_datos(out, ny, nu);
+
+    % --- ENTRENAMIENTO REDES MLP ---
+
+    % 20 neuronas
+    net20 = entrenar_red(Xn, Tn, 20);
+    guardar_red(sprintf('net_20_%s.mat', archivo(1:end-4)), ...
+                net20, muX, sigX, muT, sigT, ny, nu);
+
+    % 10 neuronas
+    net10 = entrenar_red(Xn, Tn, 10);
+    guardar_red(sprintf('net_10_%s.mat', archivo(1:end-4)), ...
+                net10, muX, sigX, muT, sigT, ny, nu);
+
+    % 5 neuronas
+    net5 = entrenar_red(Xn, Tn, 5);
+    guardar_red(sprintf('net_5_%s.mat', archivo(1:end-4)), ...
+                net5, muX, sigX, muT, sigT, ny, nu);
+
+    % 2 neuronas
+    net2 = entrenar_red(Xn, Tn, 2);
+    guardar_red(sprintf('net_2_%s.mat', archivo(1:end-4)), ...
+                net2, muX, sigX, muT, sigT, ny, nu);
+
+    % --- PERCEPTRÓN LINEAL ---
+
+    net_lin = entrenar_perceptron_simple(Xn, Tn);
+    guardar_red(sprintf('net_lin_%s.mat', archivo(1:end-4)), ...
+                net_lin, muX, sigX, muT, sigT, ny, nu);
+
+    % Si querés mandar alguna a Simulink automáticamente:
+    % cargar_red(sprintf('net_20_%s.mat', archivo(1:end-4)));
+end
