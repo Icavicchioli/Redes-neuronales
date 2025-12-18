@@ -2,15 +2,15 @@ function net = entrenar_red(Xn, Tn, numNeuronas)
 % ENTRENAR_RED Entrena una red neuronal feedforward (fitnet)
 %
 % Uso:
-%    net = entrenar_red(Xn, Tn, numNeuronas)
+%   net = entrenar_red(Xn, Tn, numNeuronas)
 %
 % Entradas:
-%    Xn: matriz de entrada normalizada (entradas × muestras)
-%    Tn: matriz de salida normalizada (salidas × muestras)
-%    numNeuronas: cantidad de neuronas en capa oculta
+%   Xn: matriz de entrada (muestras × entradas)
+%   Tn: matriz de salida  (muestras × salidas)
+%   numNeuronas: cantidad de neuronas en capa oculta
 %
-% Salidas:
-%    net: red neuronal entrenada
+% Salida:
+%   net: red neuronal entrenada
 
     % Crear red
     net = fitnet(numNeuronas);
@@ -29,7 +29,7 @@ function net = entrenar_red(Xn, Tn, numNeuronas)
     net.inputs{1}.processFcns  = {};
     net.outputs{2}.processFcns = {};
 
-    % Entrenamiento
+    % Entrenamiento (columnas = muestras)
     net = train(net, Xn.', Tn.');
 end
 
@@ -41,7 +41,7 @@ end
 
 % =============================================================
 function net = cargar_red(nombreArchivo)
-% CARGAR_RED Carga una red y la manda al workspace
+% CARGAR_RED Carga una red y la manda al workspace y Simulink
     data = load(nombreArchivo);
     net = data.net;
     assignin('base', 'net', net);
@@ -50,25 +50,32 @@ end
 
 % =============================================================
 function net = entrenar_perceptron_simple(Xn, Tn)
-% ENTRENAR_PERCEPTRON_SIMPLE Entrena un perceptrón simple
+% ENTRENAR_PERCEPTRON_SIMPLE Entrena un perceptrón lineal (sin capa oculta)
 %
 % Uso:
-%    net = entrenar_perceptron_simple(Xn, Tn)
+%   net = entrenar_perceptron_simple(Xn, Tn)
+%
+% Entradas:
+%   Xn: matriz de entrada (muestras × entradas)
+%   Tn: matriz de salida  (muestras × salidas)
 
-    P = Xn;
-    T = Tn;
-    rangoEntradas = [min(P, [], 2) max(P, [], 2)];
+    P = Xn;   % muestras × entradas
+    T = Tn;   % muestras × salidas
 
-    % Crear perceptrón lineal
-    net = newff(rangoEntradas, size(T,1), {'purelin'}, 'trainlm');
+    % Rango de entrada (por característica)
+    rangoEntradas = [min(P, [], 1).'  max(P, [], 1).'];
+
+    % Red lineal pura (sin capa oculta)
+    net = feedforwardnet([]);        % equivalente a capa lineal
+    net.layers{1}.transferFcn = 'purelin';
 
     % Desactivar preprocesamiento
-    net.inputs{1}.processFcns = {};
+    net.inputs{1}.processFcns  = {};
     net.outputs{1}.processFcns = {};
 
-    % Entrenar
-    net = train(net, P, T);
+    % Entrenamiento (columnas = muestras)
+    net = train(net, P.', T.');
 
-    % Visualizar la red en Simulink
+    % Opcional: visualizar en Simulink
     gensim(net);
 end
