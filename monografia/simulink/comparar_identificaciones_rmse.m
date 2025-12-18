@@ -9,12 +9,12 @@ load datos_reales.mat   % debe contener y_real (vector)
 % Cargar salidas de Simulink para cada modelo
 % Ajustá los nombres de archivo / variables según tu setup
 
-load salida_net_20.mat   % y_hat_20
-load salida_net_10.mat   % y_hat_10
-load salida_net_5.mat    % y_hat_5
-load salida_net_2.mat    % y_hat_2
-load salida_net_lin.mat  % y_hat_lin  (perceptrón simple / red lineal)
-load salida_modelo_lin.mat % y_hat_modelo_lin (tu modelo lineal aparte)
+load salida_net_20.mat      % y_hat_20
+load salida_net_10.mat      % y_hat_10
+load salida_net_5.mat       % y_hat_5
+load salida_net_2.mat       % y_hat_2
+load salida_net_lin.mat     % y_hat_lin  (perceptrón simple / red lineal)
+load salida_modelo_lin.mat  % y_hat_modelo_lin (tu modelo lineal aparte)
 
 % Asegurar vectores columna
 y = y_real(:);
@@ -30,6 +30,7 @@ yml   = y_hat_modelo_lin(:);
 L = min([length(y), length(y20), length(y10), length(y5), ...
          length(y2), length(ylin), length(yml)]);
 
+% Recorte común
 y    = y(1:L);
 y20  = y20(1:L);
 y10  = y10(1:L);
@@ -38,13 +39,25 @@ y2   = y2(1:L);
 ylin = ylin(1:L);
 yml  = yml(1:L);
 
-% Calcular RMSE para cada modelo
-rmse_20  = rmse(y, y20);
-rmse_10  = rmse(y, y10);
-rmse_5   = rmse(y, y5);
-rmse_2   = rmse(y, y2);
-rmse_lin = rmse(y, ylin);
-rmse_ml  = rmse(y, yml);
+% Elegir ventana de régimen permanente
+M = 500;      % ejemplo
+N = L;        % o menor
+
+yr    = y(M:N);
+y20r  = y20(M:N);
+y10r  = y10(M:N);
+y5r   = y5(M:N);
+y2r   = y2(M:N);
+ylinr = ylin(M:N);
+ymlr  = yml(M:N);
+
+% RMSE en régimen permanente
+rmse_20  = rmse(yr, y20r);
+rmse_10  = rmse(yr, y10r);
+rmse_5   = rmse(yr, y5r);
+rmse_2   = rmse(yr, y2r);
+rmse_lin = rmse(yr, ylinr);
+rmse_ml  = rmse(yr, ymlr);
 
 % Mostrar resultados en consola
 fprintf('RMSE MLP 20 neuronas:      %.6f\n', rmse_20);
@@ -54,16 +67,16 @@ fprintf('RMSE MLP 2 neuronas:       %.6f\n', rmse_2);
 fprintf('RMSE perceptron lineal:    %.6f\n', rmse_lin);
 fprintf('RMSE modelo lineal (PL):   %.6f\n', rmse_ml);
 
-% Opcional: guardar en un .mat o .csv para llevar a LaTeX
+% Vector para guardar / exportar
+resultados_rmse = [rmse_20; rmse_10; rmse_5; rmse_2; rmse_lin; rmse_ml];
+
 resultados_nombres = { ...
     'MLP 20', ...
     'MLP 10', ...
     'MLP 5',  ...
     'MLP 2',  ...
     'Perceptron lineal', ...
-    'Modelo lineal'};
-
-resultados_rmse = [rmse_20; rmse_10; rmse_5; rmse_2; rmse_lin; rmse_ml];
+    'Modelo lineal' };
 
 save resultados_rmse.mat resultados_nombres resultados_rmse;
 
