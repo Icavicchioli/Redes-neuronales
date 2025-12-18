@@ -357,10 +357,27 @@ Para esta monografía se decidió hacer uso de \textit{scripts} \textit{MATLAB} 
 
 \begin{figure}[h!]
 	\centering
-	\includegraphics[width=0.7\linewidth]{imgs/P_no_lin}
+	\includegraphics[width=0.6\linewidth]{imgs/P_no_lin}
 	\caption{Planta no lineal armada en \textit{simulink}}
 	\label{fig:pnolin}
 \end{figure}
+
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.8\linewidth]{imgs/P_no_lin_muestreada}
+	\caption{Muestreo de planta no lineal}
+	\label{fig:pnolinmuestreada}
+\end{figure}
+
+La figura \ref{fig:pnolinmuestreada} muestra el sistema de \textit{simulink} que emula el muestreo de la planta. De entrada $u$ se usó una secuencia de escalones de amplitudes aleatorias alrededor del punto operativo. Esto se hizo para poder tener una buena variedad de respuestas al escalón, que se espera ayude a que la red aprenda la dinámica.
+
+Como el muestreo se realizó a \SI{1}{\Hz}, se decidió generar un \textit{dataset} de 4 horas (14400 muestras), y otro de 1 hora (3600 muestras). La intención es observar cuanto empeora la \textit{performance} de la red con menos muestras de entrenamiento. Se usó una partición de \textit{train/test/}
+
+
+
+
+
 
 
 
