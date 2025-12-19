@@ -1,84 +1,30 @@
-%% comparar_modelos_rmse.m
-% Compara salidas de distintos modelos usando RMSE
+%% RMSE sin transitorio (primeras 1000 muestras)
+% Todo explícito, señales desde out
 
-clear; clc;
+k0 = 1000;
 
-% Cargar datos reales
-load datos_reales.mat   % debe contener y_real (vector)
+% Señal real
+y = out.Y(k0:end);
 
-% Cargar salidas de Simulink para cada modelo
-% Ajustá los nombres de archivo / variables según tu setup
+%% ---------------- LINEAL ----------------
+rmse_Y_lin = rmse(y, out.Y_lin(k0:end));
 
-load salida_net_20.mat      % y_hat_20
-load salida_net_10.mat      % y_hat_10
-load salida_net_5.mat       % y_hat_5
-load salida_net_2.mat       % y_hat_2
-load salida_net_lin.mat     % y_hat_lin  (perceptrón simple / red lineal)
-load salida_modelo_lin.mat  % y_hat_modelo_lin (tu modelo lineal aparte)
+%% ---------------- FEEDFORWARD ----------------
+rmse_FF14400 = rmse(y, out.FF14400(k0:end));
+rmse_FF3600  = rmse(y, out.FF3600(k0:end));
 
-% Asegurar vectores columna
-y = y_real(:);
+%% ---------------- MLP (10 neuronas) ----------------
+rmse_MLP1014400 = rmse(y, out.MLP1014400(k0:end));
+rmse_MLP103600  = rmse(y, out.MLP103600(k0:end));
 
-y20   = y_hat_20(:);
-y10   = y_hat_10(:);
-y5    = y_hat_5(:);
-y2    = y_hat_2(:);
-ylin  = y_hat_lin(:);
-yml   = y_hat_modelo_lin(:);
+%% ---------------- MLP (20 neuronas) ----------------
+rmse_MLP2014400 = rmse(y, out.MLP2014400(k0:end));
+rmse_MLP203600  = rmse(y, out.MLP203600(k0:end));
 
-% Ajustar longitud mínima común (por seguridad)
-L = min([length(y), length(y20), length(y10), length(y5), ...
-         length(y2), length(ylin), length(yml)]);
+%% ---------------- MLP (2 neuronas) ----------------
+rmse_MLP214400 = rmse(y, out.MLP214400(k0:end));
+rmse_MLP23600  = rmse(y, out.MLP23600(k0:end));
 
-% Recorte común
-y    = y(1:L);
-y20  = y20(1:L);
-y10  = y10(1:L);
-y5   = y5(1:L);
-y2   = y2(1:L);
-ylin = ylin(1:L);
-yml  = yml(1:L);
-
-% Elegir ventana de régimen permanente
-M = 500;      % ejemplo
-N = L;        % o menor
-
-yr    = y(M:N);
-y20r  = y20(M:N);
-y10r  = y10(M:N);
-y5r   = y5(M:N);
-y2r   = y2(M:N);
-ylinr = ylin(M:N);
-ymlr  = yml(M:N);
-
-% RMSE en régimen permanente
-rmse_20  = rmse(yr, y20r);
-rmse_10  = rmse(yr, y10r);
-rmse_5   = rmse(yr, y5r);
-rmse_2   = rmse(yr, y2r);
-rmse_lin = rmse(yr, ylinr);
-rmse_ml  = rmse(yr, ymlr);
-
-% Mostrar resultados en consola
-fprintf('RMSE MLP 20 neuronas:      %.6f\n', rmse_20);
-fprintf('RMSE MLP 10 neuronas:      %.6f\n', rmse_10);
-fprintf('RMSE MLP 5 neuronas:       %.6f\n', rmse_5);
-fprintf('RMSE MLP 2 neuronas:       %.6f\n', rmse_2);
-fprintf('RMSE perceptron lineal:    %.6f\n', rmse_lin);
-fprintf('RMSE modelo lineal (PL):   %.6f\n', rmse_ml);
-
-% Vector para guardar / exportar
-resultados_rmse = [rmse_20; rmse_10; rmse_5; rmse_2; rmse_lin; rmse_ml];
-
-resultados_nombres = { ...
-    'MLP 20', ...
-    'MLP 10', ...
-    'MLP 5',  ...
-    'MLP 2',  ...
-    'Perceptron lineal', ...
-    'Modelo lineal' };
-
-save resultados_rmse.mat resultados_nombres resultados_rmse;
-
-% También podés generar algo tipo:
-% writematrix(resultados_rmse, 'resultados_rmse.csv');
+%% ---------------- MLP (5 neuronas) ----------------
+rmse_MLP514400 = rmse(y, out.MLP514400(k0:end));
+rmse_MLP53600  = rmse(y, out.MLP53600(k0:end));
