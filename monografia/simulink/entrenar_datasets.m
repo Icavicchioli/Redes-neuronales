@@ -60,7 +60,7 @@ load(archivo, 'out');
 [Xn, Tn, muX, sigX, muT, sigT, ny, nu] = preparar_datos(out, ny, nu);
 
 %% --- MLP 20 neuronas ---
-net20 = entrenar_red(Xn, Tn, 20,1000);
+net20 = entrenar_red(Xn, Tn, 20,2000);
 guardar_red('net_20_dataset3600.mat', ...
             net20, muX, sigX, muT, sigT, ny, nu);
 

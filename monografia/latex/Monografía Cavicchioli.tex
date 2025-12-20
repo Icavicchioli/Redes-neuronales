@@ -233,7 +233,7 @@ Las expresiones \eqref{eq:ss1} y \eqref{eq:ss2} se van a linealizar en torno al 
 
 \begin{itemize}
 	\item $g = 9.81$
-	\item $A_1 = 0.015$, $A_2 = 0.02$
+	\item $A_1 = 0.342$, $A_2 = 0.126$
 	\item $k_{12} = 5 \times 10^{-4}$, $k_2 = 1 \times 10^{-3}$
 	\item $h_{1s} = 1.019$, $h_{2s} = 0.204$
 	\item $u_s = 0.002$
@@ -257,7 +257,7 @@ Las expresiones \eqref{eq:16} y \eqref{eq:17} constituyen el espacio de estados 
 		h_1
 		\\
 		h_2
-\end{bmatrix}} =f(x_e,u_e) + \frac{df}{d x}|_{(x_e,u_e)} (x-x_e,u-u_e) +  \frac{df}{d u}|_{(x_e,u_e)} (x-x_e,u-u_e)
+\end{bmatrix}} =f(x_e,u_e) + \frac{df}{d x}|_{(x_e,u_e)} (x-x_e) +  \frac{df}{d u}|_{(x_e,u_e)} (u-u_e)
 \label{eq:12}
 \end{equation}
 
@@ -267,7 +267,7 @@ f(x_e,u_e)=0
 \end{equation}
 
 \begin{equation}
-\frac{df}{d x}|_{(x_e,u_e)} (x-x_e,u-u_e) = \begin{bmatrix}
+\frac{df}{d x}|_{(x_e,u_e)} = \begin{bmatrix}
 	\frac{-k_{12} \sqrt{2g}}{A_1 \cdot 2 \sqrt{h_1-h_2}}
 	&
 	\frac{k_{12} \sqrt{2g}}{A_1 \cdot 2 \sqrt{h_1-h_2}}
@@ -281,29 +281,29 @@ f(x_e,u_e)=0
 \end{equation}
 
 \begin{equation}
-	\frac{df}{d x}|_{(x_e,u_e)} (x-x_e,u-u_e) =
+	\frac{df}{d x}|_{(x_e,u_e)} =
 	 \simeq
 	\begin{bmatrix}
-		-0.0818
+		-0.00359
 		&
-		0.0818
+		0.000359
 		\\
-		0.0613
+		0.00976
 		&
-		-0.1841
+		-0.04878
 	\end{bmatrix}
 	\label{eq:14b}
 \end{equation}
 
 
 \begin{equation}
-\frac{df}{d u}|_{(x_e,u_e)} (x-x_e,u-u_e) = \begin{bmatrix}
+\frac{df}{d u}|_{(x_e,u_e)} = \begin{bmatrix}
 	\frac{1}{A_1}
 	\\
 	0
 \end{bmatrix}|_{(x_e,u_e)}=
 \begin{bmatrix}
-	66.67
+	2.92
 	\\
 	0
 \end{bmatrix}
@@ -317,14 +317,14 @@ f(x_e,u_e)=0
 		\\
 		h_2
 \end{bmatrix}} =
-\begin{bmatrix}
-	-0.0818
+	\begin{bmatrix}
+	-0.00359
 	&
-	0.0818
+	0.000359
 	\\
-	0.0613
+	0.00976
 	&
-	-0.1841
+	-0.04878
 \end{bmatrix}
 \begin{bmatrix}
 	h_1
@@ -333,7 +333,7 @@ f(x_e,u_e)=0
 \end{bmatrix}
 +
 \begin{bmatrix}
-	66.67
+	2.92
 	\\
 	0
 \end{bmatrix} u
@@ -342,7 +342,7 @@ f(x_e,u_e)=0
 
 \begin{equation}
 y = \begin{bmatrix}
-	0 & 0.00246
+	0 & 0.0049
 \end{bmatrix} \begin{bmatrix}
 	h_1
 	\\
@@ -351,6 +351,9 @@ y = \begin{bmatrix}
 \label{eq:17}
 \end{equation}
 
+Además de usar este modelo matemático, se estimó un espacio de estados de misma dimensión a partir del \textit{dataset} de 14400 muestras, para comparar con las redes.
+
+\newpage
 \subsection{Simulaciones}
 
 Para esta monografía se decidió hacer uso de \textit{scripts} \textit{MATLAB} y el entorno de \textit{Simulink} debido a la versatilidad que trae en lo que es simulación de sistemas, además que es la herramienta usada en las materias de control automático. La figura \ref{fig:pnolin} muestra el sistema no lineal armado. En pocas palabras, usa las constantes definidas en el \textit{workbench}, la entrada $u$ y los estados integrados para calcular el siguiente estado de la planta.
@@ -370,9 +373,9 @@ Para esta monografía se decidió hacer uso de \textit{scripts} \textit{MATLAB} 
 	\label{fig:pnolinmuestreada}
 \end{figure}
 
-La figura \ref{fig:pnolinmuestreada} muestra el sistema de \textit{simulink} que emula el muestreo de la planta. De entrada $u$ se usó una secuencia de escalones de amplitudes aleatorias alrededor del punto operativo. Esto se hizo para poder tener una buena variedad de respuestas al escalón, que se espera ayude a que la red aprenda la dinámica.
+La figura \ref{fig:pnolinmuestreada} muestra el sistema de \textit{simulink} que emula el muestreo de la planta. De entrada $u$ se usó una secuencia de escalones de amplitudes aleatorias (ruido blanco gaussiano) alrededor del $10 \%$ del punto operativo. Esto se hizo para poder tener una buena variedad de respuestas al escalón, que se espera ayude a que la red aprenda la dinámica.
 
-Como el muestreo se realizó a \SI{1}{\Hz}, se decidió generar un \textit{dataset} de 4 horas (14400 muestras), y otro de 1 hora (3600 muestras). La intención es observar cuanto empeora la \textit{performance} de la red con menos muestras de entrenamiento. Se usó una partición de \textit{train/test/}
+Como el muestreo se realizó a \SI{1}{\Hz}, se decidió generar un \textit{dataset} de 4 horas (14400 muestras), y otro de 1 hora (3600 muestras). La intención es observar cuanto empeora la \textit{performance} de la red con menos muestras de entrenamiento.
 
 
 
@@ -384,26 +387,242 @@ Como el muestreo se realizó a \SI{1}{\Hz}, se decidió generar un \textit{datas
 \section{Identificación de sistemas}
 \label{subsec:ids}
 
-La idea es que la red copie la no linealidad de la planta
+La primer experiencia de esta monografía consiste en entrenar una red neuronal en base a los datos de la planta elegida, con la finalidad de obtener un sistema no lineal que la emule.
 
-1 armé esa red rancia que en fre run anda para el orto pero en predicción de a 0 anda bien
+\subsection{Suposiciones y decisiones}
 
-Es decir, si se alimenta con los estados de la planta no lineal es un excelente predictor, pero en free-run, realimentado con si mismo, diverge en X tiempo. Para remediar esto, se buscan alternativas.
+Con el objetivo de asegurar resultados conmensurables, los experimentos se armaron y realizaron siguiendo los siguientes preceptos:
 
-La primera es espacio de estados no lineal. hay un mapeo entre estado actual al siguiente dado por una función no lineal, y un mapeo de estado actual a salida tambien dado por funci¿ón no lineal. La idea es que el sistema aprenda esas funciones en vez de todo el proceso de integración implicito en la planta no lineal
+\begin{enumerate}
+	\item La única métrica de comparación elegida es el RMSE (ec. \eqref{RMCE}). Se calculará sobre las secuencias de salida de todas las redes entrenadas.
 
-para resolver eso hacemos:
+	\begin{equation}
+		RMSE = \sqrt{\frac{1}{n} \sum ^n _{i=1} (\hat{x} - x)^2  }
+		\label{RMSE}
+	\end{equation}
 
-luegoe spacio de estados no lineal
-parte linealizada y luego entrenas la no lineal para que te de la parte no lineal y cerras el lazo con lo no lineal + lineal a ver que tal
+	\item El RMSE se calculará sobre la secuencia de datos de salida pero sin incluir el transitorio inicial. Esto es porque el transitorio inicial no está bien representado en los datos de entrenamiento.
+	\item Todos los modelos deberán poder usarse de forma auto-regresiva, es decir, realimentados con sus propias salidas. Esto implica que el entrenamientos se va a tener que realizar hasta que se observe convergencia en la simulación.
+	\item La cantidad de \textit{epochs} y la cantidad de intentos de entrenamiento no fueron fijadas, sino que se ajustaron empíricamente,  asegurando el cumplimiento del ítem 2.
+	\item Los datos se separaron en \textit{train} y \textit{test} en una proporción de $85\%$ a $/15\%$. La separación se realizó de forma secuencial, es decir, se tomo el primer $85\%$ de las muestras para entrenar y el resto para evaluar, manteniendo cierta semblanza al orden temporal. Se podría argumentar que las muestras de evaluación no necesariamente se van a distribuir idénticamente que las de entrenamiento, pero se priorizó variedad de muestras, y el hecho de que los escalones se generaron de forma aleatoria debería ayudar.
+	\item Se aplicó una normalización en media y varianza a los datos previo a entrenar. Se espera que esto mejore la \textit{performance} (a entradas más espaciadas, pesos más separados) y la convergencia en el \textit{fitting}.
+\end{enumerate}
 
+
+
+Con esto dicho, se procede a los ensayos.
+
+\subsection{MLP de 1 capa oculta}
+
+\subsubsection{Introducción}
+
+El primer \textit{approach} pensado es usar un MLP de 1 capa oculta y entrenarlo en base a los datos de la planta en una configuración auto-regresiva como la de la figura \ref{fig:redautoreg}. Dado lo visto en la materia, se espera que el MLP logre captar las no-linealidades de la planta con una capacidad que aumenta con la cantidad de neuronas en su capa oculta. En palabras más simples, se espera que los modelos más chicos tengan peor desempeño que los grandes.
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.7\linewidth]{imgs/red_autoreg}
+	\caption{Modelo de red}
+	\label{fig:redautoreg}
+\end{figure}
+
+
+El vector de datos de entrada $\mathbf{x}(n)$ elegido consta de 10 muestras previas de $y$ y la referencia actual $u$.La salida esperada de la red es la siguiente muestra, efectivamente entrenando un predictor del siguiente estado.
+
+\[
+\mathbf{x}(n) =
+\big[
+y(n),\; y(n-1),\; \dots,\; y(n-9),\; u(n)
+\big]
+\]
+
+\[
+\hat{y}(n+1) = f\big(
+y(n),\; y(n-1),\; \dots,\; y(n-9),\; u(n)
+\big)
+\]
+
+La razón por la cual se eligieron 10 muestras previas de $y$ es porque se considera que, siendo un proceso lento, la red se beneficiaria de poder ver múltiples estados previos, notando como varía la salida en el tiempo. Si se usaran pocas muestras previas, el vector de entrada sería un apilamiento de números casi idénticos para los escalones de entrada pequeños.
+
+
+\subsubsection{Entrenamiento}
+
+Como se adelantó previamente, se decidió crear con 2 \textit{datasets} así que los experimentos van a verse duplicados. Para esta parte se decidió entrenar redes de 20, 10, 5 y 2 preceptrones en la capa oculta.
+
+Algunos puntos interesantes a destacar del entrenamiento son:
+
+\begin{itemize}
+	\item Se entrenó por una cantidad fija de \textit{epochs}, permitiendo interrumpir cuando el gradiente era menor a $1e-9$ (que nunca sucedió).
+	\item El proceso de entrenamiento fue manejado por la función \textit{train}\footnote{\href{https://la.mathworks.com/help/deeplearning/ref/network.train.html}{Documentación oficial}} del \textit{Deep learning toolbox} de \textit{MATLAB}.
+	\item En general, los modelos pequeños requirieron de más intentos de entrenamiento para llegar a un sistema que cumpliera con los requisitos planteados. El parámetro modificado fue cantidad de \textit{epochs}.
+	\item Hubo casos en los que los sistemas obtenidos tenían un estado estacionario oscilante, invariante respecto la acción de control. Esto fue considerado un espurio llamativo, aunque lamentablemente no se guardaron imágenes.
+	\item El modelo lineal estimado se obtuvo usando la herramienta de identificación de sistemas propia de \textit{MATLAB}.
+\end{itemize}
+
+
+
+\subsubsection{Resultados}
+
+Las figuras en esta sección muestran las señales de interés, incluyendo la entrada $u$, la salida $y$ real, la $y$ del sistema linealizado y la salida de cada red entrenada. La respuesta real (fig. \ref{fig:salida-y}) y las respuestas de las redes neuronales son casi indistinguibles, salvo por los transitorios iniciales. Sin embargo, lo mismo sucede para las respuestas obtenidas de los sistemas lineales.
+
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.8\linewidth]{imgs/entrada u}
+	\caption{Entrada $u$}
+	\label{fig:entrada-u}
+\end{figure}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.8\linewidth]{imgs/salida y}
+	\caption{Salida $y$ de la planta no lineal}
+	\label{fig:salida-y}
+\end{figure}
+
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.8\linewidth]{imgs/y e ylin}
+	\caption{Comparación entre salida no lineal y lineal}
+	\label{fig:y-e-ylin}
+\end{figure}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.8\linewidth]{imgs/y e ylin est}
+	\caption{Comparación entre salida no lineal y lineal  del modelo estimado}
+	\label{fig:y-e-ylin-est}
+\end{figure}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.8\linewidth]{imgs/MLP 20 14400}
+	\caption{Salida del MLP de 20 neuronas en capa oculta - \textit{dataset} de 14400 muestras}
+	\label{fig:mlp-20-14400}
+\end{figure}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.8\linewidth]{imgs/MLP 10 14400}
+	\caption{Salida del MLP de 10 neuronas en capa oculta - \textit{dataset} de 14400 muestras}
+	\label{fig:mlp-10-14400}
+\end{figure}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.8\linewidth]{imgs/MLP 5 14400}
+	\caption{Salida del MLP de 5 neuronas en capa oculta - \textit{dataset} de 14400 muestras}
+	\label{fig:mlp-5-14400}
+\end{figure}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.8\linewidth]{imgs/MLP 2 14400}
+	\caption{Salida del MLP de 2 neuronas en capa oculta - \textit{dataset} de 14400 muestras}
+	\label{fig:mlp-2-14400}
+\end{figure}
+
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.8\linewidth]{imgs/MLP 20 3600}
+	\caption{Salida del MLP de 20 neuronas en capa oculta - \textit{dataset} de 3600 muestras}
+	\label{fig:mlp-20-3600}
+\end{figure}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.8\linewidth]{imgs/MLP 10 3600}
+	\caption{Salida del MLP de 10 neuronas en capa oculta - \textit{dataset} de 3600 muestras}
+	\label{fig:mlp-10-3600}
+\end{figure}
+
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.8\linewidth]{imgs/MLP 5 3600}
+	\caption{Salida del MLP de 5 neuronas en capa oculta - \textit{dataset} de 3600 muestras}
+	\label{fig:mlp-5-3600}
+\end{figure}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.8\linewidth]{imgs/MLP 2 3600}
+	\caption{Salida del MLP de 2 neuronas en capa oculta - \textit{dataset} de 3600 muestras}
+	\label{fig:mlp-2-3600}
+\end{figure}
+
+
+A continuación se presenta un cuadro con los RMSE de todas las respuestas, calculado usando de referencia la salida del sistema no lineal original. Las secuencias fueron tomadas a partir de la muestra número 2000, evitando los transitorios, tal como se dijo que se iba a hacer.
+
+\begin{table}[h]
+	\centering
+	\begin{tabular}{l c}
+		\hline
+		\textbf{Modelo} & \textbf{RMSE} \\
+		\hline
+		MLP 20--14400             & $2.36 \times 10^{-7}$ \\
+		MLP 10--14400             & $3.24 \times 10^{-7}$ \\
+		MLP 5--14400              & $1.06 \times 10^{-6}$ \\
+		Modelo lineal (estimado)  & $1.80 \times 10^{-6}$ \\
+		MLP 5--3600               & $1.95 \times 10^{-6}$ \\
+		MLP 2--14400              & $2.01 \times 10^{-6}$ \\
+		MLP 20--3600              & $6.71 \times 10^{-6}$ \\
+		Modelo lineal (real)      & $6.83 \times 10^{-6}$ \\
+		MLP 2 --3600               & $1.88 \times 10^{-5}$ \\
+		MLP 10--3600              & $2.46 \times 10^{-5}$ \\
+		\hline
+	\end{tabular}
+	\caption{Comparación del error cuadrático medio (RMSE) entre los distintos modelos evaluados}
+	\label{tab:rmse_comparacion}
+\end{table}
+
+\subsubsection{Análisis de resultados}
+
+A partir de los resultados expuestos en el cuadro \ref{tab:rmse_comparacion}, se notan tendencias en la \textit{performance} de los varios modelos analizados. Primero, los modelos entrenados en base a más muestras (14400) tienen RMSE inferiores a los entrenados en base al set de 3600 muestras - que es consistente con las hipótesis antes mencionadas de la capacidad de captar no-linealidades.
+
+En segundo lugar, el sistema lineal obtenido matemáticamente (apodado ``real'' en el cuadro), logró mejores ajustes que dos redes por un orden de magnitud. Esto puede deberse a que el modelo lineal es muy bueno o que las redes resultaron \textit{sub-par}. Dicho esto, es inferior que el resto de las redes, incluyendo 2 entrenadas con el \textit{dataset} pequeño, dando a entender que, incluso con pocas muestras se puede lograr un modelo no lineal mejor que uno simple derivado matemáticamente. Esto representa un punto a favor de la identificación del tipo ``caja negra/gris''.
+
+El ``podio'' de los resultados está compuesto de 3 redes neuronales y el modelo lineal estimado, todos entrenadas con el \textit{dataset} grande . La mejor red supera al modelo lineal por $7.6$ veces, y no sorprende que sea la red más grande. Se considera que, al disponer de más muestras, las redes lograron captar las no linealidades del modelo con mayor precisión.
+
+Los resultados confirman que la cantidad de muestras disponibles permite el entrenamiento de modelos más complejos, que llegan a precisiones superiores que sus contrapartes lineales.
+
+Ahora bien, se debe resaltar que ninguno de los modelos obtenidos es inherentemente malo, sino que el tipo de modelo a usar queda determinado por los requerimientos de la aplicación. Los experimentos recién detallados solo indican que una forma de lograr respuestas más similares a la real es por el uso de sistemas no lineales en la identificación.
+
+
+\subsection{Sistema lineal asistido}
+
+\subsubsection{Introducción}
+
+El segundo enfoque ideado surge del anterior. Si se puede lograr un buen desempeño con un modelo lineal, debería ser posible entrenar una red neuronal  que estime las salidas no lineales a partir de las lineales.
+
+La figura \ref{fig:red_autoreg2} muestra el sistema armado. Se mantiene el mismo vector de entrada del experimento previo, con la diferencia que ahora las salida previas vienen del sistema lineal y no se predice la siguiente salida, sino que corrige la actual.
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.9\linewidth]{imgs/red_autoreg2}
+	\caption{Modelo de red}
+	\label{fig:red_autoreg2}
+\end{figure}
+
+Inicialmente, se espera que este sistema logre mejor precisión que si solo se usara el lineal, pero no se puede saber si va a ser mejor que las otras redes. Además, se espera que sea más predecible, dado que una gran parte de la dinámica es fundamentalmente lineal.
+
+\subsubsection{Entrenamiento}
+
+Graf de performance de la red!
+
+Se decidió entrenar 3 MLPs de 2, 5, 10 y 20 neuronas en la capa oculta. Se desea observar que complejidad de red se requiere para capturar el mapeo de la salida lineal a la no lineal.
+
+
+\subsubsection{Resultados}
+
+\subsubsection{Análisis de resultados}
 
 
 \section{Control de sistemas}
 \label{sec:control}
 
-\section{Observadores}
-\label{subsec:obs}
+
 
 \section{Misceláneos}
 \label{subsec:misc}
@@ -414,19 +633,18 @@ parte linealizada y luego entrenas la no lineal para que te de la parte no linea
 \label{sec:conclusiones}
 
 
+\section{Referencias}
+\begin{itemize}
+	\item Material de la materia ``Control Automático''.
+	\item Control System Design. Autores: Graham C. Goodwin, Stefan F. Graebe, Mario E. Salgado. Año: 2000
+	\item \href{https://en.wikipedia.org/wiki/Neural_network_(machine_learning)}{Neural network (machine learning)}
+	\item \href{https://en.wikipedia.org/wiki/Machine_learning}{Machine learning}
+	\item \href{https://en.wikipedia.org/wiki/Neural_network}{Neural network}
+	\item \href{https://la.mathworks.com/help/deeplearning/ug/introduction-to-neural-network-control-systems.html}{Introduction to neural network control systems}
+\end{itemize}
 
-\href{https://en.wikipedia.org/wiki/Neural_network_(machine_learning)}{text}
-\href{https://en.wikipedia.org/wiki/Machine_learning}{text}
-\href{https://en.wikipedia.org/wiki/Neural_network}{text}
-\href{https://la.mathworks.com/help/deeplearning/ug/introduction-to-neural-network-control-systems.html}{text}
-\href{https://www.sciencedirect.com/topics/engineering/neural-network-controller}{text}
-\href{}{text}
-\href{}{text}
 
-CONTROL SYSTEM
-DESIGN
-Graham C. Goodwin1
-Stefan F. Graebe2
-Mario E. Salgado3
+
+
 
 \end{document}

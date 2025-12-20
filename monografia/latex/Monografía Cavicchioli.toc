@@ -1,10 +1,21 @@
 \babel@toc {spanish}{}\relax 
-\contentsline {section}{\numberline {1}Introducción}{2}{section.1}%
-\contentsline {section}{\numberline {2}Sistema elegido}{2}{section.2}%
-\contentsline {subsection}{\numberline {2.1}Modelo matemático}{3}{subsection.2.1}%
-\contentsline {subsection}{\numberline {2.2}Simulaciones}{5}{subsection.2.2}%
-\contentsline {section}{\numberline {3}Identificación de sistemas}{6}{section.3}%
-\contentsline {section}{\numberline {4}Control de sistemas}{6}{section.4}%
-\contentsline {section}{\numberline {5}Observadores}{6}{section.5}%
-\contentsline {section}{\numberline {6}Misceláneos}{6}{section.6}%
-\contentsline {section}{\numberline {7}Conclusiones}{6}{section.7}%
+\contentsline {section}{\numberline {1}Introducción}{3}{section.1}%
+\contentsline {section}{\numberline {2}Sistema elegido}{3}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Modelo matemático}{4}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Simulaciones}{6}{subsection.2.2}%
+\contentsline {section}{\numberline {3}Identificación de sistemas}{7}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Suposiciones y decisiones}{7}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}MLP de 1 capa oculta}{7}{subsection.3.2}%
+\contentsline {subsubsection}{\numberline {3.2.1}Introducción}{7}{subsubsection.3.2.1}%
+\contentsline {subsubsection}{\numberline {3.2.2}Entrenamiento}{8}{subsubsection.3.2.2}%
+\contentsline {subsubsection}{\numberline {3.2.3}Resultados}{9}{subsubsection.3.2.3}%
+\contentsline {subsubsection}{\numberline {3.2.4}Análisis de resultados}{9}{subsubsection.3.2.4}%
+\contentsline {subsection}{\numberline {3.3}Sistema lineal asistido}{13}{subsection.3.3}%
+\contentsline {subsubsection}{\numberline {3.3.1}Introducción}{13}{subsubsection.3.3.1}%
+\contentsline {subsubsection}{\numberline {3.3.2}Entrenamiento}{13}{subsubsection.3.3.2}%
+\contentsline {subsubsection}{\numberline {3.3.3}Resultados}{14}{subsubsection.3.3.3}%
+\contentsline {subsubsection}{\numberline {3.3.4}Análisis de resultados}{14}{subsubsection.3.3.4}%
+\contentsline {section}{\numberline {4}Control de sistemas}{14}{section.4}%
+\contentsline {section}{\numberline {5}Misceláneos}{14}{section.5}%
+\contentsline {section}{\numberline {6}Conclusiones}{14}{section.6}%
+\contentsline {section}{\numberline {7}Referencias}{14}{section.7}%
