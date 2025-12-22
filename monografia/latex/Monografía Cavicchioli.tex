@@ -38,7 +38,8 @@
 \usepackage[colorlinks=true, linkcolor=black, citecolor=green, urlcolor=red]{hyperref} % solo resalta
 \usepackage[spanish]{babel}
 
-
+\usepackage{booktabs}
+\usepackage{array}
 
 %%% HEADERS & FOOTERS
 \usepackage{fancyhdr} % This should be set AFTER setting up the page geometry
@@ -576,7 +577,7 @@ A continuación se presenta un cuadro con los RMSE de todas las respuestas, calc
 	\caption{Comparación del error cuadrático medio (RMSE) entre los distintos modelos evaluados}
 	\label{tab:rmse_comparacion}
 \end{table}
-
+\clearpage
 \subsubsection{Análisis de resultados}
 
 A partir de los resultados expuestos en el cuadro \ref{tab:rmse_comparacion}, se notan tendencias en la \textit{performance} de los varios modelos analizados. Primero, los modelos entrenados en base a más muestras (14400) tienen RMSE inferiores a los entrenados en base al set de 3600 muestras - que es consistente con las hipótesis antes mencionadas de la capacidad de captar no-linealidades.
@@ -589,14 +590,13 @@ Los resultados confirman que la cantidad de muestras disponibles permite el entr
 
 Ahora bien, se debe resaltar que ninguno de los modelos obtenidos es inherentemente malo, sino que el tipo de modelo a usar queda determinado por los requerimientos de la aplicación. Los experimentos recién detallados solo indican que una forma de lograr respuestas más similares a la real es por el uso de sistemas no lineales en la identificación.
 
-
+\newpage
 \subsection{Sistema lineal asistido}
 
 \subsubsection{Introducción}
 
-El segundo enfoque ideado surge del anterior. Si se puede lograr un buen desempeño con un modelo lineal, debería ser posible entrenar una red neuronal  que estime las salidas no lineales a partir de las lineales.
+El segundo enfoque ideado surge del anterior. Si se puede lograr un buen desempeño con un modelo lineal, tal vez se pude corregir el error de la estimación lineal por medio de una red neuronal que aprenda el error de estimación. La figura \ref{fig:red_autoreg2} muestra el sistema recién descripto. El hiperparámetro $m$ se va a ajustar para minimizar el error de entrenamiento y evaluación. *
 
-La figura \ref{fig:red_autoreg2} muestra el sistema armado. Se mantiene el mismo vector de entrada del experimento previo, con la diferencia que ahora las salida previas vienen del sistema lineal y no se predice la siguiente salida, sino que corrige la actual.
 
 \begin{figure}[h!]
 	\centering
@@ -605,24 +605,105 @@ La figura \ref{fig:red_autoreg2} muestra el sistema armado. Se mantiene el mismo
 	\label{fig:red_autoreg2}
 \end{figure}
 
-Inicialmente, se espera que este sistema logre mejor precisión que si solo se usara el lineal, pero no se puede saber si va a ser mejor que las otras redes. Además, se espera que sea más predecible, dado que una gran parte de la dinámica es fundamentalmente lineal.
+Inicialmente, se espera que este sistema logre mejor precisión que si solo se usara el lineal, pero no se puede afirmar a priori si va a ser mejor que las otras redes.
+
+Se va a usar el modelo lineal identificado por \textit{MATLAB}, y no el obtenido por medio del desarrollo matemático debido a 2 razones:
+\begin{itemize}
+	\item El modelo identificado dió mejores resultados.
+	\item El uso del modelo identificado tiene más sentido en el contexto de esta monografía, que se centra en la identificación de sistemas por medio del entrenamiento de sistemas.
+\end{itemize}
+
 
 \subsubsection{Entrenamiento}
 
-Graf de performance de la red!
+El proceso de \textit{fitting} comenzó generando un conjunto de datos auxiliar, formado por el error de estimación del sistema lineal $e =y - y_{lin}$, la salida lineal $y_{lin}$ y la entrada de los sistemas.
+A partir de este conjunto, se construyeron los vectores de entrada a las redes ya especificados (los retardos de la salida lineal y la entrada $u$), mientras que como objetivo se empleó el error de estimación.
 
-Se decidió entrenar 3 MLPs de 2, 5, 10 y 20 neuronas en la capa oculta. Se desea observar que complejidad de red se requiere para capturar el mapeo de la salida lineal a la no lineal.
-
+Como los resultados del entrenamiento no eran buenos, se decidió revertir la función de entrenamiento a su estado original, con los conjuntos de \textit{train}, \textit{test} y \textit{validation}.
 
 \subsubsection{Resultados}
 
+El cuadro~\ref{tab:resultados_cascada} muestra los experimentos realizados y el RMSE para cada uno. Cada prueba intentó mejorar la anterior de alguna forma, sea reduciendo la dimensión de la entrada o la cantidad de neuronas.
+
+\newpage
+
+\begin{table}[h!]
+	\centering
+	\begin{tabular}{c p{7cm} c c}
+		\toprule
+		\textbf{Prueba} & \textbf{Descripción de la red} & \textbf{RMSE} & \textbf{Figuras} \\
+		\midrule
+		1 &
+		MLP de 20 unidades en la capa oculta.
+		Usó $y_{\text{lin}}$ desde $n$ hasta $n-9$. &
+		$8.71 \times 10^{-6}$ &
+		Figs.~\ref{fig:prueba11}, \ref{fig:prueba12} \\
+
+		2 &
+		MLP de 20 unidades en la capa oculta.
+		Usó únicamente $y_{\text{lin}}(n)$. &
+		$9.18 \times 10^{-6}$ &
+		Figs.~\ref{fig:prueba21}, \ref{fig:prueba22} \\
+
+		3 &
+		MLP de 10 unidades en la capa oculta.
+		Usó $y_{\text{lin}}$ desde $n$ hasta $n-4$. &
+		$6.21 \times 10^{-6}$ &
+		Figs.~\ref{fig:prueba31}, \ref{fig:prueba32} \\
+
+		4 &
+		MLP de 5 unidades en la capa oculta.
+		Usó $y_{\text{lin}}$ desde $n$ hasta $n-4$. &
+		$5.78 \times 10^{-6}$ &
+		Figs.~\ref{fig:prueba41}, \ref{fig:prueba42} \\
+
+		5 &
+		MLP de 5 unidades en la capa oculta.
+		Usó $y_{\text{lin}}$ desde $n$ hasta $n-9$. &
+		$5.87 \times 10^{-6}$ &
+		Figs.~\ref{fig:prueba51}, \ref{fig:prueba52} \\
+		\bottomrule
+	\end{tabular}
+	\caption{Resultados de las pruebas}
+	\label{tab:resultados_cascada}
+\end{table}
+
+
+
 \subsubsection{Análisis de resultados}
 
+Primero, los resultados son peores que el modelo lineal solo, que recordando, logró un $RMSE = 1.80e-06$. Esto no es el resultado esperado pero está dentro de lo considerado posible.
+
+En segundo lugar, nótese que los mejores sistemas obtenidos son marginálmente mejores que el sistema lineal desarrollado matemáticamente, así que, aunque hubo un empeoramiento de la estimación, no fue lo peor que se obtuvo.
+
+Dicho esto, las gráficas de las salidas de todas las pruebas hechas muestran espurios generados por la red neuronal (no están en la salida lineal), que empeoran el RMSE y constituyen transiciones de estados que la planta original no podría experimentar nunca (como escalones a la salida). Esto claramente es un efecto indeseado introducido por las redes neuronales entrenadas.
+
+Por último, otro punto desfavorable para estos modelos híbridos es que su obtención tomó más tiempo que la de las redes neuronales solas o del modelo lineal estimado.
+
+
+Todo lo observado apunta a que estos sistemas son inferiores a las alternativas vistas antes tanto en tiempo como en ajuste. No obstante, es probable que con un cambio de enfoque y arquitectura, la idea de estimar el error $y - y_{lin}$ de forma no lineal sea viable.
+
+\newpage
+\subsection{Discusión general de resultados}
+
+En luz de los resultados ya expuestos en los incisos previos, se podrían hacer las siguientes afirmaciones:
+
+\begin{itemize}
+	\item Las redes neuronales sirven para hacer identificación de sistemas, y pueden lograr mejores ajustes que los modelos lineales.
+	\item El tamaño de las redes no es algo de menor importancia ya que parece condicionar la capacidad de ajuste final. Deberá se elegida a conciencia y por medio de ``prueba y error''.
+	\item Se observó una relación positiva entre la cantidad de neuronas en la capa oculta y el ajuste a la salida real.
+	\item Se notó que el uso de más muestras permite obtener redes neuronales con mejor ajuste.
+	\item Parecería preferible elegir un \textit{approach} puramente lineal o no lineal para la identificación que intentar fusionarlos. Esto último toma más tiempo y los resultados obtenidos no lo justifican.
+\end{itemize}
+
+Es clave entender que el uso de un sistema no lineal en el área de identificación de sistemas puede o no resultar un exceso. Como se dijo antes, la complejidad del modelo requerido queda completamente determinada por la aplicación. En este caso de 2 tanques de agua, un sistema no lineal es innecesario, pero para procesos ``menos lineales'' podría darse que el error de la estimación lineal es inadmisible, requiriéndose usar técnicas como las usadas.
+
+\newpage
 
 \section{Control de sistemas}
 \label{sec:control}
 
-
+Habiendop cocnluido la sección de
 
 \section{Misceláneos}
 \label{subsec:misc}
@@ -643,7 +724,74 @@ Se decidió entrenar 3 MLPs de 2, 5, 10 y 20 neuronas en la capa oculta. Se dese
 	\item \href{https://la.mathworks.com/help/deeplearning/ug/introduction-to-neural-network-control-systems.html}{Introduction to neural network control systems}
 \end{itemize}
 
+\newpage
 
+\section{Apéndice de imágenes}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.8\linewidth]{imgs/prueba1_1}
+	\caption{Comparación de salidas - prueba 1}
+	\label{fig:prueba11}
+\end{figure}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.8\linewidth]{imgs/prueba1_2}
+	\caption{Comparación de salidas - prueba 1}
+	\label{fig:prueba12}
+\end{figure}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.8\linewidth]{imgs/prueba2_1}
+	\caption{Comparación de salidas - prueba 2}
+	\label{fig:prueba21}
+\end{figure}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.8\linewidth]{imgs/prueba2_2}
+	\caption{Comparación de salidas - prueba 2}
+	\label{fig:prueba22}
+\end{figure}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.8\linewidth]{imgs/prueba3_1}
+	\caption{Comparación de salidas - prueba 3}
+	\label{fig:prueba31}
+\end{figure}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.8\linewidth]{imgs/prueba3_2}
+	\caption{Comparación de salidas - prueba 3}
+	\label{fig:prueba32}
+\end{figure}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.8\linewidth]{imgs/prueba4_1}
+	\caption{Comparación de salidas - prueba 4}
+	\label{fig:prueba41}
+\end{figure}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.8\linewidth]{imgs/prueba4_2}
+	\caption{Comparación de salidas - prueba 4}
+	\label{fig:prueba42}
+\end{figure}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.8\linewidth]{imgs/prueba5_1}
+	\caption{Comparación de salidas - prueba 5}
+	\label{fig:prueba51}
+\end{figure}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.8\linewidth]{imgs/prueba5_2}
+	\caption{Comparación de salidas - prueba 5}
+	\label{fig:prueba52}
+\end{figure}
 
 
 

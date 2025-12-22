@@ -39,12 +39,6 @@ net2 = entrenar_red(Xn, Tn, 2,4000);
 guardar_red('net_2_dataset14400.mat', ...
             net2, muX, sigX, muT, sigT, ny, nu);
 
-%% --- Perceptrón lineal ---
-net_lin = entrenar_perceptron_simple(Xn, Tn);
-guardar_red('net_lin_dataset14400.mat', ...
-            net_lin, muX, sigX, muT, sigT, ny, nu);
-
-clear out Xn Tn net20 net10 net5 net2 net_lin
 
 
 % DATASET 3600
@@ -79,9 +73,4 @@ net2 = entrenar_red(Xn, Tn, 2,1000);
 guardar_red('net_2_dataset3600.mat', ...
             net2, muX, sigX, muT, sigT, ny, nu);
 
-%% --- Perceptrón lineal ---
-net_lin = entrenar_perceptron_simple(Xn, Tn);
-guardar_red('net_lin_dataset3600.mat', ...
-            net_lin, muX, sigX, muT, sigT, ny, nu);
 
-clear out Xn Tn net20 net10 net5 net2 net_lin
