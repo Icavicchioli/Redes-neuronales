@@ -705,6 +705,57 @@ Es clave entender que el uso de un sistema no lineal en el área de identificaci
 
 Habiendop cocnluido la sección de
 
+
+
+1. agarro y armo pid -> SS -> pid tuner -> ajuste fiuno en simulink -> comparo como andan ante perturbaciones y como siguen la referencia.
+
+El controlador PID fue sintonizado utilizando el PID Tuner de MATLAB sobre el modelo linealizado continuo de la planta. Posteriormente, el controlador continuo fue discretizado mediante transformación bilineal para su implementación en Simulink, donde fue evaluado sobre el modelo no lineal completo.”
+
+
+Kp = 1.85
+Ki = 0.0055
+Kd= 0
+N=20
+
+luego de tener este lo ajusté con la red neuronal a 1.8 0.005 0 20
+
+luego se reemplazó la NN por la planta no lineal y anduvo bien, lo que ya nos imaginabamos porque eran sistemas que ajustaban bien, pero tmb responden igual a control. asi que genial
+
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.8\linewidth]{imgs/tuned_pid}
+	\caption{}
+	\label{fig:tunedpid}
+\end{figure}
+
+CL closed loop
+OL open loop
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.7\linewidth]{imgs/pid_simulink1}
+	\caption{}
+	\label{fig:pidsimulink1}
+\end{figure}
+
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.8\linewidth]{imgs/step_planta}
+	\caption{}
+	\label{fig:stepplanta}
+\end{figure}
+
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.7\linewidth]{imgs/step_lazo_controlado}
+	\caption{}
+	\label{fig:steplazocontrolado}
+\end{figure}
+
+
 \section{Misceláneos}
 \label{subsec:misc}
 
@@ -796,3 +847,6 @@ Habiendop cocnluido la sección de
 
 
 \end{document}
+
+
+

@@ -17,7 +17,7 @@
 \contentsline {subsubsection}{\numberline {3.3.4}Análisis de resultados}{16}{subsubsection.3.3.4}%
 \contentsline {subsection}{\numberline {3.4}Discusión general de resultados}{17}{subsection.3.4}%
 \contentsline {section}{\numberline {4}Control de sistemas}{18}{section.4}%
-\contentsline {section}{\numberline {5}Misceláneos}{18}{section.5}%
-\contentsline {section}{\numberline {6}Conclusiones}{18}{section.6}%
-\contentsline {section}{\numberline {7}Referencias}{18}{section.7}%
-\contentsline {section}{\numberline {8}Apéndice de imágenes}{19}{section.8}%
+\contentsline {section}{\numberline {5}Misceláneos}{19}{section.5}%
+\contentsline {section}{\numberline {6}Conclusiones}{19}{section.6}%
+\contentsline {section}{\numberline {7}Referencias}{19}{section.7}%
+\contentsline {section}{\numberline {8}Apéndice de imágenes}{21}{section.8}%
