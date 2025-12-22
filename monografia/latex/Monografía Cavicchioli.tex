@@ -109,22 +109,12 @@ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod 
 
 Las redes neuronales en sus múltiples formas constituyen sistemas no lineales con un amplio alcance de aplicación en campos como la biología, neurociencia y, al que se avoca este trabajo, aprendizaje automático (\textit{machine learning}, ML). En particular, nos interesa centrarnos en las aplicaciones de las redes neuronales en el campo de control automático. Esta doctrina se encarga del diseño sistemas para regular, guiar o estabilizar procesos de manera autónoma, mediante la realimentación y corrección continua de errores.
 
-La denominada ``caja de herramientas'' de aquellos en el área de control está compuesta por ciertos artefactos matemáticos que permiten encarar estos problemas, como la linealización de un sistema, el control PID, realimentación de estados, \textit{loop-shaping}, observadores, etc. Lo que no se ha tocado en las materias de control son las estrategias no lineales. En líneas generales, todos los sistemas reales exhiben cierto grado de no linearidad (citar CONTROL SYSTEM DESIGN Goodwin  Graebe Salgado, p551, cap19), lo que implica que las estrategias de control lineales son válidas siempre que las no linealidades sean despreciables. Análogamente, las herramientas de identificación de sistemas basadas en la linealización de un sistema fallaran en modelar las no linealidades de estos (Como PCA vs los \textit{autoencoders}).
+La denominada ``caja de herramientas'' de aquellos en el área de control está compuesta por ciertos artefactos matemáticos que permiten encarar estos problemas, como la linealización de un sistema, el control PID, realimentación de estados, \textit{loop-shaping}, observadores, etc. Lo que no se ha tocado en las materias de control son las estrategias no lineales. En líneas generales, todos los sistemas reales exhiben cierto grado de no linearidad (citar CONTROL SYSTEM DESIGN Goodwin  Graebe Salgado, p551, cap19), lo que implica que las estrategias de control lineales son válidas siempre que las no linealidades sean despreciables. Análogamente, las herramientas de identificación de sistemas basadas en la linealización de un sistema fallaran en modelar las no linealidades de estos.
 
-Este trabajo va a trabajar sobre el uso de redes neuronales en la doctrina de control automático, como identificacores de sistemas, controladores
+Este trabajo va a ahondar sobre el uso de redes neuronales en la doctrina de control automático, como identificadores de sistemas y controladores.
 
-\textbf{VER SI QUERËS METER ALGO DEL SOM QUE SALIÖ MAL Y DE OBERVADORES Y DE GAIN SCHEDULING}
 
 \section{Sistema elegido}
-
-Que
-tamaños
-Porque
-lo bueno
-lo malo
-la matemática -> espacio de estados no lineal y linealizado, transferencia (lineal).
-el simulink
-
 
 El sistema elegido está compuesto por 2 tanques de agua de dimensiones diferentes. Tanto la tubería que une los tanques como la que sale tienen cierto coeficiente hidráulico asociado a su geometría. Los valores se eligieron para que el sistema tenga sentido físico aunque no es un requisito. Se podría pensar que el sistema actúa como una cisterna amortiguadora de fluctuaciones en el caudal seguido de un reservorio que ajusta el caudal de salida.
 
@@ -388,14 +378,15 @@ Como el muestreo se realizó a \SI{1}{\Hz}, se decidió generar un \textit{datas
 \section{Identificación de sistemas}
 \label{subsec:ids}
 
-La primer experiencia de esta monografía consiste en entrenar una red neuronal en base a los datos de la planta elegida, con la finalidad de obtener un sistema no lineal que la emule.
+La primer experiencia de esta monografía se centra en la temática de identificación de sistemas a partir de muestras del mismo, abordado desde el lado de redes neuronales. Particularmente, se propone entrenar una red neuronal para que aprenda la dinámica de la planta, y que pueda reproducirla fehacientemente.
+
 
 \subsection{Suposiciones y decisiones}
 
 Con el objetivo de asegurar resultados conmensurables, los experimentos se armaron y realizaron siguiendo los siguientes preceptos:
 
 \begin{enumerate}
-	\item La única métrica de comparación elegida es el RMSE (ec. \eqref{RMCE}). Se calculará sobre las secuencias de salida de todas las redes entrenadas.
+	\item La única métrica de comparación elegida es el RMSE (ec. \eqref{RMSE}). Se calculará sobre las secuencias de salida de todas las redes entrenadas.
 
 	\begin{equation}
 		RMSE = \sqrt{\frac{1}{n} \sum ^n _{i=1} (\hat{x} - x)^2  }
@@ -463,8 +454,246 @@ Algunos puntos interesantes a destacar del entrenamiento son:
 
 \subsubsection{Resultados}
 
-Las figuras en esta sección muestran las señales de interés, incluyendo la entrada $u$, la salida $y$ real, la $y$ del sistema linealizado y la salida de cada red entrenada. La respuesta real (fig. \ref{fig:salida-y}) y las respuestas de las redes neuronales son casi indistinguibles, salvo por los transitorios iniciales. Sin embargo, lo mismo sucede para las respuestas obtenidas de los sistemas lineales.
+Las figuras del apéndice \ref{ap1} muestran las señales de interés, incluyendo la entrada $u$, la salida $y$ real, la $y$ del sistema linealizado y la salida de cada red entrenada. La respuesta real (fig. \ref{fig:salida-y}) y las respuestas de las redes neuronales son casi indistinguibles, salvo por los transitorios iniciales. Sin embargo, lo mismo sucede para las respuestas obtenidas de los sistemas lineales.
 
+
+A continuación se presenta un cuadro con los RMSE de todas las respuestas, calculado usando de referencia la salida del sistema no lineal original. Las secuencias fueron tomadas a partir de la muestra número 2000, evitando los transitorios, tal como se dijo que se iba a hacer.
+
+\begin{table}[h]
+	\centering
+	\begin{tabular}{l c}
+		\hline
+		\textbf{Modelo} & \textbf{RMSE} \\
+		\hline
+		MLP 20--14400             & $2.36 \times 10^{-7}$ \\
+		MLP 10--14400             & $3.24 \times 10^{-7}$ \\
+		MLP 5--14400              & $1.06 \times 10^{-6}$ \\
+		Modelo lineal (estimado)  & $1.80 \times 10^{-6}$ \\
+		MLP 5--3600               & $1.95 \times 10^{-6}$ \\
+		MLP 2--14400              & $2.01 \times 10^{-6}$ \\
+		MLP 20--3600              & $6.71 \times 10^{-6}$ \\
+		Modelo lineal (real)      & $6.83 \times 10^{-6}$ \\
+		MLP 2 --3600               & $1.88 \times 10^{-5}$ \\
+		MLP 10--3600              & $2.46 \times 10^{-5}$ \\
+		\hline
+	\end{tabular}
+	\caption{Comparación del error cuadrático medio (RMSE) entre los distintos modelos evaluados}
+	\label{tab:rmse_comparacion}
+\end{table}
+\clearpage
+\subsubsection{Análisis de resultados}
+
+A partir de los resultados expuestos en el cuadro \ref{tab:rmse_comparacion}, se notan tendencias en la \textit{performance} de los varios modelos analizados. Primero, los modelos entrenados en base a más muestras (14400) tienen RMSE inferiores a los entrenados en base al set de 3600 muestras - que es consistente con las hipótesis antes mencionadas de la capacidad de captar no-linealidades.
+
+En segundo lugar, el sistema lineal obtenido matemáticamente (apodado ``real'' en el cuadro), logró mejores ajustes que dos redes por un orden de magnitud. Esto puede deberse a que el modelo lineal es muy bueno o que las redes resultaron \textit{sub-par}. Dicho esto, es inferior que el resto de las redes, incluyendo 2 entrenadas con el \textit{dataset} pequeño, dando a entender que, incluso con pocas muestras se puede lograr un modelo no lineal mejor que uno simple derivado matemáticamente. Esto representa un punto a favor de la identificación del tipo ``caja negra/gris''.
+
+El ``podio'' de los resultados está compuesto de 3 redes neuronales y el modelo lineal estimado, todos entrenadas con el \textit{dataset} grande . La mejor red supera al modelo lineal por $7.6$ veces, y no sorprende que sea la red más grande. Se considera que, al disponer de más muestras, las redes lograron captar las no linealidades del modelo con mayor precisión.
+
+Los resultados confirman que la cantidad de muestras disponibles permite el entrenamiento de modelos más complejos, que llegan a precisiones superiores que sus contrapartes lineales.
+
+Ahora bien, se debe resaltar que ninguno de los modelos obtenidos es inherentemente malo, sino que el tipo de modelo a usar queda determinado por los requerimientos de la aplicación. Los experimentos recién detallados solo indican que una forma de lograr respuestas más similares a la real es por el uso de sistemas no lineales en la identificación.
+
+\newpage
+\subsection{Sistema lineal asistido}
+
+\subsubsection{Introducción}
+
+El segundo enfoque ideado surge del anterior. Si se puede lograr un buen desempeño con un modelo lineal, tal vez se pude corregir el error de la estimación lineal por medio de una red neuronal que aprenda el error de estimación. La figura \ref{fig:red_autoreg2} muestra el sistema recién descripto. El hiperparámetro $m$ se va a ajustar para minimizar el error de entrenamiento y evaluación. *
+
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.9\linewidth]{imgs/red_autoreg2}
+	\caption{Modelo de red}
+	\label{fig:red_autoreg2}
+\end{figure}
+
+Inicialmente, se espera que este sistema logre mejor precisión que si solo se usara el lineal, pero no se puede afirmar a priori si va a ser mejor que las otras redes.
+
+Se va a usar el modelo lineal identificado por \textit{MATLAB}, y no el obtenido por medio del desarrollo matemático debido a 2 razones:
+\begin{itemize}
+	\item El modelo identificado dió mejores resultados.
+	\item El uso del modelo identificado tiene más sentido en el contexto de esta monografía, que se centra en la identificación de sistemas por medio del entrenamiento de sistemas.
+\end{itemize}
+
+
+\subsubsection{Entrenamiento}
+
+El proceso de \textit{fitting} comenzó generando un conjunto de datos auxiliar, formado por el error de estimación del sistema lineal $e =y - y_{lin}$, la salida lineal $y_{lin}$ y la entrada de los sistemas.
+A partir de este conjunto, se construyeron los vectores de entrada a las redes ya especificados (los retardos de la salida lineal y la entrada $u$), mientras que como objetivo se empleó el error de estimación.
+
+Como los resultados del entrenamiento no eran buenos, se decidió revertir la función de entrenamiento a su estado original, con los conjuntos de \textit{train}, \textit{test} y \textit{validation}.
+
+\subsubsection{Resultados}
+
+El cuadro~\ref{tab:resultados_cascada} muestra los experimentos realizados y el RMSE para cada uno. Cada prueba intentó mejorar la anterior de alguna forma, sea reduciendo la dimensión de la entrada o la cantidad de neuronas. La columna de ``\textbf{Figuras}'' referencia las respuestas en el tiempo de cada prueba, ubicadas en el apéndice \ref{ap2} para que no entorpezcan la lectura.
+
+
+\begin{table}[h!]
+	\centering
+	\begin{tabular}{c p{7cm} c c}
+		\toprule
+		\textbf{Prueba} & \textbf{Descripción de la red} & \textbf{RMSE} & \textbf{Figuras} \\
+		\midrule
+		1 &
+		MLP de 20 unidades en la capa oculta.
+		Usó $y_{\text{lin}}$ desde $n$ hasta $n-9$. &
+		$8.71 \times 10^{-6}$ &
+		Figs.~\ref{fig:prueba11}, \ref{fig:prueba12} \\
+
+		2 &
+		MLP de 20 unidades en la capa oculta.
+		Usó únicamente $y_{\text{lin}}(n)$. &
+		$9.18 \times 10^{-6}$ &
+		Figs.~\ref{fig:prueba21}, \ref{fig:prueba22} \\
+
+		3 &
+		MLP de 10 unidades en la capa oculta.
+		Usó $y_{\text{lin}}$ desde $n$ hasta $n-4$. &
+		$6.21 \times 10^{-6}$ &
+		Figs.~\ref{fig:prueba31}, \ref{fig:prueba32} \\
+
+		4 &
+		MLP de 5 unidades en la capa oculta.
+		Usó $y_{\text{lin}}$ desde $n$ hasta $n-4$. &
+		$5.78 \times 10^{-6}$ &
+		Figs.~\ref{fig:prueba41}, \ref{fig:prueba42} \\
+
+		5 &
+		MLP de 5 unidades en la capa oculta.
+		Usó $y_{\text{lin}}$ desde $n$ hasta $n-9$. &
+		$5.87 \times 10^{-6}$ &
+		Figs.~\ref{fig:prueba51}, \ref{fig:prueba52} \\
+		\bottomrule
+	\end{tabular}
+	\caption{Resultados de las pruebas}
+	\label{tab:resultados_cascada}
+\end{table}
+
+
+
+\subsubsection{Análisis de resultados}
+
+Antes que nada, se destaca los resultados son peores que el modelo lineal solo, que recordando, logró un $RMSE = 1.80e-06$. Esto no es el resultado esperado pero está dentro de lo posible.
+
+En segundo lugar, nótese que los mejores sistemas obtenidos son marginálmente mejores que el sistema lineal desarrollado matemáticamente, así que, aunque hubo un empeoramiento de la estimación respecto del sistema lineal estimado, no son los peores ajustes obtenidos.
+
+
+Dicho esto, las gráficas de las salidas de todas las pruebas hechas muestran espurios generados por la red neuronal (no están en la salida lineal), que empeoran el RMSE y constituyen transiciones de estados que la planta original no podría experimentar nunca (como escalones a la salida). Esto claramente es un efecto indeseado introducido por las redes neuronales entrenadas.
+
+Por último, otro punto desfavorable para estos modelos híbridos es que su obtención tomó más tiempo que la de las redes neuronales solas o del modelo lineal estimado.
+
+
+Todo lo observado apunta a que estos sistemas son inferiores a las alternativas vistas antes tanto en tiempo como en ajuste. No obstante, es probable que con un cambio de enfoque y arquitectura, la idea de estimar el error $y - y_{lin}$ de forma no lineal sea viable.
+
+\newpage
+\subsection{Discusión general de resultados}
+
+En luz de los resultados ya expuestos en los incisos previos, se podrían hacer las siguientes afirmaciones:
+
+\begin{itemize}
+	\item Las redes neuronales sirven para hacer identificación de sistemas, y pueden lograr mejores ajustes que los modelos lineales.
+	\item El tamaño de las redes no es algo de menor importancia ya que parece condicionar la capacidad de ajuste final. Deberá se elegida a conciencia y por medio de ``prueba y error''.
+	\item Se observó una relación positiva entre la cantidad de neuronas en la capa oculta y el ajuste a la salida real.
+	\item Se notó que el uso de más muestras permite obtener redes neuronales con mejor ajuste.
+	\item Parecería preferible elegir un \textit{approach} puramente lineal o no lineal para la identificación que intentar fusionarlos. Esto último toma más tiempo y los resultados obtenidos no lo justifican.
+\end{itemize}
+
+Es clave entender que el uso de un sistema no lineal en el área de identificación de sistemas puede o no resultar un exceso. Como se dijo antes, la complejidad del modelo requerido queda completamente determinada por la aplicación. En este caso de 2 tanques de agua, un sistema no lineal es innecesario, pero para procesos ``menos lineales'' podría darse que el error de la estimación lineal es inadmisible, requiriéndose usar técnicas como las usadas.
+
+\newpage
+
+\section{Control de sistemas}
+\label{sec:control}
+
+Habiendo concluido la sección de identificación de sistemas, se puede avanzar al segundo tema de esta monografía, que es el control. La primer idea es mostrar que el modelo no lineal compuesto por una red neuronal sirve para diseñar un controlador. Luego, se propone clonar un controlador (como se hizo con la planta no lineal) para analizar su desempeño a lazo cerrado.
+
+\subsection{Diseño de controlador con modelo no lineal identificado como referencia}
+
+Para esta experiencia, se tomó la red neuronal con mejor ajuste del inciso \ref{subsec:ids} y se diseñó un controlador del tipo PID, buscando una respuesta veloz pero no sub-amortiguada. Luego, se verificó su funcionamiento cambiando la red neuronal por el modelo no lineal real.
+
+\subsubsection{Diseño del PID}
+
+El diseño de un PID es un proceso iterativo en el que se van ajustando los coeficientes $k_p$, $k_i$ y $k_d$ hasta obtener la respuesta deseada. En este caso particular, esto se hizo en \textit{simulink}, y la figura \ref{fig:pid-nn-simulink} muestra el lazo final. La imagen \ref{fig:RTA-pid-nn-simulink} muestra las salidas a lazo abierto y cerrado, la acción de control y la referencia.
+
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.9\linewidth]{imgs/pid NN simulink}
+	\caption{Esquema de control de la red neuronal por PID}
+	\label{fig:pid-nn-simulink}
+\end{figure}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.9\linewidth]{imgs/tuned_pidNN}
+	\caption{Esquema de control de la red neuronal por PID}
+	\label{fig:RTA-pid-nn-simulink}
+\end{figure}
+
+Nótese que la respuesta verde, correspondiente a la salida a lazo cerrado, llega antes que la roja (lazo abierto) al estado estacionario fijado por la referencia. Esto indica que el PID logró acelerar el sistema sin volverlo extremadamente agresivo u oscilante. Además, la acción de control es acotada, sin divergencias.
+
+Las figuras \ref{fig:pid-nolin-simulink} y \ref{fig:RTA-pid-nolin-simulink} muestran el sistema armado con la planta no lineal y las salidas tal como antes. Se observa que el controlador diseñado sobre el modelo no lineal conformado por con redes neuronales funcionó con la planta real. De alguna forma, esto está alineado con las observaciones de la experiencia de identificación, validando que el sistema emulado por una red neuronal sirve para el diseño de controladores.
+
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.9\linewidth]{imgs/pid Nolin simulink}
+	\caption{Esquema de control de la red neuronal por PID}
+	\label{fig:pid-nolin-simulink}
+\end{figure}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.9\linewidth]{imgs/tuned_pidNolin}
+	\caption{Esquema de control de la red neuronal por PID}
+	\label{fig:RTA-pid-nolin-simulink}
+\end{figure}
+
+\newpage
+
+\subsubsection{Clonado de controlador}
+
+
+1. agarro y armo pid -> SS -> pid tuner -> ajuste fiuno en simulink -> comparo como andan ante perturbaciones y como siguen la referencia.
+
+El controlador PID fue sintonizado utilizando el PID Tuner de MATLAB sobre el modelo linealizado continuo de la planta. Posteriormente, el controlador continuo fue discretizado mediante transformación bilineal para su implementación en Simulink, donde fue evaluado sobre el modelo no lineal completo.”
+
+
+Kp = 1.85
+Ki = 0.0055
+Kd= 0
+N=20
+
+luego de tener este lo ajusté con la red neuronal a 1.8 0.005 0 20
+
+luego se reemplazó la NN por la planta no lineal y anduvo bien, lo que ya nos imaginabamos porque eran sistemas que ajustaban bien, pero tmb responden igual a control. asi que genial
+
+
+
+\section{Misceláneos}
+\label{subsec:misc}
+
+
+
+\section{Conclusiones}
+\label{sec:conclusiones}
+
+
+\section{Referencias}
+\begin{itemize}
+	\item Material de la materia ``Control Automático''.
+	\item Control System Design. Autores: Graham C. Goodwin, Stefan F. Graebe, Mario E. Salgado. Año: 2000
+	\item \href{https://en.wikipedia.org/wiki/Neural_network_(machine_learning)}{Neural network (machine learning)}
+	\item \href{https://en.wikipedia.org/wiki/Machine_learning}{Machine learning}
+	\item \href{https://en.wikipedia.org/wiki/Neural_network}{Neural network}
+	\item \href{https://la.mathworks.com/help/deeplearning/ug/introduction-to-neural-network-control-systems.html}{Introduction to neural network control systems}
+\end{itemize}
+
+\newpage
+
+\section{Apéndice 1 - Resultados de la primer experiencia de identificación}
+\label{ap1}
 
 \begin{figure}[h!]
 	\centering
@@ -553,231 +782,8 @@ Las figuras en esta sección muestran las señales de interés, incluyendo la en
 	\label{fig:mlp-2-3600}
 \end{figure}
 
-
-A continuación se presenta un cuadro con los RMSE de todas las respuestas, calculado usando de referencia la salida del sistema no lineal original. Las secuencias fueron tomadas a partir de la muestra número 2000, evitando los transitorios, tal como se dijo que se iba a hacer.
-
-\begin{table}[h]
-	\centering
-	\begin{tabular}{l c}
-		\hline
-		\textbf{Modelo} & \textbf{RMSE} \\
-		\hline
-		MLP 20--14400             & $2.36 \times 10^{-7}$ \\
-		MLP 10--14400             & $3.24 \times 10^{-7}$ \\
-		MLP 5--14400              & $1.06 \times 10^{-6}$ \\
-		Modelo lineal (estimado)  & $1.80 \times 10^{-6}$ \\
-		MLP 5--3600               & $1.95 \times 10^{-6}$ \\
-		MLP 2--14400              & $2.01 \times 10^{-6}$ \\
-		MLP 20--3600              & $6.71 \times 10^{-6}$ \\
-		Modelo lineal (real)      & $6.83 \times 10^{-6}$ \\
-		MLP 2 --3600               & $1.88 \times 10^{-5}$ \\
-		MLP 10--3600              & $2.46 \times 10^{-5}$ \\
-		\hline
-	\end{tabular}
-	\caption{Comparación del error cuadrático medio (RMSE) entre los distintos modelos evaluados}
-	\label{tab:rmse_comparacion}
-\end{table}
-\clearpage
-\subsubsection{Análisis de resultados}
-
-A partir de los resultados expuestos en el cuadro \ref{tab:rmse_comparacion}, se notan tendencias en la \textit{performance} de los varios modelos analizados. Primero, los modelos entrenados en base a más muestras (14400) tienen RMSE inferiores a los entrenados en base al set de 3600 muestras - que es consistente con las hipótesis antes mencionadas de la capacidad de captar no-linealidades.
-
-En segundo lugar, el sistema lineal obtenido matemáticamente (apodado ``real'' en el cuadro), logró mejores ajustes que dos redes por un orden de magnitud. Esto puede deberse a que el modelo lineal es muy bueno o que las redes resultaron \textit{sub-par}. Dicho esto, es inferior que el resto de las redes, incluyendo 2 entrenadas con el \textit{dataset} pequeño, dando a entender que, incluso con pocas muestras se puede lograr un modelo no lineal mejor que uno simple derivado matemáticamente. Esto representa un punto a favor de la identificación del tipo ``caja negra/gris''.
-
-El ``podio'' de los resultados está compuesto de 3 redes neuronales y el modelo lineal estimado, todos entrenadas con el \textit{dataset} grande . La mejor red supera al modelo lineal por $7.6$ veces, y no sorprende que sea la red más grande. Se considera que, al disponer de más muestras, las redes lograron captar las no linealidades del modelo con mayor precisión.
-
-Los resultados confirman que la cantidad de muestras disponibles permite el entrenamiento de modelos más complejos, que llegan a precisiones superiores que sus contrapartes lineales.
-
-Ahora bien, se debe resaltar que ninguno de los modelos obtenidos es inherentemente malo, sino que el tipo de modelo a usar queda determinado por los requerimientos de la aplicación. Los experimentos recién detallados solo indican que una forma de lograr respuestas más similares a la real es por el uso de sistemas no lineales en la identificación.
-
-\newpage
-\subsection{Sistema lineal asistido}
-
-\subsubsection{Introducción}
-
-El segundo enfoque ideado surge del anterior. Si se puede lograr un buen desempeño con un modelo lineal, tal vez se pude corregir el error de la estimación lineal por medio de una red neuronal que aprenda el error de estimación. La figura \ref{fig:red_autoreg2} muestra el sistema recién descripto. El hiperparámetro $m$ se va a ajustar para minimizar el error de entrenamiento y evaluación. *
-
-
-\begin{figure}[h!]
-	\centering
-	\includegraphics[width=0.9\linewidth]{imgs/red_autoreg2}
-	\caption{Modelo de red}
-	\label{fig:red_autoreg2}
-\end{figure}
-
-Inicialmente, se espera que este sistema logre mejor precisión que si solo se usara el lineal, pero no se puede afirmar a priori si va a ser mejor que las otras redes.
-
-Se va a usar el modelo lineal identificado por \textit{MATLAB}, y no el obtenido por medio del desarrollo matemático debido a 2 razones:
-\begin{itemize}
-	\item El modelo identificado dió mejores resultados.
-	\item El uso del modelo identificado tiene más sentido en el contexto de esta monografía, que se centra en la identificación de sistemas por medio del entrenamiento de sistemas.
-\end{itemize}
-
-
-\subsubsection{Entrenamiento}
-
-El proceso de \textit{fitting} comenzó generando un conjunto de datos auxiliar, formado por el error de estimación del sistema lineal $e =y - y_{lin}$, la salida lineal $y_{lin}$ y la entrada de los sistemas.
-A partir de este conjunto, se construyeron los vectores de entrada a las redes ya especificados (los retardos de la salida lineal y la entrada $u$), mientras que como objetivo se empleó el error de estimación.
-
-Como los resultados del entrenamiento no eran buenos, se decidió revertir la función de entrenamiento a su estado original, con los conjuntos de \textit{train}, \textit{test} y \textit{validation}.
-
-\subsubsection{Resultados}
-
-El cuadro~\ref{tab:resultados_cascada} muestra los experimentos realizados y el RMSE para cada uno. Cada prueba intentó mejorar la anterior de alguna forma, sea reduciendo la dimensión de la entrada o la cantidad de neuronas.
-
-\newpage
-
-\begin{table}[h!]
-	\centering
-	\begin{tabular}{c p{7cm} c c}
-		\toprule
-		\textbf{Prueba} & \textbf{Descripción de la red} & \textbf{RMSE} & \textbf{Figuras} \\
-		\midrule
-		1 &
-		MLP de 20 unidades en la capa oculta.
-		Usó $y_{\text{lin}}$ desde $n$ hasta $n-9$. &
-		$8.71 \times 10^{-6}$ &
-		Figs.~\ref{fig:prueba11}, \ref{fig:prueba12} \\
-
-		2 &
-		MLP de 20 unidades en la capa oculta.
-		Usó únicamente $y_{\text{lin}}(n)$. &
-		$9.18 \times 10^{-6}$ &
-		Figs.~\ref{fig:prueba21}, \ref{fig:prueba22} \\
-
-		3 &
-		MLP de 10 unidades en la capa oculta.
-		Usó $y_{\text{lin}}$ desde $n$ hasta $n-4$. &
-		$6.21 \times 10^{-6}$ &
-		Figs.~\ref{fig:prueba31}, \ref{fig:prueba32} \\
-
-		4 &
-		MLP de 5 unidades en la capa oculta.
-		Usó $y_{\text{lin}}$ desde $n$ hasta $n-4$. &
-		$5.78 \times 10^{-6}$ &
-		Figs.~\ref{fig:prueba41}, \ref{fig:prueba42} \\
-
-		5 &
-		MLP de 5 unidades en la capa oculta.
-		Usó $y_{\text{lin}}$ desde $n$ hasta $n-9$. &
-		$5.87 \times 10^{-6}$ &
-		Figs.~\ref{fig:prueba51}, \ref{fig:prueba52} \\
-		\bottomrule
-	\end{tabular}
-	\caption{Resultados de las pruebas}
-	\label{tab:resultados_cascada}
-\end{table}
-
-
-
-\subsubsection{Análisis de resultados}
-
-Primero, los resultados son peores que el modelo lineal solo, que recordando, logró un $RMSE = 1.80e-06$. Esto no es el resultado esperado pero está dentro de lo considerado posible.
-
-En segundo lugar, nótese que los mejores sistemas obtenidos son marginálmente mejores que el sistema lineal desarrollado matemáticamente, así que, aunque hubo un empeoramiento de la estimación, no fue lo peor que se obtuvo.
-
-Dicho esto, las gráficas de las salidas de todas las pruebas hechas muestran espurios generados por la red neuronal (no están en la salida lineal), que empeoran el RMSE y constituyen transiciones de estados que la planta original no podría experimentar nunca (como escalones a la salida). Esto claramente es un efecto indeseado introducido por las redes neuronales entrenadas.
-
-Por último, otro punto desfavorable para estos modelos híbridos es que su obtención tomó más tiempo que la de las redes neuronales solas o del modelo lineal estimado.
-
-
-Todo lo observado apunta a que estos sistemas son inferiores a las alternativas vistas antes tanto en tiempo como en ajuste. No obstante, es probable que con un cambio de enfoque y arquitectura, la idea de estimar el error $y - y_{lin}$ de forma no lineal sea viable.
-
-\newpage
-\subsection{Discusión general de resultados}
-
-En luz de los resultados ya expuestos en los incisos previos, se podrían hacer las siguientes afirmaciones:
-
-\begin{itemize}
-	\item Las redes neuronales sirven para hacer identificación de sistemas, y pueden lograr mejores ajustes que los modelos lineales.
-	\item El tamaño de las redes no es algo de menor importancia ya que parece condicionar la capacidad de ajuste final. Deberá se elegida a conciencia y por medio de ``prueba y error''.
-	\item Se observó una relación positiva entre la cantidad de neuronas en la capa oculta y el ajuste a la salida real.
-	\item Se notó que el uso de más muestras permite obtener redes neuronales con mejor ajuste.
-	\item Parecería preferible elegir un \textit{approach} puramente lineal o no lineal para la identificación que intentar fusionarlos. Esto último toma más tiempo y los resultados obtenidos no lo justifican.
-\end{itemize}
-
-Es clave entender que el uso de un sistema no lineal en el área de identificación de sistemas puede o no resultar un exceso. Como se dijo antes, la complejidad del modelo requerido queda completamente determinada por la aplicación. En este caso de 2 tanques de agua, un sistema no lineal es innecesario, pero para procesos ``menos lineales'' podría darse que el error de la estimación lineal es inadmisible, requiriéndose usar técnicas como las usadas.
-
-\newpage
-
-\section{Control de sistemas}
-\label{sec:control}
-
-Habiendop cocnluido la sección de
-
-
-
-1. agarro y armo pid -> SS -> pid tuner -> ajuste fiuno en simulink -> comparo como andan ante perturbaciones y como siguen la referencia.
-
-El controlador PID fue sintonizado utilizando el PID Tuner de MATLAB sobre el modelo linealizado continuo de la planta. Posteriormente, el controlador continuo fue discretizado mediante transformación bilineal para su implementación en Simulink, donde fue evaluado sobre el modelo no lineal completo.”
-
-
-Kp = 1.85
-Ki = 0.0055
-Kd= 0
-N=20
-
-luego de tener este lo ajusté con la red neuronal a 1.8 0.005 0 20
-
-luego se reemplazó la NN por la planta no lineal y anduvo bien, lo que ya nos imaginabamos porque eran sistemas que ajustaban bien, pero tmb responden igual a control. asi que genial
-
-
-\begin{figure}[h!]
-	\centering
-	\includegraphics[width=0.8\linewidth]{imgs/tuned_pid}
-	\caption{}
-	\label{fig:tunedpid}
-\end{figure}
-
-CL closed loop
-OL open loop
-
-\begin{figure}
-	\centering
-	\includegraphics[width=0.7\linewidth]{imgs/pid_simulink1}
-	\caption{}
-	\label{fig:pidsimulink1}
-\end{figure}
-
-
-\begin{figure}[h!]
-	\centering
-	\includegraphics[width=0.8\linewidth]{imgs/step_planta}
-	\caption{}
-	\label{fig:stepplanta}
-\end{figure}
-
-
-\begin{figure}[h!]
-	\centering
-	\includegraphics[width=0.7\linewidth]{imgs/step_lazo_controlado}
-	\caption{}
-	\label{fig:steplazocontrolado}
-\end{figure}
-
-
-\section{Misceláneos}
-\label{subsec:misc}
-
-
-
-\section{Conclusiones}
-\label{sec:conclusiones}
-
-
-\section{Referencias}
-\begin{itemize}
-	\item Material de la materia ``Control Automático''.
-	\item Control System Design. Autores: Graham C. Goodwin, Stefan F. Graebe, Mario E. Salgado. Año: 2000
-	\item \href{https://en.wikipedia.org/wiki/Neural_network_(machine_learning)}{Neural network (machine learning)}
-	\item \href{https://en.wikipedia.org/wiki/Machine_learning}{Machine learning}
-	\item \href{https://en.wikipedia.org/wiki/Neural_network}{Neural network}
-	\item \href{https://la.mathworks.com/help/deeplearning/ug/introduction-to-neural-network-control-systems.html}{Introduction to neural network control systems}
-\end{itemize}
-
-\newpage
-
-\section{Apéndice de imágenes}
+\section{Apéndice 2 - Resultados de la segunda experiencia de identificación}
+\label{ap2}
 
 \begin{figure}[h!]
 	\centering
