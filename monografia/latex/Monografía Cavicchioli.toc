@@ -18,12 +18,13 @@
 \contentsline {subsection}{\numberline {3.4}Discusión general de resultados}{13}{subsection.3.4}%
 \contentsline {section}{\numberline {4}Control de sistemas}{14}{section.4}%
 \contentsline {subsection}{\numberline {4.1}Diseño de controlador con modelo no lineal identificado como referencia}{14}{subsection.4.1}%
-\contentsline {subsubsection}{\numberline {4.1.1}Diseño del PID y resultados}{14}{subsubsection.4.1.1}%
-\contentsline {subsection}{\numberline {4.2}Clonado del controlador}{15}{subsection.4.2}%
-\contentsline {subsubsection}{\numberline {4.2.1}Entrenamiento}{15}{subsubsection.4.2.1}%
-\contentsline {subsubsection}{\numberline {4.2.2}Resultados}{16}{subsubsection.4.2.2}%
-\contentsline {subsection}{\numberline {4.3}Entrenamiento de un controlador}{16}{subsection.4.3}%
-\contentsline {section}{\numberline {5}Conclusiones}{16}{section.5}%
-\contentsline {section}{\numberline {6}Referencias}{16}{section.6}%
-\contentsline {section}{\numberline {7}Apéndice 1 - Resultados de la primer experiencia de identificación}{17}{section.7}%
-\contentsline {section}{\numberline {8}Apéndice 2 - Resultados de la segunda experiencia de identificación}{17}{section.8}%
+\contentsline {subsubsection}{\numberline {4.1.1}Teoría del control PID}{14}{subsubsection.4.1.1}%
+\contentsline {subsubsection}{\numberline {4.1.2}Diseño del controlador y resultados}{14}{subsubsection.4.1.2}%
+\contentsline {subsection}{\numberline {4.2}Clonado del controlador}{17}{subsection.4.2}%
+\contentsline {subsubsection}{\numberline {4.2.1}Entrenamiento}{17}{subsubsection.4.2.1}%
+\contentsline {subsubsection}{\numberline {4.2.2}Resultados}{19}{subsubsection.4.2.2}%
+\contentsline {subsubsection}{\numberline {4.2.3}Análisis de resultados}{21}{subsubsection.4.2.3}%
+\contentsline {section}{\numberline {5}Conclusiones}{21}{section.5}%
+\contentsline {section}{\numberline {6}Referencias}{21}{section.6}%
+\contentsline {section}{\numberline {7}Apéndice 1 - Resultados de la primer experiencia de identificación}{22}{section.7}%
+\contentsline {section}{\numberline {8}Apéndice 2 - Resultados de la segunda experiencia de identificación}{22}{section.8}%

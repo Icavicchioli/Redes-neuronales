@@ -111,7 +111,7 @@ Las redes neuronales en sus múltiples formas constituyen sistemas no lineales c
 
 La denominada ``caja de herramientas'' de aquellos en el área de control está compuesta por ciertos artefactos matemáticos que permiten encarar estos problemas, como la linealización de un sistema, el control PID, realimentación de estados, \textit{loop-shaping}, observadores, etc. Lo que no se ha tocado en las materias de control son las estrategias no lineales. En líneas generales, todos los sistemas reales exhiben cierto grado de no linearidad (citar CONTROL SYSTEM DESIGN Goodwin  Graebe Salgado, p551, cap19), lo que implica que las estrategias de control lineales son válidas siempre que las no linealidades sean despreciables. Análogamente, las herramientas de identificación de sistemas basadas en la linealización de un sistema fallaran en modelar las no linealidades de estos.
 
-Este trabajo va a ahondar sobre el uso de redes neuronales en la doctrina de control automático, como identificadores de sistemas y controladores.
+Este trabajo va a ahondar sobre el uso de redes neuronales en la doctrina de control automático, como identificadores de sistemas y clonadores de controladores.
 
 
 \section{Sistema elegido}
@@ -612,7 +612,24 @@ Habiendo concluido la sección de identificación de sistemas, se puede avanzar 
 
 Para esta experiencia, se tomó la red neuronal con mejor ajuste del inciso \ref{subsec:ids} y se diseñó un controlador del tipo PID, buscando una respuesta veloz pero no sub-amortiguada. Luego, se verificó su funcionamiento cambiando la red neuronal por el modelo no lineal real.
 
-\subsubsection{Diseño del PID y resultados}
+\subsubsection{Teoría del control PID}
+
+Citando el capítulo 6 del libro ``\textit{Control System Design}'',  un controlador PID - proporcional, integral y derivativo - es una estructura de control casi universalmente usada en la industria por su simpleza. Una posible transferencia completa de este tipo de controlador es la siguiente:
+
+$$
+C_{PID}(s) = K_p + \frac{K_i}{s} + \frac{K_d s}{\gamma _d K_d s +1}
+$$
+
+\begin{itemize}
+	\item \textbf{Acción proporcional $K_p$}: genera una acción de control proporcional al error. Estabiliza plantas ya estables, pero no corrige el error en estado estacionario.
+	\item \textbf{Acción integral $K_i$}: produce una acción de control proporcional al error acumulado. Corrige el error en estado estacionario para referencias tipo escalón pero puede causar problemas de fase debido al polo en el origen.
+	\item \textbf{Acción derivativa $K_d$}: devuelve una acción de control proporcional a la derivada del error. En la práctica, ruido de los sensores puede introducir derivadas elevadas y, por ende, acciones de control desmedidas. Hay que usarla con cuidado y filtrando adecuadamente.
+\end{itemize}
+
+No se eligió otra estrategia de control porque el sistema no lo amerita, considerando su simpleza y que es estable a lazo abierto.
+
+
+\subsubsection{Diseño del controlador y resultados}
 
 El diseño de un PID es un proceso iterativo en el que se van ajustando los coeficientes $k_p$, $k_i$ y $k_d$ hasta obtener la respuesta deseada. En este caso particular, esto se hizo en \textit{simulink}, y la figura \ref{fig:pid-nn-simulink} muestra el lazo final. La imagen \ref{fig:RTA-pid-nn-simulink} muestra las salidas a lazo abierto y cerrado, la acción de control y la referencia.
 
@@ -627,11 +644,11 @@ El diseño de un PID es un proceso iterativo en el que se van ajustando los coef
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=0.9\linewidth]{imgs/tuned_pidNN}
-	\caption{Esquema de control de la red neuronal por PID}
+	\caption{Simulación a lazo cerrado - planta armada con red neuronal}
 	\label{fig:RTA-pid-nn-simulink}
 \end{figure}
 
-Nótese que la respuesta verde, correspondiente a la salida a lazo cerrado, llega antes que la roja (lazo abierto) al estado estacionario fijado por la referencia. Esto indica que el PID logró acelerar el sistema sin volverlo extremadamente agresivo u oscilante. Además, la acción de control es acotada, sin divergencias.
+Nótese que la respuesta verde, correspondiente a la salida a lazo cerrado, llega antes que la roja (lazo abierto) al estado estacionario fijado por la referencia. Esto indica que el PID logró acelerar el sistema sin volverlo extremadamente agresivo u oscilante. Además, la acción de control es acotada, sin divergencias. La constante $K_d$ resultó nula, por lo que el control es en realidad un PI pero se va a seguir referenciando como PID por el bloque de \textit{simulink}.
 
 Las figuras \ref{fig:pid-nolin-simulink} y \ref{fig:RTA-pid-nolin-simulink} muestran el sistema armado con la planta no lineal y las salidas tal como antes. Se observa que el controlador diseñado sobre el modelo no lineal conformado por con redes neuronales funcionó con la planta real. Esto está alineado con las observaciones de la experiencia de identificación, y valida que el sistema emulado por una red neuronal sirve para el diseño de controladores.
 
@@ -639,36 +656,95 @@ Las figuras \ref{fig:pid-nolin-simulink} y \ref{fig:RTA-pid-nolin-simulink} mues
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=0.9\linewidth]{imgs/pid Nolin simulink}
-	\caption{Esquema de control de la red neuronal por PID}
+	\caption{Esquema de control de la planta no lineal por PID}
 	\label{fig:pid-nolin-simulink}
 \end{figure}
 
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=0.9\linewidth]{imgs/tuned_pidNolin}
-	\caption{Esquema de control de la red neuronal por PID}
+	\caption{Simulación a lazo cerrado - planta no lineal real}
 	\label{fig:RTA-pid-nolin-simulink}
 \end{figure}
 
-\newpage
+\clearpage
 
 \subsection{Clonado del controlador}
 
-Teniendo un controlador funcional, se procedió a generar muestras de este y clonarlo por medio de una red neuronal. El procedimiento es idéntico al empleado en identificación de sistemas, pero lo novedoso está en estudiar si una red neuronal puede reemplazar al controlador. Se espera que la red va a poder emular al controlador pero sin las seguridades que trae el uso de un PID, tales como seguridad que va a operar en cierto rango de acciones de control y no va a caer en ciclos repetitivos o divergir de forma espuria.
+Teniendo un controlador funcional, se procedió a generar muestras de este y clonarlo por medio de una red neuronal. El procedimiento es idéntico al empleado en identificación de sistemas, pero lo novedoso está en estudiar si una red neuronal puede reemplazar al controlador. Se espera que la red pueda emular al controlador pero sin las seguridades que trae el uso de un PID, tales como seguridad que va a operar en cierto rango de acciones de control y no va a caer en ciclos repetitivos, divergir de forma espuria o asegurar error nulo en estado estacionario.
 
 \subsubsection{Entrenamiento}
 
 Usando el esquema de la figura \ref{fig:pid-nolin-simulink}, se armó un set de datos de 14400 muestras constituido por la referencia, el error (referencia menos salida), la salida del controlador y la salida de la planta. Se mantuvo un tamaño idéntico al que dió los mejores resultados en la identificación de sistemas.
 
-Como arquitectura, se eligió red neuronal auto-regresiva de 20 neuronas en su capa oculta que usa de entrada las últimas 10 salidas de la planta, aparte de la referencia y error. Se espera que la redundancia de información de usar la referencia, salida y error mejore el resultado ya que la red no necesita aprender el error.
+Como arquitectura, se eligió una red neuronal auto-regresiva de 20 neuronas en su capa oculta que usa de entrada las últimas 10 salidas de la planta, aparte de la referencia y error. Se espera que la redundancia de información de usar la referencia, salida y error mejore el resultado ya que la red no necesita aprender el error a partir de las otras.
+
+La figura \ref{fig:cloncontroltrain} muestra el error de entrenamiento/testeo. Se observa que corta en un punto de relativa convergencia (derivada baja). La \ref{fig:stepnnpid2} contiene unos gráficos que muestran la \textit{performance} de la red respecto de los datos. Se espera que la red funcione debido a aque error de predicción es pequeño y acotado, indicando que, para la región en la que se entrenó, la red lo emula.
+
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.8\linewidth]{imgs/clon_control_train}
+	\caption{Error de entrenamiento y evaluación de la red}
+	\label{fig:cloncontroltrain}
+\end{figure}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=1\linewidth]{imgs/step_NN_PID2}
+	\caption{Evaluación de la red}
+	\label{fig:stepnnpid2}
+\end{figure}
+
+\clearpage
 
 \subsubsection{Resultados}
 
+La figura \ref{fig:stepnnpid} muestra la respuesta al escalón del controlador real y del clonado. Son prácticamente coincidentes, lo que es un indicio de que el entrenamiento funcionó. la figura \ref{fig:stepnnpidaccionconrtol} muestra las acciones de control para las respuestas al escalón; no se ven espurios inadecuados.
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.8\linewidth]{imgs/step_NN_PID}
+	\caption{Respuestas al escalón}
+	\label{fig:stepnnpid}
+\end{figure}
 
 
-\subsection{Entrenamiento de un controlador}
 
-Como última experiencia se va a hacer la matemática de una red neuronal que estime por gradiente descendiente
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.8\linewidth]{imgs/step_NN_PID_accionconrtol}
+	\caption{Respuestas al escalón - acciones de control}
+	\label{fig:stepnnpidaccionconrtol}
+\end{figure}
+
+
+
+Ahora bien, lo interesante es lo siguiente. La imagen \ref{fig:cloncontrolpulsosref} muestra las salidas a lazo cerrado cuando varía la referencia. Se empeizan a observar problemas con el controlador clonado, principalmente que su error en estado estacionario no es nulo, como el del controlador original (el PI/PID). Es más, la figura \ref{fig:cloncontrolpulsosruido}, simulada con el esquema \ref{fig:esquemaruidoentradaplanta}, indica que hay algo fundamentalmente equivocado con la estrategia de control, ya que el controlador clonado no comprende que el ruido introducido en el lazo se debe eliminar y, en cambio, está respondiendo a el como si fueran cambios en la referencia.
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.8\linewidth]{imgs/clon_control_pulsos_ref}
+	\caption{Respuesta a cambios en la referencia}
+	\label{fig:cloncontrolpulsosref}
+\end{figure}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.8\linewidth]{imgs/clon_control_pulsos_ruido}
+	\caption{Respuesta a ruido en la salida del controlador}
+	\label{fig:cloncontrolpulsosruido}
+\end{figure}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.9\linewidth]{imgs/esquema_ruido_entrada_planta}
+	\caption{Esquema de simulación de ruido en la salida del controlador}
+	\label{fig:esquemaruidoentradaplanta}
+\end{figure}
+
+\subsubsection{Análisis de resultados}
+
 
 
 
