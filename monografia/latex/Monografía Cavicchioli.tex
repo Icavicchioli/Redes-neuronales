@@ -720,7 +720,8 @@ La figura \ref{fig:stepnnpid} muestra la respuesta al escalón del controlador r
 
 
 
-Ahora bien, lo interesante es lo siguiente. La imagen \ref{fig:cloncontrolpulsosref} muestra las salidas a lazo cerrado cuando varía la referencia. Se empeizan a observar problemas con el controlador clonado, principalmente que su error en estado estacionario no es nulo, como el del controlador original (el PI/PID). Es más, la figura \ref{fig:cloncontrolpulsosruido}, simulada con el esquema \ref{fig:esquemaruidoentradaplanta}, indica que hay algo fundamentalmente equivocado con la estrategia de control, ya que el controlador clonado no comprende que el ruido introducido en el lazo se debe eliminar y, en cambio, está respondiendo a el como si fueran cambios en la referencia.
+Ahora bien, lo interesante es lo siguiente. La imagen \ref{fig:cloncontrolpulsosref} muestra las salidas a lazo cerrado cuando varía la referencia. Se empeizan a observar problemas con el controlador clonado, principalmente que su error en estado estacionario no es nulo, como el del controlador original (el PI/PID). Es más, la figura \ref{fig:cloncontrolpulsosruido}, simulada con el esquema \ref{fig:esquemaruidoentradaplanta}, indica que hay algo fundamentalmente mal, ya que el controlador clonado no comprende que el ruido introducido en el lazo se debe eliminar y, en cambio, está respondiendo a estos como si fueran cambios en la referencia.
+
 
 \begin{figure}[h!]
 	\centering
@@ -742,6 +743,11 @@ Ahora bien, lo interesante es lo siguiente. La imagen \ref{fig:cloncontrolpulsos
 	\caption{Esquema de simulación de ruido en la salida del controlador}
 	\label{fig:esquemaruidoentradaplanta}
 \end{figure}
+
+En retrospectiva, el \textit{dataset} nunca debería haber incluido la referencia, ya que es invariante con las perturbaciones en el lazo. Para ser justos, se entrenó otra red usando un set de datos que usa solo el error del lazo y salida. Dado los resultados previos, no se tienen demasiada fe en que funcione.
+
+
+
 
 \subsubsection{Análisis de resultados}
 
