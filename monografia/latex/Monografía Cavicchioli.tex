@@ -68,8 +68,8 @@
 \title{
 	\vspace{-2cm} % Ajusta este valor para subir/bajar todo el bloque
 	\centering
-	\LARGE \textbf{Monografía Final} \\[0.8cm]
-	\Huge \textbf{Mi título} \\[1.5cm]
+	\LARGE \textbf{Monografía} \\[0.8cm]
+	\Huge \textbf{Identificación de sistemas no lineales por medio de redes neuronales auto-regresivas} \\[1.5cm]
 	\large
 	\textbf{Universidad de Buenos Aires} \\
 	Facultad de Ingeniería \\[0.5cm]
@@ -104,6 +104,7 @@
 
 \vspace{1cm}
 
+\newpage
 % TABLA DE CONTENIDOS
 \tableofcontents
 \newpage
@@ -114,14 +115,14 @@
 
 Las redes neuronales en sus múltiples formas constituyen sistemas no lineales con un amplio alcance de aplicación en campos como la biología, neurociencia y, al que se avoca este trabajo, aprendizaje automático (\textit{machine learning}, ML). En particular, nos interesa centrarnos en las aplicaciones de las redes neuronales en el campo de control automático. Esta doctrina se encarga del diseño sistemas para regular, guiar o estabilizar procesos de manera autónoma, mediante la realimentación y corrección continua de errores.
 
-La denominada ``caja de herramientas'' de aquellos en el área de control está compuesta por ciertos artefactos matemáticos que permiten encarar estos problemas, como la linealización de un sistema, el control PID, realimentación de estados, \textit{loop-shaping}, observadores, etc. Lo que no se ha tocado en las materias de control son las estrategias no lineales. En líneas generales, todos los sistemas reales exhiben cierto grado de no linearidad (citar CONTROL SYSTEM DESIGN Goodwin  Graebe Salgado, p551, cap19), lo que implica que las estrategias de control lineales son válidas siempre que las no linealidades sean despreciables. Análogamente, las herramientas de identificación de sistemas basadas en la linealización de un sistema fallaran en modelar las no linealidades de estos.
+La denominada ``caja de herramientas'' de aquellos en el área de control está compuesta por ciertos artefactos matemáticos que permiten encarar estos problemas, como la linealización de un sistema, el control PID, realimentación de estados, \textit{loop-shaping}, observadores, etc. Lo que no se ha tocado en las materias de control son las estrategias no lineales. En líneas generales, todos los sistemas reales exhiben cierto grado de no linearidad, lo que implica que las estrategias de control lineales son válidas siempre que las no linealidades sean despreciables. Análogamente, las herramientas de identificación de sistemas basadas en la linealización de un sistema fallaran en modelar las no linealidades de estos.
 
-Este trabajo va a ahondar sobre el uso de redes neuronales en la doctrina de control automático, como identificadores de sistemas y clonadores de controladores.
+Este trabajo va a ahondar sobre el uso de redes neuronales en la doctrina de control automático, específicamente como identificadores de sistemas y clonadores de controladores.
 
 
 \section{Sistema elegido}
 
-El sistema elegido está compuesto por 2 tanques de agua de dimensiones diferentes. Tanto la tubería que une los tanques como la que sale tienen cierto coeficiente hidráulico asociado a su geometría. Los valores se eligieron para que el sistema tenga sentido físico aunque no es un requisito. Se podría pensar que el sistema actúa como una cisterna amortiguadora de fluctuaciones en el caudal seguido de un reservorio que ajusta el caudal de salida.
+El sistema elegido está compuesto por 2 tanques de agua de dimensiones diferentes, dónde el primer tanque actúa como una cisterna amortiguadora de fluctuaciones en el caudal seguido de un reservorio que ajusta el caudal de salida. Este tipo de esquemas podrían encontrarse en procesos industriales que requieren de un caudal estabilizado.
 
 \begin{figure}[h!]
 	\centering
@@ -130,19 +131,21 @@ El sistema elegido está compuesto por 2 tanques de agua de dimensiones diferent
 	\label{fig:tanques}
 \end{figure}
 
-La figura \ref{fig:tanques} muestra el sistema recién descripto, agregando los caudales de entrada y salida $u$ e $y$. Ambos caudales son muestreados a \SI{1}{\Hz}, que debería ser más que suficiente para este tipo de dinámicas lentas.
+La figura \ref{fig:tanques} muestra el sistema recién descripto, agregando los caudales de entrada y salida $u$ e $y$. Ambos caudales son muestreados a \SI{1}{\Hz}, que debería ser más que suficiente para este tipo de dinámicas lentas. Tanto la tubería que une los tanques como la que sale del segundo tienen cierto coeficiente hidráulico asociado a su geometría, siendo estos $K_{12}$ y $K_2$ respectivamente.
 
-Las razones por la cuales se eligió este sistema son:
+\newpage
+
+Las razones por la cuales se eligió este sistema son las siguientes:
 \begin{itemize}
-	\item Simplicidad: Es un sistema de 2 estados, simple de modelar, linealizar, simular y controlar. Las redes quese prueben deberían poder con este problema.
+	\item Simplicidad: Es un sistema de vector de estados de 2 dimensiones, simple de modelar, linealizar, simular y controlar.
 	\item No linealidad: Como se va a ver en el inciso matemático, el sistema no es lineal, que sería un requisito si se está intentando evaluar la capacidad de copiar no linealidades de las redes neuronales.
-	\item Realismo: Se prefirió elegir un sistema que sea fácil de entender pero real, no una abstracción de un sistema más complejo.
+	\item Realismo: Se prefirió elegir un sistema que sea fácil de entender pero real, no una reducción de un sistema más complejo.
 \end{itemize}
 
 
 \subsection{Modelo matemático}
 
-El modelado de este sistema hace uso de varias leyes físicas de la hidráulica. Primero se plantea que el líquido es incompresible, por lo que el volumen solo varía si los caudales de entrada y salida no son iguales.
+El modelado de este sistema hace uso de varias leyes físicas de la hidráulica. Primero, se plantea que el líquido es incompresible, por lo que el volumen solo varía si los caudales de entrada y salida no son iguales.
 
 \begin{equation}
 	\frac{dV}{dt} = \sum q_{in} - \sum q_{out}
@@ -150,7 +153,7 @@ El modelado de este sistema hace uso de varias leyes físicas de la hidráulica.
 \end{equation}
 
 
-Además, el volumen es función del área del tanque y su superficie (en este caso que el área es independiente del nivel de agua). Podemos derivar respecto del tiempo.
+Además, en este caso que el área es independiente del nivel de agua, el volumen es función del área del tanque y su superficie. Podemos derivar respecto del tiempo.
 
 \begin{equation}
 	V(t) = A \cdot h(t) \overset{d/dt}{\longrightarrow } \frac{dV}{dt} = A \cdot \frac{dh(t)}{dt}
@@ -207,7 +210,7 @@ $$
 h_1 \ge h_2 \ge 0
 $$
 
-Con todo esto se plantea el espacio de estados\textbf{ no lineal} y continuo con la forma de a continuación:
+Con todo esto se plantea el espacio de estados\textbf{ no lineal} y continuo, con la forma de a continuación:
 
 \begin{equation}
 	\frac{d}{dt}
@@ -352,16 +355,17 @@ y = \begin{bmatrix}
 \label{eq:17}
 \end{equation}
 
-Además de usar este modelo matemático, se estimó un espacio de estados de misma dimensión a partir del \textit{dataset} de 14400 muestras (explicado más adelante), para comparar con las redes.
+
+Además de usar este modelo matemático, se dispone de un sistema en espacio de estados de misma dimensión estimado a partir del \textit{dataset} de 14400 muestras (explicado más adelante) usando el \textit{toolbox} correspondiente de \textit{MATALB}. La idea es poder contrastar la calidad de este sistema lineal identificado con la de los modelos no lineales también identificados.
 
 \newpage
 \subsection{Simulaciones}
 
-Para esta monografía se decidió hacer uso de \textit{scripts} \textit{MATLAB} y el entorno de \textit{Simulink} debido a la versatilidad que trae en lo que es simulación de sistemas, además que es la herramienta usada en las materias de control automático. La figura \ref{fig:pnolin} muestra el sistema no lineal armado. En pocas palabras, usa las constantes definidas en el \textit{workbench}, la entrada $u$ y los estados integrados para calcular el siguiente estado de la planta.
+Para esta monografía se decidió hacer uso de \textit{scripts} \textit{MATLAB} y el entorno de \textit{Simulink} debido a la versatilidad que trae en lo que es simulación de sistemas, además que es la herramienta usada en las materias de control automático. La figura \ref{fig:pnolin} muestra el sistema no lineal armado, que simula la planta en tiempo real.
 
 \begin{figure}[h!]
 	\centering
-	\includegraphics[width=0.6\linewidth]{imgs/P_no_lin}
+	\includegraphics[width=0.5\linewidth]{imgs/P_no_lin}
 	\caption{Planta no lineal armada en \textit{simulink}}
 	\label{fig:pnolin}
 \end{figure}
@@ -374,15 +378,9 @@ Para esta monografía se decidió hacer uso de \textit{scripts} \textit{MATLAB} 
 	\label{fig:pnolinmuestreada}
 \end{figure}
 
-La figura \ref{fig:pnolinmuestreada} muestra el sistema de \textit{simulink} que emula el muestreo de la planta. De entrada $u$ se usó una secuencia de escalones de amplitudes aleatorias (ruido blanco gaussiano) alrededor del $10 \%$ del punto operativo. Esto se hizo para poder tener una buena variedad de respuestas al escalón, que se espera ayude a que la red aprenda la dinámica.
+La figura \ref{fig:pnolinmuestreada} muestra el sistema de \textit{simulink} que realiza el muestreo de la planta. La entrada $u$ es una secuencia de escalones de amplitudes aleatorias (ruido blanco gaussiano) alrededor del $10 \%$ del punto operativo. Esto se hizo para poder tener una buena variedad de respuestas al escalón, que se espera ayude a que la red aprenda la dinámica subyacente.
 
-Como el muestreo se realizó a \SI{1}{\Hz}, se decidió generar un \textit{dataset} de 4 horas (14400 muestras), y otro de 1 hora (3600 muestras). La intención es observar cuanto empeora la \textit{performance} de la red con menos muestras de entrenamiento. Estos sets de muestras están contenidos en una vecindad del punto operativo.
-
-
-
-
-
-
+Como el muestreo se realizó a \SI{1}{\Hz}, se decidió generar un \textit{dataset} de 4 horas (14400 muestras), y otro de 1 hora (3600 muestras). La intención es observar cuanto empeora la \textit{performance} de la red con menos muestras de entrenamiento. Como ya se explicó, estos sets de muestras están contenidos en una vecindad del punto operativo, y no son representativos de todo el espacio de estados del sistema, sino que solo de la porción simulada.
 
 
 \section{Identificación de sistemas}
@@ -396,18 +394,22 @@ La primer experiencia de esta monografía se centra en la temática de identific
 Con el objetivo de asegurar resultados conmensurables, los experimentos se armaron y realizaron siguiendo los siguientes preceptos:
 
 \begin{enumerate}
-	\item La única métrica de comparación elegida es el RMSE (ec. \eqref{RMSE}). Se calculará sobre las secuencias de salida de todas las redes entrenadas.
+	\item La única métrica de comparación elegida es el RMSE (ec. \eqref{RMSE}). Este se calcula sobre las secuencias de salida de todas las redes entrenadas.
 
 	\begin{equation}
 		RMSE = \sqrt{\frac{1}{n} \sum ^n _{i=1} (\hat{x} - x)^2  }
 		\label{RMSE}
 	\end{equation}
 
-	\item El RMSE se calculará sobre la secuencia de datos de salida pero sin incluir el transitorio inicial. Esto es porque el transitorio inicial no está bien representado en los datos de entrenamiento.
-	\item El RMSE se usa para evaluar el funcionamiento en una región acotada del espacio de estados, no la capacidad de extrapolación.
-	\item Todos los modelos deberán poder usarse de forma auto-regresiva, es decir, realimentados con sus propias salidas. Esto implica que el entrenamientos se va a tener que realizar hasta que se observe convergencia en la simulación.
-	\item La cantidad de \textit{epochs} y la cantidad de intentos de entrenamiento no fueron fijadas, sino que se ajustaron empíricamente,  asegurando el cumplimiento del ítem 2.
+	\item El RMSE se calculó sobre la secuencia de datos de salida pero sin incluir el transitorio inicial. Esto es porque el transitorio inicial no está bien representado en los datos de entrenamiento.
+	\item El RMSE se usó para evaluar el funcionamiento en una región acotada del espacio de estados, no la capacidad de extrapolación.
+
+	\item Todos los modelos deben poder usarse de forma auto-regresiva, es decir, realimentados con sus propias salidas. Esto conllevó que los entrenamientos se tuvieran que realizar hasta que se observase convergencia en la simulación.
+
+	\item La cantidad de \textit{epochs} y la cantidad de intentos de entrenamiento no son fijas, sino que se ajustaron empíricamente,  asegurando el cumplimiento del ítem 2.
+
 	\item Los datos se separaron en \textit{train} y \textit{test} en una proporción de $85\%$ a $/15\%$. La separación se realizó de forma secuencial, es decir, se tomo el primer $85\%$ de las muestras para entrenar y el resto para evaluar, manteniendo cierta semblanza al orden temporal. Se podría argumentar que las muestras de evaluación no necesariamente se van a distribuir idénticamente que las de entrenamiento, pero se priorizó variedad de muestras, y el hecho de que los escalones se generaron de forma aleatoria debería ayudar.
+
 	\item Se aplicó una normalización en media y varianza a los datos previo a entrenar. Se espera que esto mejore la \textit{performance} (a entradas más espaciadas, pesos más separados) y la convergencia en el \textit{fitting}.
 \end{enumerate}
 
@@ -419,7 +421,7 @@ Con esto dicho, se procede a los ensayos.
 
 \subsubsection{Introducción}
 
-El primer \textit{approach} pensado es usar un MLP de 1 capa oculta y entrenarlo en base a los datos de la planta en una configuración auto-regresiva como la de la figura \ref{fig:redautoreg}. Dado lo visto en la materia, se espera que el MLP logre captar las no-linealidades de la planta con una capacidad que aumenta con la cantidad de neuronas en su capa oculta. En palabras más simples, se espera que los modelos más chicos tengan peor desempeño que los grandes.
+El primer \textit{approach} pensado es usar un MLP de 1 capa oculta y entrenarlo en base a los datos de la planta en una configuración auto-regresiva como la de la figura \ref{fig:redautoreg}. Dado lo visto en la materia, se espera que el MLP logre captar las no-linealidades de la planta con una capacidad que aumenta con la cantidad de neuronas en su capa oculta. En palabras más simples, se tiene la expectativa que los modelos más chicos tengan peor desempeño que los grandes.
 
 \begin{figure}[h!]
 	\centering
@@ -444,9 +446,7 @@ y(n),\; y(n-1),\; \dots,\; y(n-9),\; u(n)
 \big)
 \]
 
-Algunos lectores podrían argumentar que sería injusto comparar un modelo lineal que usa la salida actual con uno auto-regresivo de orden 10, pero la elección no es arbitraria, sino que basada en el hecho de que el sistema es lento.
-
-Si se usaran pocos retardos, escalones de entrada pequeños causarían que el vector de entrada sea un apilamiento de números casi idénticos, posiblemente dificultando la inferencia de la dinámica. En cambio, una ventana temporal mayor permite que los cambios exponenciales se observan de forma más completa y la red pueda capturar la velocidad de variación correcta.
+Algunos lectores podrían argumentar que sería injusto comparar un modelo lineal que usa la salida actual con uno auto-regresivo de orden 10, pero la elección no es arbitraria, sino que basada en el hecho de que el sistema es lento. Si se usaran pocos retardos, escalones de entrada pequeños causarían que el vector de entrada sea un apilamiento de números casi idénticos, posiblemente dificultando la inferencia de la dinámica. En cambio, una ventana temporal mayor permite que los cambios exponenciales se observan de forma más completa y la red pueda capturar la velocidad de variación correcta.
 
 Todo esto introduce una asimetría respecto del modelo lineal, que usa solo el estado actual. Sin embargo, como el objetivo principal es evaluar la capacidad de las redes neuronales para reproducir la dinámica del sistema, se consideró aceptable priorizar una buena representación temporal.
 
@@ -468,10 +468,11 @@ Algunos puntos interesantes a destacar del entrenamiento son:
 
 \subsubsection{Resultados}
 
-Las figuras del apéndice \ref{ap1} muestran las señales de interés, incluyendo la entrada $u$, la salida $y$ real, la $y$ del sistema linealizado y la salida de cada red entrenada. La respuesta real (fig. \ref{fig:salida-y}) y las respuestas de las redes neuronales son casi indistinguibles, salvo por los transitorios iniciales. Sin embargo, lo mismo sucede para las respuestas obtenidas de los sistemas lineales.
+Las figuras del apéndice \ref{ap1} muestran las señales de interés, incluyendo la entrada $u$, la salida $y$ real, la $y$ del sistema linealizado y la salida de cada red entrenada. Las imágenes se trasladaron a un apéndice para que no estorben en la lectura.
 
 
-A continuación se presenta un cuadro con los RMSE de todas las respuestas, calculado usando de referencia la salida del sistema no lineal original. Las secuencias fueron tomadas a partir de la muestra número 2000, evitando los transitorios, tal como se dijo que se iba a hacer.
+Mediante inspección visual, la respuesta real (fig. \ref{fig:salida-y}) y las respuestas de las redes neuronales aparecen casi indistinguibles, salvo por los transitorios iniciales. Sin embargo, lo mismo se observa para las respuestas obtenidas de los sistemas lineales.
+Por esto, se presenta un cuadro con los RMSE de todas las respuestas, calculado usando de referencia la salida del sistema no lineal original. Las secuencias fueron tomadas a partir de la muestra número 2000, evitando los transitorios, tal como se dijo que se iba a hacer.
 
 \begin{table}[h]
 	\centering
@@ -516,7 +517,9 @@ Ahora bien, se debe resaltar que ninguno de los modelos obtenidos es inherenteme
 
 \subsubsection{Introducción}
 
-El segundo enfoque ideado surge del anterior. Si se puede lograr un buen desempeño con un modelo lineal, tal vez se pude corregir el error de la estimación lineal por medio de una red neuronal que aprenda el error de estimación. La figura \ref{fig:red_autoreg2} muestra el sistema recién descripto. El hiperparámetro $m$ se va a ajustar para minimizar el error de entrenamiento y evaluación.
+El segundo enfoque ideado surge como una posible avenida de mejora del \textit{approach} anterior: Si se puede lograr un buen desempeño con un modelo lineal, tal vez se pude corregir el error de la estimación lineal por medio de una red neuronal que aprenda el error de estimación. Se supone que, teniendo el sistema lineal como estimador del estado, la red podría dedicar toda su estructura a aprender la codificación que lleva la estimación lineal a la real, logrando una mejor estimación.
+
+La figura \ref{fig:red_autoreg2} muestra el sistema recién descripto. El hiperparámetro $m$ se va a ajustar manualmente para minimizar el error de entrenamiento y evaluación.
 
 
 \begin{figure}[h!]
@@ -531,7 +534,7 @@ Inicialmente, se espera que este sistema logre mejor precisión que si solo se u
 Se va a usar el modelo lineal identificado por \textit{MATLAB}, y no el obtenido por medio del desarrollo matemático debido a 2 razones:
 \begin{itemize}
 	\item El modelo identificado dió mejores resultados.
-	\item El uso del modelo identificado tiene más sentido en el contexto de esta monografía, que se centra en la identificación de sistemas por medio del entrenamiento de sistemas.
+	\item El uso del modelo identificado tiene más sentido en el contexto de esta monografía, que se centra en la identificación de sistemas, y no su derivación matemática.
 \end{itemize}
 
 
@@ -544,7 +547,7 @@ Como los resultados del entrenamiento no eran buenos, se decidió revertir la fu
 
 \subsubsection{Resultados}
 
-El cuadro~\ref{tab:resultados_cascada} muestra los experimentos realizados y el RMSE para cada uno. Cada prueba intentó mejorar la anterior de alguna forma, sea reduciendo la dimensión de la entrada o la cantidad de neuronas. La columna de ``\textbf{Figuras}'' referencia las respuestas en el tiempo de cada prueba, ubicadas en el apéndice \ref{ap2} para que no entorpezcan la lectura.
+El cuadro~\ref{tab:resultados_cascada} muestra el RMSE de cada uno de los experimentos realizados. Cada prueba intentó mejorar la anterior de alguna forma, sea reduciendo la dimensión de la entrada o la cantidad de neuronas. La columna de ``{Figuras}'' referencia las respuestas en el tiempo de cada prueba, ubicadas en el apéndice \ref{ap2} para que no entorpezcan la lectura.
 
 
 \begin{table}[h!]
@@ -553,32 +556,39 @@ El cuadro~\ref{tab:resultados_cascada} muestra los experimentos realizados y el 
 		\toprule
 		\textbf{Prueba} & \textbf{Descripción de la red} & \textbf{RMSE} & \textbf{Figuras} \\
 		\midrule
-		1 &
-		MLP de 20 unidades en la capa oculta.
-		Usó $y_{\text{lin}}$ desde $n$ hasta $n-9$. &
+		1 &MLP de 20 unidades en la capa oculta.
+
+		Usó $y_{\text{lin}}$ desde $n$ hasta $n-9$.
+		\vspace{2mm}
+		 &
 		$8.71 \times 10^{-6}$ &
 		Figs.~\ref{fig:prueba11}, \ref{fig:prueba12} \\
 
 		2 &
 		MLP de 20 unidades en la capa oculta.
-		Usó únicamente $y_{\text{lin}}(n)$. &
+
+		Usó únicamente $y_{\text{lin}}(n)$. \vspace{2mm}&
 		$9.18 \times 10^{-6}$ &
 		Figs.~\ref{fig:prueba21}, \ref{fig:prueba22} \\
 
 		3 &
 		MLP de 10 unidades en la capa oculta.
-		Usó $y_{\text{lin}}$ desde $n$ hasta $n-4$. &
+
+		Usó $y_{\text{lin}}$ desde $n$ hasta $n-4$.\vspace{2mm} &
 		$6.21 \times 10^{-6}$ &
 		Figs.~\ref{fig:prueba31}, \ref{fig:prueba32} \\
 
 		4 &
 		MLP de 5 unidades en la capa oculta.
-		Usó $y_{\text{lin}}$ desde $n$ hasta $n-4$. &
+
+		Usó $y_{\text{lin}}$ desde $n$ hasta $n-4$.\vspace{2mm} &
 		$5.78 \times 10^{-6}$ &
 		Figs.~\ref{fig:prueba41}, \ref{fig:prueba42} \\
 
+
 		5 &
 		MLP de 5 unidades en la capa oculta.
+
 		Usó $y_{\text{lin}}$ desde $n$ hasta $n-9$. &
 		$5.87 \times 10^{-6}$ &
 		Figs.~\ref{fig:prueba51}, \ref{fig:prueba52} \\
@@ -592,17 +602,14 @@ El cuadro~\ref{tab:resultados_cascada} muestra los experimentos realizados y el 
 
 \subsubsection{Análisis de resultados}
 
-Antes que nada, se destaca los resultados son peores que el modelo lineal solo, que recordando, logró un $RMSE = 1.80e-06$. Esto no es el resultado esperado pero está dentro de lo posible.
+Antes que nada, nótese que, si bien los mejores sistemas obtenidos solo son marginálmente mejores que el sistema lineal desarrollado matemáticamente, todos ellos implican un empeoramiento respecto del modelo lineal a partir del cual fue construido el enfoque. En este sentido, la comparación directa pierde relevancia, ya que el deterioro introducido por la identificación sugiere la existencia de un problema con el enfoque.
 
-En segundo lugar, nótese que los mejores sistemas obtenidos son marginálmente mejores que el sistema lineal desarrollado matemáticamente, así que, aunque hubo un empeoramiento de la estimación respecto del sistema lineal estimado, no son los peores ajustes obtenidos.
+Las gráficas de las salidas de todas las pruebas hechas muestran espurios generados por la red neuronal, no están en la salida lineal, que empeoran el RMSE y constituyen transiciones de estados que la planta original no podría experimentar nunca, tales como escalones a la salida. Esto claramente es un efecto indeseado introducido por las redes neuronales entrenadas.
 
-
-Dicho esto, las gráficas de las salidas de todas las pruebas hechas muestran espurios generados por la red neuronal (no están en la salida lineal), que empeoran el RMSE y constituyen transiciones de estados que la planta original no podría experimentar nunca (como escalones a la salida). Esto claramente es un efecto indeseado introducido por las redes neuronales entrenadas.
-
-Por último, otro punto desfavorable para estos modelos híbridos es que su obtención tomó más tiempo que la de las redes neuronales solas o del modelo lineal estimado.
+Por último, otro punto desfavorable para estos modelos híbridos es que su obtención tomó más tiempo que la de las redes neuronales solas o incluso del modelo lineal estimado.
 
 
-Todo lo observado apunta a que estos sistemas son inferiores a las alternativas vistas antes tanto en tiempo como en ajuste. No obstante, es probable que con un cambio de enfoque y arquitectura, la idea de estimar el error $y - y_{lin}$ de forma no lineal sea viable.
+Todo lo observado apunta a que estos sistemas son inferiores a las alternativas vistas antes tanto en tiempo como en ajuste. No obstante, es probable que, con un cambio de enfoque y arquitectura, la idea de estimar el error $y - y_{lin}$ de forma no lineal si sea viable.
 
 \newpage
 \subsection{Discusión general de resultados}
@@ -612,7 +619,7 @@ En luz de los resultados ya expuestos en los incisos previos, se podrían hacer 
 \begin{itemize}
 	\item Las redes neuronales sirven para hacer identificación de sistemas, y pueden lograr mejores ajustes que los modelos lineales.
 	\item El tamaño de las redes no es algo de menor importancia ya que parece condicionar la capacidad de ajuste final. Deberá se elegida a conciencia y por medio de ``prueba y error''.
-	\item Se observó una relación positiva entre la cantidad de neuronas en la capa oculta y el ajuste a la salida real.
+	\item Se observó una relación positiva entre la cantidad de neuronas en la capa oculta y el ajuste a la salida real, para un orden de auto-regresividad dado (10 muestras previas).
 	\item Se notó que el uso de más muestras permite obtener redes neuronales con mejor ajuste.
 	\item Parecería preferible elegir un \textit{approach} puramente lineal o no lineal para la identificación que intentar fusionarlos. Esto último toma más tiempo y los resultados obtenidos no lo justifican.
 \end{itemize}
@@ -624,7 +631,9 @@ Es clave entender que el uso de un sistema no lineal en el área de identificaci
 \section{Control de sistemas}
 \label{sec:control}
 
-Habiendo concluido la sección de identificación de sistemas, se puede avanzar al segundo tema de esta monografía, que es el control. La primer idea es mostrar que el modelo no lineal compuesto por una red neuronal sirve para diseñar un controlador. Luego, se propone clonar un controlador (como se hizo con la planta no lineal) para analizar su desempeño a lazo cerrado.
+Habiendo concluido la sección de identificación de sistemas, se puede avanzar al segundo tema de esta monografía, que es el control. La primer idea es mostrar que el modelo no lineal compuesto por una red neuronal efectivamente sirve para diseñar un controlador. Luego, se propone clonar un controlador (como se hizo con la planta no lineal) para analizar su desempeño a lazo cerrado.
+
+En esta sección se evita la mención de cotas como márgenes de fase, ganancia y estabilidad, debido a que no son relevantes para la monografía y, como indica la p.581, sección 19.11 del libro ``\textit{Control System Design}'', muchas nociones comunes para sistemas lineales no aplican para los no lineales.
 
 \subsection{Diseño de controlador con modelo no lineal identificado como referencia}
 
@@ -641,15 +650,15 @@ $$
 \begin{itemize}
 	\item \textbf{Acción proporcional $K_p$}: genera una acción de control proporcional al error. Estabiliza plantas ya estables, pero no corrige el error en estado estacionario.
 	\item \textbf{Acción integral $K_i$}: produce una acción de control proporcional al error acumulado. Corrige el error en estado estacionario para referencias tipo escalón pero puede causar problemas de fase debido al polo en el origen.
-	\item \textbf{Acción derivativa $K_d$}: devuelve una acción de control proporcional a la derivada del error. En la práctica, ruido de los sensores puede introducir derivadas elevadas y, por ende, acciones de control desmedidas. Hay que usarla con cuidado y filtrando adecuadamente.
+	\item \textbf{Acción derivativa $K_d$}: devuelve una acción de control proporcional a la derivada del error. En la práctica, la existencia de ruido en los sensores y mediciones puede introducir derivadas elevadas y, por ende, acciones de control desmedidas. Hay que usarla con cuidado y filtrando adecuadamente.
 \end{itemize}
 
-No se eligió otra estrategia de control porque el sistema no lo amerita, considerando su simpleza y que es estable a lazo abierto.
+No se eligió otra estrategia de control porque el sistema es simple y estable a lazo abierto.
 
 \newpage
 \subsubsection{Diseño del controlador y resultados}
 
-El diseño de un PID es un proceso iterativo en el que se van ajustando los coeficientes $k_p$, $k_i$ y $k_d$ hasta obtener la respuesta deseada. En este caso particular, esto se hizo en \textit{simulink}, y la figura \ref{fig:pid-nn-simulink} muestra el lazo final. La imagen \ref{fig:RTA-pid-nn-simulink} muestra las salidas a lazo abierto y cerrado, la acción de control y la referencia.
+El diseño de un PID es un proceso iterativo en el que se van ajustando los coeficientes $K_p$, $K_i$ y $K_d$ hasta obtener la respuesta deseada. En este caso particular, el proceso se llevó a cabo en \textit{simulink}, y la figura \ref{fig:pid-nn-simulink} muestra el lazo final. La imagen \ref{fig:RTA-pid-nn-simulink} muestra las salidas a lazo abierto y cerrado, la acción de control y la referencia.
 
 
 \begin{figure}[h!]
@@ -668,7 +677,9 @@ El diseño de un PID es un proceso iterativo en el que se van ajustando los coef
 
 Nótese que la respuesta verde, correspondiente a la salida a lazo cerrado, llega antes que la roja (lazo abierto) al estado estacionario fijado por la referencia. Esto indica que el PID logró acelerar el sistema sin volverlo extremadamente agresivo u oscilante. Además, la acción de control es acotada, sin divergencias. La constante $K_d$ resultó nula, por lo que el control es en realidad un PI pero se va a seguir referenciando como PID por el bloque de \textit{simulink}.
 
-Las figuras \ref{fig:pid-nolin-simulink} y \ref{fig:RTA-pid-nolin-simulink} muestran el sistema armado con la planta no lineal y las salidas tal como antes. Se observa que el controlador diseñado sobre el modelo no lineal conformado por con redes neuronales funcionó con la planta real. Esto está alineado con las observaciones de la experiencia de identificación, y valida que el sistema emulado por una red neuronal sirve para el diseño de controladores.
+\newpage
+
+Las figuras \ref{fig:pid-nolin-simulink} y \ref{fig:RTA-pid-nolin-simulink} muestran el sistema armado con la planta no lineal y las salidas, tal como antes. Se observa que el controlador diseñado sobre el modelo no lineal, conformado por con redes neuronales, funcionó con la planta real. Esto está alineado con las observaciones de la experiencia de identificación, y corrobora que el sistema identificado por una red neuronal sirve para el diseño de controladores para un punto de operación dado.
 
 
 \begin{figure}[h!]
@@ -689,7 +700,7 @@ Las figuras \ref{fig:pid-nolin-simulink} y \ref{fig:RTA-pid-nolin-simulink} mues
 
 \subsection{Clonado del controlador}
 
-Teniendo un controlador funcional, se procedió a generar muestras de este y clonarlo por medio de una red neuronal. El procedimiento es idéntico al empleado en identificación de sistemas, pero lo novedoso está en estudiar si una red neuronal puede reemplazar al controlador. Se espera que la red pueda emular al controlador como lo hizo con la planta, pero se duda que capte la esencia de lo que hace el controlador, que en muy pocas palabras sería minimizar el error.
+Teniendo un controlador funcional, se procedió a generar muestras de este y clonarlo por medio de una red neuronal. El procedimiento es idéntico al empleado en identificación de sistemas, dónde lo novedoso está en estudiar si una red neuronal puede reemplazar al controlador. Se espera que la red pueda emular al controlador como lo hizo con la planta, pero se duda que capte la esencia de lo que realmente hace (véase la transferencia de un PID previamente estipulada).
 
 \subsubsection{Entrenamiento}
 
@@ -697,7 +708,9 @@ Usando el esquema de la figura \ref{fig:pid-nolin-simulink}, se armó un set de 
 
 Como arquitectura, se eligió una red neuronal auto-regresiva de 20 neuronas en su capa oculta que usa de entrada las últimas 10 salidas de la planta, aparte de la referencia y error. Se espera que la redundancia de información de usar la referencia, salida y error mejore el resultado ya que la red no necesita aprender el error a partir de las otras.
 
-La figura \ref{fig:cloncontroltrain} muestra el error de entrenamiento/testeo. Se observa que corta en un punto de relativa convergencia (derivada baja). La imagen \ref{fig:stepnnpid2} contiene unos gráficos que muestran la \textit{performance} de la red respecto de los datos. Se espera que la red funcione debido a aque error de predicción es pequeño y acotado, indicando que, para la región en la que se entrenó, la red lo emula.
+La figura \ref{fig:cloncontroltrain} muestra el error de entrenamiento/testeo. Se observa que corta en un punto de relativa convergencia (derivada baja). La imagen \ref{fig:stepnnpid2} contiene unos gráficos que muestran la \textit{performance} de la red respecto de los datos. La identificación parece haber funcionado porque el error de predicción es acotado, lo que da esperanza de que el controlador clonado funcione.
+
+
 
 
 \begin{figure}[h!]
@@ -728,7 +741,6 @@ La figura \ref{fig:stepnnpid} muestra la respuesta al escalón del controlador r
 \end{figure}
 
 
-
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=0.8\linewidth]{imgs/step_NN_PID_accionconrtol}
@@ -738,7 +750,7 @@ La figura \ref{fig:stepnnpid} muestra la respuesta al escalón del controlador r
 
 
 
-Ahora bien, la imagen \ref{fig:cloncontrolpulsosref} muestra las salidas a lazo cerrado cuando varía la referencia. Se empiezan a observar problemas con el controlador clonado, principalmente que su error en estado estacionario no es nulo, como el del controlador original (el PI/PID). Es más, la figura \ref{fig:cloncontrolpulsosruido}, simulada con el esquema \ref{fig:esquemaruidoentradaplanta}\footnote{Las perturbaciones introducidas son de igual amplitud que los cambios en la referencia de antes ($\pm 10\%$ del estado estacionario).}, indica que hay algo fundamentalmente mal, ya que el controlador clonado no comprende que el ruido introducido en el lazo se debe eliminar y, en cambio, está respondiendo a estos como si fueran cambios en la referencia.
+Ahora bien, la imagen \ref{fig:cloncontrolpulsosref} muestra las salidas a lazo cerrado cuando varía la referencia. Se empiezan a observar problemas con el controlador clonado, principalmente que su error en estado estacionario no es nulo, como el del controlador original (el PI/PID). Es más, la figura \ref{fig:cloncontrolpulsosruido}, simulada con el esquema \ref{fig:esquemaruidoentradaplanta}\footnote{Las perturbaciones introducidas son de igual amplitud que los cambios en la referencia de antes ($\pm 10\%$ del estado estacionario) pero centradas en el origen.}, indica que hay algo fundamentalmente mal, ya que el controlador clonado no comprende que el ruido introducido en el lazo se debe eliminar y, en cambio, está respondiendo a estos como si fueran cambios en la referencia.
 
 
 \begin{figure}[h!]
@@ -764,10 +776,23 @@ Ahora bien, la imagen \ref{fig:cloncontrolpulsosref} muestra las salidas a lazo 
 
 
 \clearpage
-En retrospectiva, el \textit{dataset} nunca debería haber incluido la referencia, ya que es invariante con las perturbaciones en el lazo, algo que no se pensó hasta que se hicieron los experimentos. Para ser justos, se entrenó otra red usando un set de datos que usa solo el error del lazo y salida, e incluye muestras obtenidas perturbando a la entrada de la planta (mitad de cambios en la referencia, mitad perturbaciones).
+En retrospectiva, el \textit{dataset} nunca debería haber incluido la referencia, ya que es invariante con las perturbaciones en el lazo, algo que no se pensó hasta que se hicieron los experimentos. por completitud, se entrenó otra red usando un set de datos que usa solo el error del lazo y salida, e incluye muestras obtenidas perturbando a la entrada de la planta (mitad de cambios en la referencia, mitad perturbaciones).
 
-Los resultados se pueden ver en las figuras \ref{fig:prueba_control_cambiado2} y \ref{fig:prueba_control_cambiado}. Parece haber aprendido el control desde la referencia, pero no se logró que rechace perturbaciones a la salida del controlador/entrada a la planta.
+Los resultados se pueden ver en las figuras \ref{fig:rtaescalon2}, \ref{fig:rtaescalon_C}, \ref{fig:prueba_control_cambiado2} y \ref{fig:prueba_control_cambiado}. Parece haber ``aprendido'' el control desde la referencia como antes, aunque con error en estado estacionario, pero no se logró que rechace perturbaciones a la salida del controlador/entrada a la planta.
 
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.8\linewidth]{imgs/rta_escalon_2}
+	\caption{Respuesta al escalón}
+	\label{fig:rtaescalon2}
+\end{figure}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.8\linewidth]{imgs/rtaescalon_2C}
+	\caption{Respuesta al escalón}
+	\label{fig:rtaescalon_C}
+\end{figure}
 
 \begin{figure}[h!]
 	\centering
@@ -785,11 +810,11 @@ Los resultados se pueden ver en las figuras \ref{fig:prueba_control_cambiado2} y
 \clearpage
 \subsubsection{Análisis de resultados}
 
-Los resultados obtenidos no favorecen la idea de clonar controladores con redes neuronales. Aunque se mantiene la posibilidad de controlar en base a cambios en la referencia, los controladores obtenidos también interpretan cambios de el error causados por perturbaciones como acciones de control válidas. Esto resulta en un controlador que amplifica el ruido proveniente del exterior y, por ende, no utilizable en la práctica .
+Los resultados obtenidos no favorecen la idea de clonar controladores con redes neuronales. Aunque se mantiene la posibilidad de controlar en base a cambios en la referencia, los controladores obtenidos también interpretaron las perturbaciones como acciones de control válidas. Esto resulta en un controlador que amplifica el ruido proveniente del exterior y, por ende, no utilizable en la práctica.
 
-El fracaso en el clonado también se puede pensar desde la complejidad de un PID. Como el sistema integra su entrada, tiene cierta memoria de sus estados previos, algo que la estructura de red elegida no puede hacer sin un cambio fundamental en arquitectura (Ej.: agregarle un integrador externo como entrada).
+Las redes obtenidas no son más que sistemas que intentaron memorizar salidas a partir de entradas, razón por la cual el error en estado estacionario no es nulo, excepto en ciertos casos. De igual manera se esperaba que las redes no lograran captar la complejidad del PID entero, y es razonable que no pueda copiar una operación de integración (la parte ``I'' del PID). Es posible que cambios en la arquitectura ayuden con el clonado, siendo uno posible el agregado de un integrador como entrada de la red. De esta manera, la red podría usar la integral del error como parte del vector de entrada y aprender la acción de control que lo minimiza.
 
-Igualmente, se destaca que la experiencia si revalidó de vuelta las capacidades de identificación de sistemas de las redes neuronales. Si no fuera por estas, tampoco se podría controlar desde la referencia.
+Igualmente, se destaca que la experiencia si revalidó las capacidades de identificación de sistemas de las redes neuronales. Si no fuera por estas, tampoco se podría controlar desde la referencia como se hizo.
 
 \newpage
 
