@@ -119,6 +119,20 @@ La denominada ``caja de herramientas'' de aquellos en el área de control está 
 
 Este trabajo va a ahondar sobre el uso de redes neuronales en la doctrina de control automático, específicamente como identificadores de sistemas y clonadores de controladores.
 
+\section{Estado del arte en identificación no lineal}
+
+En forma muy sintética, se pueden distinguir tres familias de enfoques para identificación de sistemas no lineales:
+
+\begin{itemize}
+  \item \textbf{Modelos NARX / NARMAX}: Extienden los modelos ARX lineales reemplazando la relación entrada–salida por una función no lineal (polinomios, redes neuronales, etc.), usando salidas e inputs retrasados como regresores. Son el estándar clásico en identificación no lineal de tipo caja negra.\cite{LjungNonlinearSI}
+
+  \item \textbf{Redes neuronales dinámicas}: Incluyen redes NARX neuronales, redes recurrentes y variantes profundas que aproximan directamente la dinámica del sistema a partir de datos.\cite{Narendra1990} Se usan tanto para identificación pura como para diseño de controladores no lineales.
+
+  \item \textbf{Esquemas híbridos y modelos locales}: Combinan modelos lineales (por ejemplo, ARX) con componentes no lineales que corrigen el error de modelado, o emplean varios modelos locales coordinados mediante mapas auto-organizados u otras estructuras jerárquicas.\cite{SouzaLocalARX}
+\end{itemize}
+
+En este trabajo se adopta un enfoque de tipo NARX, implementado mediante un perceptrón multicapa autoregresivo que usa salidas pasadas y la entrada actual como regresores, lo que permite compararlo directamente con modelos lineales derivados e identificados para el mismo sistema.
+
 
 \section{Sistema elegido}
 
