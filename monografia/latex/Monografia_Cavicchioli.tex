@@ -53,6 +53,14 @@
 \allsectionsfont{\sffamily\mdseries\upshape} % (See the fntguide.pdf for font help)
 % (This matches ConTeXt defaults)
 
+
+
+\usepackage[backend=biber,style=ieee]{biblatex}
+\addbibresource{refs.bib}
+
+
+
+
 %%% ToC (table of contents) APPEARANCE
 \usepackage[nottoc,notlof,notlot]{tocbibind} % Put the bibliography in the ToC
 \usepackage[titles,subfigure]{tocloft} % Alter the style of the Table of Contents
@@ -118,12 +126,6 @@ Las redes neuronales en sus múltiples formas constituyen sistemas no lineales c
 La denominada ``caja de herramientas'' de aquellos en el área de control está compuesta por ciertos artefactos matemáticos que permiten encarar estos problemas, como la linealización de un sistema, el control PID, realimentación de estados, \textit{loop-shaping}, observadores, etc. Lo que no se ha tocado en las materias de control son las estrategias no lineales. En líneas generales, todos los sistemas reales exhiben cierto grado de no linearidad, lo que implica que las estrategias de control lineales son válidas siempre que las no linealidades sean despreciables. Análogamente, las herramientas de identificación de sistemas basadas en la linealización de un sistema fallaran en modelar las no linealidades de estos.
 
 Este trabajo va a ahondar sobre el uso de redes neuronales en la doctrina de control automático, específicamente como identificadores de sistemas y clonadores de controladores.
-
-\section{Estado del arte en identificación no lineal}
-
-Los modelos ARX (AutoRegressive with eXogenous input) describen sistemas dinámicos lineales como combinaciones de salidas e inputs retrasados.\cite{LjungNonlinearSI} Sus extensiones no lineales, los modelos NARX y NARMAX, reemplazan esa combinación lineal por una función no lineal de los mismos regresores e incorporan, en el caso NARMAX, términos explícitos de ruido.\cite{LjungNonlinearSI}
-
-En este contexto, es frecuente implementar la función no lineal de un modelo NARX mediante redes neuronales, en particular perceptrones multicapa (MLP) y redes recurrentes, que permiten aproximar directamente la dinámica del sistema a partir de datos.\cite{Narendra1990} En esta monografía se utiliza precisamente un MLP autoregresivo de este tipo, lo que habilita una comparación directa con los modelos lineales analíticos e identificados del sistema de tanques.\cite{Narendra1990}
 
 \section{Sistema elegido}
 
@@ -841,13 +843,9 @@ En conjunto, los resultados muestran que las redes neuronales constituyen una he
 
 
 
+\nocite{*}
 
-
-\renewcommand{\refname}{Referencias} % para article
-% o
-\renewcommand{\bibname}{Referencias} % para report/book
-\bibliographystyle{ieeetr}  % o plain, alpha, etc.
-\bibliography{biblio}
+\printbibliography[title={Bibliografía consultada}]
 
 
 \newpage

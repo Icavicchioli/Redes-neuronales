@@ -1,0 +1,183 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.3 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{none/global//global/global/global}
+    \entry{Goodwin2000}{book}{}{}
+      \name{author}{3}{}{%
+        {{hash=1d4f261a30019c984c00f22496fb87f4}{%
+           family={Goodwin},
+           familyi={G\bibinitperiod},
+           given={Graham\bibnamedelima C.},
+           giveni={G\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
+        {{hash=935f2a00341d1ac4d3d026f84981043a}{%
+           family={Graebe},
+           familyi={G\bibinitperiod},
+           given={Stefan\bibnamedelima F.},
+           giveni={S\bibinitperiod\bibinitdelim F\bibinitperiod}}}%
+        {{hash=513cb6cfc8c767774c3b539fe8e13ed7}{%
+           family={Salgado},
+           familyi={S\bibinitperiod},
+           given={Mario\bibnamedelima E.},
+           giveni={M\bibinitperiod\bibinitdelim E\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Prentice Hall}%
+      }
+      \strng{namehash}{1a6ed8e0b122b50378b8574d292dbd68}
+      \strng{fullhash}{96189ff0d8cbc3e61b3d981d5fd05ce3}
+      \strng{fullhashraw}{96189ff0d8cbc3e61b3d981d5fd05ce3}
+      \strng{bibnamehash}{96189ff0d8cbc3e61b3d981d5fd05ce3}
+      \strng{authorbibnamehash}{96189ff0d8cbc3e61b3d981d5fd05ce3}
+      \strng{authornamehash}{1a6ed8e0b122b50378b8574d292dbd68}
+      \strng{authorfullhash}{96189ff0d8cbc3e61b3d981d5fd05ce3}
+      \strng{authorfullhashraw}{96189ff0d8cbc3e61b3d981d5fd05ce3}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Control System Design}
+      \field{year}{2000}
+    \endentry
+    \entry{ControlAutomaticoApuntes}{misc}{}{}
+      \name{author}{1}{}{%
+        {{hash=b8f18db89eb5e49888a9cf48586f8b90}{%
+           family={{Cátedra de Control Automático, FIUBA}},
+           familyi={C\bibinitperiod}}}%
+      }
+      \strng{namehash}{b8f18db89eb5e49888a9cf48586f8b90}
+      \strng{fullhash}{b8f18db89eb5e49888a9cf48586f8b90}
+      \strng{fullhashraw}{b8f18db89eb5e49888a9cf48586f8b90}
+      \strng{bibnamehash}{b8f18db89eb5e49888a9cf48586f8b90}
+      \strng{authorbibnamehash}{b8f18db89eb5e49888a9cf48586f8b90}
+      \strng{authornamehash}{b8f18db89eb5e49888a9cf48586f8b90}
+      \strng{authorfullhash}{b8f18db89eb5e49888a9cf48586f8b90}
+      \strng{authorfullhashraw}{b8f18db89eb5e49888a9cf48586f8b90}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{Apuntes de cátedra}
+      \field{title}{Apuntes y material de cátedra de la materia ``Control Automático''}
+      \field{year}{2025}
+      \true{nocite}
+    \endentry
+    \entry{WikiNNML}{misc}{}{}
+      \name{author}{1}{}{%
+        {{hash=b6aea1a416c89509a7df1cbb69249cb6}{%
+           family={{Wikipedia contributors}},
+           familyi={W\bibinitperiod}}}%
+      }
+      \strng{namehash}{b6aea1a416c89509a7df1cbb69249cb6}
+      \strng{fullhash}{b6aea1a416c89509a7df1cbb69249cb6}
+      \strng{fullhashraw}{b6aea1a416c89509a7df1cbb69249cb6}
+      \strng{bibnamehash}{b6aea1a416c89509a7df1cbb69249cb6}
+      \strng{authorbibnamehash}{b6aea1a416c89509a7df1cbb69249cb6}
+      \strng{authornamehash}{b6aea1a416c89509a7df1cbb69249cb6}
+      \strng{authorfullhash}{b6aea1a416c89509a7df1cbb69249cb6}
+      \strng{authorfullhashraw}{b6aea1a416c89509a7df1cbb69249cb6}
+      \field{extraname}{1}
+      \field{sortinit}{6}
+      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{https://en.wikipedia.org/wiki/Neural_network_(machine_learning)}}
+      \field{note}{Último acceso: diciembre 2025}
+      \field{title}{Neural network (machine learning) --- {Wikipedia}{,} The Free Encyclopedia}
+      \field{year}{2025}
+      \true{nocite}
+    \endentry
+    \entry{WikiML}{misc}{}{}
+      \name{author}{1}{}{%
+        {{hash=b6aea1a416c89509a7df1cbb69249cb6}{%
+           family={{Wikipedia contributors}},
+           familyi={W\bibinitperiod}}}%
+      }
+      \strng{namehash}{b6aea1a416c89509a7df1cbb69249cb6}
+      \strng{fullhash}{b6aea1a416c89509a7df1cbb69249cb6}
+      \strng{fullhashraw}{b6aea1a416c89509a7df1cbb69249cb6}
+      \strng{bibnamehash}{b6aea1a416c89509a7df1cbb69249cb6}
+      \strng{authorbibnamehash}{b6aea1a416c89509a7df1cbb69249cb6}
+      \strng{authornamehash}{b6aea1a416c89509a7df1cbb69249cb6}
+      \strng{authorfullhash}{b6aea1a416c89509a7df1cbb69249cb6}
+      \strng{authorfullhashraw}{b6aea1a416c89509a7df1cbb69249cb6}
+      \field{extraname}{2}
+      \field{sortinit}{7}
+      \field{sortinithash}{108d0be1b1bee9773a1173443802c0a3}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{https://en.wikipedia.org/wiki/Machine_learning}}
+      \field{note}{Último acceso: diciembre 2025}
+      \field{title}{Machine learning --- {Wikipedia}{,} The Free Encyclopedia}
+      \field{year}{2025}
+      \true{nocite}
+    \endentry
+    \entry{WikiNN}{misc}{}{}
+      \name{author}{1}{}{%
+        {{hash=b6aea1a416c89509a7df1cbb69249cb6}{%
+           family={{Wikipedia contributors}},
+           familyi={W\bibinitperiod}}}%
+      }
+      \strng{namehash}{b6aea1a416c89509a7df1cbb69249cb6}
+      \strng{fullhash}{b6aea1a416c89509a7df1cbb69249cb6}
+      \strng{fullhashraw}{b6aea1a416c89509a7df1cbb69249cb6}
+      \strng{bibnamehash}{b6aea1a416c89509a7df1cbb69249cb6}
+      \strng{authorbibnamehash}{b6aea1a416c89509a7df1cbb69249cb6}
+      \strng{authornamehash}{b6aea1a416c89509a7df1cbb69249cb6}
+      \strng{authorfullhash}{b6aea1a416c89509a7df1cbb69249cb6}
+      \strng{authorfullhashraw}{b6aea1a416c89509a7df1cbb69249cb6}
+      \field{extraname}{3}
+      \field{sortinit}{8}
+      \field{sortinithash}{a231b008ebf0ecbe0b4d96dcc159445f}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{https://en.wikipedia.org/wiki/Neural_network}}
+      \field{note}{Último acceso: diciembre 2025}
+      \field{title}{Neural network --- {Wikipedia}{,} The Free Encyclopedia}
+      \field{year}{2025}
+      \true{nocite}
+    \endentry
+    \entry{MATLABNNControl}{misc}{}{}
+      \name{author}{1}{}{%
+        {{hash=2d2b0d998977e6379aad61f1b56ac3c1}{%
+           family={{MathWorks}},
+           familyi={M\bibinitperiod}}}%
+      }
+      \strng{namehash}{2d2b0d998977e6379aad61f1b56ac3c1}
+      \strng{fullhash}{2d2b0d998977e6379aad61f1b56ac3c1}
+      \strng{fullhashraw}{2d2b0d998977e6379aad61f1b56ac3c1}
+      \strng{bibnamehash}{2d2b0d998977e6379aad61f1b56ac3c1}
+      \strng{authorbibnamehash}{2d2b0d998977e6379aad61f1b56ac3c1}
+      \strng{authornamehash}{2d2b0d998977e6379aad61f1b56ac3c1}
+      \strng{authorfullhash}{2d2b0d998977e6379aad61f1b56ac3c1}
+      \strng{authorfullhashraw}{2d2b0d998977e6379aad61f1b56ac3c1}
+      \field{sortinit}{9}
+      \field{sortinithash}{0a5ebc79d83c96b6579069544c73c7d4}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{https://la.mathworks.com/help/deeplearning/ug/introduction-to-neural-network-control-systems.html}}
+      \field{note}{Último acceso: diciembre 2025}
+      \field{title}{Introduction to neural network control systems}
+      \field{year}{2025}
+      \true{nocite}
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+
