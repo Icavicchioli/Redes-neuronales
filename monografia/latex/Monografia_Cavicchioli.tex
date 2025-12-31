@@ -99,11 +99,13 @@
 \begin{abstract}
 	\noindent
 
-	En el presente trabajo se estudia la identificación y el control de un sistema no lineal de tanques acoplados mediante el uso de modelos lineales y modelos basados en redes neuronales. A partir de un modelo físico no lineal continuo, se obtiene una representación en tiempo discreto que se utiliza como referencia para simulación y validación.
+	En el presente trabajo se estudia la identificación y el control de un sistema no lineal de tanques acoplados mediante el uso de modelos lineales y modelos basados en redes neuronales. A partir de un modelo físico no lineal continuo, se obtiene una representación que se utiliza como referencia para simulación y validación.
 
 	La identificación del sistema se aborda mediante el entrenamiento de redes neuronales auto-regresivas, utilizando datos generados a partir de la planta no lineal. El desempeño de estos modelos se evalúa y se compara con el de modelos lineales obtenidos tanto por linealización analítica como mediante herramientas de identificación. Los resultados muestran que, dentro de un régimen de operación acotado, las redes neuronales permiten representar con mayor precisión la dinámica del sistema, aunque a costa de un mayor esfuerzo de ajuste.
 
-	Asimismo, se analiza un enfoque híbrido que combina un modelo lineal con una red neuronal destinada a compensar el error de modelado, el cual no presenta mejoras significativas respecto de los enfoques puramente lineales o puramente no lineales. Finalmente, se estudia el diseño de controladores a partir de modelos neuronales y se evalúa la posibilidad de clonar un controlador PID mediante una red neuronal, poniendo en evidencia limitaciones en términos de robustez y rechazo de perturbaciones.
+	Asimismo, se analiza un enfoque híbrido que combina un modelo lineal con una red neuronal destinada a compensar el error de modelado, el cual no presenta mejoras significativas respecto de los enfoques solamente lineales o puramente no lineales. Finalmente, se estudia el diseño de controladores a partir de modelos neuronales y se evalúa la posibilidad de clonar un controlador PID mediante una red neuronal, poniendo en evidencia limitaciones en términos de robustez y rechazo de perturbaciones.
+
+
 
 	\vspace{0.5em}
 	\noindent
@@ -111,6 +113,9 @@
 \end{abstract}
 
 \vspace{1cm}
+
+	El repositorio de \textit{GitHub} con todo el código se puede encontrar en \href{https://github.com/Icavicchioli/Redes-neuronales/tree/f3920380831a530c08a813b0238ecbb3051682a3/monografia}{este \textit{link}}.
+
 
 \newpage
 % TABLA DE CONTENIDOS
@@ -121,11 +126,11 @@
 \section{Introducción}
 \label{sec:introduccion}
 
-Las redes neuronales en sus múltiples formas constituyen sistemas no lineales con un amplio alcance de aplicación en campos como la biología, neurociencia y, al que se avoca este trabajo, aprendizaje automático (\textit{machine learning}, ML). En particular, nos interesa centrarnos en las aplicaciones de las redes neuronales en el campo de control automático. Esta doctrina se encarga del diseño sistemas para regular, guiar o estabilizar procesos de manera autónoma, mediante la realimentación y corrección continua de errores.
+Las redes neuronales en sus múltiples formas constituyen sistemas no lineales con un amplio alcance de aplicación en campos como la biología, neurociencia y aprendizaje automático (\textit{machine learning}, ML), tema central de este trabajo. En particular, nos interesa centrarnos en las aplicaciones de las redes neuronales en el campo de control automático. Esta doctrina se encarga del diseño de sistemas para regular, guiar o estabilizar procesos de manera autónoma, mediante la realimentación y corrección continua de errores.
 
-La denominada ``caja de herramientas'' de aquellos en el área de control está compuesta por ciertos artefactos matemáticos que permiten encarar estos problemas, como la linealización de un sistema, el control PID, realimentación de estados, \textit{loop-shaping}, observadores, etc. Lo que no se ha tocado en las materias de control son las estrategias no lineales. En líneas generales, todos los sistemas reales exhiben cierto grado de no linearidad, lo que implica que las estrategias de control lineales son válidas siempre que las no linealidades sean despreciables. Análogamente, las herramientas de identificación de sistemas basadas en la linealización de un sistema fallaran en modelar las no linealidades de estos.
+La denominada ``caja de herramientas'' de los profesionales del área de control está compuesta por ciertos artefactos matemáticos que permiten encarar estos problemas, como la linealización de un sistema, el control PID, realimentación de estados, \textit{loop-shaping}, observadores, etc. Lo que no se ha estudiado en las materias de control son las estrategias no lineales. Estos son de interés debido a que todos los sistemas reales exhiben cierto grado de no linealidad, lo que implica que las estrategias de control lineales son válidas siempre que las no-linealidades sean despreciables. Análogamente, las herramientas de identificación de sistemas basadas en la linealización de un sistema fallarán en modelar las no-linealidades de estos.
 
-Este trabajo va a ahondar sobre el uso de redes neuronales en la doctrina de control automático, específicamente como identificadores de sistemas y clonadores de controladores.
+Este trabajo va a profundizar en el uso de redes neuronales en la doctrina de control automático, específicamente como identificadores de sistemas y clonadores de controladores.
 
 \section{Sistema elegido}
 
@@ -393,12 +398,12 @@ Como el muestreo se realizó a \SI{1}{\Hz}, se decidió generar un \textit{datas
 \section{Identificación de sistemas}
 \label{subsec:ids}
 
-La primer experiencia de esta monografía se centra en la temática de identificación de sistemas a partir de muestras del mismo, abordado desde el lado de redes neuronales. Particularmente, se propone entrenar una red neuronal para que aprenda la dinámica de la planta, y que pueda reproducirla fehacientemente.
+La primer experiencia de esta monografía se centra en la temática de identificación de sistemas a partir de muestras del mismo, abordado desde el lado de redes neuronales. En particular, se propone entrenar una red neuronal para que aprenda la dinámica de la planta, y que pueda reproducirla fehacientemente.
 
 
 \subsection{Suposiciones y decisiones}
 
-Con el objetivo de asegurar resultados conmensurables, los experimentos se armaron y realizaron siguiendo los siguientes preceptos:
+Con el objetivo de asegurar resultados comparables, los experimentos se idearon y realizaron siguiendo los siguientes preceptos:
 
 \begin{enumerate}
 	\item La única métrica de comparación elegida es el RMSE (ec. \eqref{RMSE}). Este se calcula sobre las secuencias de salida de todas las redes entrenadas.
@@ -428,7 +433,7 @@ Con esto dicho, se procede a los ensayos.
 
 \subsubsection{Introducción}
 
-El primer \textit{approach} pensado es usar un MLP de 1 capa oculta y entrenarlo en base a los datos de la planta en una configuración auto-regresiva como la de la figura \ref{fig:redautoreg}. Dado lo visto en la materia, se espera que el MLP logre captar las no-linealidades de la planta con una capacidad que aumenta con la cantidad de neuronas en su capa oculta. En palabras más simples, se tiene la expectativa que los modelos más chicos tengan peor desempeño que los grandes.
+El primer acercamiento es usar un MLP de 1 capa oculta y entrenarlo en base a los datos de la planta en una configuración auto-regresiva como la de la figura \ref{fig:redautoreg}. Dado lo visto en la materia, se espera que el MLP logre captar las no-linealidades de la planta con una capacidad que aumenta con la cantidad de neuronas en su capa oculta. En palabras más simples, se tiene la expectativa que los modelos más chicos tengan peor desempeño que los grandes.
 
 \begin{figure}[h!]
 	\centering
@@ -505,11 +510,12 @@ Por esto, se presenta un cuadro con los RMSE de todas las respuestas, calculado 
 \clearpage
 \subsubsection{Análisis de resultados}
 
-A partir de los resultados expuestos en el cuadro \ref{tab:rmse_comparacion}, se notan tendencias en la \textit{performance} de los varios modelos analizados. Primero, los modelos entrenados en base a más muestras (14400) tienen RMSE inferiores a los entrenados en base al set de 3600 muestras - que es consistente con las hipótesis antes mencionadas de la capacidad de captar no-linealidades.
+A partir de los resultados expuestos en el cuadro \ref{tab:rmse_comparacion}, se evidencian tendencias en la \textit{performance} de los modelos analizados. Por un lado, los modelos entrenados sobre el \textit{dataset} de 14400 muestras tienen RMSE inferiores a los entrenados en base al set de 3600 muestras, lo cual es consistente con las hipótesis antes mencionadas sobre la capacidad de captar no-linealidades.
 
-En segundo lugar, el sistema lineal obtenido matemáticamente (apodado ``matemático'' en el cuadro), logró mejores ajustes que dos redes por un orden de magnitud. Esto puede deberse a que el modelo lineal es muy bueno o que las redes resultaron \textit{sub-par}. Dicho esto, es inferior que el resto de las redes, incluyendo 2 entrenadas con el \textit{dataset} pequeño, dando a entender que, incluso con pocas muestras se puede lograr un modelo no lineal mejor que uno simple derivado matemáticamente.
+Por otro lado, el sistema lineal obtenido matemáticamente (apodado ``matemático'' en el cuadro \ref{tab:rmse_comparacion}), logró mejores ajustes que dos de las redes (MLP 2-3600 y MLP 10-3600) por un orden de magnitud. Esto puede deberse a que el modelo lineal es muy bueno y/o que las redes resultaron \textit{sub-par}. Dicho esto, el modelo ``matemático'' es inferior que el resto de las redes, incluyendo 2 entrenadas con el \textit{dataset} pequeño, dando a entender que, incluso con pocas muestras, se puede lograr un modelo no lineal mejor que uno simple derivado matemáticamente.
 
-El ``podio'' de los resultados está compuesto de 3 redes neuronales y el modelo lineal estimado, todos entrenadas con el \textit{dataset} grande . La mejor red supera al modelo lineal por $7.6$ veces, y no sorprende que sea la red más grande (20 unidades en la capa oculta).
+
+Los 4 sistemas con mejor \textit{performance} fueron 3 redes neuronales y el modelo lineal estimado, todos entrenados con el \textit{dataset} grande. La mejor red supera al modelo lineal por $7.6$ veces, y no sorprende que sea la red más grande (20 unidades en la capa oculta).
 
 
 Se cree que el orden de auto-regresividad elegido (10 muestras previas) también influenció los resultados, pero se desconoce su alcance.
@@ -524,7 +530,7 @@ Ahora bien, se debe resaltar que ninguno de los modelos obtenidos es inherenteme
 
 \subsubsection{Introducción}
 
-El segundo enfoque ideado surge como una posible avenida de mejora del \textit{approach} anterior: Si se puede lograr un buen desempeño con un modelo lineal, tal vez se pude corregir el error de la estimación lineal por medio de una red neuronal que aprenda el error de estimación. Se supone que, teniendo el sistema lineal como estimador del estado, la red podría dedicar toda su estructura a aprender la codificación que lleva la estimación lineal a la real, logrando una mejor estimación.
+El segundo enfoque ideado surge como una posible alternativa de mejora del \textit{approach} anterior: si se puede lograr un buen desempeño con un modelo lineal, tal vez se pude corregir el error de la estimación lineal por medio de una red neuronal que aprenda el error de estimación. Se supone que, teniendo el sistema lineal como estimador del estado, la red podría dedicar toda su estructura a aprender la codificación que lleva la estimación lineal a la real, logrando una mejor estimación.
 
 La figura \ref{fig:red_autoreg2} muestra el sistema recién descripto. El hiperparámetro $m$ se va a ajustar manualmente para minimizar el error de entrenamiento y evaluación.
 
@@ -609,7 +615,7 @@ El cuadro~\ref{tab:resultados_cascada} muestra el RMSE de cada uno de los experi
 
 \subsubsection{Análisis de resultados}
 
-Antes que nada, nótese que, si bien los mejores sistemas obtenidos solo son marginálmente mejores que el sistema lineal desarrollado matemáticamente, todos ellos implican un empeoramiento respecto del modelo lineal a partir del cual fue construido el enfoque. En este sentido, la comparación directa pierde relevancia, ya que el deterioro introducido por la identificación sugiere la existencia de un problema con el enfoque.
+Antes que nada, se destaca que, si bien los mejores sistemas obtenidos solo son marginálmente mejores que el sistema lineal desarrollado matemáticamente, todos ellos implican un empeoramiento respecto del modelo lineal a partir del cual fue construido el enfoque. En este sentido, la comparación directa pierde relevancia, ya que el deterioro introducido por la identificación sugiere la existencia de un problema con el enfoque.
 
 Las gráficas de las salidas de todas las pruebas hechas muestran espurios generados por la red neuronal, no están en la salida lineal, que empeoran el RMSE y constituyen transiciones de estados que la planta original no podría experimentar nunca, tales como escalones a la salida. Esto claramente es un efecto indeseado introducido por las redes neuronales entrenadas.
 
@@ -640,7 +646,7 @@ Es clave entender que el uso de un sistema no lineal en el área de identificaci
 
 Habiendo concluido la sección de identificación de sistemas, se puede avanzar al segundo tema de esta monografía, que es el control. La primer idea es mostrar que el modelo no lineal compuesto por una red neuronal efectivamente sirve para diseñar un controlador. Luego, se propone clonar un controlador (como se hizo con la planta no lineal) para analizar su desempeño a lazo cerrado.
 
-En esta sección se evita la mención de cotas como márgenes de fase, ganancia y estabilidad, debido a que no son relevantes para la monografía y, como indica la p.~581, sección 19.11 del libro \textit{Control System Design} \cite{Goodwin2000}, muchas nociones comunes para sistemas lineales no aplican para los no lineales.
+En esta sección no se habla de cotas como márgenes de fase, márgenes de ganancia o criterios de estabilidad, porque no aportan nada relevante a la monografía. Además, muchas de estas ideas típicas de sistemas lineales directamente no sirven cuando se trabaja con sistemas no lineales (\textit{Goodwin, Graebe y Salgado}, 2000).
 
 \subsection{Diseño de controlador con modelo no lineal identificado como referencia}
 
@@ -757,7 +763,7 @@ La figura \ref{fig:stepnnpid} muestra la respuesta al escalón del controlador r
 
 
 
-Ahora bien, la imagen \ref{fig:cloncontrolpulsosref} muestra las salidas a lazo cerrado cuando varía la referencia. Se empiezan a observar problemas con el controlador clonado, principalmente que su error en estado estacionario no es nulo, como el del controlador original (el PI/PID). Es más, la figura \ref{fig:cloncontrolpulsosruido}, simulada con el esquema \ref{fig:esquemaruidoentradaplanta}\footnote{Las perturbaciones introducidas son de igual amplitud que los cambios en la referencia de antes ($\pm 10\%$ del estado estacionario) pero centradas en el origen.}, indica que hay algo fundamentalmente mal, ya que el controlador clonado no comprende que el ruido introducido en el lazo se debe eliminar y, en cambio, está respondiendo a estos como si fueran cambios en la referencia.
+Ahora bien, la imagen \ref{fig:cloncontrolpulsosref} muestra las salidas a lazo cerrado cuando varía la referencia. Se empiezan a observar problemas con el controlador clonado, principalmente que su error en estado estacionario no es nulo, como el del controlador original (el PI/PID). Es más, la figura \ref{fig:cloncontrolpulsosruido}, simulada con el esquema \ref{fig:esquemaruidoentradaplanta}, indica que hay algo fundamentalmente mal, ya que el controlador clonado no comprende que el ruido\footnote{Las perturbaciones introducidas son de igual amplitud que los cambios en la referencia de antes ($\pm 10\%$ del estado estacionario) pero centradas en el origen.} introducido en el lazo se debe eliminar y, en cambio, está respondiendo a estos como si fueran cambios en la referencia.
 
 
 \begin{figure}[h!]
@@ -817,28 +823,28 @@ Los resultados se pueden ver en las figuras \ref{fig:rtaescalon2}, \ref{fig:rtae
 \clearpage
 \subsubsection{Análisis de resultados}
 
-Los resultados obtenidos no favorecen la idea de clonar controladores con redes neuronales. Aunque se mantiene la posibilidad de controlar en base a cambios en la referencia, los controladores obtenidos también interpretaron las perturbaciones como acciones de control válidas. Esto resulta en un controlador que amplifica el ruido proveniente del exterior y, por ende, no utilizable en la práctica.
+Aunque se mantiene la posibilidad de controlar en base a cambios en la referencia, los controladores obtenidos también interpretaron las perturbaciones como acciones de control válidas. Esto resulta en un controlador que amplifica el ruido proveniente del exterior y, por ende, no utilizable en la práctica. En otras palabras, los resultados no favorecen este enfoque de clonar controladores.
 
 Las redes obtenidas no son más que sistemas que intentaron memorizar salidas a partir de entradas, razón por la cual el error en estado estacionario no es nulo, excepto en ciertos casos. De igual manera se esperaba que las redes no lograran captar la complejidad del PID entero, y es razonable que no pueda copiar una operación de integración (la parte ``I'' del PID). Es posible que cambios en la arquitectura ayuden con el clonado, siendo uno posible el agregado de un integrador como entrada de la red. De esta manera, la red podría usar la integral del error como parte del vector de entrada y aprender la acción de control que lo minimiza.
 
-Igualmente, se destaca que la experiencia si revalidó las capacidades de identificación de sistemas de las redes neuronales. Si no fuera por estas, tampoco se podría controlar desde la referencia como se hizo.
+Igualmente, se destaca que la experiencia sí revalidó las capacidades de identificación de sistemas de las redes neuronales. Si no fuera por éstas, tampoco se podría controlar desde la referencia como se hizo.
 
 \newpage
 
 \section{Conclusiones}
 \label{sec:conclusiones}
 
-En esta monografía se abordó la identificación y el control de un sistema no lineal de tanques acoplados por medio de modelos lineales y sistemas basados en redes neuronales.
+En este trabajo se abordó la identificación y el control de un sistema no lineal de tanques acoplados por medio de modelos lineales y sistemas basados en redes neuronales.
 
-La primer experiencia se centró en el entrenamiento de modelos no lineales relativamente variados, y su posterior comparación con sistemas lineales, derivados de la planta original. Se observó que, con la arquitectura y cantidad demuestras adecuadas, las redes neuronales logran captar adecuadamente las dinámicas del sistema dentro del régimen considerado, superando a los modelos lineales. Se destaca que el uso de redes neuronales requiere de más prueba y error que la linealización, pudiendo ser desfavorable en ciertos contextos más acotados en tiempo.
+La primer experiencia se centró en el entrenamiento de modelos no lineales relativamente variados, y su posterior comparación con sistemas lineales, derivados de la planta original. Se observó que, con la arquitectura y cantidad de muestras adecuadas, las redes neuronales logran captar adecuadamente las dinámicas del sistema dentro del régimen considerado, superando a los modelos lineales. Se destaca que el uso de redes neuronales requiere de más prueba y error que la linealización, pudiendo ser desfavorable en ciertos contextos más acotados en tiempo.
 
 Asimismo, se exploró un enfoque híbrido, que combina modelos lineales con redes neuronales encargadas de estimar el error de modelado. Los resultados mostraron que este esquema no mejora el desempeño del modelo lineal, y solo introduce dinámicas indeseadas.
 
-En lo que respecta el diseño del control, la segunda experiencia, se demostró que un PID diseñado sobre un modelo no lineal de la planta puede ser aplicado exitosamente sobre la planta real. Esto valida el uso de los modelos no lineales como herramienta de identificación de sistemas.
+En lo que respecta el diseño del control, la segunda experiencia, se demostró que un PID diseñado sobre un modelo no lineal del sistema de tanques puede ser aplicado exitosamente sobre la planta real. Esto valida el uso de los modelos no lineales como herramienta de identificación de sistemas.
 
 Finalmente, se analizó la posibilidad de clonar el controlador PID por medio de una red neuronal. Los resultados fueron desfavorables: el sistema clonado actúa de forma adecuada ante cambios en la referencia pero se confunde las perturbaciones de lazo con cambios en la referencia, y generando acciones de control indebidas. Esto trae a luz ciertas de las limitaciones de las redes neuronales a la hora de tener que clonar estructuras complejas.
 
-En conjunto, los resultados muestran que las redes neuronales constituyen una herramienta valiosa para la identificación de sistemas no lineales, siempre que su utilización se realice con criterio y analizando el compromiso entre complejidad y desempeño.
+En síntesis, los resultados denotan que las redes neuronales constituyen una herramienta valiosa para la identificación de sistemas no lineales, siempre que su utilización se realice con criterio y analizando el compromiso entre complejidad y desempeño.
 
 
 
@@ -939,6 +945,8 @@ En conjunto, los resultados muestran que las redes neuronales constituyen una he
 	\caption{Salida del MLP de 2 neuronas en capa oculta - \textit{dataset} de 3600 muestras}
 	\label{fig:mlp-2-3600}
 \end{figure}
+
+\clearpage
 
 \section{Apéndice 2 - Resultados de la segunda experiencia de identificación}
 \label{ap2}
