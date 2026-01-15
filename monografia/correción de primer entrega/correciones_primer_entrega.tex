@@ -1,0 +1,127 @@
+\documentclass[]{article}
+\usepackage[utf8]{inputenc} % set input encoding (not needed with XeLaTeX)
+%opening
+\usepackage{geometry} % to change the page dimensions
+\usepackage{graphicx} % support the \includegraphics command and options
+
+% \usepackage[parfill]{parskip} % Activate to begin paragraphs with an empty line rather than an indent
+
+%%% PACKAGES
+\usepackage{booktabs} % for much better looking tables
+\usepackage{array} % for better arrays (eg matrices) in maths
+\usepackage{paralist} % very flexible & customisable lists (eg. enumerate/itemize, etc.)
+\usepackage{verbatim} % adds environment for commenting out blocks of text & for better verbatim
+\usepackage{subfig} % make it possible to include more than one captioned figure/table in a single float
+% These packages are all incorporated in the memoir class to one degree or another...
+\usepackage{enumitem}
+\usepackage{amsmath}
+\usepackage{siunitx}
+% para los cuadritos en links
+%\usepackage[linkbordercolor={0 0 1}, citebordercolor={0 1 0}, urlbordercolor={1 0 0}]{hyperref}
+\usepackage[colorlinks=true, linkcolor=black, citecolor=green, urlcolor=red]{hyperref} % solo resalta
+\usepackage[spanish]{babel}
+
+\usepackage{booktabs}
+\usepackage{array}
+
+
+
+
+
+
+
+
+
+
+
+\title{Correciones}
+\author{Ignacio Cavicchioli}
+
+\begin{document}
+
+\maketitle
+
+
+\section{Preguntas y respuestas}
+\subsection{Pregunta 1}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.7\linewidth]{imgs/screenshot001}
+	\caption{}
+	\label{fig:screenshot001}
+\end{figure}
+
+Esta expresión se refiere a que la diferencia entre los caudales entrantes y salientes determina la variación del volumen. En el problema de tanques simplificado que encaré solo hay una entrada y salida de caudal, así que la sumatoria sería sobre 1 solo elemento e innecesaria. Confunde porque quise hacer toda la demostración, en control nos daban las ecuaciones no lineales de la dinámica ya obtenidas sin todo el planteo, pero me pareció demasiado ``galerazo''.
+Adjunto una foto de las consignas de un ejercicio de control a modo de ejemplo.
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.7\linewidth]{imgs/screenshot002}
+	\caption{}
+	\label{fig:screenshot002}
+\end{figure}
+
+\newpage
+\subsection{Pregunta 2}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.7\linewidth]{imgs/screenshot003}
+	\caption{}
+	\label{fig:screenshot003}
+\end{figure}
+
+En esta parte me faltó aclarar que $h_1$ y $h_2$ son las variables de estado del sistema, y $x_e$ es el vector que representa el punto de equilibrio de dichas variables. La notación es la misma que usamos en control, pero $x_e$ es un vector de 2 dimensiones.
+
+\newpage
+\subsection{Pregunta 3}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.7\linewidth]{imgs/screenshot004}
+	\caption{}
+	\label{fig:screenshot004}
+\end{figure}
+
+No me pareció que la normalización en media/var fuera a ir en contra del entrenamiento. En todo caso, pensé que ayudaría con el espaciado de las muestras. Aparte es lineal, lo que mantiene las relaciones de mayor y menor incluso en el tiempo - si dos instantes de tiempo cumplían que uno era mayor que el otro, lo siguen cumpliendo luego de la transformación.
+
+Si esto se quisiera usar en tiempo real, se me ocurre que se puede ir calculando la media y varianza con un filtro tipo promedio móvil con factor de olvido, que lo usamos en el taller de control para estimar un valor de un acelerometro. Sino se puede tener un stack en el que se van agregando las muestras del proceso y descartando las más viejas y se estima sobre las muestras de ese array. La segunda forma es peor porque usa mucha más memoria y es una operación matricial grande y lenta (para la varianza). La primer forma sirve para procesos no tan estacionarios (de media variante).
+
+Con las estimaciones en tiempo real se pueden hacer las normalizaciones y des-normalizaciones.
+
+
+
+
+
+\newpage
+\subsection{Pregunta 4}
+
+
+
+\newpage
+\subsection{Pregunta 5}
+
+
+\newpage
+\subsection{Pregunta 6}
+
+
+\newpage
+\subsection{Pregunta 7}
+
+
+\newpage
+\subsection{Pregunta 8}
+
+
+\newpage
+\subsection{Pregunta 9}
+
+
+\newpage
+\subsection{Pregunta 10}
+
+
+\newpage
+\subsection{Pregunta 11}
+
+\end{document}
