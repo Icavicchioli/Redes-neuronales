@@ -34,7 +34,7 @@
 
 
 
-\title{Correciones}
+\title{Correcciones}
 \author{Ignacio Cavicchioli}
 
 \begin{document}
@@ -82,7 +82,8 @@ En esta parte me faltó aclarar que $h_1$ y $h_2$ son las variables de estado de
 	\label{fig:screenshot004}
 \end{figure}
 
-No me pareció que la normalización en media/var fuera a ir en contra del entrenamiento. En todo caso, pensé que ayudaría con el espaciado de las muestras. Aparte es lineal, lo que mantiene las relaciones de mayor y menor incluso en el tiempo - si dos instantes de tiempo cumplían que uno era mayor que el otro, lo siguen cumpliendo luego de la transformación.
+
+No me pareció que la normalización en media/varianza fuera a ir en contra del entrenamiento. En todo caso, pensé que ayudaría con el espaciado de las muestras. Aparte es lineal, lo que mantiene las relaciones de mayor y menor incluso en el tiempo - si dos instantes de tiempo cumplían que uno era mayor que el otro, lo siguen cumpliendo luego de la transformación. En otras palabras, ayudarían en la excursión de las señales y mantiene las relaciones que importan.
 
 Si esto se quisiera usar en tiempo real, se me ocurre que se puede ir calculando la media y varianza con un filtro tipo promedio móvil con factor de olvido, que lo usamos en el taller de control para estimar un valor de un acelerometro. Sino se puede tener un stack en el que se van agregando las muestras del proceso y descartando las más viejas y se estima sobre las muestras de ese array. La segunda forma es peor porque usa mucha más memoria y es una operación matricial grande y lenta (para la varianza). La primer forma sirve para procesos no tan estacionarios (de media variante).
 
@@ -95,33 +96,294 @@ Con las estimaciones en tiempo real se pueden hacer las normalizaciones y des-no
 \newpage
 \subsection{Pregunta 4}
 
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.7\linewidth]{imgs/screenshot005}
+	\caption{}
+	\label{fig:screenshot005}
+\end{figure}
+
+Si, no puedo refutar que $10^{-5}$ es bueno. Hice la suposición de que esa diferencia pequeña de 1/1000000 es el error de las no linealidades. Tal vez no elegí correctamente la planta, debería haber sido menos lineal.
+
+
 
 
 \newpage
 \subsection{Pregunta 5}
 
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.7\linewidth]{imgs/screenshot006}
+	\caption{}
+	\label{fig:screenshot006}
+\end{figure}
+
+Acá falló mí proof-reading. En esta sección comparaba el modelo matemático lineal con las redes, y luego explico que el modelo estimado (no el derivado de forma matemática) logró un desempeño cercano pero inferior al de las mejores redes. Me faltó decir que el modelo lineal estimado superó al derivado matemáticamente.
 
 \newpage
 \subsection{Pregunta 6}
 
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.7\linewidth]{imgs/screenshot007}
+	\caption{}
+	\label{fig:screenshot007}
+\end{figure}
 
-\newpage
+Entiendo que se refiere a que las redes, en vez de aprender las no linealidades propiamente dichas, están aprendiendo los parámetros de tal forma que las activaciones operan en la región más lineal de la tangente. Para todas las fotos (tomadas de MATLAB): a la izquierda están las pre-activaciones y a la derecha, las activaciones propiamente dichas.
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.7\linewidth]{imgs/screenshot008}
+	\caption{MLP 20 14400}
+	\label{fig:screenshot008}
+\end{figure}
+
+
+En el MLP 20 14400 se observa que hay neuronas en regiones de activación lineal, no lineal y de saturación. No parecería que haya aprendido una estimación lineal.
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=1\linewidth]{imgs/screenshot009}
+	\caption{MLP 2 3600}
+	\label{fig:screenshot009}
+\end{figure}
+
+En el MLP 2 3600 las pre-activaciones están en $1$ y $0.5$, siendo la de $0.5$ relativamente lineal.
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=1\linewidth]{imgs/screenshot010}
+	\caption{MLP 2 14400}
+	\label{fig:screenshot010}
+\end{figure}
+
+
+ En el MLP 2 14400 las pre-activaciones son simétricas respecto del cero y, como $tanh(0.6) = 0.537$, es más lineal.
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=1\linewidth]{imgs/screenshot011}
+	\caption{MLP 10 3600}
+	\label{fig:screenshot011}
+\end{figure}
+
+ En el MLP 10 3600 las pre-activaciones están distribuidas más como el MLP 20 14400.
+
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=1\linewidth]{imgs/screenshot012}
+	\caption{MLP 5 14400}
+	\label{fig:screenshot012}
+\end{figure}
+
+En el MLP 5 14400 las pre-activaciones están distribuidas de forma variada, con algunas más lineales que otras.
+
+
+No se colocan el resto de las imágenes, pero se nota que los modelos de 2 neuronas son los más lineales, mientras que el resto muestra mayor ``variedad'' en la pre-activación: algunas neuronas capturaran dinámicas más lineales, otras no-lineales y algunas tienen salidas casi constantes/saturadas.
+
+\clearpage
 \subsection{Pregunta 7}
 
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.7\linewidth]{imgs/screenshot013}
+	\caption{}
+	\label{fig:screenshot013}
+\end{figure}
+
+El primer experimento tenía una función para entrenar llamada ``entrenar\_red'', que se tuvo que cambiar porque no daba buenos resultados para los datos de la segunda experiencia.Se ajustó en el momento hasta que funcionó (es decir, entrenó como corresponde).
+
+
+\begin{verbatim}
+	function net = entrenar_red(Xn, Tn, numNeuronas, epochs)
+	% ENTRENAR_RED Entrena una red neuronal feedforward (fitnet)
+	% sin early stopping y con división determinista
+	%
+	% Uso:
+	%   net = entrenar_red(Xn, Tn, numNeuronas)
+
+	% ------------------------------------------------------------
+	% Crear red
+	% ------------------------------------------------------------
+	net = fitnet(numNeuronas);
+
+	% Funciones de transferencia
+	net.layers{1}.transferFcn = 'tansig';
+	net.layers{2}.transferFcn = 'purelin';
+
+	% ------------------------------------------------------------
+	% División determinista SIN validación
+	% ------------------------------------------------------------
+	N = size(Xn, 1);   % muestras
+
+	nTrain = floor(0.85 * N);
+
+	idxTrain = 1 : nTrain;
+	idxTest  = nTrain + 1 : N;
+
+	net.divideFcn = 'divideind';
+	net.divideParam.trainInd = idxTrain;
+	net.divideParam.valInd   = [];      % <-- elimina early stopping
+	net.divideParam.testInd  = idxTest;
+
+	net.trainParam.epochs = epochs;
+	net.trainParam.min_grad = 1e-9;
+	net.trainParam.mu_max = 1e12;
+	net.trainParam.time = inf;
+
+
+	% ------------------------------------------------------------
+	% Desactivar preprocesamiento interno
+	% ------------------------------------------------------------
+	net.inputs{1}.processFcns  = {};
+	net.outputs{2}.processFcns = {};
+
+	% ------------------------------------------------------------
+	% Entrenamiento
+	% ------------------------------------------------------------
+	net = train(net, Xn.', Tn.');
+	end
+\end{verbatim}
+
+
+
+\begin{verbatim}
+function net = entrenar_redV2(Xn, Tn, numNeuronas, epochs)
+% entrenar_redV2 Entrena una red neuronal feedforward (fitnet)
+% sin early stopping y con división determinista
+%
+% Uso:
+%   net = entrenar_redV2(Xn, Tn, numNeuronas)
+
+% ------------------------------------------------------------
+% Crear red
+% ------------------------------------------------------------
+net = fitnet(numNeuronas);
+
+% Funciones de transferencia
+net.layers{1}.transferFcn = 'tansig';
+net.layers{2}.transferFcn = 'purelin';
+
+% ------------------------------------------------------------
+% División determinista SIN validación
+% ------------------------------------------------------------
+N = size(Xn, 1);   % muestras
+
+
+net.divideFcn = 'dividerand';
+net.divideParam.trainRatio = 0.7;
+net.divideParam.valRatio   = 0.15;
+net.divideParam.testRatio  = 0.15;
+
+
+net.trainParam.epochs = epochs;
+
+
+
+% ------------------------------------------------------------
+% Entrenamiento
+% ------------------------------------------------------------
+net = train(net, Xn.', Tn.');
+end
+
+\end{verbatim}
+
+Básicamente, se regresó a una configuración más estándar de ``fitnet'' (la de MATLAB). En la primer parte de la monografía se usó una división fija del \textit{dataset} sin validación, con ajuste de parámetros a mano.Como esto empezó a dar malos resultados en el otro experimento, se regresó a la división aleatoria con validación y los parámetros por defecto, que sí funcionaron correctamente.
 
 \newpage
 \subsection{Pregunta 8}
 
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.7\linewidth]{imgs/screenshot014}
+	\caption{}
+	\label{fig:screenshot014}
+\end{figure}
 
-\newpage
+La configuración usada en la monografía responde a un MLP realimentado externamente con cierta memoria implícita en la realimentación (en la entrada tiene muestras previas de la salida). Mí idea fue probar esta idea de los estados internos con una red recurrente armada en MATLAB, pero no se pudo. En cambio, se armó en python (pytorch), resultando en las imágenes de más adelante. La arquitectura se fue ajustando desde 1 capa LSTM de 5 neuronas hasta obtener una red funcional, y terminó de 2 capas LSTM de 32 unidades cada una. Se logró un RMSE de $2.222591e-06$, que es bueno, pero lo interesante es observar los estados internos.
+
+
+Se observó que el estado interno de la unidad 7 (fig. \ref{fig:screenshot022}) de la red recurrente presenta una forma visualmente correlacionada con la altura del tanque. El tema es que la salida del sistema es proporcional a la altura del segundo tanque, por lo que de cierta manera la red disponía de la información de esa variable interna. No se puede afirmar que la red haya ``descubierto'' la altura.
+
+Sin embargo, resulta relevante notar que una dinámica fuertemente correlacionada con la altura/salida aparece en el estado oculto de una unidad interna, previo a la capa de salida. Esto sugiere que la red construye una representación interna, y no que solo opera sobre su entrada para generar una salida.
+
+Este resultado indica que, aun cuando la salida es función directa de una de las variables de estado, estas redes recurrentes pueden organizar la información en forma de una representación interna, abriendo la posibilidad de aplicación a sistemas donde la salida es una combinación más compleja de variables. Otra posibilidad es usar esta representación para forzar una reducción en dimensión - tal vez con una elección de arquitectura consciente, se podría llegar a tener una capa LSTM mínima en la que exista una representación del problema en menor dimensión. Es como los autoencoders en el sentido conceptual de que se hace una reducción dimensional, no arquitectónico.
+
+Al correo se adjuntan 2 imágenes demasiado grandes para una hoja de documento en la que están todos los estados ocultos de todas las neuronas de las 2 capas.
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=1\linewidth]{imgs/screenshot022}
+	\caption{Estado oculto de la unidad 7 de la segunda capa}
+	\label{fig:screenshot022}
+\end{figure}
+
+
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=1\linewidth]{imgs/screenshot019}
+	\caption{Salida real y predicción con LSTM RNN}
+	\label{fig:screenshot019}
+\end{figure}
+
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=1\linewidth]{imgs/screenshot021}
+	\caption{Alturas reales}
+	\label{fig:screenshot021}
+\end{figure}
+
+
+
+
+\clearpage
 \subsection{Pregunta 9}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.7\linewidth]{imgs/screenshot015}
+	\caption{}
+	\label{fig:screenshot015}
+\end{figure}
+
+No, la referencia cambia. Adjunto el gráfico de la serie temporal de la referencia del \textit{dataset} usado. La razón por la que luego se quita del \textit{dataset} es porque queda codificada en el error. Esto último fue una decisión que, si vemos un esquema típico de control, es razonable ya que el controlador no recibe la referencia, sino que el error, y lo busca minimizar. Sin embargo, una red neuronal no es un controlador, y no tendría sentido obligarla a usar las mismas entradas, por lo que siento que no habría estado mal dejarle la referencia incluso si no cambiaba con las perturbaciones en el lazo.
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.7\linewidth]{imgs/screenshot016}
+	\caption{}
+	\label{fig:screenshot016}
+\end{figure}
+
+
 
 
 \newpage
 \subsection{Pregunta 10}
 
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.7\linewidth]{imgs/screenshot023}
+	\caption{}
+	\label{fig:screenshot023}
+\end{figure}
+
+Existe la posibilidad de que, disponiendo de la referencia, la segunda red (entrenada con el dataset con ambos tipos de perturbaciones) aprenda a rechazar las perturbaciones a la salida del controlador. Sin embargo, dados los comentarios en la monografía y el mismo desarrollo hecho en este documento, diría que es más útil un cambio de red que intentar hacer que un MLP emule un efecto de acción integral en un controlador. De cierta manera, esto delimita el campo de aplicación natural del MLP y da espacio a otros tipos de redes más adaptadas a este tipo de problemas.
 
 \newpage
 \subsection{Pregunta 11}
 
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.7\linewidth]{imgs/screenshot024}
+	\caption{}
+	\label{fig:screenshot024}
+\end{figure}
+
+Si, notando los beneficios vistos antes de poder capturar variables de estado en la misma red en los estados ocultos, no tiene sentido usar MPLs en configuraciones ``extrañas''.
 \end{document}
